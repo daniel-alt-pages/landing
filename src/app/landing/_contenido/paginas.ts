@@ -34,8 +34,8 @@ export const CIERRE = {
       id: 'reunion',
       title: 'Reunión de 30 minutos',
       text: 'Vea la plataforma en vivo: el panel de rectoría y el de cada estudiante. Resolvemos dudas de calendario, de los grados 9, 10 y 11, y del primer simulacro. Sin costo y sin compromiso.',
-      cta: 'Agendar reunión',
-      mascot: '/images/recordings/mascotas/ingles.png',
+      cta: 'Agendar reunión de 30 min',
+      mascot: '/landing/mascotas/ingles.png',
       mascotAlt: 'Mascota de SEAMOSGENIOS frente a un computador, lista para mostrar la plataforma',
     },
     {
@@ -43,7 +43,7 @@ export const CIERRE = {
       title: 'Simulacro gratis',
       text: 'Un simulacro con el formato del Saber 11 para los grados 9, 10 y 11. Al día siguiente cada estudiante tiene su análisis y su rectoría, el panel de coordinación. No obliga a contratar.',
       cta: 'Solicitarlo',
-      mascot: '/images/recordings/mascotas/lectura-critica.png',
+      mascot: '/landing/mascotas/lectura-critica.png',
       mascotAlt: 'Mascota de SEAMOSGENIOS con libros, lista para el simulacro',
     },
     {
@@ -51,7 +51,7 @@ export const CIERRE = {
       title: 'Hablar por WhatsApp',
       text: 'Un asesor institucional le escribe directo para agendar la reunión o coordinar el simulacro. Puede preguntar por cupos, fechas y qué necesita su colegio. Respondemos en un día hábil.',
       cta: 'Abrir WhatsApp',
-      mascot: '/images/recordings/mascotas/sociales-ciudadanas.png',
+      mascot: '/landing/mascotas/sociales-ciudadanas.png',
       mascotAlt: 'Mascota de SEAMOSGENIOS señalando, lista para conversar',
     },
   ],

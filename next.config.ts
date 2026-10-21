@@ -58,7 +58,7 @@ function buildContentSecurityPolicy(): string {
     "media-src 'self' blob: https://*.imagekit.io https://*.cdn.prismic.io",
     `connect-src ${connectSrc.join(" ")}`,
     "worker-src 'self' blob:",
-    "frame-src 'self' https://www.youtube-nocookie.com https://*.youtube.com https://drive.google.com https://*.google.com https://*.cdn.prismic.io https://calendar.google.com https://cal.com https://app.cal.com",
+    "frame-src 'self' https://daniel-alt-pages.github.io https://www.youtube-nocookie.com https://*.youtube.com https://drive.google.com https://*.google.com https://*.cdn.prismic.io https://calendar.google.com https://cal.com https://app.cal.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",

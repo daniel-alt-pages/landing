@@ -10,6 +10,7 @@ import { SiteHeader } from './_componentes/secciones/SiteHeader';
 import { WhatsAppFab } from './_componentes/secciones/WhatsAppFab';
 import './landing.css';
 import './tienda.css';
+import { MotionProvider } from './_componentes/primitivas/MotionProvider';
 
 const SITE = 'https://alianza.seamosgenios.org';
 const ORG_ID = 'https://simulacros-sg.web.app/#organization';
@@ -90,7 +91,7 @@ export default function AlianzaLayout({ children }: { children: ReactNode }) {
       <SiteHeader />
       <main id="contenido">
         <Breadcrumb />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </main>
       <SiteFooter />
       <WhatsAppFab />

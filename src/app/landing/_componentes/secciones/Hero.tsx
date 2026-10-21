@@ -1,53 +1,38 @@
-import { COLEGIOS } from '../../_contenido/colegios';
 import { HERO } from '../../_contenido/hero';
+import { ALCANCE } from '../../_contenido/sitio';
 import { contactoHref } from '../../_lib/links';
-import BlurText from '../bits/BlurText';
-import FadeContent from '../bits/FadeContent';
-import { Eyebrow } from '../primitivas/Eyebrow';
-import { Lead } from '../primitivas/Lead';
-import { Marquee } from '../primitivas/Marquee';
+import { MotionIn } from '../primitivas/MotionIn';
+import { HeroAlianzas } from './HeroAlianzas';
 
 export function Hero() {
   return (
-    <section id="inicio" className="ag-section ag-tone-grey ag-hero" aria-labelledby="hero-title">
-      <div className="ag-hero-center">
-        <Eyebrow>{HERO.eyebrow}</Eyebrow>
-        <h1 id="hero-title" className="ag-display">
-          <BlurText as="span" align="center" className="ag-blur-line ag-title-line" text={HERO.title[0]} delay={50} blur={8} distance={14} />
-          <BlurText as="span" align="center" className="ag-blur-line ag-accent" text={HERO.title[1]} delay={90} blur={8} distance={14} />
-        </h1>
-        <FadeContent blur duration={0.8} trigger="mount">
-          <Lead>{HERO.lead}</Lead>
-          <div className="ag-hero-cta">
-            <a className="ag-btn" href={contactoHref('reunion')}>
-              {HERO.ctaPrimary}
-            </a>
-            <a className="ag-btn-ghost" href={contactoHref('simulacro')}>
-              {HERO.ctaSecondary}
-            </a>
-          </div>
-        </FadeContent>
+    <section id="inicio" className="ag-section ag-hero ag-hero-v2" aria-labelledby="hero-title">
+      <div className="ag-hero-grid">
+        <div className="ag-hero-copy">
+          {/* H1 en un solo nodo de texto y sin animación: es el texto del primer pliegue. */}
+          <h1 id="hero-title" className="ag-display">{`${HERO.title[0]} ${HERO.title[1]}`}</h1>
+          <MotionIn onMount delay={40}>
+            <p className="ag-lead">{HERO.lead}</p>
+          </MotionIn>
+          <MotionIn onMount delay={80} className="ag-hero-cta">
+            <a className="ag-btn" href={contactoHref('reunion')}>{HERO.ctaPrimary}</a>
+            <a className="ag-text-link" href={contactoHref('simulacro')}>o {HERO.ctaSecondary.toLowerCase()}</a>
+          </MotionIn>
+          <MotionIn onMount delay={120}>
+            <dl className="ag-hero-alcance">
+              {ALCANCE.map((row) => (
+                <div key={row.valor}>
+                  <dt>{row.valor}</dt>
+                  <dd>{row.texto}</dd>
+                </div>
+              ))}
+            </dl>
+          </MotionIn>
+        </div>
+        <div className="ag-hero-side">{/* Sin animación: el póster es el LCP. */}
+          <HeroAlianzas />
+        </div>
       </div>
-      <FadeContent blur duration={1} delay={0.05}>
-      <figure className="ag-hero-window">
-        <img
-          src="/landing/hero/planificacion-calendario.webp"
-          alt="Estudiantes reunidos en un aula durante una sesión de SeamosGenios."
-          width={1600}
-          height={1200}
-        />
-      </figure>
-      </FadeContent>
-      <FadeContent blur duration={0.9} delay={0.1}>
-      <div className="ag-hero-proof">
-        <p>{HERO.trust}</p>
-        <Marquee className="ag-hero-logos" label="Instituciones que ya aplicaron al menos un simulacro">
-          {COLEGIOS.map((school) => (
-            <img key={school.id} src={school.src} alt={school.short} width={56} height={56} />
-          ))}
-        </Marquee>
-      </div>
-      </FadeContent>
     </section>
   );
 }

@@ -1,7 +1,8 @@
 export const CONTACTO = {
-  whatsappB2B: '573042359048',
-  telefonoB2BVisible: '+57 304 235 9048',
-  telefonoB2BAlterno: '+57 305 299 0900',
+  // Oficial con WhatsApp: +57 305 299 0900 (confirmado por Daniel, 21-oct-2026).
+  whatsappB2B: '573052990900',
+  telefonoB2BVisible: '+57 305 299 0900',
+  telefonoB2BAlterno: '+57 304 235 9048',
   whatsappEstudiantes: '573008871908',
   whatsappEstudiantesVisible: '+57 300 887 1908',
   canalWhatsApp: '',
@@ -19,7 +20,7 @@ export const CONTACTO = {
     facebookHandle: 'SeamosGeniosCO',
   },
   confirmar:
-    'Confirmar si 305 299 0900 es llamada o segundo asesor, la URL del canal de WhatsApp y que cada handle corresponde a esa red.',
+    'Confirmar si 304 235 9048 sigue activo o se retira, la URL del canal de WhatsApp y que cada handle corresponde a esa red.',
 } as const;
 
 const LOCAL_APP_LOGIN = 'http://localhost:8081/login';

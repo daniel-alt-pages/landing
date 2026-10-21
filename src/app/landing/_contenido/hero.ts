@@ -4,7 +4,7 @@ export const HERO = {
   rotatingPrefix: 'Una alianza para',
   rotating: ['subir el promedio de su institución', 'ver qué reforzar antes del examen', 'probar el modelo sin costo'],
   lead:
-    'Un simulacro con el formato real, el análisis al día siguiente y dos pantallas: una para su rectoría y otra para cada estudiante. El primero no tiene costo y no obliga a contratar.',
+    'Un simulacro tipo ICFES, el análisis al día siguiente y dos pantallas: una para su rectoría y otra para cada estudiante. El primero no tiene costo y no obliga a contratar.',
   trust: '65 instituciones ya aplicaron al menos un simulacro.',
   ctaPrimary: 'Agendar reunión de 30 min',
   ctaSecondary: 'Solicitar simulacro gratis',

@@ -259,7 +259,7 @@ export function SiteHeader() {
               close();
             }}
           >
-            <span className="ag-only-desktop">Agende su reunión</span>
+            <span className="ag-only-desktop">Agendar reunión de 30 min</span>
             <span className="ag-only-mobile">Agendar</span>
           </a>
           <button

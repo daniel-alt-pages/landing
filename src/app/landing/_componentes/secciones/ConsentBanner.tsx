@@ -193,11 +193,12 @@ export function ConsentBanner() {
       ) : (
         <div className="ag-consent-copy">
           <p>
-            Usamos cookies propias. Las necesarias quedan siempre: su elección (13 meses) y el carrito (6 meses). La sesión de la plataforma dura 12 horas y solo nace al iniciar sesión.
+            Usamos cookies propias. Las necesarias quedan siempre: su elección (13 meses) y el carrito (6 meses). Las demás quedan apagadas hasta que las acepte.{' '}
+            <a className="ag-only-mobile" href="/landing/politica-de-datos">Política de datos y cookies</a>
           </p>
           <p className="ag-consent-note">
             Analítica (13 meses, y _ga 2 años si hay Google Analytics), personalización del catálogo (6 meses) y publicidad quedan apagadas hasta que usted las acepte. No guardamos una cookie propia de anuncios.{' '}
-            <a href="/legal/cookies">Política de cookies</a>
+            <a href="/landing/politica-de-datos">Política de datos y cookies</a>
           </p>
         </div>
       )}

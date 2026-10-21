@@ -14,11 +14,7 @@ const CANALES = [
     kicker: 'WhatsApp instituciones',
     value: CONTACTO.telefonoB2BVisible,
   },
-  {
-    href: `tel:+${CONTACTO.telefonoB2BAlterno.replace(/\D/g, '')}`,
-    kicker: 'Línea institucional',
-    value: CONTACTO.telefonoB2BAlterno,
-  },
+  // Línea alterna (304 235 9048) retirada del pie hasta que Daniel confirme si sigue activa.
   {
     href: buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes),
     kicker: 'Estudiantes',

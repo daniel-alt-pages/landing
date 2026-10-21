@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import AppRootChrome from "@/components/AppRootChrome";
-import { PRISMIC_APP_ICON } from "@/lib/prismicAssets";
+/** Bajo /landing para que exista también en GitHub Pages. */
+const PRISMIC_APP_ICON = "/landing/brand/sg-services-logo.svg";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -97,7 +98,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es-CO" suppressHydrationWarning>
+      <head>
+        {/* Marca que hay JS: las entradas animadas solo ocultan contenido si esta clase existe. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
         suppressHydrationWarning

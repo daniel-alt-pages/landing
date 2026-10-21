@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { programasUrl, tiendaLandingUrl } from '../../_contenido/contacto';
 import { addToCart, readCart, requestCartOpen, subscribeCart, type CartItem } from '../../_lib/carrito';
 import { storeFromCommerce, type TiendaConfig } from '../../_lib/tienda';
+import { TIENDA_EJEMPLO_CONFIG, TIENDA_EJEMPLO_PRODUCTOS, tiendaEjemploActiva } from '../../_contenido/tienda-ejemplo';
 import BlurText from '../bits/BlurText';
 import { ProgramCard } from '../../programas/catalogo/ProgramCard';
 import type { CatalogItem } from '../../programas/catalogo/catalogUi';
@@ -30,7 +31,13 @@ export function ProductRail() {
 
   useEffect(() => {
     const shopUrl = tiendaLandingUrl();
-    if (!shopUrl) return undefined;
+    // Sin API: productos ficticios de _contenido/tienda-ejemplo.ts (solo si la bandera lo permite).
+    const applyExample = () => {
+      if (!tiendaEjemploActiva()) return;
+      setConfig(TIENDA_EJEMPLO_CONFIG);
+      setItems(storeFromCommerce(TIENDA_EJEMPLO_PRODUCTOS));
+    };
+    if (!shopUrl) { applyExample(); return undefined; }
     const aulasUrl = programasUrl();
     const controller = new AbortController();
     const load = (target: string) => fetch(target, { signal: controller.signal })
@@ -38,6 +45,7 @@ export function ProductRail() {
       .catch(() => null);
     Promise.all([load(shopUrl), aulasUrl ? load(aulasUrl) : Promise.resolve(null)])
       .then(([shop, aulas]) => {
+        if (!shop?.products?.length) { applyExample(); return; }
         setConfig(shop?.config || null);
         setItems(storeFromCommerce(shop?.products || [], aulas?.items || []));
       })
@@ -97,7 +105,7 @@ export function ProductRail() {
   const cartIds = cart.map((row) => row.id);
 
   return (
-    <section className="ag-section ag-mk ag-mk-home" aria-labelledby="productos-tienda">
+    <section id="tienda" className="ag-section ag-mk ag-mk-home" aria-labelledby="productos-tienda">
       <div className="ag-wrap">
         <div className="ag-product-rail-head">
           <div>

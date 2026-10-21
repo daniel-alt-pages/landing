@@ -15,7 +15,7 @@ export function FaqSection() {
         <Accordion items={FAQ} />
         <p className="ag-faq-cta">
           <a className="ag-btn" href="#solicitar-reunion">
-            Resolver mis dudas en una reunión
+            Agendar reunión de 30 min
           </a>
         </p>
       </div>
