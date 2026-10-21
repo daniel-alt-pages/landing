@@ -12,7 +12,7 @@ export function PrimerPaso() {
       <ol className="ag-step-rail ag-steps-4 ag-step-photos ag-plain-list">
         {OFERTA.simulacro.pasos.map((paso) => (
           <li key={paso.n} className="ag-card">
-            <img className="ag-step-photo" src={paso.image} alt={paso.imageAlt} width={640} height={400} />
+            <img className="ag-step-photo" src={paso.image} srcSet={paso.image.endsWith('-800.webp') ? `${paso.image.replace('-800.webp', '-480.webp')} 480w, ${paso.image} 800w` : undefined} sizes="(min-width: 1024px) 400px, 90vw" alt={paso.imageAlt} width={640} height={400} loading="lazy" decoding="async" />
             <div className="ag-step-copy">
               <div className="ag-step-head">
                 <span className="ag-num">{paso.n.padStart(2, '0')}</span>
