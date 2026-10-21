@@ -50,7 +50,7 @@ export const FAQ: FaqItem[] = [
   {
     question: '¿Cuándo llegan los resultados?',
     answer:
-      'Al día siguiente del simulacro cada estudiante tiene su dashboard con puntaje global, desglose por área, ranking y plan de estudio.',
+      'En la semana siguiente al simulacro cada estudiante tiene su dashboard con puntaje global, desglose por área, ranking y plan de estudio.',
   },
   {
     question: '¿Qué ve el rector o el coordinador?',

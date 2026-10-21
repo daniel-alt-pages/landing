@@ -30,7 +30,7 @@ export const OFERTA = {
       {
         n: '4',
         title: 'Vea el análisis',
-        text: 'Al día siguiente, cada estudiante y su rectoría tienen el panel.',
+        text: 'En la semana siguiente, cada estudiante y su rectoría tienen el panel.',
         image: '/landing/pasos/analisis.jpg',
         imageAlt: 'Rectoría revisa el panel de resultados en un portátil.',
       },

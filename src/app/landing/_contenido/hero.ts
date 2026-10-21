@@ -4,13 +4,12 @@ export const HERO = {
   rotatingPrefix: 'Una alianza para',
   rotating: ['subir el promedio de su institución', 'ver qué reforzar antes del examen', 'probar el modelo sin costo'],
   lead:
-    'Aplicamos un simulacro con formato ICFES y al día siguiente su rectoría ve en qué competencias está cada curso, y cada estudiante ve qué estudiar.',
+    'Aplicamos un simulacro con formato ICFES y en la semana siguiente su rectoría ve en qué competencias está cada curso, y cada estudiante ve qué estudiar.',
   bullets: [
     'Una pantalla para rectoría y otra para cada estudiante',
-    'Análisis al día siguiente del simulacro',
+    'Análisis en la semana siguiente al simulacro',
     'El primer simulacro no tiene costo ni lo obliga a contratar',
   ],
-  prueba: 'Ya lo aplicamos con 716 estudiantes de 9 colegios oficiales de Soacha.',
   trust: '65 instituciones ya aplicaron al menos un simulacro.',
   ctaPrimary: 'Agendar reunión de 30 min',
   ctaSecondary: 'Solicitar simulacro gratis',

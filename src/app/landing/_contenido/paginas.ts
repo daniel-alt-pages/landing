@@ -41,7 +41,7 @@ export const CIERRE = {
     {
       id: 'simulacro',
       title: 'Simulacro gratis',
-      text: 'Un simulacro con el formato del Saber 11 para los grados 9, 10 y 11. Al día siguiente cada estudiante tiene su análisis y su rectoría, el panel de coordinación. No obliga a contratar.',
+      text: 'Un simulacro con el formato del Saber 11 para los grados 9, 10 y 11. En la semana siguiente cada estudiante tiene su análisis y su rectoría, el panel de coordinación. No obliga a contratar.',
       cta: 'Solicitarlo',
       mascot: '/landing/mascotas/lectura-critica.png',
       mascotAlt: 'Mascota de SEAMOSGENIOS con libros, lista para el simulacro',
