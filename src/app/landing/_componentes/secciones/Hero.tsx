@@ -6,8 +6,15 @@ import { HeroTiendaEjemplo } from './HeroTiendaEjemplo';
 
 export function Hero() {
   return (
-    <section id="inicio" className="ag-section ag-hero ag-hero-v2" aria-labelledby="hero-title">
-      <div className="ag-hero-grid ag-hero-1col">
+    <section id="inicio" className="ag-section ag-hero ag-hero-v2 ag-hero-fx" aria-labelledby="hero-title">
+      {/* Fondo decorativo: degradado, plano diagonal, brillos difusos y marca de agua. */}
+      <div className="ag-hero-fx-bg" aria-hidden="true">
+        <span className="ag-hero-fx-plane" />
+        <span className="ag-hero-fx-glow is-a" />
+        <span className="ag-hero-fx-glow is-b" />
+        <span className="ag-hero-fx-mark">11</span>
+      </div>
+      <div className="ag-hero-grid ag-hero-1col ag-hero-fx-grid">
         <div className="ag-hero-copy">
           {/* H1 en un solo nodo de texto y sin animación: es el texto del primer pliegue. */}
           <h1 id="hero-title" className="ag-display">{`${HERO.title[0]} ${HERO.title[1]}`}</h1>
@@ -26,7 +33,11 @@ export function Hero() {
             <a className="ag-btn" href={contactoHref('reunion')}>{HERO.ctaPrimary}</a>
             <a className="ag-text-link" href={contactoHref('simulacro')}>o {HERO.ctaSecondary.toLowerCase()}</a>
           </MotionIn>
+        </div>
+        <div className="ag-hero-fx-side">
           <HeroMascota />
+        </div>
+        <div className="ag-hero-fx-extra">
           <HeroTiendaEjemplo />
         </div>
       </div>

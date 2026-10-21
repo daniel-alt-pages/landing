@@ -3774,3 +3774,46 @@ a.ag-product-cart.is-soon {
   .ag-hero-1col .ag-hero-copy { min-height: calc(clamp(280px, 28vw, 420px) * 0.984 - 40px); }
   .ag-hero-v2.ag-section:has(.ag-hero-1col) { padding-bottom: 96px; }
 }
+
+/* ===== Hero con fondo tipo Factus (colores propios). Medidas de referencia factus.com.co:
+   h1 25.6px→37.6px, 800, lh 1.2, mayúsculas; subtítulo 16→18px, 300, lh ~1.55. ===== */
+.ag-hero-fx { position: relative; isolation: isolate; overflow: hidden; color: #fff; background: linear-gradient(135deg, #0a0a0a 0%, #2a0a0d 50%, #8f0000 100%); }
+.ag-hero-v2.ag-hero-fx.ag-section:has(.ag-hero-1col) { background: linear-gradient(135deg, #0a0a0a 0%, #2a0a0d 50%, #8f0000 100%); padding: 56px 0 0; }
+.ag-hero-fx-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.ag-hero-fx-plane { position: absolute; inset: 0; background: linear-gradient(90deg, #cc0000 0%, #4a0b0e 55%, #0a0a0a 100%); clip-path: polygon(0 86%, 100% 62%, 100% 100%, 0 100%); }
+.ag-hero-fx-glow { position: absolute; border-radius: 999px; filter: blur(120px); }
+.ag-hero-fx-glow.is-a { left: -8rem; top: 2.5rem; width: 600px; height: 600px; background: rgba(255, 255, 255, 0.06); }
+.ag-hero-fx-glow.is-b { left: 25%; bottom: 2.5rem; width: 800px; height: 500px; background: rgba(204, 0, 0, 0.18); filter: blur(140px); }
+.ag-hero-fx-mark { position: absolute; right: -2%; top: 3rem; font-size: clamp(14rem, 34vw, 32rem); font-weight: 900; line-height: .8; letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.08); user-select: none; }
+.ag-hero-fx .ag-hero-fx-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: min(1190px, calc(100% - 32px)); }
+.ag-hero-fx .ag-display { color: #fff; max-width: 22ch; font-size: clamp(1.6rem, 0.95rem + 2vw, 2.35rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; text-transform: uppercase; }
+.ag-hero-fx .ag-lead { color: rgba(255,255,255,.9); font-size: 16px; font-weight: 300; line-height: 1.6; max-width: 32rem; margin-top: 16px; }
+.ag-hero-fx .ag-hero-bullets li { color: rgba(255,255,255,.82); font-size: 15px; }
+.ag-hero-fx .ag-hero-bullets svg { color: #ff6b6b; }
+.ag-hero-fx .ag-hero-cta { margin-top: 28px; }
+.ag-hero-fx .ag-hero-cta .ag-btn { background: #fff; color: #0a0a0a; }
+.ag-hero-fx .ag-hero-cta .ag-btn:hover { background: #f4f4f5; }
+.ag-hero-fx .ag-hero-cta .ag-text-link { color: #fff; }
+.ag-hero-fx .ag-hero-copy { min-height: 0; }
+.ag-hero-fx-side { display: flex; justify-content: center; align-items: flex-end; min-width: 0; padding: 8px 0 0; }
+.ag-hero-fx .ag-hero-mascota { position: static; margin: 0 auto; width: 100%; max-width: 340px; }
+.ag-hero-fx .ag-hero-mascota img { filter: drop-shadow(0 25px 25px rgb(0 0 0 / .35)); }
+.ag-hero-fx-extra { min-width: 0; padding-bottom: 48px; }
+.ag-hero-fx-extra:empty { padding-bottom: 32px; }
+.ag-hero-fx .ag-hero-tienda { margin-top: 8px; }
+.ag-hero-fx .ag-hero-tienda-head { color: rgba(255,255,255,.75); }
+.ag-hero-fx .ag-hero-tienda-head .ag-text-link { color: #fff; }
+@media (min-width: 640px) { .ag-hero-fx .ag-lead { font-size: 18px; } }
+@media (min-width: 1024px) {
+  .ag-hero-v2.ag-hero-fx.ag-section:has(.ag-hero-1col) { padding: 0; min-height: 640px; }
+  .ag-hero-fx .ag-hero-fx-grid { grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); grid-template-areas: "copy side" "extra extra"; gap: 0 40px; padding: 0 clamp(0px, 3vw, 48px); }
+  .ag-hero-fx .ag-hero-copy { grid-area: copy; align-self: center; padding: 88px 0 72px; }
+  .ag-hero-fx-side { grid-area: side; align-items: flex-end; justify-content: flex-end; padding: 48px 0 40px; }
+  .ag-hero-fx .ag-hero-mascota { max-width: none; width: min(100%, 500px); margin: 0; }
+  .ag-hero-fx-extra { grid-area: extra; }
+  .ag-hero-fx-extra:empty { display: none; }
+}
+.ag-hero-fx-side { position: relative; }
+.ag-hero-fx-side::before { content: ""; position: absolute; left: 50%; top: 55%; width: min(110%, 560px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.22), rgba(255,255,255,.06) 60%, transparent); pointer-events: none; }
+.ag-hero-fx .ag-hero-mascota { position: relative; }
+.ag-hero-fx .ag-hero-tienda-card { color: var(--ag-ink); }
