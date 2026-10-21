@@ -66,14 +66,19 @@
 /* Ciclo: etiquetas fuera del anillo, sin tapar los nodos; anillo visible al entrar */
 .ag-b2b-ciclo-stage button { background: transparent; padding: 4px 6px; }
 .ag-b2b-ciclo-stage button.is-on { background: var(--ag-red); }
-.ag-b2b-ciclo-stage circle { fill: var(--ag-red); stroke: var(--ag-red); r: 9px; opacity: 0; transition: opacity .24s cubic-bezier(.23,1,.32,1); transition-delay: calc(var(--i, 0) * 60ms + 300ms); }
+.ag-b2b-ciclo-stage circle { fill: var(--ag-red); stroke: var(--ag-red); r: 9px; transition: opacity .24s cubic-bezier(.23,1,.32,1); transition-delay: calc(var(--i, 0) * 60ms + 300ms); }
 .ag-b2b-ciclo-stage circle.ag-b2b-ring { r: 118px; fill: none; stroke: var(--ag-ink); opacity: 1; stroke-width: 1.5; }
-.is-in .ag-b2b-ciclo-stage circle { opacity: 1; }
+.is-armed:not(.is-in) .ag-b2b-ciclo-stage circle:not(.ag-b2b-ring) { opacity: 0; }
 .is-in .ag-b2b-ring { animation-duration: .6s !important; }
 .ag-pf-cta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 20px; }
 .ag-pf-cta p { margin: 0; color: var(--ag-ink-2); font-size: 14px; }
 .ag-pf-cta .ag-b2b-btn { border-radius: 4px; }
 @media (prefers-reduced-motion: reduce) { .ag-b2b-ciclo-stage circle { transition: opacity .15s linear; transition-delay: 0s; } }
-.ag-b2b .ag-b2b-ring { stroke-dasharray: 742; stroke-dashoffset: 742; transition: stroke-dashoffset .6s cubic-bezier(.77,0,.175,1); }
-.ag-b2b .is-in .ag-b2b-ring { animation: none !important; stroke-dashoffset: 0; }
+.ag-b2b .ag-b2b-ring { stroke-dasharray: 742; stroke-dashoffset: 0; animation: none !important; transition: stroke-dashoffset .6s cubic-bezier(.77,0,.175,1); }
+.ag-b2b .is-armed:not(.is-in) .ag-b2b-ring { stroke-dashoffset: 742; }
 @media (prefers-reduced-motion: reduce) { .ag-b2b .ag-b2b-ring { transition: none; stroke-dashoffset: 0; } }
+/* Sin doble padding entre secciones blancas consecutivas (hueco en móvil) */
+.ag-section.ag-b2b { padding: 40px 0; }
+@media (min-width: 900px) { .ag-section.ag-b2b { padding: 64px 0; } }
+.ag-section.ag-b2b + .ag-section.ag-b2b:not(.ag-tone-red) { padding-top: 32px; border-top: 1px solid #E9E9E9; }
+@media (min-width: 900px) { .ag-section.ag-b2b + .ag-section.ag-b2b:not(.ag-tone-red) { padding-top: 48px; } }

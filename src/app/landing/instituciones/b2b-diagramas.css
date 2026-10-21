@@ -67,12 +67,13 @@
 }
 
 .ag-b2b-brecha { display: grid; gap: 14px; margin-top: 16px; }
-.ag-b2b-brecha svg { width: 100%; height: 36px; }
+.ag-b2b-brecha svg { width: 100%; height: 40px; overflow: visible; }
 .ag-b2b-brecha g { fill: none; stroke: var(--ag-ink); stroke-width: 1.6; }
 .ag-b2b-brecha-fila:first-child g.is-on { fill: var(--ag-ink); }
 .ag-b2b-brecha-fila:last-child g.is-on { fill: var(--ag-red); stroke: var(--ag-red); }
 .is-in .ag-b2b-brecha g { opacity: 0.35; }
-.is-in .ag-b2b-brecha g.is-on { opacity: 1; animation: ag-b2b-rise 0.35s both; }
+.is-in .ag-b2b-brecha g.is-on { opacity: 1; animation: ag-b2b-fade 0.35s both; } /* solo opacidad: un transform CSS anularía el translate del atributo SVG */
+@keyframes ag-b2b-fade { from { opacity: 0; } to { opacity: 1; } }
 .ag-b2b-brecha p { margin: 4px 0 0; }
 
 .ag-b2b-escalera svg { width: 100%; height: auto; margin-top: 8px; }
@@ -81,11 +82,11 @@
 .ag-b2b-peldano rect { fill: #161618; }
 .ag-b2b-peldano text { fill: #fff; font-size: 13px; }
 .ag-b2b-peldano.p3 rect { fill: var(--ag-red); }
-.ag-b2b-peldano { transform-box: fill-box; transform-origin: bottom; transform: scaleY(0); }
+.ag-b2b-peldano { transform-box: fill-box; transform-origin: bottom; }
 .is-in .ag-b2b-peldano { animation: ag-b2b-grow 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .is-in .p2 { animation-delay: 0.3s; }
 .is-in .p3 { animation-delay: 0.6s; }
-@keyframes ag-b2b-grow { to { transform: scaleY(1); } }
+@keyframes ag-b2b-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
 .ag-b2b-matriz { margin-top: 22px; max-width: 100%; min-width: 0; }
 .ag-b2b-matriz .ag-b2b-solo-ancho { overflow-x: auto; }
@@ -253,9 +254,9 @@
 .ag-b2b-esquema rect:nth-of-type(2) { fill: var(--ag-red); }
 
 .ag-b2b-escalera-v { display: none; width: 100%; height: auto; }
-.ag-b2b-escalera-v .ag-b2b-peldano { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); }
+.ag-b2b-escalera-v .ag-b2b-peldano { transform-box: fill-box; transform-origin: left center; }
 .is-in .ag-b2b-escalera-v .ag-b2b-peldano { animation-name: ag-b2b-grow-x; }
-@keyframes ag-b2b-grow-x { to { transform: scaleX(1); } }
+@keyframes ag-b2b-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (max-width: 639px) {
   .ag-b2b-escalera > svg:not(.ag-b2b-escalera-v) { display: none; }
   .ag-b2b-escalera-v { display: block; }
