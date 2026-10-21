@@ -2,6 +2,7 @@ import { HERO } from '../../_contenido/hero';
 import { ALCANCE } from '../../_contenido/sitio';
 import { contactoHref } from '../../_lib/links';
 import { MotionIn } from '../primitivas/MotionIn';
+import { HeroMascota } from './HeroMascota';
 
 export function Hero() {
   return (
@@ -17,6 +18,7 @@ export function Hero() {
             <a className="ag-btn" href={contactoHref('reunion')}>{HERO.ctaPrimary}</a>
             <a className="ag-text-link" href={contactoHref('simulacro')}>o {HERO.ctaSecondary.toLowerCase()}</a>
           </MotionIn>
+          <HeroMascota />
           <MotionIn onMount delay={120}>
             <dl className="ag-hero-alcance">
               {ALCANCE.map((row) => (
