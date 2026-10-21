@@ -2,6 +2,7 @@ import { B2B_MODULOS_VISIBLES, B2B_PLATAFORMA, B2B_SIMULACROS } from '../../../_
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
 import { RutaSvg } from './diagramas/RutaSvg';
+import { Cohorte } from './diagramas/Portafolio';
 import { B2bEscenario } from './B2bEscenario';
 
 export function B2bPlataforma() {
@@ -22,6 +23,7 @@ export function B2bPlataforma() {
       <ul className="ag-b2b-chips">
         {['Global y por área', 'Percentiles', 'Preguntas críticas', 'Por cohorte', 'Histórico', 'Alertas N3', 'Benchmark'].map((item) => <li key={item}>{item}</li>)}
       </ul>
+      <Cohorte />
       <Plegable titulo="Ver los 8 módulos" cuenta={`${resto.length} más`}>
         <ul className="ag-b2b-lista">
           {B2B_PLATAFORMA.rows.map((fila) => (

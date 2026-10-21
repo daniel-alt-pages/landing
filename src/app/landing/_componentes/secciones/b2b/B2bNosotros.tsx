@@ -2,6 +2,7 @@ import { HISTORIAS } from '../../../_contenido/historias';
 import { B2B_PORQUE, B2B_PROBLEMA, B2B_QUIENES, B2B_VALOR } from '../../../_contenido/b2b/modelo';
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
+import { Capacidades } from './diagramas/Portafolio';
 import { BrechaSvg } from './diagramas/BrechaSvg';
 
 const CASOS = [
@@ -40,6 +41,7 @@ export function B2bNosotros() {
           );
         })}
       </div>
+      <Capacidades />
       <Plegable titulo="Quiénes somos" cuenta="Misión y visión">
         <p>{B2B_QUIENES.lead}</p>
         <ul className="ag-b2b-lista">

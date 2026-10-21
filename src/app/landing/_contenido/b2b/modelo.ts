@@ -209,7 +209,7 @@ export const B2B_COMPARATIVO = {
     ['Evaluación tipo Saber 11', 'Diagnóstica y de cierre', 'Con verificación', 'Batería periódica'],
     ['Formación para estudiantes', 'No incluye', 'Cerca de 20 horas sincrónicas', 'PreICFES completo'],
     ['Plataforma y ecosistema', 'Consulta de resultados', 'Resultados y contenidos', 'Ecosistema total y racha'],
-    ['Analítica y reportes', 'Individual y del colegio', 'Brechas por área', 'Predictiva y lectura profunda'],
+    ['Analítica y reportes', 'Individual y del colegio', 'Brechas por área', 'Lectura profunda (BI)'],
     ['Acompañamiento a familias', 'No incluye', 'No, salvo excepción', '2 encuentros y tablero'],
     ['Herramientas docentes', 'Socialización', 'Socialización técnica', 'Sala interactiva'],
     ['Gestión de directivos', 'Entrega de informe', 'Resultados y corte', 'Hasta 15 h de comité estratégico'],

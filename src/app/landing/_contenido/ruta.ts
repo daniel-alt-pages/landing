@@ -1,7 +1,7 @@
 export const RUTA = {
   title: ['Una ruta para', 'potenciar el talento'],
   lead:
-    'Cinco pasos para que ningún estudiante de su grado 11 avance a ciegas. Cada etapa le deja un dato que su equipo puede usar al día siguiente.',
+    'Cinco pasos para que ningún estudiante de su grado 11 avance a ciegas. Cada etapa le deja un dato que su equipo puede usar para decidir.',
   pasos: [
     {
       n: '01',
@@ -16,7 +16,7 @@ export const RUTA = {
     {
       n: '03',
       title: 'Simulación',
-      text: 'Simulacros tipo ICFES bajo estándares oficiales, para entrenar con el mismo formato y la misma presión del día real.',
+      text: 'Simulacros tipo ICFES, con la estructura del Saber 11, para entrenar con el mismo formato y la misma presión del día real.',
     },
     {
       n: '04',

@@ -6,13 +6,8 @@ import { B2B_N1, B2B_N2, B2B_N3 } from '../../../_contenido/b2b/programa';
 import { DatoB2b } from './base/DatoB2b';
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
-import { TablaONivel } from './base/TablaONivel';
-import { CicloSvg } from './diagramas/CicloSvg';
-import { CurvaT0T2 } from './diagramas/CurvaT0T2';
-import { DobleY } from './diagramas/DobleY';
-import { LineaTiempo } from './diagramas/LineaTiempo';
 import { RutaSvg } from './diagramas/RutaSvg';
-import { Semaforo } from './diagramas/Semaforo';
+import { Alertas, CapasPilares, CicloAnual, DobleImpacto, Ecosistema, EntregablesN2, Reuniones, SemestralAnual } from './diagramas/Portafolio';
 
 const NIVELES = ['n1', 'n2', 'n3'] as const;
 type NivelId = (typeof NIVELES)[number];
@@ -32,16 +27,15 @@ function Panel1() {
         <DatoB2b valor="5 áreas" linea="Matemáticas, lectura, ciencias, sociales e inglés" />
         <DatoB2b valor="1,5 a 2 h" linea="Socialización con directivos" />
       </div>
-      <DobleY alumno={B2B_N1.doble.alumno.slice(0, 4)} directivo={B2B_N1.doble.directivo.slice(0, 4)} />
+      <DobleImpacto />
       <Plegable titulo="Propósito del simulacro" cuenta="3 usos">
         <ul className="ag-b2b-lista">
           {B2B_N1.propositos.map((item) => <li key={item.title}><strong>{item.title}.</strong> {item.text}</li>)}
         </ul>
       </Plegable>
-      <Plegable titulo="Modalidad y lectura completa" cuenta="Dos públicos">
+      <Plegable titulo="Modalidad de aplicación" cuenta="Digital o física">
         <p>{B2B_N1.modalidad}</p>
         <p>{B2B_N1.aclaracion}</p>
-        <DobleY alumno={B2B_N1.doble.alumno} directivo={B2B_N1.doble.directivo} />
       </Plegable>
     </div>
   );
@@ -57,29 +51,7 @@ function Panel2() {
         <DatoB2b valor="6 pasos" linea="Del simulacro al informe" />
         <DatoB2b valor="1 prueba" linea="Verifica si hubo avance" />
       </div>
-      <div className="ag-b2b-dos">
-        <article>
-          <h3>Estudiantes</h3>
-          <ul className="ag-b2b-lista">{B2B_N2.estudiante.slice(0, 3).map((item) => <li key={item.title}>{item.title}</li>)}</ul>
-        </article>
-        <article>
-          <h3>Institución</h3>
-          <ul className="ag-b2b-lista">{B2B_N2.institucion.slice(0, 3).map((item) => <li key={item.title}>{item.title}</li>)}</ul>
-        </article>
-      </div>
-      <Plegable titulo="Método" cuenta="4 principios">
-        <ul className="ag-b2b-lista">{B2B_N2.metodo.map((item) => <li key={item}>{item}</li>)}</ul>
-      </Plegable>
-      <Plegable titulo="Ciclo de aula" cuenta="6 pasos">
-        <ol className="ag-b2b-lista">{B2B_N2.ciclo.map((item) => <li key={item}>{item}</li>)}</ol>
-      </Plegable>
-      <Plegable titulo="Ampliar horas" cuenta="+20, +30 o +50">
-        <p>{B2B_N2.addon}</p>
-        <ul className="ag-b2b-lista">
-          {B2B_N2.estudiante.map((item) => <li key={item.title}><strong>{item.title}.</strong> {item.text}</li>)}
-          {B2B_N2.institucion.map((item) => <li key={item.title}><strong>{item.title}.</strong> {item.text}</li>)}
-        </ul>
-      </Plegable>
+      <EntregablesN2 />
     </div>
   );
 }
@@ -88,42 +60,17 @@ function Panel3() {
   return (
     <div id="n3">
       <h3>Programa institucional integral</h3>
-      <CicloSvg pasos={B2B_N3.ciclo} centro="50 h de refuerzo entre calendarios." />
-      <Semaforo />
       <div className="ag-b2b-datos">
         <DatoB2b valor="426 h" linea="Experiencia del estudiante, no solo clase" />
         <DatoB2b valor="6 cortes" linea="Reuniones con rectoría por calendario" />
         <DatoB2b valor="4 actores" linea="Estudiante, familia, docente y directivo" />
       </div>
-      <ol className="ag-b2b-capas">
-        {B2B_N3.capas.map((capa) => (
-          <li key={capa.n}><strong>{capa.title}</strong></li>
-        ))}
-      </ol>
-      <LineaTiempo marcas={B2B_N3.reuniones} />
-      <Plegable titulo="Familias, directivos y docentes" cuenta="3 frentes">
-        {B2B_N3.pilares.map((pilar) => (
-          <div key={pilar.title}>
-            <h3>{pilar.title}</h3>
-            <ul className="ag-b2b-lista">{pilar.points.map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
-        ))}
-      </Plegable>
-      <Plegable titulo="Alertas y acta" cuenta="5 tipos">
-        <ul className="ag-b2b-lista">{B2B_N3.alertas.map((item) => <li key={item.title}><strong>{item.title}.</strong> {item.text}</li>)}</ul>
-        <p>{B2B_N3.escalamiento}</p>
-        <ul className="ag-b2b-lista">{B2B_N3.severidad.map((item) => <li key={item}>{item}</li>)}</ul>
-        <ul className="ag-b2b-lista">{B2B_N3.acta.map((item) => <li key={item}>{item}</li>)}</ul>
-      </Plegable>
-      <Plegable titulo="Semestral o anual" cuenta="8 componentes">
-        <TablaONivel caption="Modalidad semestral y anual" headers={B2B_N3.modalidadHeaders} rows={B2B_N3.modalidad} />
-        <p>{B2B_N3.modalidadLead}</p>
-      </Plegable>
-      <Plegable titulo="Refuerzo y verificación" cuenta="T0, T1 y T2">
-        <ul className="ag-b2b-lista">{B2B_N3.refuerzo.map((item) => <li key={item}>{item}</li>)}</ul>
-        <p>{B2B_N3.medicion}</p>
-        <CurvaT0T2 />
-      </Plegable>
+      <Ecosistema />
+      <CapasPilares />
+      <Reuniones />
+      <Alertas />
+      <SemestralAnual />
+      <CicloAnual />
     </div>
   );
 }

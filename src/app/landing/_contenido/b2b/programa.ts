@@ -171,7 +171,7 @@ export const B2B_N3 = {
     { n: '2', cuando: 'Corte intermedio, fin de la semana 8', horas: '2,5 h', points: ['Evolución interciclo.', 'Brechas por grupo.', 'Alertas académicas.', 'Ajustes de intervención.'] },
     { n: '3', cuando: 'Seguimiento, fin de la semana 12', horas: '2 h', points: ['Progreso consolidado.', 'Problemas persistentes.', 'Estrategia de cierre.'] },
     { n: '4', cuando: 'Cierre académico, semanas 15 y 16', horas: '2,5 h', points: ['Evaluación final.', 'Balance general.', 'Asuntos pendientes.'] },
-    { n: '5', cuando: 'Informe oficial, después del Saber 11', horas: '2,5 h', points: ['Resultados oficiales del ICFES.', 'Histórico de 3 a 5 años.', 'Conclusiones finales.'] },
+    { n: '5', cuando: 'Informe final, después del Saber 11', horas: '2,5 h', points: ['Resultados del ICFES Saber 11.', 'Histórico de 3 a 5 años.', 'Conclusiones finales.'] },
   ],
   acta: [
     'Ingesta de datos: asistencia, desafíos y resultados de simulacros.',
