@@ -1,7 +1,7 @@
-import { B2B_PORQUE, B2B_PROBLEMA } from '../../../_contenido/b2b/modelo';
+import { B2B_PORQUE } from '../../../_contenido/b2b/modelo';
 import { SeccionB2b } from './base/SeccionB2b';
 import { Capacidades } from './diagramas/Portafolio';
-import { CicloProblema, Ficha, QuienesSomos } from './diagramas/Laminas';
+import { Ficha, QuienesSomos } from './diagramas/Laminas';
 import { BrechaSvg } from './diagramas/BrechaSvg';
 
 
@@ -17,9 +17,6 @@ export function B2bNosotros() {
       bajada={B2B_PORQUE.bajada}
     >
       <BrechaSvg />
-      <p className="ag-b2b-cita">{B2B_PORQUE.cita}</p>
-      <CicloProblema />
-      <p className="ag-b2b-fuente">{B2B_PROBLEMA.fuente}</p>
       <Capacidades />
       <QuienesSomos />
       <Ficha />
