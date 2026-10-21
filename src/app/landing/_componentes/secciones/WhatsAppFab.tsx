@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { CONTACTO } from '../../_contenido/contacto';
 import { track } from '../../_lib/analytics';
@@ -8,20 +8,56 @@ import { buildWaUrl, WA_TEXT } from '../../_lib/whatsapp';
 
 export function WhatsAppFab() {
   const pathname = usePathname();
-  const [hidden, setHidden] = useState(false);
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [inContact, setInContact] = useState(false);
+  const [blocked, setBlocked] = useState(false);
 
   useEffect(() => {
     const target = document.getElementById('contacto');
     if (!target) return;
-    const observer = new IntersectionObserver(([entry]) => setHidden(Boolean(entry?.isIntersecting)), { threshold: 0.2 });
+    const observer = new IntersectionObserver(([entry]) => setInContact(Boolean(entry?.isIntersecting)), { threshold: 0.2 });
     observer.observe(target);
     return () => observer.disconnect();
   }, [pathname]);
 
-  if (hidden) return null;
+  // Oculta la burbuja mientras su caja (con margen) caería sobre texto o controles.
+  // Reaparece en cuanto queda sobre espacio libre (márgenes, fondos, separaciones).
+  useEffect(() => {
+    const fab = ref.current;
+    if (!fab) return;
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      if (document.activeElement === fab) return setBlocked(false);
+      setBlocked(fabCollides(fab));
+    };
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    schedule();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    const mo = new MutationObserver(schedule);
+    mo.observe(document.body, { childList: true, subtree: true });
+    const t = window.setInterval(schedule, 300);
+    return () => {
+      window.removeEventListener('scroll', schedule);
+      window.removeEventListener('resize', schedule);
+      mo.disconnect();
+      window.clearInterval(t);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [pathname]);
+
+  const hidden = inContact || blocked;
+
   return (
     <a
+      ref={ref}
       className="ag-fab"
+      data-hidden={hidden ? 'true' : undefined}
+      aria-hidden={hidden ? true : undefined}
+      tabIndex={hidden ? -1 : undefined}
       href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.fab)}
       aria-label="Escribir por WhatsApp"
       onClick={() => track('click_whatsapp', { source: 'fab' })}
@@ -34,4 +70,44 @@ export function WhatsAppFab() {
       </svg>
     </a>
   );
+}
+
+const INTERACTIVE = 'a,button,input,select,textarea,label,summary,[role="button"],[tabindex]';
+const PAD = 8;
+
+function fabCollides(fab: HTMLElement): boolean {
+  const r = fab.getBoundingClientRect();
+  if (!r.width) return false;
+  const box = { l: r.left - PAD, t: r.top - PAD, r: r.right + PAD, b: r.bottom + PAD };
+  const hit = (a: DOMRect) =>
+    a.width > 0 && a.height > 0 && a.right > box.l && a.left < box.r && a.bottom > box.t && a.top < box.b;
+  const seen = new Set<Element>();
+  const N = 5;
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      const x = box.l + ((box.r - box.l) * i) / (N - 1);
+      const y = box.t + ((box.b - box.t) * j) / (N - 1);
+      for (const el of document.elementsFromPoint(x, y)) {
+        if (el === fab || fab.contains(el) || seen.has(el)) continue;
+        seen.add(el);
+        if (el === document.body || el === document.documentElement) continue;
+        // Contenido en movimiento continuo (muros de testimonios, marquees): su texto
+        // pasaría por debajo entre comprobaciones, así que se trata como ocupado.
+        if (el.getAnimations?.().some((a) => a.playState === 'running' && isInfinite(a))) return true;
+        if (el.matches(INTERACTIVE) && hit(el.getBoundingClientRect())) return true;
+        for (const n of Array.from(el.childNodes)) {
+          if (n.nodeType !== 3 || !n.textContent?.trim()) continue;
+          const range = document.createRange();
+          range.selectNodeContents(n);
+          for (const a of Array.from(range.getClientRects())) if (hit(a)) return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+
+function isInfinite(a: Animation): boolean {
+  const t = a.effect?.getTiming();
+  return t?.iterations === Infinity;
 }

@@ -2684,8 +2684,8 @@
 /* ───────── Flotantes ───────── */
 .ag-fab {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
   z-index: 45;
   width: 56px;
   height: 56px;
@@ -2696,6 +2696,28 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 30px rgba(15, 23, 42, 0.25);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 0s;
+}
+.ag-fab[data-hidden='true'] {
+  opacity: 0;
+  transform: scale(0.85);
+  visibility: hidden;
+  pointer-events: none;
+  /* Ocultar es inmediato (nunca tapa texto ni a mitad de transición); aparecer sí se anima. */
+  transition: none;
+}
+.ag-fab:focus-visible { outline: 3px solid #0f172a; outline-offset: 3px; }
+@media (max-width: 767px) {
+  .ag-fab {
+    width: 48px;
+    height: 48px;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  .ag-fab svg { width: 24px; height: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ag-fab, .ag-fab[data-hidden='true'] { transition: none; transform: none; }
 }
 
 .ag-consent {
