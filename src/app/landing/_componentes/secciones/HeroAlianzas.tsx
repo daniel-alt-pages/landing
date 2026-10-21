@@ -6,8 +6,7 @@ import { ALIANZAS_URL } from '../../_contenido/sitio';
 /**
  * Pantalla de alianzas publicada (alianzas-react, solo lectura, única fuente).
  * - Póster estático (captura de la página publicada) primero; ya no está en el hero, carga diferida.
- * - Desde 768 px, el iframe en vivo se monta después de `load` encima del póster.
- * - En móvil no se monta el iframe (evita scroll anidado y ~240 KB de JS): póster + enlace.
+ * - En todos los anchos (alianzas-react ya es responsive) el iframe en vivo se monta después de `load` encima del póster.
  */
 export function HeroAlianzas() {
   const [live, setLive] = useState(false);
@@ -41,7 +40,6 @@ export function HeroAlianzas() {
     };
   }, [loaded]);
   useEffect(() => {
-    if (!window.matchMedia('(min-width: 768px)').matches) return undefined;
     const mount = () => setLive(true);
     if (document.readyState === 'complete') {
       const t = window.setTimeout(mount, 600);
@@ -52,11 +50,6 @@ export function HeroAlianzas() {
   }, []);
   return (
     <figure className="ag-hero-alianzas" aria-label="Alianzas de SEAMOSGENIOS">
-      <figcaption className="ag-hero-alianzas-head">
-        <a className="ag-text-link" href={ALIANZAS_URL} target="_blank" rel="noopener noreferrer">
-          Abrir en otra pestaña
-        </a>
-      </figcaption>
       <div className="ag-hero-alianzas-frame" style={live && alto ? { height: alto } : undefined}>
         <a href={ALIANZAS_URL} target="_blank" rel="noopener noreferrer" className="ag-hero-alianzas-poster" tabIndex={live ? -1 : 0}>
           <img

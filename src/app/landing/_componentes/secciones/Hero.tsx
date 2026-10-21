@@ -6,13 +6,23 @@ import { Counter } from '../primitivas/Counter';
 import { HeroMascota } from './HeroMascota';
 import { HeroTiendaEjemplo } from './HeroTiendaEjemplo';
 
-const iconProps = { viewBox: '0 0 24 24', width: 22, height: 22, fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
-
-/** Iconos de los indicadores: estudiantes, instituciones, simulacro aplicado. */
-const STAT_ICONS = [
-  <svg key="est" {...iconProps}><circle cx="9" cy="8" r="3.25" /><path d="M3 19.5c.6-3.2 3-5 6-5s5.4 1.8 6 5" /><circle cx="17" cy="9" r="2.5" /><path d="M16.5 14.6c2.3.2 4 1.8 4.5 4.4" /></svg>,
-  <svg key="inst" {...iconProps}><path d="M3 9.5 12 4l9 5.5" /><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8" /><path d="M3 20h18" /></svg>,
-  <svg key="sim" {...iconProps}><rect x="5" y="3.5" width="14" height="17" rx="2" /><path d="M9 3.5h6v2.5H9z" /><path d="m8.5 12.5 2 2 4-4.5" /><path d="M8.5 17.5h7" /></svg>,
+/** Mini infografías con los conteos reales de cada cifra (9 colegios, 20 instituciones, 65 instituciones). */
+const Casita = ({ x, y }: { x: number; y: number }) => (
+  <path transform={`translate(${x} ${y})`} d="M0 6 6 1l6 5v8H0z M4.5 14v-4h3v4" />
+);
+const STAT_VIS = [
+  // 716 estudiantes en 9 colegios: 9 colegios
+  <svg key="v1" viewBox="0 0 64 52" className="ag-cifra-vis is-casas">
+    {Array.from({ length: 9 }, (_, i) => <Casita key={i} x={2 + (i % 3) * 21} y={2 + Math.floor(i / 3) * 17} />)}
+  </svg>,
+  // 420 estudiantes en 20 instituciones: 20 bloques
+  <svg key="v2" viewBox="0 0 64 52" className="ag-cifra-vis is-bloques">
+    {Array.from({ length: 20 }, (_, i) => <rect key={i} x={2 + (i % 5) * 12.5} y={2 + Math.floor(i / 5) * 12.5} width="9" height="9" rx="2" />)}
+  </svg>,
+  // 65 instituciones: 65 puntos
+  <svg key="v3" viewBox="0 0 64 52" className="ag-cifra-vis is-puntos">
+    {Array.from({ length: 65 }, (_, i) => <circle key={i} cx={3 + (i % 13) * 4.85} cy={4 + Math.floor(i / 13) * 11} r="1.9" />)}
+  </svg>,
 ];
 
 export function Hero() {
@@ -41,8 +51,8 @@ export function Hero() {
           <MotionIn onMount delay={120}>
             <dl className="ag-hero-alcance">
               {ALCANCE.map((row, i) => (
-                <div key={row.valor} className="ag-stat-card">
-                  <span className="ag-stat-icon" aria-hidden="true">{STAT_ICONS[i]}</span>
+                <div key={row.valor} className="ag-cifra">
+                  <span className="ag-cifra-vis-wrap" aria-hidden="true">{STAT_VIS[i]}</span>
                   <dt><Counter value={Number(row.valor)} /></dt>
                   <dd>{row.texto}</dd>
                 </div>
