@@ -2,10 +2,11 @@ import { HERO } from '../../_contenido/hero';
 import { ALCANCE } from '../../_contenido/sitio';
 import { contactoHref } from '../../_lib/links';
 import { MotionIn } from '../primitivas/MotionIn';
+import { Counter } from '../primitivas/Counter';
 import { HeroMascota } from './HeroMascota';
 import { HeroTiendaEjemplo } from './HeroTiendaEjemplo';
 
-const iconProps = { viewBox: '0 0 24 24', width: 22, height: 22, fill: 'none', stroke: 'currentColor', strokeWidth: 1.75, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
+const iconProps = { viewBox: '0 0 24 24', width: 22, height: 22, fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
 
 /** Iconos de los indicadores: estudiantes, instituciones, simulacro aplicado. */
 const STAT_ICONS = [
@@ -42,7 +43,7 @@ export function Hero() {
               {ALCANCE.map((row, i) => (
                 <div key={row.valor} className="ag-stat-card">
                   <span className="ag-stat-icon" aria-hidden="true">{STAT_ICONS[i]}</span>
-                  <dt>{row.valor}</dt>
+                  <dt><Counter value={Number(row.valor)} /></dt>
                   <dd>{row.texto}</dd>
                 </div>
               ))}
