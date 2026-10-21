@@ -6,7 +6,8 @@ import { DatoB2b } from './base/DatoB2b';
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
 import { RutaSvg } from './diagramas/RutaSvg';
-import { Alertas, CapasPilares, CicloAnual, DobleImpacto, Ecosistema, EntregablesN2, Reuniones, SemestralAnual } from './diagramas/Portafolio';
+import { EcosistemaArticulado } from './diagramas/EcosistemaArticulado';
+import { Alertas, CapasPilares, CicloAnual, DobleImpacto, EntregablesN2, Reuniones, SemestralAnual } from './diagramas/Portafolio';
 
 const NIVELES = ['n1', 'n2', 'n3'] as const;
 type NivelId = (typeof NIVELES)[number];
@@ -64,7 +65,7 @@ function Panel3() {
         <DatoB2b valor="6 cortes" linea="Reuniones con rectoría por calendario" />
         <DatoB2b valor="4 actores" linea="Estudiante, familia, docente y directivo" />
       </div>
-      <Ecosistema />
+      <EcosistemaArticulado />
       <CapasPilares />
       <Reuniones />
       <Alertas />

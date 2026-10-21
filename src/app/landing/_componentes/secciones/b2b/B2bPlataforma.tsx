@@ -3,7 +3,7 @@ import { MatrizPlataforma, SimulacrosAnalitica } from './diagramas/Laminas';
 import { SeccionB2b } from './base/SeccionB2b';
 import { RutaSvg } from './diagramas/RutaSvg';
 import { Cohorte } from './diagramas/Portafolio';
-import { B2bEscenario } from './B2bEscenario';
+import { CuatroRoles } from './diagramas/CuatroRoles';
 
 export function B2bPlataforma() {
   return (
@@ -16,7 +16,7 @@ export function B2bPlataforma() {
       acento="un ecosistema"
       bajada={B2B_PLATAFORMA.lead}
     >
-      <B2bEscenario />
+      <CuatroRoles />
       <RutaSvg etiqueta="De la prueba al resultado" pasos={B2B_SIMULACROS.rows.map((fila) => ({ title: fila[0] }))} />
       <ul className="ag-b2b-chips">
         {['Global y por área', 'Percentiles', 'Preguntas críticas', 'Por cohorte', 'Histórico', 'Alertas N3', 'Benchmark'].map((item) => <li key={item}>{item}</li>)}
