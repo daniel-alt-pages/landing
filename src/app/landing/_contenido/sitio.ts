@@ -15,20 +15,6 @@ export const ALCANCE = [
 
 export const ALIANZAS_URL = 'https://daniel-alt-pages.github.io/alianzas-react/';
 
-export const CASOS = [
-  {
-    id: 'soacha',
-    titulo: 'Soacha',
-    texto:
-      '716 estudiantes de grado 11 de 9 colegios oficiales, con la Universidad Distrital, la Secretaría de Educación de Soacha y PreICFES Gratuito Jóvenes Bogotá.',
-  },
-  {
-    id: 'casanare',
-    titulo: 'Casanare',
-    texto: '420 estudiantes de 20 instituciones, coordinado por el profesor Edwar Yesid Peña Valero.',
-  },
-] as const;
-
 export const RUTAS = [
   { id: 'instituciones', para: 'Colegios y rectores', href: '/landing/instituciones', titulo: feature('instituciones').feature.title, texto: feature('instituciones').feature.text },
   { id: 'plataforma', para: 'Coordinación y docentes', href: '/landing/plataforma', titulo: feature('plataforma').feature.title, texto: feature('plataforma').feature.text },

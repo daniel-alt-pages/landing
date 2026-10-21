@@ -231,3 +231,33 @@
   .ag-pf > *, .ag-pf-rueda-pqrs svg g { transition: opacity .15s linear !important; transform: none !important; transition-delay: 0s !important; }
   .ag-pf-trazo { transition: none !important; stroke-dashoffset: 0; }
 }
+
+/* Láminas restantes (p.1, 2, 3, 18, 19, 21, 23) */
+.ag-pf-idea .ag-pf-tarjeta p { margin: 6px 0 0; line-height: 1.5; }
+.ag-pf-tres-pasos { display: grid; gap: 10px; }
+@media (min-width: 760px) { .ag-pf-tres-pasos { grid-template-columns: repeat(3, 1fr); } }
+.ag-pf-tres-pasos li { position: relative; border: 1.5px solid var(--pf-black); border-radius: 8px; background: #fff; overflow: hidden; }
+.ag-pf-tres-pasos li:last-child { border-color: var(--pf-red); background: var(--pf-soft); }
+.ag-pf-tres-pasos span { display: block; padding: 6px 12px; background: var(--pf-black); color: #fff; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+.ag-pf-tres-pasos li:last-child span { background: var(--pf-red); }
+.ag-pf-tres-pasos p { margin: 0; padding: 10px 12px; font-size: 14px; line-height: 1.45; }
+.ag-pf-rasgos { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); margin-bottom: 16px !important; }
+.ag-pf-rasgos li { display: grid; gap: 4px; padding: 12px; border: 1.5px solid var(--pf-red); border-radius: 8px; background: #fff; font-size: 14px; }
+.ag-pf-rasgos strong { color: var(--pf-red); }
+.ag-pf-mv { padding: 16px; border-radius: 8px; background: var(--pf-red); color: #fff; }
+.ag-pf-mv h5 { margin: 0 0 6px; font-size: 14px; font-weight: 900; text-transform: uppercase; }
+.ag-pf-mv p { margin: 0; line-height: 1.5; }
+.ag-pf-tabla.is-matriz tbody th { color: var(--pf-red); }
+@media (max-width: 560px) { .ag-pf-tabla.is-matriz td::before { content: attr(data-rol) ': '; font-weight: 800; } }
+.ag-pf-marco { position: relative; margin: 20px 0 16px; padding: 22px 14px 14px; border: 1.5px solid var(--pf-red); border-radius: 8px; }
+.ag-pf-marco-tab { position: absolute; top: -12px; left: 12px; padding: 4px 10px; border-radius: 4px; background: var(--pf-red); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.ag-pf-partes { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.ag-pf-partes li { display: grid; gap: 4px; padding: 12px; border: 1.5px solid var(--pf-black); border-radius: 8px; background: #fff; font-size: 14px; line-height: 1.45; }
+.ag-pf-partes li.is-sg { border-color: var(--pf-red); background: var(--pf-red); color: #fff; }
+.ag-pf-partes strong { text-transform: uppercase; font-size: 13px; }
+.ag-pf-tabla th.is-rojo { color: var(--pf-red); }
+.ag-pf-indicadores { display: grid; gap: 8px; margin: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.ag-pf-indicadores div { display: grid; grid-template-columns: 9rem 1fr; gap: 10px; align-items: start; padding: 10px 12px; border: 1.5px solid var(--pf-red); border-radius: 8px; background: #fff; }
+.ag-pf-indicadores dt { color: var(--pf-red); font-weight: 900; font-size: 13px; text-transform: uppercase; }
+.ag-pf-indicadores dd { margin: 0; font-size: 14px; line-height: 1.45; }
+@media (max-width: 420px) { .ag-pf-indicadores div { grid-template-columns: 1fr; gap: 2px; } }
