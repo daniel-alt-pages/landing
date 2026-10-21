@@ -14,7 +14,7 @@ export function CicloSvg({
   const total = pasos.length;
   const cx = 240;
   const cy = 240;
-  const radio = 148;
+  const radio = 118;
 
   return (
     <AlEntrar className="ag-b2b-ciclo">
@@ -26,6 +26,7 @@ export function CicloSvg({
             return (
               <circle
                 key={paso.title}
+                style={{ ['--i' as string]: index }}
                 className={activo === index ? 'is-on' : undefined}
                 cx={cx + radio * Math.cos(angulo)}
                 cy={cy + radio * Math.sin(angulo)}
@@ -37,8 +38,8 @@ export function CicloSvg({
         <p className="ag-b2b-ciclo-centro">{activo === null ? centro : pasos[activo].text}</p>
         {pasos.map((paso, index) => {
           const angulo = -Math.PI / 2 + (index * 2 * Math.PI) / total;
-          const x = 50 + 38 * Math.cos(angulo);
-          const y = 50 + 38 * Math.sin(angulo);
+          const x = 50 + 40 * Math.cos(angulo);
+          const y = 50 + 40 * Math.sin(angulo);
           return (
             <button
               key={paso.title}

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { CONTACTO } from '../_contenido/contacto';
+import { FAQ_FAMILIAS } from '../_contenido/faq';
 import { CTA_PROGRAMAS } from '../_contenido/programas';
 import { CtaStrip } from '../_componentes/secciones/CtaStrip';
 import { FaqSection } from '../_componentes/secciones/FaqSection';
-import { FinalCta } from '../_componentes/secciones/FinalCta';
+import { CierreFamilias } from '../_componentes/secciones/CierreFamilias';
 import { ProgramCompare } from '../_componentes/secciones/ProgramCompare';
 import { CatalogoClient } from './catalogo/CatalogoClient';
 import { buildWaUrl, WA_TEXT } from '../_lib/whatsapp';
@@ -33,10 +34,14 @@ export default function ProgramasPage() {
       >
         <CatalogoClient />
       </Suspense>
-      <CtaStrip title={CTA_PROGRAMAS.titulo} text={CTA_PROGRAMAS.texto} cta={CTA_PROGRAMAS.cta} href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.cta_final)} />
+      <CtaStrip title={CTA_PROGRAMAS.titulo} text={CTA_PROGRAMAS.texto} cta={CTA_PROGRAMAS.cta} href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.estudiantes)} />
       <ProgramCompare />
-      <FinalCta />
-      <FaqSection />
+      <FaqSection
+        items={FAQ_FAMILIAS}
+        lead="Lo que más preguntan estudiantes y familias antes de elegir. Si la suya no está, escríbanos."
+        cta={{ href: '#contacto', label: 'Tengo otra pregunta' }}
+      />
+      <CierreFamilias />
     </>
   );
 }

@@ -73,3 +73,28 @@ export const FAQ: FaqItem[] = [
       'Tratamos los datos según la Ley 1581 de 2012 y el Decreto 1377 de 2013. Los testimonios y fotos de esta página se publican con la autorización expresa de sus autores.',
   },
 ];
+
+/** FAQ de /programas: solo preguntas de estudiantes y familias, con respuestas ya publicadas en el sitio. */
+const deFaq = (q: string) => FAQ.find((item) => item.question === q)!;
+export const FAQ_FAMILIAS: FaqItem[] = [
+  {
+    question: '¿Cuánto dura el programa?',
+    answer: 'En el Calendario B, el Intensivo son 16 semanas y unas 426 horas en vivo. El Vacacional son 8 semanas y unas 225 horas en vivo. Arriba puede compararlos.',
+  },
+  {
+    question: '¿Qué necesito para conectarme?',
+    answer: 'Un celular o un computador con internet. El simulacro se presenta en la plataforma. El material llega en PDF y también dentro de la plataforma.',
+  },
+  {
+    question: '¿Sirve si tengo poca conectividad?',
+    answer: 'Las clases quedan grabadas y el material se puede descargar. Si tiene dudas sobre su caso, escríbanos por WhatsApp.',
+  },
+  deFaq('¿Cuántas preguntas tiene cada simulacro?'),
+  deFaq('¿Cómo se calcula el puntaje?'),
+  deFaq('¿Cuándo llegan los resultados?'),
+  deFaq('¿Qué es Desafíos?'),
+  {
+    question: '¿Cómo protegen mis datos?',
+    answer: 'Tratamos los datos según la Ley 1581 de 2012 y el Decreto 1377 de 2013.',
+  },
+];

@@ -12,11 +12,29 @@ import { AlEntrar } from '../base/AlEntrar';
 import { CicloSvg } from './CicloSvg';
 import { FlujoPqrs } from './FlujoPqrs';
 
+function Cta({ href, label, nota }: { href: string; label: string; nota?: string }) {
+  return (
+    <div className="ag-pf-cta">
+      <a className="ag-b2b-btn" href={href}>{label}</a>
+      {nota ? <p>{nota}</p> : null}
+    </div>
+  );
+}
+
+const DIFERENCIAS = [
+  'La evaluación no termina en un puntaje: explica qué está pasando y dónde intervenir.',
+  'Usted ve la asistencia, la participación y el desempeño mientras el proceso avanza.',
+  'Sus estudiantes tienen una experiencia digital continua, no solo encuentros sueltos.',
+  'En el Nivel 3, familias, docentes y directivos reciben herramientas propias de acompañamiento.',
+  'El programa anual conecta dos calendarios con diagnóstico, refuerzo y verificación, para que ningún ciclo empiece de cero.',
+];
+
 /** p.3: cinco capacidades y cinco diferenciadores. */
 export function Capacidades() {
   return (
     <AlEntrar className="ag-pf ag-pf-capas-wrap">
-      <h3 className="ag-pf-h">Capacidad y aplicación</h3>
+      <h3 className="ag-pf-h">Lo que hacemos por su colegio</h3>
+      <p className="ag-pf-lead">Formación, evaluación, tecnología, analítica y acompañamiento para preparar el Saber 11. Trabajamos de forma virtual con su institución: las clases y los encuentros se hacen por Google Meet y los gestiona nuestro equipo.</p>
       <ol className="ag-pf-capacidades">
         {B2B_VALOR.capacidades.map((item, index) => (
           <li key={item.title} style={{ ['--i' as string]: index }}>
@@ -26,10 +44,11 @@ export function Capacidades() {
           </li>
         ))}
       </ol>
-      <h3 className="ag-pf-h">Qué diferencia la propuesta institucional</h3>
+      <h3 className="ag-pf-h">Qué nos diferencia</h3>
       <ul className="ag-pf-checks">
-        {B2B_VALOR.checks.map((item) => <li key={item}>{item}</li>)}
+        {DIFERENCIAS.map((item) => <li key={item}>{item}</li>)}
       </ul>
+      <Cta href="#agendar" label="Agendar una reunión" nota="Contacto: seamosgenios@adpmh.com · SEAMOSGENIOS S.A.S." />
     </AlEntrar>
   );
 }
@@ -134,8 +153,8 @@ export function CapasPilares() {
 export function Reuniones() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Acompañamiento institucional: 6 encuentros por calendario</h4>
-      <p className="ag-pf-lead">{B2B_N3.reunionesLead} Hasta 15 h por calendario.</p>
+      <h4 className="ag-pf-h">Seis reuniones, un plan</h4>
+      <p className="ag-pf-lead">En el Nivel 3, cada encuentro con rectoría termina en compromisos con responsable y fecha. Estas reuniones van aparte de las horas de clase de sus estudiantes y siguen nuestro Modelo Basado en Evidencias (MBE). Total: hasta 15 h por calendario.</p>
       <ol className="ag-pf-timeline">
         {B2B_N3.reuniones.map((r, index) => (
           <li key={r.n} style={{ ['--i' as string]: index }}>
@@ -166,6 +185,7 @@ export function Reuniones() {
           </table>
         </div>
       </div>
+      <Cta href="#n3" label="Ver el Nivel 3" nota="Ejemplo ilustrativo: las cifras y fechas de su acta saldrán de sus propios datos." />
     </AlEntrar>
   );
 }
@@ -175,8 +195,8 @@ export function Alertas() {
   const [normal, ...tipos] = B2B_N3.alertas;
   return (
     <AlEntrar className="ag-pf ag-pf-alertas">
-      <h4 className="ag-pf-h">Sistema de alertas tempranas</h4>
-      <p className="ag-pf-lead">Detección proactiva antes de que el estudiante abandone o baje su desempeño.</p>
+      <h4 className="ag-pf-h">Alertas antes del problema</h4>
+      <p className="ag-pf-lead">Detectamos a tiempo al estudiante que se está quedando atrás o a punto de abandonar. La plataforma vigila asistencia, actividad y desempeño; la gravedad de cada alerta define quién se entera.</p>
       <div className="ag-pf-alert-grid">
         <div className="ag-pf-normal"><strong>{normal.title}</strong><span>{normal.text}</span></div>
         <ul className="ag-pf-tipos">{tipos.map((t) => <li key={t.title}><strong>{t.title}</strong><span>{t.text}</span></li>)}</ul>
@@ -192,6 +212,7 @@ export function Alertas() {
       <ol className="ag-pf-cadena">{B2B_ALERTAS_CADENA.map((x) => <li key={x}>{x}</li>)}</ol>
       <p className="ag-pf-lead">No todas las alertas ameritan llegar a las directivas. La severidad determina quién recibe la notificación:</p>
       <ol className="ag-pf-sev">{B2B_N3.severidad.map((x, i) => <li key={x} className={`is-${i + 1}`}>{x}</li>)}</ol>
+      <Cta href="#plataforma" label="Ver cómo funciona la plataforma" nota="Las alertas hacen parte del Nivel 3." />
     </AlEntrar>
   );
 }
@@ -200,8 +221,8 @@ export function Alertas() {
 export function SemestralAnual() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Modalidad semestral y anual</h4>
-      <p className="ag-pf-lead">{B2B_N3.modalidadLead}</p>
+      <h4 className="ag-pf-h">Semestral o anual</h4>
+      <p className="ag-pf-lead">La modalidad anual no repite el programa: conecta dos ciclos con análisis, refuerzo y verificación.</p>
       <div className="ag-pf-tabla-wrap" tabIndex={0} role="region" aria-label="Modalidad semestral y anual">
         <table className="ag-pf-tabla is-comparar">
           <caption className="ag-b2b-sr">Modalidad semestral y anual</caption>
@@ -209,6 +230,7 @@ export function SemestralAnual() {
           <tbody>{B2B_N3.modalidad.map((f) => <tr key={f[0]}><th scope="row">{f[0]}</th><td>{f[1]}</td><td>{f[2]}</td></tr>)}</tbody>
         </table>
       </div>
+      <Cta href="#agendar" label="Cotizar la modalidad anual" />
     </AlEntrar>
   );
 }
@@ -217,8 +239,8 @@ export function SemestralAnual() {
 export function CicloAnual() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Ciclo de mejora continua anual</h4>
-      <p className="ag-pf-lead">No es repetir el curso: es una espiral ascendente de diagnóstico, refuerzo e impacto acumulado.</p>
+      <h4 className="ag-pf-h">Un año que suma</h4>
+      <p className="ag-pf-lead">Entre un calendario y otro, refuerzo según sus brechas y medición de si se cerraron.</p>
       <div className="ag-pf-anual">
         <CicloSvg pasos={B2B_N3.ciclo} centro="Mejora continua · Calendario 1 → Calendario 2" />
         <div className="ag-pf-plan">
@@ -233,6 +255,7 @@ export function CicloAnual() {
         <li><b>T2</b><span>Cierre final</span></li>
       </ol>
       <p className="ag-pf-nota">Objetivo: comprobar con datos si las brechas detectadas se cerraron.</p>
+      <Cta href="#agendar" label="Hablar del plan anual" nota="Mostramos el avance observado; no atribuimos automáticamente todo cambio al programa." />
     </AlEntrar>
   );
 }
@@ -240,13 +263,18 @@ export function CicloAnual() {
 /** p.19: cohorte compartida y dedicada. */
 export function Cohorte() {
   return (
-    <AlEntrar className="ag-pf ag-pf-dos ag-pf-cohorte">
-      {[B2B_COHORTE.compartida, B2B_COHORTE.dedicada].map((c, i) => (
-        <article key={c.title} className={`ag-pf-tarjeta${i === 1 ? ' is-cotiza' : ''}`}>
-          <h4>{c.title}</h4>
-          <ul>{c.points.map((x) => <li key={x}>{x}</li>)}</ul>
-        </article>
-      ))}
+    <AlEntrar className="ag-pf ag-pf-cohorte">
+      <h4 className="ag-pf-h">Horarios solo para su colegio</h4>
+      <p className="ag-pf-lead">Por defecto, sus estudiantes comparten clases; si necesita grupos exclusivos, lo cotizamos aparte.</p>
+      <div className="ag-pf-dos">
+        {[B2B_COHORTE.compartida, B2B_COHORTE.dedicada].map((c, i) => (
+          <article key={c.title} className={`ag-pf-tarjeta${i === 1 ? ' is-cotiza' : ''}`}>
+            <h4>{c.title}</h4>
+            <ul>{c.points.map((x) => <li key={x}>{x}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+      <Cta href="#agendar" label="Cotizar una cohorte dedicada" nota="Los resultados se publican en la semana siguiente a cada simulacro, después de validarlos." />
     </AlEntrar>
   );
 }
@@ -255,11 +283,12 @@ export function Cohorte() {
 export function Adicionales() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Entregables adicionales cotizables</h4>
-      <p className="ag-pf-lead">Fuera de la configuración estándar. Cada uno se cotiza aparte.</p>
+      <h4 className="ag-pf-h">Entregables a su medida</h4>
+      <p className="ag-pf-lead">Además de lo que incluye su nivel, puede sumar estos entregables con cotización aparte.</p>
       <ul className="ag-pf-extras">
         {B2B_ENTREGABLES.extra.map((x) => <li key={x}><span className="ag-pf-badge">Se cotiza aparte</span>{x}</li>)}
       </ul>
+      <Cta href="#agendar" label="Solicitar una cotización" />
     </AlEntrar>
   );
 }
@@ -270,8 +299,8 @@ const PQRS = [['Radicar', 'Número de caso'], ['Clasificar', 'Tipo y prioridad']
 export function Comunicaciones() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Tipos y canales de comunicación</h4>
-      <p className="ag-pf-lead">{B2B_CANALES.lead}</p>
+      <h4 className="ag-pf-h">Reglas claras, canales claros</h4>
+      <p className="ag-pf-lead">Quién hace qué, por dónde se comunica cada cosa y cómo medimos el servicio. {B2B_CANALES.lead}</p>
       <div className="ag-pf-com">
         {B2B_COMUNICACION.map((g) => (
           <article key={g.tipo}>
@@ -282,6 +311,7 @@ export function Comunicaciones() {
       </div>
       <h4 className="ag-pf-h">Flujo PQRS</h4>
       <FlujoPqrs pasos={PQRS} />
+      <Cta href="mailto:seamosgenios@adpmh.com?subject=PQRS" label="Radicar una PQRS" nota="Cada caso queda con número de radicado e historial. Correo: seamosgenios@adpmh.com" />
     </AlEntrar>
   );
 }

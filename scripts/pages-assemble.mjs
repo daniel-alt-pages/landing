@@ -25,5 +25,18 @@ for (const f of ['landing.txt', '404.html', 'favicon.ico', 'robots.txt', 'sitema
   if (!fs.existsSync(src)) continue;
   fs.copyFileSync(src, path.join(dest, f === 'landing.txt' ? 'index.txt' : f));
 }
+// /ruta/ con barra final: GitHub Pages busca ruta/index.html. Copia cada ruta.html a ruta/index.html.
+const conBarra = (dir) => {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) { if (e.name !== '_next') conBarra(full); continue; }
+    if (!e.name.endsWith('.html') || e.name === 'index.html' || (dir === dest && e.name === '404.html')) continue;
+    const carpeta = full.slice(0, -5);
+    fs.mkdirSync(carpeta, { recursive: true });
+    const idx = path.join(carpeta, 'index.html');
+    if (!fs.existsSync(idx)) fs.copyFileSync(full, idx);
+  }
+};
+conBarra(dest);
 fs.writeFileSync(path.join(dest, '.nojekyll'), '');
 console.log('[pages] Artefacto listo en out-pages/');
