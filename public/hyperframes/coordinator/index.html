@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hyperframes · Vista coordinador</title>
+    <link rel="stylesheet" href="../shared-brand.css" />
+  </head>
+  <body>
+    <div
+      id="coordinator-demo"
+      data-composition-id="coordinator-access-preview"
+      data-start="0"
+      data-duration="9"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+      <div class="noise"></div>
+
+      <div class="composition-shell">
+        <header id="coordinator-topbar" class="topbar clip" data-start="0" data-duration="9" data-track-index="1">
+          <div class="brand">
+            <div class="brand-mark">SG</div>
+            <div>
+              <p class="eyebrow">coordinador.preview</p>
+              <h1 class="title">Lectura institucional por curso y grado</h1>
+            </div>
+          </div>
+          <span class="status-pill">Panel institucional</span>
+        </header>
+
+        <main class="grid coordinator">
+          <section id="coordinator-summary-panel" class="panel clip" data-start="0.4" data-duration="8" data-track-index="2">
+            <p class="eyebrow">resumen ejecutivo</p>
+            <p class="metric-value">126</p>
+            <p class="body-copy">Estudiantes matriculados en la aplicacion del simulacro.</p>
+
+            <div class="timeline" style="margin-top: 22px">
+              <article class="timeline-card">
+                <div class="step">1</div>
+                <div>
+                  <p class="metric-label">Resumen</p>
+                  <p class="body-copy">Promedio, distribucion y estado general del grupo.</p>
+                </div>
+              </article>
+              <article class="timeline-card">
+                <div class="step">2</div>
+                <div>
+                  <p class="metric-label">Comparativa</p>
+                  <p class="body-copy">Cursos y areas con mayor oportunidad de refuerzo.</p>
+                </div>
+              </article>
+              <article class="timeline-card">
+                <div class="step">3</div>
+                <div>
+                  <p class="metric-label">Seguimiento</p>
+                  <p class="body-copy">Listado de estudiantes, alertas y analisis historico.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="coordinator-metrics-panel" class="panel clip" data-start="1" data-duration="8" data-track-index="3">
+            <div class="metric-row">
+              <article class="metric">
+                <p class="metric-label">Promedio</p>
+                <p class="metric-value">332</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Aprobacion</p>
+                <p class="metric-value" style="color: var(--sg-emerald)">68%</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Alertas</p>
+                <p class="metric-value" style="color: var(--sg-rose)">14</p>
+              </article>
+            </div>
+
+            <div class="bars">
+              <div class="bar">
+                <span>11A</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 77%"></span></span>
+                <span>342</span>
+              </div>
+              <div class="bar">
+                <span>11B</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 69%"></span></span>
+                <span>327</span>
+              </div>
+              <div class="bar">
+                <span>10A</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 62%"></span></span>
+                <span>308</span>
+              </div>
+              <div class="bar">
+                <span>10B</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 66%"></span></span>
+                <span>318</span>
+              </div>
+            </div>
+
+            <div class="timeline-card" style="margin-top: 20px">
+              <div class="step">V</div>
+              <div>
+                <p class="metric-label">Grabacion disponible</p>
+                <p class="body-copy">Coordinadores y estudiantes conservan acceso a la retroalimentacion.</p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const coordinatorTimeline = {
+          duration: () => 9,
+          seek: () => coordinatorTimeline,
+          pause: () => coordinatorTimeline
+        };
+        window.__timelines["coordinator-access-preview"] = coordinatorTimeline;
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.staging.example
+!.env.local.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Datos sensibles — no commitear; hosting los excluye vía strip-hosting-deploy.mjs
+/data-local/
+/public/data/simulations/
+/public/data/estudiantes/
+/public/data/analysis_results/
+/public/data/auth_index.json
+/public/data/resultados_finales.json
+/public/data/ranking_index.json
+/public/data/rankings_nacionales.json
+/public/data/estadisticas_grupo.json
+/public/data/coordinator_summary.json
+/public/data/coordinator_tokens.json
+/public/data/invalidaciones.json
+/public/data/current_simulation.json
+
+.vercel
+
+# ── Logs generados automáticamente (no rastrear en git) ──
+logs/build/*.txt
+logs/build/*.log
+logs/migracion/*.txt
+logs/migracion/*.log
+logs/migracion/migration_progress.json
+logs/migracion/_*.txt
+
+# Originales pesados de la landing (los SVG sí se versionan)
+/assets-src/landing/**/*.png
+/assets-src/landing/**/*.jpg
+/assets-src/landing/**/*.jpeg
+/assets-src/landing/**/*.pdf
+/assets-src/colegios-pifa/
+
+/maintenance/public/
+/out/
+
+# Scripts auxiliares temporales
+reorganizar.ps1
+*.tmp

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEAMOSGENIOS | Alianza Estratégica Saber 11 para Colegios</title>
+<!-- Google Font: Montserrat -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#0039b4",
+            "primary-fixed-dim": "#ffb4a8",
+            "error": "#ba1a1a",
+            "tertiary": "#003ec2",
+            "surface-container": "#f2ede8",
+            "on-primary-fixed": "#410000",
+            "secondary-container": "#e2dfde",
+            "on-secondary-container": "#636262",
+            "tertiary-container": "#0052f9",
+            "outline-variant": "#e8bdb6",
+            "secondary-fixed": "#e5e2e1",
+            "surface-dim": "#ded9d4",
+            "charcoal": "#1A1A1A",
+            "surface-container-highest": "#e6e2dd",
+            "inverse-surface": "#32302d",
+            "black": "#0A0A0A",
+            "surface-container-lowest": "#ffffff",
+            "inverse-primary": "#ffb4a8",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#ece7e2",
+            "primary-fixed": "#ffdad4",
+            "on-background": "#1d1b19",
+            "outline": "#926e69",
+            "surface-container-low": "#f8f3ee",
+            "tertiary-fixed": "#dce1ff",
+            "on-tertiary-container": "#dce1ff",
+            "text-secondary": "#334155",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fef8f3",
+            "surface-gray": "#F4F4F5",
+            "surface-variant": "#e6e2dd",
+            "error-container": "#ffdad6",
+            "on-primary-container": "#ffdad4",
+            "on-surface": "#1d1b19",
+            "inverse-on-surface": "#f5f0eb",
+            "paper": "#FDF8F3",
+            "on-error-container": "#93000a",
+            "primary-container": "#cc0000",
+            "on-secondary-fixed": "#1c1b1b",
+            "surface": "#fef8f3",
+            "secondary": "#5f5e5e",
+            "on-surface-variant": "#5e3f3a",
+            "ink": "#0F172A",
+            "on-secondary-fixed-variant": "#474746",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#c8c6c5",
+            "surface-tint": "#c00000",
+            "surface-white": "#FFFFFF",
+            "primary": "#9e0000",
+            "on-tertiary-fixed": "#001551",
+            "background": "#fef8f3",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "on-primary-fixed-variant": "#930000",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "2rem",
+            "space-xs": "0.5rem",
+            "space-lg": "2.5rem",
+            "space-xl": "4rem",
+            "space-sm": "1rem",
+            "space-md": "1.5rem",
+            "gutter": "2rem"
+          },
+          "fontFamily": {
+            "label-md": ["Montserrat"],
+            "headline-lg": ["Montserrat"],
+            "body-lg": ["Montserrat"],
+            "body-md": ["Montserrat"],
+            "headline-sm": ["Montserrat"],
+            "headline-md": ["Montserrat"]
+          },
+          "fontSize": {
+            "label-md": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+            "headline-lg": ["3rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "body-md": ["1rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "headline-sm": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-md": ["2.25rem", { "lineHeight": "1.25", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FDF8F3;
+      color: #0F172A;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-paper text-ink antialiased selection:bg-primary-container selection:text-surface-white">
+<!-- TOP APP BAR (Shared Component: TopNavBar execution) -->
+<header class="docked full-width top-0 w-full bg-paper border-b border-outline-variant/30 sticky z-50 transition-all duration-200 ease-in-out">
+<div class="w-full max-w-[1200px] mx-auto px-8 h-20 flex items-center justify-between">
+<!-- Logo Anchor -->
+<a class="text-headline-sm font-headline-sm tracking-tight font-bold text-ink hover:opacity-90 transition-opacity" href="#">
+        SEAMOSGENIOS
+      </a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md transition-colors" href="#programa">
+          Programa
+        </a>
+<a class="text-text-secondary font-medium font-label-md text-label-md hover:text-primary transition-colors duration-150" href="#beneficios">
+          Beneficios
+        </a>
+<a class="text-text-secondary font-medium font-label-md text-label-md hover:text-primary transition-colors duration-150" href="#resultados">
+          Resultados
+        </a>
+<a class="text-text-secondary font-medium font-label-md text-label-md hover:text-primary transition-colors duration-150" href="#metodologia">
+          Metodología
+        </a>
+<a class="text-text-secondary font-medium font-label-md text-label-md hover:text-primary transition-colors duration-150" href="#faq">
+          Preguntas frecuentes
+        </a>
+</nav>
+<!-- Action Cluster -->
+<div class="flex items-center space-x-4">
+<a class="hidden sm:inline-flex items-center text-ink font-label-md text-label-md font-semibold hover:text-primary transition-colors duration-150" href="https://wa.me/" rel="noopener noreferrer" target="_blank">
+          Contacto Directo
+        </a>
+<a class="inline-flex items-center justify-center bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-5 py-2.5 rounded-full hover:bg-primary transition-colors duration-150 shadow-sm" href="#agendar">
+          Solicitar Alianza
+        </a>
+</div>
+</div>
+</header>
+<main>
+<!-- SPLIT HERO SECTION -->
+<section class="relative bg-paper pt-12 pb-20 md:py-24" id="programa">
+<div class="w-full max-w-[1200px] mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Column Content -->
+<div class="lg:col-span-6 space-y-6">
+<!-- Eyebrow Pill -->
+<div class="inline-block bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-4 py-1.5 rounded-full shadow-sm">
+              PROGRAMA SABER 11 PARA COLEGIOS
+            </div>
+<!-- Imposing Headline -->
+<h1 class="text-headline-lg font-headline-lg text-ink font-bold tracking-tight">
+              Alianza estratégica educativa
+            </h1>
+<!-- Subtitle addressing Principals respectfully (Trato de usted) -->
+<p class="text-body-lg font-body-lg text-text-secondary">
+              Eleve de manera verificable el promedio global Saber 11 en su plantel. Implementamos una ruta pedagógica rigurosa junto a su equipo directivo y docente, combinando analítica predictiva de alto nivel y simulacros calibrados al estándar oficial.
+            </p>
+<!-- Three Actions Grouped Clearly -->
+<div class="pt-4 flex flex-col sm:flex-row sm:items-center gap-4">
+<!-- Primary CTA: Solid red button with pure white text -->
+<a class="inline-flex items-center justify-center bg-primary-container text-surface-white font-label-md text-label-md font-bold px-7 py-3.5 rounded-full hover:bg-primary transition-colors duration-200 text-center shadow-sm" href="#agendar">
+                Agendar reunión de 30 min
+              </a>
+<!-- Secondary Action: Ghost Button with subtle border -->
+<a class="inline-flex items-center justify-center bg-transparent border border-ink/20 text-ink font-label-md text-label-md font-semibold px-6 py-3.5 rounded-full hover:bg-surface-container transition-colors duration-200 text-center" href="#simulacro">
+                Solicitar simulacro gratis
+              </a>
+</div>
+<!-- WhatsApp Direct Contact Link -->
+<div class="pt-2">
+<a class="inline-flex items-center gap-2 text-ink hover:text-primary font-label-md text-label-md font-semibold transition-colors duration-150" href="https://wa.me/" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-ink text-xl" data-icon="chat">chat</span>
+<span>Prefiero escribir por WhatsApp</span>
+</a>
+</div>
+<!-- Quick institutional KPI highlights -->
+<div class="pt-8 border-t border-outline-variant/30 grid grid-cols-3 gap-6">
+<div>
+<p class="text-headline-sm font-headline-sm font-bold text-ink">+38 pts</p>
+<p class="text-label-md font-label-md text-text-secondary">Promedio de mejora</p>
+</div>
+<div>
+<p class="text-headline-sm font-headline-sm font-bold text-ink">99.2%</p>
+<p class="text-label-md font-label-md text-text-secondary">Calibración Icfes</p>
+</div>
+<div>
+<p class="text-headline-sm font-headline-sm font-bold text-ink">100%</p>
+<p class="text-label-md font-label-md text-text-secondary">Acompañamiento</p>
+</div>
+</div>
+</div>
+<!-- Right Column Image with 20px corners & subtle frame -->
+<div class="lg:col-span-6 relative">
+<div class="relative rounded-[20px] overflow-hidden border border-outline-variant/40 bg-surface-white shadow-sm p-2">
+<img alt="Estudiantes colombianos en aula de clase colaborativa preparando pruebas Saber 11 con material académico y orden institucional" class="w-full h-[460px] object-cover rounded-[16px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm9c4MYhpq3gjyDp9jjqZMDcX3A74BMmOH2OewCojZVkR0QzSN2zrl3mjVz33ewE6B_CfPtOLFmU152ahrRi4BKkgK0wbRBzULhrdOSPjELBe4cpxtVOM5PJcxDQWNM5eHO72JtRHhc9_0VvLnwGYt_mbTKG4ih7uKG7tdeVJO7Zu3pEAU6fbi1D5C96i2eP8wZ9yvwQv0G8QO84vKcK-ZAaayo-V4nQgwgt9461UtGgGwTUi9Y6g_-Um2jeNkQ2kak843SvRiU0Y"/>
+<div class="absolute bottom-6 left-6 right-6 bg-surface-white/95 backdrop-blur-md p-4 rounded-[16px] border border-outline-variant/20 shadow-sm flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md font-bold text-ink">Jornada de Diagnóstico Integral</p>
+<p class="font-label-md text-label-md text-text-secondary">Estándar Saber 11 Calendarios A y B</p>
+</div>
+<span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary-container text-surface-white">
+<span class="material-symbols-outlined text-lg" data-icon="verified">verified</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TRUST BAR & SOCIAL PROOF -->
+<section class="bg-surface-white border-y border-outline-variant/20 py-12">
+<div class="w-full max-w-[1200px] mx-auto px-8">
+<p class="text-center font-label-md text-label-md text-text-secondary font-medium tracking-wide mb-8">
+          Más de 45 instituciones educativas y colegios de calendario A y B confían en nuestra alianza
+        </p>
+<!-- Institutional Badges / School Seals (Sober and elegant) -->
+<div class="grid grid-cols-2 md:grid-cols-6 gap-6 items-center">
+<div class="flex items-center justify-center p-3 rounded-[16px] bg-paper border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="account_balance">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-ink">COL. CALASANZ</span>
+</div>
+</div>
+<div class="flex items-center justify-center p-3 rounded-[16px] bg-paper border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="school">school</span>
+<span class="font-label-md text-label-md font-bold text-ink">GIMN. MODERNO</span>
+</div>
+</div>
+<div class="flex items-center justify-center p-3 rounded-[16px] bg-paper border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-md text-label-md font-bold text-ink">INST. ANDINO</span>
+</div>
+</div>
+<div class="flex items-center justify-center p-3 rounded-[16px] bg-paper border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="military_tech">military_tech</span>
+<span class="font-label-md text-label-md font-bold text-ink">LICEO BOGOTÁ</span>
+</div>
+</div>
+<div class="flex items-center justify-center p-3 rounded-[16px] bg-paper border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="menu_book">menu_book</span>
+<span class="font-label-md text-label-md font-bold text-ink">SAN PEDRO CL.</span>
+</div>
+</div>
+<div class="flex items-center justify-center p-3 rounded-[16px] bg-paper border border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-text-secondary" data-icon="stars">stars</span>
+<span class="font-label-md text-label-md font-bold text-ink">COL. DEL VALLE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PRODUCT GRID SECTION -->
+<section class="bg-surface-white py-24" id="beneficios">
+<div class="w-full max-w-[1200px] mx-auto px-8">
+<!-- Section Header -->
+<div class="max-w-2xl mx-auto text-center mb-16">
+<div class="inline-block bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-4 py-1.5 rounded-full mb-4">
+            COMPONENTES DEL CONVENIO
+          </div>
+<h2 class="text-headline-md font-headline-md text-ink font-bold tracking-tight">
+            Soluciones pedagógicas para su plantel
+          </h2>
+<p class="mt-3 text-body-md font-body-md text-text-secondary">
+            Diseñadas específicamente para coordinadores y rectores que requieren trazabilidad, respaldo técnico y un impacto positivo en las metas del Proyecto Educativo Institucional (PEI).
+          </p>
+</div>
+<!-- Three Product Cards Grid (Equal height containers, 16px corner radius, solid red icon circles with pure white icons) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-white border border-outline-variant/30 rounded-[16px] p-8 flex flex-col justify-between hover:border-outline-variant transition-all duration-200">
+<div>
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-surface-white text-2xl" data-icon="quiz">quiz</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-ink font-semibold mb-3">
+                Diagnóstico y Simulacros Saber 11
+              </h3>
+<p class="text-body-md font-body-md text-text-secondary">
+                Evaluaciones presenciales y virtuales con hojas de respuesta ópticas, diseñadas según la matriz de especificaciones Icfes.
+                Ofrecen una retroalimentación detallada y personalizada por estudiante para orientar el plan de refuerzo.
+              </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center text-ink font-label-md text-label-md font-bold hover:text-primary transition-colors duration-150" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined ml-1 text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-white border border-outline-variant/30 rounded-[16px] p-8 flex flex-col justify-between hover:border-outline-variant transition-all duration-200">
+<div>
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-surface-white text-2xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-ink font-semibold mb-3">
+                Entrenamiento Docente y Aula
+              </h3>
+<p class="text-body-md font-body-md text-text-secondary">
+                Talleres de formulación de ítems por evidencias de aprendizaje dirigidos a los maestros de su planta titular.
+                Acceso a bancos de preguntas actualizados para articular las áreas evaluadas en el currículo cotidiano.
+              </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center text-ink font-label-md text-label-md font-bold hover:text-primary transition-colors duration-150" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined ml-1 text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-white border border-outline-variant/30 rounded-[16px] p-8 flex flex-col justify-between hover:border-outline-variant transition-all duration-200">
+<div>
+<div class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-surface-white text-2xl" data-icon="insights">insights</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-ink font-semibold mb-3">
+                Analítica Institucional de Resultados
+              </h3>
+<p class="text-body-md font-body-md text-text-secondary">
+                Tableros directivos para rectoría con segmentación por grupos, históricos comparativos y detección de brechas.
+                Modelos predictivos que anticipan la clasificación institucional en la escala oficial de desempeño.
+              </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center text-ink font-label-md text-label-md font-bold hover:text-primary transition-colors duration-150" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined ml-1 text-base" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SHORT HIGH-CONTRAST BAND (Charcoal Background) -->
+<section class="bg-charcoal py-16 text-surface-white" id="resultados">
+<div class="w-full max-w-[1200px] mx-auto px-8">
+<div class="rounded-[20px] bg-charcoal p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="max-w-2xl space-y-3">
+<div class="inline-block bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-4 py-1 rounded-full">
+              PERIODO DE ADMISIÓN ABIERTO
+            </div>
+<h2 class="text-headline-md font-headline-md font-bold text-surface-white tracking-tight">
+              ¿Listo para consolidar a su institución en los primeros puestos del Icfes?
+            </h2>
+<p class="text-body-md font-body-md text-surface-white/80">
+              Coordinamos la fase diagnóstica sin alterar sus jornadas académicas regulares ni recargar la labor de sus profesores.
+            </p>
+</div>
+<div class="flex-shrink-0">
+<!-- Strict Rule: Solid Red button with pure white text -->
+<a class="inline-flex items-center justify-center bg-primary-container text-surface-white font-label-md text-label-md font-bold px-8 py-4 rounded-full hover:bg-primary transition-colors duration-150 shadow-md" href="#agendar">
+              Agendar reunión de 30 min
+            </a>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ SECTION (Split Layout) -->
+<section class="bg-paper py-24" id="faq">
+<div class="w-full max-w-[1200px] mx-auto px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Sticky Column -->
+<div class="lg:col-span-5">
+<div class="lg:sticky lg:top-28 space-y-6">
+<div class="inline-block bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-4 py-1.5 rounded-full">
+                RESOLUCIÓN DE DUDAS
+              </div>
+<h2 class="text-headline-md font-headline-md text-ink font-bold tracking-tight">
+                Preguntas frecuentes
+              </h2>
+<p class="text-body-md font-body-md text-text-secondary">
+                Entendemos los requerimientos administrativos y curriculares de los colegios en Colombia. Si su institución tiene requerimientos particulares de cronograma, estamos a su disposición.
+              </p>
+<div class="pt-2">
+<a class="inline-flex items-center justify-center bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-6 py-3 rounded-full hover:bg-primary transition-colors duration-150" href="#agendar">
+                  Hablar con un asesor pedagógico
+                </a>
+</div>
+</div>
+</div>
+<!-- Right Column: Accordion -->
+<div class="lg:col-span-7 space-y-4">
+<!-- FAQ 1 -->
+<details class="group bg-surface-white rounded-[16px] border border-outline-variant/30 p-6 open:shadow-sm transition-all" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none font-headline-sm text-headline-sm text-ink font-semibold">
+<span>¿Cómo se articula el programa con nuestra jornada escolar?</span>
+<span class="material-symbols-outlined text-text-secondary transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-outline-variant/20 text-body-md font-body-md text-text-secondary">
+                El programa está diseñado con flexibilidad horaria total. Podemos ejecutar las sesiones de entrenamiento dentro de los bloques de clase habituales, en contrajornada, o en módulos sabatinos. Adecuamos el cronograma en concertación directa con la coordinación académica de su institución para no interferir con las evaluaciones bimestrales ni los eventos curriculares del colegio.
+              </div>
+</details>
+<!-- FAQ 2 -->
+<details class="group bg-surface-white rounded-[16px] border border-outline-variant/30 p-6 open:shadow-sm transition-all">
+<summary class="flex justify-between items-center cursor-pointer list-none font-headline-sm text-headline-sm text-ink font-semibold">
+<span>¿Qué soporte reciben los docentes de las áreas evaluadas?</span>
+<span class="material-symbols-outlined text-text-secondary transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-outline-variant/20 text-body-md font-body-md text-text-secondary">
+                Los docentes no son reemplazados; por el contrario, reciben capacitación en diseño de preguntas bajo la metodología de diseño centrado en evidencias del Icfes. Además, les entregamos reportes diagnósticos sobre qué competencias específicas de Matemáticas, Lectura Crítica, Sociales, Naturales e Inglés presentan mayor margen de mejora en cada salón.
+              </div>
+</details>
+<!-- FAQ 3 -->
+<details class="group bg-surface-white rounded-[16px] border border-outline-variant/30 p-6 open:shadow-sm transition-all">
+<summary class="flex justify-between items-center cursor-pointer list-none font-headline-sm text-headline-sm text-ink font-semibold">
+<span>¿Con qué frecuencia se aplican los simulacros tipo Icfes?</span>
+<span class="material-symbols-outlined text-text-secondary transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-outline-variant/20 text-body-md font-body-md text-text-secondary">
+                Recomendamos un esquema progresivo de tres a cuatro simulacros completos durante el año lectivo: una prueba diagnóstica inicial para fijar la línea base, dos pruebas de seguimiento formativo y una prueba final de consolidación previa a la aplicación oficial. Cada una simula estrictamente las condiciones de tiempo, foliado de cuadernillo y distribución de sesiones del examen real.
+              </div>
+</details>
+<!-- FAQ 4 -->
+<details class="group bg-surface-white rounded-[16px] border border-outline-variant/30 p-6 open:shadow-sm transition-all">
+<summary class="flex justify-between items-center cursor-pointer list-none font-headline-sm text-headline-sm text-ink font-semibold">
+<span>¿Cuándo comenzamos a ver los primeros reportes diagnósticos?</span>
+<span class="material-symbols-outlined text-text-secondary transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="mt-4 pt-4 border-t border-outline-variant/20 text-body-md font-body-md text-text-secondary">
+                Nuestra plataforma de analítica institucional procesa las hojas de respuesta en un plazo máximo de 72 horas hábiles tras la aplicación del simulacro. La rectoría y coordinación reciben inmediatamente un informe gerencial consolidado, mientras que los estudiantes acceden a sus informes individuales de desempeño y planes de estudio complementarios.
+              </div>
+</details>
+</div>
+</div>
+</div>
+</section>
+<!-- CALENDAR / AGENDAR SECTION -->
+<section class="bg-surface-white py-20 border-t border-outline-variant/20" id="agendar">
+<div class="w-full max-w-[1200px] mx-auto px-8">
+<div class="bg-paper border border-outline-variant/30 rounded-[20px] p-8 md:p-14">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-7 space-y-4">
+<div class="inline-block bg-primary-container text-surface-white font-label-md text-label-md font-semibold px-4 py-1.5 rounded-full">
+                REUNIÓN INSTITUCIONAL
+              </div>
+<h2 class="text-headline-md font-headline-md text-ink font-bold tracking-tight">
+                Agende una sesión informativa de 30 minutos
+              </h2>
+<p class="text-body-md font-body-md text-text-secondary">
+                Conozca en detalle el esquema pedagógico, revise casos de éxito en colegios similares al suyo y reciba una propuesta personalizada para el periodo académico vigente.
+              </p>
+<div class="pt-4 flex flex-wrap gap-4">
+<div class="flex items-center space-x-2 text-ink font-label-md text-label-md">
+<span class="material-symbols-outlined text-ink" data-icon="check_circle">check_circle</span>
+<span>Sin costo ni compromiso</span>
+</div>
+<div class="flex items-center space-x-2 text-ink font-label-md text-label-md">
+<span class="material-symbols-outlined text-ink" data-icon="check_circle">check_circle</span>
+<span>Atención directa con directores pedagógicos</span>
+</div>
+</div>
+</div>
+<!-- Booking action box -->
+<div class="lg:col-span-5 bg-surface-white p-6 rounded-[16px] border border-outline-variant/30 shadow-sm space-y-4">
+<label class="block font-label-md text-label-md font-bold text-ink">
+                Seleccione el medio de su preferencia:
+              </label>
+<a class="w-full flex items-center justify-between p-4 rounded-[12px] border border-outline-variant/30 hover:border-primary transition-colors text-ink group" href="https://calendly.com/" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-ink group-hover:text-primary transition-colors" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md text-label-md font-semibold">Agendar en Calendly oficial</span>
+</div>
+<span class="material-symbols-outlined text-ink group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+<a class="w-full flex items-center justify-between p-4 rounded-[12px] border border-outline-variant/30 hover:border-primary transition-colors text-ink group" href="https://wa.me/" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-ink group-hover:text-primary transition-colors" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md font-semibold">Línea prioritaria para rectores</span>
+</div>
+<span class="material-symbols-outlined text-ink group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</a>
+<div class="pt-2 text-center">
+<span class="font-label-md text-label-md text-text-secondary text-xs">
+                  Respuesta garantizada en menos de 2 horas hábiles
+                </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER (Shared Component: Footer execution) -->
+<footer class="docked full-width bottom-0 w-full bg-surface-white border-t border-outline-variant/30">
+<div class="w-full max-w-[1200px] mx-auto px-8 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+<!-- Brand & Copyright -->
+<div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+<span class="text-headline-sm font-headline-sm font-bold text-ink">
+          SEAMOSGENIOS
+        </span>
+<span class="text-text-secondary text-body-md font-body-md md:border-l md:border-outline-variant/40 md:pl-4">
+          © 2024 SEAMOSGENIOS. Todos los derechos reservados. Alianza para la excelencia académica Saber 11 en Colombia.
+        </span>
+</div>
+<!-- Links (Exact from JSON) -->
+<div class="flex flex-wrap items-center justify-center gap-6">
+<a class="text-text-secondary text-label-md font-label-md hover:text-primary transition-colors duration-150" href="#">
+          Términos de servicio
+        </a>
+<a class="text-text-secondary text-label-md font-label-md hover:text-primary transition-colors duration-150" href="#">
+          Política de privacidad
+        </a>
+<a class="text-text-secondary text-label-md font-label-md hover:text-primary transition-colors duration-150" href="#">
+          Convenios institucionales
+        </a>
+<a class="text-text-secondary text-label-md font-label-md hover:text-primary transition-colors duration-150" href="#">
+          Línea rectoral
+        </a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,62 @@
+export const OFERTA = {
+  title: ['Alianza estratégica', 'institucional'],
+  lead: 'Empiece por lo que no le cuesta nada: un simulacro completo para los grados 9, 10 y 11. Si los datos le convencen, seguimos. Si no, no queda obligado a contratar.',
+  mostrarPrecioUnitario: false,
+  simulacro: {
+    precio: '$0',
+    titulo: 'Simulacro gratis',
+    pasos: [
+      {
+        n: '1',
+        title: 'Cuéntenos su caso',
+        text: 'Institución, grados 9, 10 y 11, y lo que quiere mover este año.',
+        image: '/landing/pasos/caso.jpg',
+        imageAlt: 'Rectora y coordinadora conversan en la oficina del colegio.',
+      },
+      {
+        n: '2',
+        title: 'Reciba el material',
+        text: 'Lo reciben en PDF y dentro de la plataforma, con pizarra para socializar las preguntas.',
+        image: '/landing/pasos/material.jpg?v=2',
+        imageAlt: 'Docente y estudiantes socializan preguntas en la pizarra de la plataforma, con el material en PDF.',
+      },
+      {
+        n: '3',
+        title: 'Aplique el simulacro',
+        text: 'Sus estudiantes lo presentan en la plataforma, en la fecha que le sirva a su calendario.',
+        image: '/landing/pasos/simulacro.jpg?v=2',
+        imageAlt: 'Estudiantes de grados 9, 10 y 11 presentan el simulacro en la plataforma, cada uno en su computador.',
+      },
+      {
+        n: '4',
+        title: 'Vea el análisis',
+        text: 'Al día siguiente, cada estudiante y su rectoría tienen el panel.',
+        image: '/landing/pasos/analisis.jpg',
+        imageAlt: 'Rectoría revisa el panel de resultados en un portátil.',
+      },
+    ],
+    nota: 'Sus estudiantes reciben su análisis individual y su equipo directivo, el panel de coordinación.',
+    cta: 'Solicitar simulacro gratis',
+  },
+  alianzaTitulo: 'Alianza institucional',
+  alianzaBadge: 'Más elegida',
+  alianza: [
+    'Simulacros tipo ICFES durante el año.',
+    'Panel de resultados para estudiantes y rectoría.',
+    'Material ICFES listo para trabajar en clase.',
+    'Retroalimentación en clases en vivo con tutores.',
+    'Asesoría a sus docentes.',
+    'PreICFES completo, ajustado al tamaño de su institución.',
+  ],
+  alianzaCta: 'Agendar reunión de 30 min',
+  preicfes: {
+    titulo: 'PreICFES completo',
+    texto: 'Un programa intensivo para todo el grado 11, con precio especial según el número de estudiantes.',
+    cta: 'Consultar por WhatsApp',
+  },
+  precioTexto: 'Precio según el número de estudiantes',
+  micro: ['Sin compromiso', '100% virtual'],
+  microImplementacion: 'Sin costo de implementación',
+  confirmar:
+    'No publicar el precio por estudiante hasta que el equipo comercial lo apruebe. Confirmar que la implementación no tiene costo.',
+} as const;

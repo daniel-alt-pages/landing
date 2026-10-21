@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico - SG Reports</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { color: #1a202c; margin-bottom: 10px; font-size: 28px; }
+        .subtitle { color: #718096; margin-bottom: 30px; font-size: 14px; }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+            background: #667eea;
+            color: white;
+        }
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        .log {
+            background: #1a202c;
+            color: #48bb78;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 500px;
+            overflow-y: auto;
+            margin-top: 20px;
+            display: none;
+        }
+        .log.show { display: block; }
+        .log-line { margin-bottom: 5px; }
+        .success { color: #48bb78; }
+        .warning { color: #f6ad55; }
+        .error { color: #fc8181; }
+        .info { color: #63b3ed; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Diagnóstico del Sistema</h1>
+        <p class="subtitle">Herramienta de diagnóstico para identificar problemas</p>
+        
+        <button class="btn" onclick="testFirestoreConnection()">
+            🔥 Test 1: Conexión a Firestore
+        </button>
+        
+        <button class="btn" onclick="testStudentData()">
+            📊 Test 2: Cargar Datos de Estudiante
+        </button>
+        
+        <button class="btn" onclick="testGetStudentResults()">
+            🎯 Test 3: getStudentResults() Directo
+        </button>
+        
+        <button class="btn" onclick="checkLocalStorage()">
+            💾 Test 4: Verificar LocalStorage
+        </button>
+        
+        <button class="btn" onclick="runAllTests()">
+            ⚡ Ejecutar Todos los Tests
+        </button>
+        
+        <div id="log" class="log"></div>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+        import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+        
+        // Firebase config (usar la misma del proyecto)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDLdn8KOJwKeyond8Uw_Hn5Uw5Uw5Uw5Uw",
+            authDomain: "reportes-sg.firebaseapp.com",
+            projectId: "reportes-sg",
+            storageBucket: "reportes-sg.appspot.com",
+            messagingSenderId: "123456789",
+            appId: "1:123456789:web:abcdef"
+        };
+        
+        let app, db;
+        
+        function addLog(message, type = 'success') {
+            const log = document.getElementById('log');
+            log.classList.add('show');
+            const line = document.createElement('div');
+            line.className = `log-line ${type}`;
+            line.textContent = message;
+            log.appendChild(line);
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function clearLog() {
+            const log = document.getElementById('log');
+            log.innerHTML = '';
+            log.classList.add('show');
+        }
+        
+        window.testFirestoreConnection = async function() {
+            clearLog();
+            addLog('🔥 Test 1: Conexión a Firestore', 'info');
+            addLog('─'.repeat(60), 'info');
+            
+            try {
+                // Intentar inicializar Firebase
+                if (!app) {
+                    addLog('⏳ Inicializando Firebase...', 'warning');
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    addLog('✅ Firebase inicializado', 'success');
+                } else {
+                    addLog('✅ Firebase ya inicializado', 'success');
+                }
+                
+                // Test de lectura simple
+                addLog('\n⏳ Probando lectura de config/app...', 'warning');
+                const configRef = doc(db, 'config', 'app');
+                const configSnap = await getDoc(configRef);
+                
+                if (configSnap.exists()) {
+                    const data = configSnap.data();
+                    addLog('✅ Lectura exitosa', 'success');
+                    addLog(`   activeSimulation: ${data.activeSimulation}`, 'info');
+                    addLog(`   availableSimulations: ${data.availableSimulations?.length || 0}`, 'info');
+                } else {
+                    addLog('❌ Documento config/app no existe', 'error');
+                }
+                
+            } catch (error) {
+                addLog(`❌ Error: ${error.message}`, 'error');
+                addLog(`   Code: ${error.code}`, 'error');
+            }
+        };
+        
+        window.testStudentData = async function() {
+            clearLog();
+            addLog('📊 Test 2: Cargar Datos de Estudiante', 'info');
+            addLog('─'.repeat(60), 'info');
+            
+            const studentId = '1002367670'; // Cristian Torres
+            const simId = 'SG11-12X';
+            
+            try {
+                if (!db) {
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                }
+                
+                addLog(`\n⏳ Consultando: students/${studentId}/results/${simId}`, 'warning');
+                const docRef = doc(db, 'students', studentId, 'results', simId);
+                const snap = await getDoc(docRef);
+                
+                if (snap.exists()) {
+                    const data = snap.data();
+                    addLog('✅ Documento encontrado', 'success');
+                    addLog(`   puntaje_global: ${data.puntaje_global}`, 'info');
+                    addLog(`   secciones_completadas: ${data.secciones_completadas?.length || 0}`, 'info');
+                    addLog(`   nombres: ${data.informacion_personal?.nombres}`, 'info');
+                    addLog(`   apellidos: ${data.informacion_personal?.apellidos}`, 'info');
+                    
+                    // Verificar estructura
+                    addLog('\n📋 Estructura del documento:', 'info');
+                    addLog(`   ✓ informacion_personal: ${!!data.informacion_personal}`, 'info');
+                    addLog(`   ✓ puntaje_global: ${!!data.puntaje_global}`, 'info');
+                    addLog(`   ✓ puntajes: ${!!data.puntajes}`, 'info');
+                    addLog(`   ✓ secciones_completadas: ${!!data.secciones_completadas}`, 'info');
+                } else {
+                    addLog('❌ Documento NO existe', 'error');
+                    addLog('   Esto significa que Firestore no tiene datos para este estudiante/simulacro', 'error');
+                }
+                
+            } catch (error) {
+                addLog(`❌ Error: ${error.message}`, 'error');
+                addLog(`   Code: ${error.code}`, 'error');
+                
+                if (error.code === 'permission-denied') {
+                    addLog('\n⚠️  PROBLEMA DE PERMISOS DETECTADO', 'error');
+                    addLog('   Las reglas de Firestore están bloqueando la lectura', 'error');
+                    addLog('   Verifica firestore.rules', 'error');
+                }
+            }
+        };
+        
+        window.testGetStudentResults = async function() {
+            clearLog();
+            addLog('🎯 Test 3: getStudentResults() Directo', 'info');
+            addLog('─'.repeat(60), 'info');
+            addLog('⚠️  Este test requiere que la app esté cargada', 'warning');
+            addLog('   Abre la consola del navegador (F12) y ejecuta:', 'warning');
+            addLog('', 'info');
+            addLog('   const { getStudentResults } = await import("/src/features/simulacro/lib/firestoreService.ts");', 'info');
+            addLog('   const result = await getStudentResults("1002367670", "SG11-12X");', 'info');
+            addLog('   console.log(result);', 'info');
+        };
+        
+        window.checkLocalStorage = function() {
+            clearLog();
+            addLog('💾 Test 4: Verificar LocalStorage', 'info');
+            addLog('─'.repeat(60), 'info');
+            
+            addLog(`\n📦 localStorage (${localStorage.length} claves):`, 'info');
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key) {
+                    const value = localStorage.getItem(key);
+                    const size = value ? (value.length / 1024).toFixed(2) : '0';
+                    addLog(`   • ${key} (${size} KB)`, 'info');
+                    
+                    // Mostrar detalles de claves importantes
+                    if (key === 'student_id') {
+                        addLog(`     → ${value}`, 'success');
+                    }
+                    if (key === 'simulacro_selected') {
+                        addLog(`     → ${value}`, 'success');
+                    }
+                    if (key.includes('results_')) {
+                        try {
+                            const parsed = JSON.parse(value);
+                            if (parsed.data) {
+                                addLog(`     → puntaje: ${parsed.data.puntaje_global}`, 'success');
+                            }
+                        } catch (e) {}
+                    }
+                }
+            }
+            
+            addLog(`\n📦 sessionStorage (${sessionStorage.length} claves):`, 'info');
+            for (let i = 0; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                if (key) {
+                    const value = sessionStorage.getItem(key);
+                    addLog(`   • ${key}: ${value}`, 'info');
+                }
+            }
+        };
+        
+        window.runAllTests = async function() {
+            clearLog();
+            addLog('⚡ Ejecutando Todos los Tests', 'info');
+            addLog('═'.repeat(60), 'info');
+            
+            await testFirestoreConnection();
+            addLog('\n', 'info');
+            await testStudentData();
+            addLog('\n', 'info');
+            checkLocalStorage();
+            
+            addLog('\n═'.repeat(60), 'info');
+            addLog('✅ Tests completados', 'success');
+        };
+    </script>
+</body>
+</html>

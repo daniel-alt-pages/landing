@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Coordinator Summary - Admin</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0f172a;
+            color: white;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 30px;
+        }
+        h1 {
+            margin: 0 0 20px 0;
+            color: #818cf8;
+        }
+        button {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #4f46e5;
+        }
+        button:disabled {
+            background: #4b5563;
+            cursor: not-allowed;
+        }
+        .success {
+            background: #10b981;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .error {
+            background: #ef4444;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .info {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .log {
+            background: #111827;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid #6366f1;
+            padding-left: 10px;
+        }
+        .log-success { border-left-color: #10b981; }
+        .log-error { border-left-color: #ef4444; }
+        .log-warning { border-left-color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>📤 Subir Coordinator Summary a Firestore</h1>
+        
+        <p>Esta herramienta sube el archivo <code>coordinator_summary.json</code> actualizado a Firestore.</p>
+        
+        <div class="info">
+            ℹ️ <strong>Requisitos:</strong> Debes estar autenticado como administrador.
+        </div>
+        
+        <button id="uploadBtn" onclick="uploadToFirestore()">Subir a Firestore</button>
+        
+        <div id="log" class="log" style="display: none;"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+        import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+        import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+        // Obtener configuración desde las variables de entorno del cliente
+        // Estas están disponibles en window.__NEXT_DATA__ o podemos cargarlas dinámicamente
+        
+        // Por ahora, intentaremos obtenerla del contexto de la app
+        let app, auth, db;
+        
+        try {
+            // Intentar usar la instancia de Firebase ya inicializada
+            const { getApps } = await import('https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js');
+            const apps = getApps();
+            
+            if (apps.length > 0) {
+                app = apps[0];
+                addLog('✅ Usando instancia de Firebase existente');
+            } else {
+                addLog('⚠️ No se encontró instancia de Firebase. Inicializando...', 'warning');
+                // Aquí necesitarías la configuración real
+                throw new Error('No se puede inicializar Firebase sin configuración');
+            }
+            
+            auth = getAuth(app);
+            db = getFirestore(app);
+        } catch (error) {
+            addLog(`❌ Error inicializando Firebase: ${error.message}`, 'error');
+        }
+
+        let currentUser = null;
+
+        function addLog(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            logDiv.style.display = 'block';
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logDiv.appendChild(entry);
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        if (auth) {
+            onAuthStateChanged(auth, (user) => {
+                currentUser = user;
+                if (user) {
+                    addLog(`✅ Autenticado como: ${user.email}`, 'success');
+                } else {
+                    addLog('⚠️ No estás autenticado. Por favor inicia sesión primero.', 'warning');
+                    document.getElementById('uploadBtn').disabled = true;
+                }
+            });
+        }
+
+        window.uploadToFirestore = async function() {
+            if (!currentUser) {
+                addLog('❌ Debes estar autenticado para subir datos', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('uploadBtn');
+            btn.disabled = true;
+            btn.textContent = 'Subiendo...';
+
+            try {
+                addLog('📡 Cargando coordinator_summary.json local...');
+                
+                // Cargar el archivo JSON local
+                const response = await fetch('/data/coordinator_summary.json?t=' + Date.now(), {
+                    cache: 'no-store'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                const simCount = Object.keys(data).length;
+                
+                addLog(`✅ Archivo cargado: ${simCount} simulacros`, 'success');
+                addLog(`   Simulacros: ${Object.keys(data).join(', ')}`);
+                
+                // Subir a Firestore
+                addLog('📤 Subiendo a Firestore (app/coordinator_summary)...');
+                
+                const docRef = doc(db, 'app', 'coordinator_summary');
+                await setDoc(docRef, data);
+                
+                addLog('✅ ¡Subida exitosa!', 'success');
+                addLog(`   ${simCount} simulacros ahora disponibles en Firestore`);
+                addLog('');
+                addLog('🎉 Proceso completado. Recarga el panel de coordinador para ver los cambios.', 'success');
+                
+                btn.textContent = '✅ Subido Exitosamente';
+                
+            } catch (error) {
+                addLog(`❌ Error: ${error.message}`, 'error');
+                console.error('Error completo:', error);
+                btn.disabled = false;
+                btn.textContent = 'Reintentar';
+            }
+        };
+    </script>
+</body>
+</html>

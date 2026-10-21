@@ -1,0 +1,12 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ⚠️ TEMPORAL: Reglas abiertas SOLO para migración
+    // Expira: 19 abril 2026
+    // REEMPLAZAR con firestore.rules de producción inmediatamente después
+    match /{document=**} {
+      allow read, write: if request.time < timestamp.date(2026, 4, 19);
+    }
+  }
+}

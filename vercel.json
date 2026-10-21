@@ -1,0 +1,31 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "out",
+  "cleanUrls": true,
+  "rewrites": [{ "source": "/", "destination": "/landing" }],
+  "redirects": [
+    { "source": "/estudiante/:path*", "destination": "/", "permanent": false },
+    { "source": "/coordinador/:path*", "destination": "/", "permanent": false },
+    { "source": "/admin-panel/:path*", "destination": "/", "permanent": false },
+    { "source": "/login", "destination": "https://app.seamosgenios.org/login", "permanent": false },
+    { "source": "/login/:path*", "destination": "https://app.seamosgenios.org/login", "permanent": false },
+    { "source": "/demo/:path*", "destination": "/", "permanent": false },
+    { "source": "/alianza", "destination": "/", "permanent": true },
+    { "source": "/alianza/:path*", "destination": "/landing/:path*", "permanent": true },
+    { "source": "/landing-profesional", "destination": "/landing", "permanent": false },
+    { "source": "/landing-profesional/:path*", "destination": "/landing", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://www.google-analytics.com https://*.analytics.google.com https://www.facebook.com https://www.googletagmanager.com; img-src 'self' data: blob: https://*.imagekit.io https://lh3.googleusercontent.com https://www.facebook.com https://www.google-analytics.com; frame-src https://www.youtube-nocookie.com https://calendar.google.com https://cal.com https://app.cal.com; style-src 'self' 'unsafe-inline'; font-src 'self' data: https://fonts.gstatic.com; form-action 'self'; base-uri 'self'; object-src 'none'"
+        },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

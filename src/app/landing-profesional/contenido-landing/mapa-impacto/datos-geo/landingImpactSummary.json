@@ -1,0 +1,520 @@
+{
+  "generatedAt": "2026-05-16T17:47:57.923Z",
+  "source": "public/data/simulations/*/students.json",
+  "privacy": "Aggregate-only summary. No names, emails, phones or document numbers are exported.",
+  "simulations": [
+    "SG11-08",
+    "SG11-09",
+    "SG11-10",
+    "SG11-11",
+    "SG11-12X",
+    "SG11-13",
+    "SG11-14",
+    "SG11-15",
+    "SG11-16",
+    "SG11-17"
+  ],
+  "totals": {
+    "simulations": 10,
+    "uniqueUsers": 2141,
+    "evaluations": 3794,
+    "validEvaluations": 3399,
+    "departments": 29,
+    "averageScore": 258.7
+  },
+  "departments": [
+    {
+      "department": "Casanare",
+      "uniqueUsers": 236,
+      "evaluations": 422,
+      "validEvaluations": 400,
+      "averageScore": 190.6,
+      "maxScore": 500,
+      "minScore": 65,
+      "successRate": 5,
+      "subjectAverages": {
+        "matemáticas": 40.3,
+        "lectura crítica": 38.7,
+        "sociales y ciudadanas": 40,
+        "ciencias naturales": 35,
+        "inglés": 38.9
+      }
+    },
+    {
+      "department": "Valle Del Cauca",
+      "uniqueUsers": 206,
+      "evaluations": 359,
+      "validEvaluations": 328,
+      "averageScore": 272.7,
+      "maxScore": 500,
+      "minScore": 50,
+      "successRate": 38.7,
+      "subjectAverages": {
+        "matemáticas": 56.2,
+        "lectura crítica": 55.2,
+        "sociales y ciudadanas": 56,
+        "ciencias naturales": 53.8,
+        "inglés": 52
+      }
+    },
+    {
+      "department": "Santander",
+      "uniqueUsers": 202,
+      "evaluations": 413,
+      "validEvaluations": 386,
+      "averageScore": 289,
+      "maxScore": 500,
+      "minScore": 35,
+      "successRate": 44,
+      "subjectAverages": {
+        "matemáticas": 59.9,
+        "lectura crítica": 58.7,
+        "sociales y ciudadanas": 57.3,
+        "ciencias naturales": 57.8,
+        "inglés": 56.5
+      }
+    },
+    {
+      "department": "Magdalena",
+      "uniqueUsers": 148,
+      "evaluations": 177,
+      "validEvaluations": 149,
+      "averageScore": 197.6,
+      "maxScore": 500,
+      "minScore": 93,
+      "successRate": 10.1,
+      "subjectAverages": {
+        "matemáticas": 41.3,
+        "lectura crítica": 39.6,
+        "sociales y ciudadanas": 41.8,
+        "ciencias naturales": 39.7,
+        "inglés": 39.4
+      }
+    },
+    {
+      "department": "Cesar",
+      "uniqueUsers": 132,
+      "evaluations": 202,
+      "validEvaluations": 186,
+      "averageScore": 240.2,
+      "maxScore": 500,
+      "minScore": 70,
+      "successRate": 28,
+      "subjectAverages": {
+        "matemáticas": 49.4,
+        "lectura crítica": 50.7,
+        "sociales y ciudadanas": 49.7,
+        "ciencias naturales": 45.2,
+        "inglés": 49.7
+      }
+    },
+    {
+      "department": "Bolívar",
+      "uniqueUsers": 129,
+      "evaluations": 239,
+      "validEvaluations": 208,
+      "averageScore": 291.9,
+      "maxScore": 500,
+      "minScore": 58,
+      "successRate": 42.8,
+      "subjectAverages": {
+        "matemáticas": 58.1,
+        "lectura crítica": 58.8,
+        "sociales y ciudadanas": 60,
+        "ciencias naturales": 55.1,
+        "inglés": 57.2
+      }
+    },
+    {
+      "department": "Córdoba",
+      "uniqueUsers": 128,
+      "evaluations": 350,
+      "validEvaluations": 326,
+      "averageScore": 233.5,
+      "maxScore": 500,
+      "minScore": 58,
+      "successRate": 20.2,
+      "subjectAverages": {
+        "matemáticas": 49.2,
+        "lectura crítica": 47.4,
+        "sociales y ciudadanas": 47.5,
+        "ciencias naturales": 45.8,
+        "inglés": 44.1
+      }
+    },
+    {
+      "department": "Nariño",
+      "uniqueUsers": 114,
+      "evaluations": 206,
+      "validEvaluations": 178,
+      "averageScore": 292.4,
+      "maxScore": 500,
+      "minScore": 102,
+      "successRate": 47.2,
+      "subjectAverages": {
+        "matemáticas": 60.6,
+        "lectura crítica": 60.1,
+        "sociales y ciudadanas": 58.2,
+        "ciencias naturales": 59.7,
+        "inglés": 58.8
+      }
+    },
+    {
+      "department": "Norte De Santander",
+      "uniqueUsers": 96,
+      "evaluations": 145,
+      "validEvaluations": 126,
+      "averageScore": 251.9,
+      "maxScore": 492,
+      "minScore": 47,
+      "successRate": 24.6,
+      "subjectAverages": {
+        "matemáticas": 52.5,
+        "lectura crítica": 49.5,
+        "sociales y ciudadanas": 53,
+        "ciencias naturales": 48.6,
+        "inglés": 49.7
+      }
+    },
+    {
+      "department": "Atlántico",
+      "uniqueUsers": 95,
+      "evaluations": 176,
+      "validEvaluations": 141,
+      "averageScore": 302,
+      "maxScore": 500,
+      "minScore": 113,
+      "successRate": 46.1,
+      "subjectAverages": {
+        "matemáticas": 63,
+        "lectura crítica": 60.3,
+        "sociales y ciudadanas": 61.1,
+        "ciencias naturales": 58,
+        "inglés": 63.5
+      }
+    },
+    {
+      "department": "Huila",
+      "uniqueUsers": 84,
+      "evaluations": 171,
+      "validEvaluations": 153,
+      "averageScore": 285.1,
+      "maxScore": 478,
+      "minScore": 62,
+      "successRate": 44.4,
+      "subjectAverages": {
+        "matemáticas": 57.6,
+        "lectura crítica": 58.4,
+        "sociales y ciudadanas": 57.3,
+        "ciencias naturales": 60.1,
+        "inglés": 53.6
+      }
+    },
+    {
+      "department": "Cundinamarca",
+      "uniqueUsers": 77,
+      "evaluations": 115,
+      "validEvaluations": 102,
+      "averageScore": 232.9,
+      "maxScore": 450,
+      "minScore": 60,
+      "successRate": 21.6,
+      "subjectAverages": {
+        "matemáticas": 49.2,
+        "lectura crítica": 47.3,
+        "sociales y ciudadanas": 48.7,
+        "ciencias naturales": 44.5,
+        "inglés": 47.2
+      }
+    },
+    {
+      "department": "Cauca",
+      "uniqueUsers": 71,
+      "evaluations": 119,
+      "validEvaluations": 103,
+      "averageScore": 280.8,
+      "maxScore": 500,
+      "minScore": 64,
+      "successRate": 40.8,
+      "subjectAverages": {
+        "matemáticas": 57.6,
+        "lectura crítica": 60.3,
+        "sociales y ciudadanas": 56.4,
+        "ciencias naturales": 53.7,
+        "inglés": 54.6
+      }
+    },
+    {
+      "department": "Tolima",
+      "uniqueUsers": 68,
+      "evaluations": 142,
+      "validEvaluations": 129,
+      "averageScore": 291.5,
+      "maxScore": 500,
+      "minScore": 79,
+      "successRate": 42.6,
+      "subjectAverages": {
+        "matemáticas": 57.2,
+        "lectura crítica": 57.9,
+        "sociales y ciudadanas": 57.7,
+        "ciencias naturales": 58.2,
+        "inglés": 62.9
+      }
+    },
+    {
+      "department": "Boyacá",
+      "uniqueUsers": 63,
+      "evaluations": 104,
+      "validEvaluations": 87,
+      "averageScore": 297.3,
+      "maxScore": 491,
+      "minScore": 88,
+      "successRate": 47.1,
+      "subjectAverages": {
+        "matemáticas": 60.5,
+        "lectura crítica": 59.6,
+        "sociales y ciudadanas": 63.5,
+        "ciencias naturales": 60.1,
+        "inglés": 56.9
+      }
+    },
+    {
+      "department": "Bogotá, D.c.",
+      "uniqueUsers": 56,
+      "evaluations": 86,
+      "validEvaluations": 73,
+      "averageScore": 280.4,
+      "maxScore": 500,
+      "minScore": 103,
+      "successRate": 39.7,
+      "subjectAverages": {
+        "matemáticas": 56.1,
+        "lectura crítica": 56.7,
+        "sociales y ciudadanas": 58,
+        "ciencias naturales": 52.2,
+        "inglés": 57.5
+      }
+    },
+    {
+      "department": "Sucre",
+      "uniqueUsers": 44,
+      "evaluations": 65,
+      "validEvaluations": 58,
+      "averageScore": 248.1,
+      "maxScore": 500,
+      "minScore": 62,
+      "successRate": 31,
+      "subjectAverages": {
+        "matemáticas": 51.9,
+        "lectura crítica": 51.2,
+        "sociales y ciudadanas": 50,
+        "ciencias naturales": 47.9,
+        "inglés": 47.3
+      }
+    },
+    {
+      "department": "Antioquia",
+      "uniqueUsers": 37,
+      "evaluations": 57,
+      "validEvaluations": 50,
+      "averageScore": 214.2,
+      "maxScore": 449,
+      "minScore": 64,
+      "successRate": 10,
+      "subjectAverages": {
+        "matemáticas": 43.7,
+        "lectura crítica": 43.3,
+        "sociales y ciudadanas": 44,
+        "ciencias naturales": 40.9,
+        "inglés": 45.4
+      }
+    },
+    {
+      "department": "Risaralda",
+      "uniqueUsers": 27,
+      "evaluations": 34,
+      "validEvaluations": 31,
+      "averageScore": 218.7,
+      "maxScore": 445,
+      "minScore": 57,
+      "successRate": 29,
+      "subjectAverages": {
+        "matemáticas": 47.6,
+        "lectura crítica": 45,
+        "sociales y ciudadanas": 47.2,
+        "ciencias naturales": 43,
+        "inglés": 44.5
+      }
+    },
+    {
+      "department": "Caldas",
+      "uniqueUsers": 24,
+      "evaluations": 46,
+      "validEvaluations": 45,
+      "averageScore": 302.6,
+      "maxScore": 477,
+      "minScore": 80,
+      "successRate": 51.1,
+      "subjectAverages": {
+        "matemáticas": 64.1,
+        "lectura crítica": 62.1,
+        "sociales y ciudadanas": 58.9,
+        "ciencias naturales": 62,
+        "inglés": 54.3
+      }
+    },
+    {
+      "department": "La Guajira",
+      "uniqueUsers": 24,
+      "evaluations": 32,
+      "validEvaluations": 25,
+      "averageScore": 265.4,
+      "maxScore": 462,
+      "minScore": 119,
+      "successRate": 32,
+      "subjectAverages": {
+        "matemáticas": 52.8,
+        "lectura crítica": 51.8,
+        "sociales y ciudadanas": 51.3,
+        "ciencias naturales": 53.8,
+        "inglés": 50.8
+      }
+    },
+    {
+      "department": "Putumayo",
+      "uniqueUsers": 22,
+      "evaluations": 43,
+      "validEvaluations": 41,
+      "averageScore": 299.9,
+      "maxScore": 500,
+      "minScore": 133,
+      "successRate": 43.9,
+      "subjectAverages": {
+        "matemáticas": 58.6,
+        "lectura crítica": 63.2,
+        "sociales y ciudadanas": 60.2,
+        "ciencias naturales": 59.5,
+        "inglés": 64.9
+      }
+    },
+    {
+      "department": "Caquetá",
+      "uniqueUsers": 17,
+      "evaluations": 27,
+      "validEvaluations": 22,
+      "averageScore": 309.9,
+      "maxScore": 500,
+      "minScore": 93,
+      "successRate": 54.5,
+      "subjectAverages": {
+        "matemáticas": 62.2,
+        "lectura crítica": 61.9,
+        "sociales y ciudadanas": 65.7,
+        "ciencias naturales": 59.1,
+        "inglés": 55.4
+      }
+    },
+    {
+      "department": "Quindío",
+      "uniqueUsers": 15,
+      "evaluations": 29,
+      "validEvaluations": 26,
+      "averageScore": 290.8,
+      "maxScore": 500,
+      "minScore": 50,
+      "successRate": 50,
+      "subjectAverages": {
+        "matemáticas": 60.7,
+        "lectura crítica": 56.3,
+        "sociales y ciudadanas": 57.2,
+        "ciencias naturales": 57.3,
+        "inglés": 47.3
+      }
+    },
+    {
+      "department": "Meta",
+      "uniqueUsers": 12,
+      "evaluations": 19,
+      "validEvaluations": 15,
+      "averageScore": 211.3,
+      "maxScore": 312,
+      "minScore": 125,
+      "successRate": 6.7,
+      "subjectAverages": {
+        "matemáticas": 44.7,
+        "lectura crítica": 47.4,
+        "sociales y ciudadanas": 49.3,
+        "ciencias naturales": 41.6,
+        "inglés": 43.1
+      }
+    },
+    {
+      "department": "Arauca",
+      "uniqueUsers": 8,
+      "evaluations": 10,
+      "validEvaluations": 9,
+      "averageScore": 238.1,
+      "maxScore": 346,
+      "minScore": 77,
+      "successRate": 33.3,
+      "subjectAverages": {
+        "matemáticas": 48.3,
+        "lectura crítica": 42.7,
+        "sociales y ciudadanas": 44.4,
+        "ciencias naturales": 47.4,
+        "inglés": 48
+      }
+    },
+    {
+      "department": "Chocó",
+      "uniqueUsers": 3,
+      "evaluations": 3,
+      "validEvaluations": 0,
+      "averageScore": 0,
+      "maxScore": 0,
+      "minScore": 0,
+      "successRate": 0,
+      "subjectAverages": {
+        "matemáticas": 63,
+        "lectura crítica": 63,
+        "sociales y ciudadanas": 76,
+        "ciencias naturales": 75,
+        "inglés": 0
+      }
+    },
+    {
+      "department": "Guaviare",
+      "uniqueUsers": 2,
+      "evaluations": 2,
+      "validEvaluations": 2,
+      "averageScore": 212.5,
+      "maxScore": 285,
+      "minScore": 140,
+      "successRate": 0,
+      "subjectAverages": {
+        "matemáticas": 50,
+        "lectura crítica": 60.5,
+        "sociales y ciudadanas": 28.5,
+        "ciencias naturales": 29.5,
+        "inglés": 47.5
+      }
+    },
+    {
+      "department": "Guainía",
+      "uniqueUsers": 1,
+      "evaluations": 1,
+      "validEvaluations": 0,
+      "averageScore": 0,
+      "maxScore": 0,
+      "minScore": 0,
+      "successRate": 0,
+      "subjectAverages": {
+        "matemáticas": 34,
+        "lectura crítica": 0,
+        "sociales y ciudadanas": 42,
+        "ciencias naturales": 22,
+        "inglés": 35
+      }
+    }
+  ]
+}

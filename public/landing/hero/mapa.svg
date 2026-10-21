@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#E4E4E7"/>
+  <path fill="#FDF8F3" d="M300 40c40 10 70 40 90 80 18 36 40 50 55 90 12 32 8 70-10 100-20 34-60 70-110 90-40 16-90 10-120-16-28-24-40-60-36-96 4-40-10-70-6-110 6-48 40-90 80-120 18-14 37-24 57-18z"/>
+  <g fill="#CC0000">
+    <circle cx="250" cy="150" r="7"/>
+    <circle cx="310" cy="180" r="7"/>
+    <circle cx="360" cy="210" r="7"/>
+    <circle cx="280" cy="230" r="7"/>
+    <circle cx="400" cy="160" r="7"/>
+    <circle cx="330" cy="280" r="7"/>
+    <circle cx="220" cy="200" r="7"/>
+    <circle cx="370" cy="250" r="7"/>
+  </g>
+</svg>

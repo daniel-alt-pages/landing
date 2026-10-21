@@ -1,0 +1,712 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+@keyframes bgPulse {
+  0% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.72;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes slideProgress {
+  0% {
+    width: 10%;
+    margin-left: 0;
+  }
+  50% {
+    width: 40%;
+    margin-left: 30%;
+  }
+  100% {
+    width: 10%;
+    margin-left: 90%;
+  }
+}
+
+@keyframes demoBorderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes demoShineSweep {
+  0% {
+    transform: translateX(-120%) skewX(-14deg);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateX(220%) skewX(-14deg);
+    opacity: 0;
+  }
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Brillos del logo: trayectorias distintas, ritmo lento y escalonado */
+@keyframes logoShineDriftA {
+  0%,
+  100% {
+    background-position: 185% 130%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.55;
+  }
+  48% {
+    background-position: -95% -35%;
+    opacity: 0.82;
+  }
+  72% {
+    opacity: 0;
+  }
+}
+
+@keyframes logoShineDriftB {
+  0%,
+  100% {
+    background-position: -130% 95%;
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.42;
+  }
+  52% {
+    background-position: 155% -55%;
+    opacity: 0.58;
+  }
+  78% {
+    opacity: 0;
+  }
+}
+
+@keyframes logoShineDriftC {
+  0%,
+  100% {
+    background-position: 105% -115%;
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.28;
+  }
+  58% {
+    background-position: -105% 120%;
+    opacity: 0.38;
+  }
+  82% {
+    opacity: 0;
+  }
+}
+
+@keyframes logoShineDriftD {
+  0%,
+  100% {
+    background-position: -80% -90%;
+    opacity: 0;
+  }
+  22% {
+    opacity: 0.32;
+  }
+  62% {
+    background-position: 120% 85%;
+    opacity: 0.48;
+  }
+  86% {
+    opacity: 0;
+  }
+}
+
+.login-page-bg {
+  position: relative;
+}
+
+.login-page-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 85% 85%, rgba(168, 85, 247, 0.08) 0%, transparent 40%);
+  animation: bgPulse 14s ease-in-out infinite alternate;
+  z-index: 0;
+  transform: translateZ(0);
+}
+
+.login-content-inner {
+  position: relative;
+  /* clip-x only: avoid paint-contain + overflow:hidden eating card text on narrow viewports */
+  overflow-x: clip;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100%;
+  background: rgba(8, 12, 22, 0.98);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+  isolation: isolate;
+}
+
+.login-content-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(139, 92, 246, 0.55),
+    rgba(255, 255, 255, 0.12),
+    rgba(6, 182, 212, 0.5),
+    rgba(168, 85, 247, 0.45)
+  );
+  background-size: 200% 200%;
+  animation: demoBorderFlow 7s ease infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  /* Must stay UNDER copy/buttons — z-index:3 was covering right-side text on mobile */
+  z-index: 0;
+}
+
+.login-content-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  animation: demoShineSweep 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-logo-wrap {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  width: 7rem;
+  height: 7rem;
+  background: none;
+  border: none;
+  box-shadow: none;
+  isolation: isolate;
+}
+
+.login-logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  animation: logoFloat 7.5s ease-in-out infinite;
+}
+
+.login-logo-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-mask-image: var(--login-logo-mask);
+  mask-image: var(--login-logo-mask);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+  will-change: background-position, opacity;
+}
+
+.login-logo-shine--a {
+  background: linear-gradient(
+    118deg,
+    transparent 0%,
+    transparent 36%,
+    rgba(239, 68, 68, 0.88) 50%,
+    rgba(248, 113, 113, 0.55) 56%,
+    transparent 68%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  animation: logoShineDriftA 10.5s ease-in-out infinite;
+}
+
+.login-logo-shine--b {
+  background: linear-gradient(
+    208deg,
+    transparent 0%,
+    transparent 38%,
+    rgba(220, 38, 38, 0.62) 51%,
+    rgba(252, 165, 165, 0.4) 58%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 340% 340%;
+  animation: logoShineDriftB 12.8s ease-in-out infinite;
+  animation-delay: -4.2s;
+}
+
+.login-logo-shine--c {
+  background: linear-gradient(
+    62deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.42) 50%,
+    rgba(254, 202, 202, 0.28) 56%,
+    transparent 66%,
+    transparent 100%
+  );
+  background-size: 260% 260%;
+  animation: logoShineDriftC 14.5s ease-in-out infinite;
+  animation-delay: -8.6s;
+}
+
+.login-logo-shine--d {
+  background: linear-gradient(
+    292deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(239, 68, 68, 0.5) 53%,
+    transparent 64%,
+    transparent 100%
+  );
+  background-size: 320% 320%;
+  animation: logoShineDriftD 11.2s ease-in-out infinite;
+  animation-delay: -2.8s;
+}
+
+.login-panel-card {
+  max-width: 100%;
+  min-width: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(var(--panel-accent), 0.55),
+    rgba(255, 255, 255, 0.08),
+    rgba(var(--panel-accent), 0.35)
+  );
+  background-size: 200% 200%;
+  animation: demoBorderFlow 6s ease infinite;
+}
+
+.login-form-heading {
+  text-align: left;
+}
+
+.login-panel-inner {
+  position: relative;
+  overflow: visible;
+  max-width: 100%;
+  background: linear-gradient(155deg, rgba(12, 16, 32, 0.9) 0%, rgba(8, 12, 24, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  isolation: isolate;
+}
+
+.login-panel-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  animation: demoShineSweep 5.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.login-panel-inner h3,
+.login-panel-inner p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.login-field-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
+}
+
+.login-field-input:focus {
+  outline: none;
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.12);
+}
+
+.login-birth-input {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.login-birth-field .login-birth-input:focus {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+}
+
+.login-demos-under-construction {
+  background: rgba(251, 191, 36, 0.06);
+  border: 1px dashed rgba(251, 191, 36, 0.32);
+}
+
+.login-birth-input.hasDatepicker {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.login-birth-select-wrap {
+  position: relative;
+}
+
+.login-birth-select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #64748b;
+  transform: translateY(-25%);
+  z-index: 2;
+}
+
+.login-birth-select-trigger {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 28px 0 14px;
+  border-radius: 9999px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  text-align: left;
+}
+
+.login-birth-select-trigger:hover {
+  border-color: #94a3b8;
+}
+
+.login-birth-select-trigger.is-open {
+  border-color: #64748b;
+  box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.25);
+}
+
+.login-birth-select-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 100002;
+  max-height: 200px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+}
+
+.login-birth-select-option {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.login-birth-select-option:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.login-birth-select-option.is-active {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.login-birth-select-option:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.login-birth-calendar-inner {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
+  padding: 12px 12px 14px;
+}
+
+.login-birth-calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+}
+
+.login-birth-nav {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.login-birth-nav:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.login-birth-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.login-birth-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 6px;
+}
+
+.login-birth-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 4px 0;
+}
+
+.login-birth-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.login-birth-day {
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.login-birth-day--empty {
+  pointer-events: none;
+}
+
+.login-birth-day:hover:not(:disabled):not(.login-birth-day--selected) {
+  background: #f1f5f9 !important;
+}
+
+.login-birth-day--selected {
+  background: #334155 !important;
+  color: #fff !important;
+}
+
+.login-birth-day:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.login-birth-calendar .login-birth-nav:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.login-birth-calendar .login-birth-day:hover:not(:disabled):not(.login-birth-day--selected) {
+  background: #f1f5f9 !important;
+}
+
+@media (max-width: 480px) {
+  .login-page-title {
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+  }
+
+  .login-logo-wrap {
+    width: 5.75rem;
+    height: 5.75rem;
+  }
+
+  .login-field-input {
+    font-size: 16px;
+  }
+
+  .login-lookup-btn {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-logo-wrap {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.login-page-root {
+  padding:
+    max(0.5rem, env(safe-area-inset-top))
+    max(0.5rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom))
+    max(0.5rem, env(safe-area-inset-left));
+}
+
+.login-page-stack {
+  gap: 0.75rem;
+}
+
+.login-page-title {
+  font-size: clamp(1.65rem, 5.5vw, 2.5rem);
+}
+
+.login-form-heading p {
+  overflow-wrap: anywhere;
+}
+
+.login-install-prompt {
+  max-width: 100%;
+}
+
+.login-particles-canvas {
+  z-index: 1;
+}
+
+/* Desktop rich: glass + animaciones completas */
+.login-page-tier-rich .login-content-inner {
+  background: rgba(8, 12, 22, 0.9);
+}
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .login-page-tier-rich .login-content-inner {
+    backdrop-filter: blur(22px) saturate(165%);
+    -webkit-backdrop-filter: blur(22px) saturate(165%);
+  }
+}
+
+.login-page-tier-rich .login-page-bg::before {
+  animation: bgPulseRich 16s ease-in-out infinite alternate;
+}
+
+@keyframes bgPulseRich {
+  0% {
+    opacity: 0.42;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.78;
+    transform: scale(1.08);
+  }
+}
+
+/* Móvil / reduced-motion: estático, sin shines */
+.login-page-tier-off .login-page-bg::before {
+  animation: none !important;
+  opacity: 0.58;
+}
+
+.login-page-tier-off .login-content-shine,
+.login-page-tier-off .login-panel-shine {
+  display: none;
+}
+
+/* Logo float + shine baratos: se mantienen aunque el tier apague partículas. */
+.login-page-tier-off .login-content-inner::before,
+.login-page-tier-off .login-panel-card {
+  animation: none !important;
+}
+
+.login-page-tier-off .login-content-inner::before {
+  opacity: 0.85;
+}
+
+/* Tablet/desktop medio: bordes + logo, sin shine sweep (más barato) */
+.login-page-tier-standard .login-content-shine,
+.login-page-tier-standard .login-panel-shine {
+  display: none;
+}
+
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  .login-content-inner {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-content-inner::before,
+  .login-content-shine,
+  .login-panel-card,
+  .login-panel-shine,
+  .login-logo-shine,
+  .login-logo-img,
+  .login-page-bg::before {
+    animation: none !important;
+  }
+}

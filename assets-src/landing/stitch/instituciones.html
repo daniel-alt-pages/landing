@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SEAMOSGENIOS Instituciones | Alianza Estratégica Saber 11</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Montserrat strictly -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#dce1ff",
+            "primary-fixed-dim": "#ffb4a8",
+            "tertiary-container": "#0052f9",
+            "secondary-fixed": "#e5e2e1",
+            "on-surface-variant": "#5e3f3a",
+            "on-tertiary-fixed-variant": "#0039b4",
+            "primary": "#9e0000",
+            "secondary-fixed-dim": "#c8c6c5",
+            "surface-gray": "#F4F4F5",
+            "on-primary-container": "#ffdad4",
+            "outline": "#926e69",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#930000",
+            "inverse-surface": "#32302d",
+            "background": "#fef8f3",
+            "surface-white": "#FFFFFF",
+            "surface-container": "#f2ede8",
+            "on-secondary-container": "#636262",
+            "error-container": "#ffdad6",
+            "on-background": "#1d1b19",
+            "secondary-container": "#e2dfde",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#fef8f3",
+            "on-surface": "#1d1b19",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "inverse-on-surface": "#f5f0eb",
+            "on-tertiary-container": "#dce1ff",
+            "inverse-primary": "#ffb4a8",
+            "surface-dim": "#ded9d4",
+            "outline-variant": "#e8bdb6",
+            "on-secondary-fixed-variant": "#474746",
+            "surface-container-highest": "#e6e2dd",
+            "charcoal": "#1A1A1A",
+            "surface-container-high": "#ece7e2",
+            "secondary": "#5f5e5e",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-container-low": "#f8f3ee",
+            "primary-container": "#cc0000",
+            "on-primary-fixed": "#410000",
+            "primary-fixed": "#ffdad4",
+            "on-primary": "#ffffff",
+            "tertiary": "#003ec2",
+            "paper": "#FDF8F3",
+            "surface-variant": "#e6e2dd",
+            "surface-tint": "#c00000",
+            "text-secondary": "#334155",
+            "on-tertiary-fixed": "#001551",
+            "on-secondary-fixed": "#1c1b1b",
+            "ink": "#0F172A",
+            "black": "#0A0A0A",
+            "on-error": "#ffffff",
+            "surface-bright": "#fef8f3",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.25rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "4rem",
+            "space-sm": "1rem",
+            "margin": "2rem",
+            "gutter": "2rem",
+            "space-lg": "2.5rem",
+            "space-xs": "0.5rem",
+            "space-md": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Montserrat", "sans-serif"],
+            "headline-md": ["Montserrat", "sans-serif"],
+            "body-md": ["Montserrat", "sans-serif"],
+            "label-md": ["Montserrat", "sans-serif"],
+            "headline-sm": ["Montserrat", "sans-serif"],
+            "body-lg": ["Montserrat", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-lg": ["3rem", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "headline-md": ["2.25rem", { "lineHeight": "1.25", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.4", "fontWeight": "500" }],
+            "headline-sm": ["1.5rem", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.6", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FDF8F3;
+      color: #0F172A;
+      margin: 0;
+      padding: 0;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-paper text-ink antialiased selection:bg-primary selection:text-white">
+<!-- 1. TopNavBar (Shared Component from JSON) -->
+<header class="docked full-width top-0 sticky z-50 bg-surface-white border-b border-outline-variant transition-colors duration-200">
+<div class="w-full max-w-7xl mx-auto px-gutter flex items-center justify-between h-20">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-ink flex items-center justify-center text-surface-white font-headline-sm text-headline-sm font-bold shadow-sm">
+          S
+        </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">SEAMOSGENIOS</span>
+<span class="font-label-md text-[10px] tracking-wider text-text-secondary -mt-1 font-semibold">INSTITUCIONES</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden lg:flex items-center space-x-6">
+<a class="font-label-md text-label-md text-ink font-semibold border-b-2 border-primary-container pb-1 transition-colors duration-200" href="#modelo-pedagogico">Modelo Pedagógico</a>
+<a class="font-label-md text-label-md text-text-secondary font-medium pb-1 hover:text-primary transition-colors duration-200" href="#metodologia">Metodología Saber 11</a>
+<a class="font-label-md text-label-md text-text-secondary font-medium pb-1 hover:text-primary transition-colors duration-200" href="#metricas">Resultados y Métricas</a>
+<a class="font-label-md text-label-md text-text-secondary font-medium pb-1 hover:text-primary transition-colors duration-200" href="#beneficios">Beneficios Directivos</a>
+<a class="font-label-md text-label-md text-text-secondary font-medium pb-1 hover:text-primary transition-colors duration-200" href="#faq">Preguntas Frecuentes</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center space-x-4">
+<a class="hidden sm:inline-flex items-center font-label-md text-label-md text-ink font-medium px-4 py-2 hover:text-primary transition-colors duration-200" href="#login">
+          Acceso Colegios
+        </a>
+<a class="inline-flex items-center justify-center font-label-md text-label-md font-semibold px-6 py-3 rounded-full bg-primary-container text-on-primary shadow-sm hover:opacity-95 active:scale-95 transition-all duration-150" href="#contacto">
+          Agendar Consulta
+        </a>
+</div>
+</div>
+</header>
+<main>
+<!-- 2. Split Hero Section -->
+<section class="w-full bg-paper py-16 lg:py-24 overflow-hidden border-b border-secondary-fixed">
+<div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Column: Copy & Actions -->
+<div class="lg:col-span-7 flex flex-col justify-center space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-secondary-fixed w-fit">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-md text-[11px] font-semibold text-text-secondary tracking-wide">PROGRAMA OFICIAL DE ALIADOS DIRECTIVOS 2025</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-ink font-bold tracking-tight">
+            Eleve el promedio Saber 11 de su colegio con un sistema pedagógico probado
+          </h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">
+            Implementamos un modelo integral de diagnóstico analítico, entrenamiento por competencias y acompañamiento continuo que potencia la labor de su cuerpo docente sin sobrecargar sus jornadas de gestión.
+          </p>
+<!-- 3 Distinct CTAs -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+<!-- Solid Red Button -->
+<a class="inline-flex items-center justify-center font-label-md text-label-md font-semibold px-7 py-4 rounded-full bg-primary-container text-on-primary shadow-md hover:bg-primary active:scale-95 transition-all text-center" href="#contacto">
+              Agendar diagnóstico institucional
+            </a>
+<!-- Ghost Button -->
+<a class="inline-flex items-center justify-center font-label-md text-label-md font-semibold px-6 py-4 rounded-full border-2 border-ink text-ink bg-transparent hover:bg-surface-white active:scale-95 transition-all text-center" href="#metodologia">
+              Conocer modelo pedagógico
+            </a>
+</div>
+<!-- Text Link with arrow -->
+<div class="pt-1">
+<a class="inline-flex items-center gap-2 font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors" href="#dossier">
+<span>Descargar dossier para directivos</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Trust Badges Line -->
+<div class="pt-6 border-t border-secondary-fixed grid grid-cols-3 gap-6 text-left">
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-ink">+140</div>
+<div class="font-label-md text-[12px] text-text-secondary">Colegios acompañados</div>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-ink">+48 pts</div>
+<div class="font-label-md text-[12px] text-text-secondary">Incremento promedio</div>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm font-bold text-ink">98%</div>
+<div class="font-label-md text-[12px] text-text-secondary">Satisfacción de rectores</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Hero Image Asset -->
+<div class="lg:col-span-5 relative">
+<div class="relative mx-auto max-w-lg lg:max-w-none">
+<!-- Main Photo from user context -->
+<div class="rounded-2xl overflow-hidden border border-secondary-fixed shadow-xl bg-surface-white aspect-[4/3] relative">
+<img alt="Estudiantes en aula institucional colaborando con laptops y cuadernos durante simulacro Saber 11" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XP9R2vY16HzeSupSjNhdFS7AspaOzFyi7945akAXytjM2FCRICqVTfIeprOyvqkeGNZcwNNGTLgMKpzuNjuKAwsc95-fZI7ISrtJEafNA4pWPLpHcB7hQ6NWYO0mpqVt_IVQKVffWNKq-x-zw0MHit13bRnEUH557h0a7-WPRtRjwpCww38M1PFzJjRLxibAhl6pIMz-csdskB3hBM8HiT4tku0Cguh3url6tvQZMPrr6w0nTw5Ut8NiA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<!-- Floating Metric Card -->
+<div class="absolute -bottom-6 -left-6 bg-surface-white p-5 rounded-2xl border border-secondary-fixed shadow-2xl max-w-xs flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center font-label-md text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary">
+                  Certificación Icfes
+                </span>
+<span class="material-symbols-outlined text-ink">verified</span>
+</div>
+<p class="font-headline-sm text-headline-sm font-bold text-ink leading-tight">
+                Top 5% Nacional
+              </p>
+<p class="font-body-md text-xs text-text-secondary leading-snug">
+                Instituciones asociadas alcanzan la clasificación Muy Superior (A+) en los últimos 3 periodos consecutivos.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Vertical 5-Step Path with continuous line -->
+<section class="w-full bg-surface-white py-20 border-b border-secondary-fixed" id="metodologia">
+<div class="max-w-5xl mx-auto px-gutter">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-paper border border-secondary-fixed mb-3">
+<span class="font-label-md text-xs font-semibold text-text-secondary">ESTRUCTURA METODOLÓGICA</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-ink">
+            Ruta institucional hacia la excelencia académica
+          </h2>
+<p class="font-body-md text-body-md text-text-secondary mt-3">
+            Un ciclo estructurado en 5 etapas estratégicas concebidas para transformar debilidades en fortalezas medibles.
+          </p>
+</div>
+<!-- Vertical Timeline List -->
+<div class="relative">
+<!-- Continuous Vertical Line -->
+<div class="absolute left-6 md:left-8 top-6 bottom-6 w-0.5 bg-secondary-container -ml-px"></div>
+<div class="space-y-12">
+<!-- Step 1 -->
+<div class="relative flex items-start gap-6 md:gap-8 group">
+<div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-paper border-2 border-ink flex items-center justify-center text-ink font-bold font-headline-sm text-headline-sm shrink-0 z-10 shadow-sm group-hover:bg-ink group-hover:text-surface-white transition-colors">
+                01
+              </div>
+<div class="flex-1 bg-paper p-6 md:p-8 rounded-2xl border border-secondary-fixed transition-all hover:border-ink">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink">Diagnóstico Integral</h3>
+<span class="px-3 py-0.5 rounded-full bg-primary-container text-on-primary font-label-md text-xs font-semibold">Fase 1: Mapeo</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary">
+                  Evaluación inicial exhaustiva de brechas por competencias y áreas evaluadas por el Icfes, entregando a directivos una radiografía fidedigna del estado de partida del grado undécimo.
+                </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-start gap-6 md:gap-8 group">
+<div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-paper border-2 border-ink flex items-center justify-center text-ink font-bold font-headline-sm text-headline-sm shrink-0 z-10 shadow-sm group-hover:bg-ink group-hover:text-surface-white transition-colors">
+                02
+              </div>
+<div class="flex-1 bg-paper p-6 md:p-8 rounded-2xl border border-secondary-fixed transition-all hover:border-ink">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink">Formación Docente y Modular</h3>
+<span class="px-3 py-0.5 rounded-full bg-primary-container text-on-primary font-label-md text-xs font-semibold">Fase 2: Fortalecimiento</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary">
+                  Entrenamiento docente focalizado y módulos pedagógicos por estándares ministeriales para sincronizar el plan curricular del colegio con el diseño de preguntas por evidencia.
+                </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-start gap-6 md:gap-8 group">
+<div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-paper border-2 border-ink flex items-center justify-center text-ink font-bold font-headline-sm text-headline-sm shrink-0 z-10 shadow-sm group-hover:bg-ink group-hover:text-surface-white transition-colors">
+                03
+              </div>
+<div class="flex-1 bg-paper p-6 md:p-8 rounded-2xl border border-secondary-fixed transition-all hover:border-ink">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink">Simulación Controlada</h3>
+<span class="px-3 py-0.5 rounded-full bg-primary-container text-on-primary font-label-md text-xs font-semibold">Fase 3: Entrenamiento</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary">
+                  Pruebas diagnósticas periódicas ejecutadas bajo condiciones idénticas a la prueba de estado oficial, calibrando manejo del tiempo, control de ansiedad y rigor técnico de respuesta.
+                </p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex items-start gap-6 md:gap-8 group">
+<div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-paper border-2 border-ink flex items-center justify-center text-ink font-bold font-headline-sm text-headline-sm shrink-0 z-10 shadow-sm group-hover:bg-ink group-hover:text-surface-white transition-colors">
+                04
+              </div>
+<div class="flex-1 bg-paper p-6 md:p-8 rounded-2xl border border-secondary-fixed transition-all hover:border-ink">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink">Medición y Analítica</h3>
+<span class="px-3 py-0.5 rounded-full bg-primary-container text-on-primary font-label-md text-xs font-semibold">Fase 4: Supervisión</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary">
+                  Tableros analíticos en tiempo real por estudiante, grupo y sede, permitiendo identificar patrones de error conceptuales con niveles de agregación para comités de evaluación.
+                </p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative flex items-start gap-6 md:gap-8 group">
+<div class="w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-paper border-2 border-ink flex items-center justify-center text-ink font-bold font-headline-sm text-headline-sm shrink-0 z-10 shadow-sm group-hover:bg-ink group-hover:text-surface-white transition-colors">
+                05
+              </div>
+<div class="flex-1 bg-paper p-6 md:p-8 rounded-2xl border border-secondary-fixed transition-all hover:border-ink">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-ink">Mejora Continua y Nivelación</h3>
+<span class="px-3 py-0.5 rounded-full bg-primary-container text-on-primary font-label-md text-xs font-semibold">Fase 5: Consolidación</span>
+</div>
+<p class="font-body-md text-body-md text-text-secondary">
+                  Planes de ajuste pedagógico y nivelación personalizada antes de la presentación oficial, cerrando desviaciones detectadas de forma quirúrgica en las últimas semanas clave.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. "Cómo Funciona" Bento / Grid: 2 rows of 3 identical height cards -->
+<section class="w-full bg-paper py-20 border-b border-secondary-fixed" id="modelo-pedagogico">
+<div class="max-w-7xl mx-auto px-gutter">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+<div>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-surface-white border border-secondary-fixed mb-3">
+<span class="font-label-md text-xs font-semibold text-text-secondary">SISTEMA INTEGRADO</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-ink">
+              Cómo funciona el programa para su institución
+            </h2>
+</div>
+<p class="font-body-md text-body-md text-text-secondary max-w-md">
+            Un despliegue operativo diseñado para una adopción sin fricciones con el calendario escolar de su colegio.
+          </p>
+</div>
+<!-- 2x3 Grid with uniform 16px corner radius, identical heights -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 01 -->
+<div class="bg-surface-white p-8 rounded-2xl border border-secondary-fixed flex flex-col justify-between h-[300px] shadow-sm hover:border-ink transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">school</span>
+</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed-dim">01</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-ink mb-2">Cruce Curricular Directo</h3>
+<p class="font-body-md text-sm text-text-secondary">
+                Alineamos los Estándares Básicos de Competencias con la planeación anual docente del colegio.
+                Garantizamos pertinencia temática sin alterar el currículo institucional establecido previamente.
+              </p>
+</div>
+<div>
+<a class="font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors flex items-center gap-1" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="bg-surface-white p-8 rounded-2xl border border-secondary-fixed flex flex-col justify-between h-[300px] shadow-sm hover:border-ink transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">devices</span>
+</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed-dim">02</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-ink mb-2">Plataforma Cloud Autónoma</h3>
+<p class="font-body-md text-sm text-text-secondary">
+                Acceso 24/7 para estudiantes y docentes con retroalimentación instantánea paso a paso.
+                Permite la práctica asincrónica sin requerir instalación técnica en los servidores del colegio.
+              </p>
+</div>
+<div>
+<a class="font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors flex items-center gap-1" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 03 -->
+<div class="bg-surface-white p-8 rounded-2xl border border-secondary-fixed flex flex-col justify-between h-[300px] shadow-sm hover:border-ink transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">assignment</span>
+</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed-dim">03</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-ink mb-2">Cuadernillos Impresos y Digitales</h3>
+<p class="font-body-md text-sm text-text-secondary">
+                Material físico con tipografía y hojas de respuesta bajo el formato estricto del Icfes.
+                Familiariza a los jóvenes con la manipulación física y el llenado óptico de respuestas.
+              </p>
+</div>
+<div>
+<a class="font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors flex items-center gap-1" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 04 -->
+<div class="bg-surface-white p-8 rounded-2xl border border-secondary-fixed flex flex-col justify-between h-[300px] shadow-sm hover:border-ink transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">groups</span>
+</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed-dim">04</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-ink mb-2">Talleres de Nivelación Directa</h3>
+<p class="font-body-md text-sm text-text-secondary">
+                Sesiones guiadas por formadores especializados en resolución analítica de problemas.
+                Abordan los componentes con mayor índice de dificultad detectados en las simulaciones.
+              </p>
+</div>
+<div>
+<a class="font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors flex items-center gap-1" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 05 -->
+<div class="bg-surface-white p-8 rounded-2xl border border-secondary-fixed flex flex-col justify-between h-[300px] shadow-sm hover:border-ink transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed-dim">05</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-ink mb-2">Informe Gerencial Ejecutivo</h3>
+<p class="font-body-md text-sm text-text-secondary">
+                Dossier técnico para rectoría con proyecciones y correlaciones estadísticas avanzadas.
+                Suministra información determinante para rendición de cuentas ante consejos directivos.
+              </p>
+</div>
+<div>
+<a class="font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors flex items-center gap-1" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 06 -->
+<div class="bg-surface-white p-8 rounded-2xl border border-secondary-fixed flex flex-col justify-between h-[300px] shadow-sm hover:border-ink transition-colors">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="w-12 h-12 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">psychology</span>
+</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary-fixed-dim">06</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-ink mb-2">Manejo Emocional y Vocacional</h3>
+<p class="font-body-md text-sm text-text-secondary">
+                Acompañamiento psicológico para mitigar la presión del examen de estado oficial.
+                Orienta a cada estudiante hacia su proyecto universitario a través de sus fortalezas cognitivas.
+              </p>
+</div>
+<div>
+<a class="font-label-md text-label-md font-semibold text-ink underline hover:text-primary transition-colors flex items-center gap-1" href="#contacto">
+<span>Ver detalles</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Banda Corta en Fondo Charcoal (#1A1A1A) -->
+<!-- Mandatory rule: On dark backgrounds (#1A1A1A, #0A0A0A), ALL text and icons are pure white (#FFFFFF). Solid red (#CC0000) only as button fill with white text. -->
+<section class="w-full bg-charcoal text-surface-white py-14">
+<div class="max-w-7xl mx-auto px-gutter flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+<div class="max-w-2xl">
+<div class="flex items-center justify-center md:justify-start gap-2 mb-2 text-surface-white">
+<span class="material-symbols-outlined text-surface-white text-lg">verified_user</span>
+<span class="font-label-md text-xs font-semibold text-surface-white uppercase tracking-wider">Sin compromiso inicial</span>
+</div>
+<h2 class="font-headline-sm md:font-headline-md text-headline-sm md:text-headline-md font-bold text-surface-white leading-tight">
+            ¿Desea evaluar el nivel actual de su institución con una prueba piloto?
+          </h2>
+<p class="font-body-md text-surface-white/80 mt-2 text-sm md:text-base">
+            Agende una reunión ejecutiva con nuestra dirección pedagógica para estructurar un simulacro muestral sin costo.
+          </p>
+</div>
+<div>
+<a class="inline-flex items-center gap-3 font-label-md text-label-md font-semibold px-8 py-4 rounded-full bg-primary-container text-on-primary shadow-lg hover:opacity-95 active:scale-95 transition-all whitespace-nowrap" href="https://wa.me/573000000000" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-surface-white text-xl">chat</span>
+<span>Contactar asesor por WhatsApp</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 6. Sección de Beneficios Directivos (Split) -->
+<section class="w-full bg-surface-white py-20 border-b border-secondary-fixed" id="beneficios">
+<div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left: Laptop Mockup with Saber 11 Bar Chart in solid red #CC0000 -->
+<div class="lg:col-span-6 bg-paper p-6 md:p-8 rounded-3xl border border-secondary-fixed shadow-md">
+<!-- Mockup Header -->
+<div class="flex items-center justify-between border-b border-secondary-fixed pb-4 mb-6">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+<span class="ml-2 font-label-md text-xs font-bold text-ink">Panel de Control Rectoría | Cohorte 2025</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-white border border-secondary-fixed font-label-md text-[10px] text-text-secondary font-semibold">
+              Actualizado hoy
+            </span>
+</div>
+<!-- KPI row -->
+<div class="grid grid-cols-3 gap-3 mb-6">
+<div class="bg-surface-white p-3 rounded-xl border border-secondary-fixed">
+<div class="text-[11px] font-medium text-text-secondary">Puntaje Global Estimado</div>
+<div class="font-headline-sm text-xl font-bold text-ink mt-0.5">342 / 500</div>
+</div>
+<div class="bg-surface-white p-3 rounded-xl border border-secondary-fixed">
+<div class="text-[11px] font-medium text-text-secondary">Tasa de Desviación</div>
+<div class="font-headline-sm text-xl font-bold text-ink mt-0.5">-3.2%</div>
+</div>
+<div class="bg-surface-white p-3 rounded-xl border border-secondary-fixed">
+<div class="text-[11px] font-medium text-text-secondary">Estudiantes Activos</div>
+<div class="font-headline-sm text-xl font-bold text-ink mt-0.5">128</div>
+</div>
+</div>
+<!-- Bar Chart showing Saber 11 components with SOLID RED bars #CC0000 -->
+<div class="bg-surface-white p-6 rounded-2xl border border-secondary-fixed">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-label-md text-xs font-bold text-ink uppercase tracking-wider">
+                Desempeño Promedio por Competencia Icfes
+              </h4>
+<span class="text-[10px] font-semibold text-text-secondary">Meta: 70+ pts</span>
+</div>
+<!-- Chart Bars -->
+<div class="space-y-4">
+<!-- 1. Lectura Crítica -->
+<div>
+<div class="flex justify-between text-xs font-semibold text-ink mb-1">
+<span>Lectura Crítica</span>
+<span>72 pts</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3">
+<div class="bg-primary-container h-3 rounded-full" style="width: 72%"></div>
+</div>
+</div>
+<!-- 2. Matemáticas -->
+<div>
+<div class="flex justify-between text-xs font-semibold text-ink mb-1">
+<span>Matemáticas</span>
+<span>76 pts</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3">
+<div class="bg-primary-container h-3 rounded-full" style="width: 76%"></div>
+</div>
+</div>
+<!-- 3. Sociales y Ciudadanas -->
+<div>
+<div class="flex justify-between text-xs font-semibold text-ink mb-1">
+<span>Sociales y Ciudadanas</span>
+<span>68 pts</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3">
+<div class="bg-primary-container h-3 rounded-full" style="width: 68%"></div>
+</div>
+</div>
+<!-- 4. Ciencias Naturales -->
+<div>
+<div class="flex justify-between text-xs font-semibold text-ink mb-1">
+<span>Ciencias Naturales</span>
+<span>74 pts</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3">
+<div class="bg-primary-container h-3 rounded-full" style="width: 74%"></div>
+</div>
+</div>
+<!-- 5. Inglés -->
+<div>
+<div class="flex justify-between text-xs font-semibold text-ink mb-1">
+<span>Inglés</span>
+<span>81 pts</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-3">
+<div class="bg-primary-container h-3 rounded-full" style="width: 81%"></div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-secondary-fixed flex items-center justify-between text-[11px] text-text-secondary">
+<span>Muestra estandarizada: 3 simulacros aplicados</span>
+<span class="font-bold text-ink">Percentil institucional: 94</span>
+</div>
+</div>
+</div>
+<!-- Right: 4 Directorial Benefits with exact 2-line descriptions -->
+<div class="lg:col-span-6 flex flex-col justify-center space-y-8">
+<div>
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-paper border border-secondary-fixed mb-3">
+<span class="font-label-md text-xs font-semibold text-text-secondary">VALOR INSTITUCIONAL</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-ink">
+              Beneficios directos para la gestión del equipo directivo
+            </h2>
+</div>
+<div class="space-y-6">
+<!-- Benefit 1 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-paper border border-secondary-fixed flex items-center justify-center text-ink shrink-0 mt-1">
+<span class="material-symbols-outlined text-xl">query_stats</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-base font-bold text-ink mb-1">
+                  1. Visibilidad en tiempo real del progreso académico
+                </h3>
+<p class="font-body-md text-sm text-text-secondary">
+                  Monitoree el avance integral por cohortes y docentes sin esperar los reportes anuales del Icfes.
+                  Tome decisiones pedagógicas oportunas con base en indicadores de correlación estadística fiables.
+                </p>
+</div>
+</div>
+<!-- Benefit 2 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-paper border border-secondary-fixed flex items-center justify-center text-ink shrink-0 mt-1">
+<span class="material-symbols-outlined text-xl">schedule</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-base font-bold text-ink mb-1">
+                  2. Optimización del tiempo del cuerpo docente
+                </h3>
+<p class="font-body-md text-sm text-text-secondary">
+                  Eliminamos la carga operativa del diseño, diagramación y calificación manual de simulacros internos.
+                  Sus profesores concentran su tiempo en retroalimentar debilidades conceptuales específicas en clase.
+                </p>
+</div>
+</div>
+<!-- Benefit 3 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-paper border border-secondary-fixed flex items-center justify-center text-ink shrink-0 mt-1">
+<span class="material-symbols-outlined text-xl">batch_prediction</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-base font-bold text-ink mb-1">
+                  3. Simulacros calificados con analítica predictiva Icfes
+                </h3>
+<p class="font-body-md text-sm text-text-secondary">
+                  Utilizamos la metodología psicométrica del modelo de Teoría de Respuesta al Ítem (TRI).
+                  Cada puntaje proyecta con alta precisión los resultados que obtendrán sus alumnos en la prueba real.
+                </p>
+</div>
+</div>
+<!-- Benefit 4 -->
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-paper border border-secondary-fixed flex items-center justify-center text-ink shrink-0 mt-1">
+<span class="material-symbols-outlined text-xl">handshake</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-base font-bold text-ink mb-1">
+                  4. Acompañamiento personalizado en comités de evaluación
+                </h3>
+<p class="font-body-md text-sm text-text-secondary">
+                  Un consultor pedagógico senior asiste periódicamente a sus sesiones institucionales de seguimiento.
+                  Presentamos análisis comparativos frente a los mejores colegios de su región y categoría.
+                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Preguntas Frecuentes (FAQ) en 2 Columnas -->
+<section class="w-full bg-paper py-20 border-b border-secondary-fixed" id="faq">
+<div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Sticky Title + Contact Block -->
+<div class="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-surface-white border border-secondary-fixed">
+<span class="font-label-md text-xs font-semibold text-text-secondary">RESOLUCIÓN DE DUDAS</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-ink leading-tight">
+            Preguntas frecuentes para directivos
+          </h2>
+<p class="font-body-md text-body-md text-text-secondary">
+            Comprendemos la responsabilidad que implica elegir un aliado académico. Aquí resolvemos las inquietudes operativas más usuales formuladas por rectores y directores de área.
+          </p>
+<div class="p-6 bg-surface-white rounded-2xl border border-secondary-fixed space-y-4">
+<div class="flex items-center gap-3">
+<span class="w-10 h-10 rounded-xl bg-paper flex items-center justify-center text-ink border border-secondary-fixed">
+<span class="material-symbols-outlined">headset_mic</span>
+</span>
+<div>
+<div class="font-headline-sm text-sm font-bold text-ink">¿Tiene una inquietud particular?</div>
+<div class="text-xs text-text-secondary">Nuestro equipo directivo le atiende directamente</div>
+</div>
+</div>
+<a class="w-full inline-flex items-center justify-center font-label-md text-label-md font-semibold px-6 py-3 rounded-full bg-primary-container text-on-primary shadow-sm hover:opacity-95 transition-all text-center" href="#contacto">
+              Solicitar llamada con un asesor
+            </a>
+</div>
+</div>
+<!-- Right Column: Accordion with 5 Clear Answers -->
+<div class="lg:col-span-7 space-y-4">
+<!-- Accordion Item 1 -->
+<details class="group bg-surface-white rounded-2xl border border-secondary-fixed transition-all" open="">
+<summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+<h3 class="font-headline-sm text-base font-bold text-ink pr-4">
+                ¿Cómo se adapta el programa a los calendarios escolares A y B?
+              </h3>
+<span class="material-symbols-outlined text-ink group-open:rotate-180 transition-transform duration-200 shrink-0">
+                keyboard_arrow_down
+              </span>
+</summary>
+<div class="px-6 pb-6 pt-0 font-body-md text-sm text-text-secondary border-t border-secondary-fixed/50 mt-1">
+              Contamos con dos rutas de cronograma diferenciadas. Para Calendario A, iniciamos diagnóstico en febrero con simulacros progresivos hasta agosto. Para Calendario B, estructuramos el ciclo desde octubre finalizando en marzo. Cada cronograma se ensambla sin interferir con las semanas de exámenes de periodo institucional.
+            </div>
+</details>
+<!-- Accordion Item 2 -->
+<details class="group bg-surface-white rounded-2xl border border-secondary-fixed transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+<h3 class="font-headline-sm text-base font-bold text-ink pr-4">
+                ¿Cuánto tiempo requiere la implementación técnica inicial en el colegio?
+              </h3>
+<span class="material-symbols-outlined text-ink group-open:rotate-180 transition-transform duration-200 shrink-0">
+                keyboard_arrow_down
+              </span>
+</summary>
+<div class="px-6 pb-6 pt-0 font-body-md text-sm text-text-secondary border-t border-secondary-fixed/50 mt-1">
+              La habilitación se completa en menos de 72 horas. Nuestro equipo de soporte realiza el enrolamiento masivo de nóminas de estudiantes y docentes mediante una plantilla estandarizada de datos. No requerimos instalación de software local ni configuraciones complejas en la red del plantel.
+            </div>
+</details>
+<!-- Accordion Item 3 -->
+<details class="group bg-surface-white rounded-2xl border border-secondary-fixed transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+<h3 class="font-headline-sm text-base font-bold text-ink pr-4">
+                ¿Qué tratamiento reciben los datos de los estudiantes y el colegio?
+              </h3>
+<span class="material-symbols-outlined text-ink group-open:rotate-180 transition-transform duration-200 shrink-0">
+                keyboard_arrow_down
+              </span>
+</summary>
+<div class="px-6 pb-6 pt-0 font-body-md text-sm text-text-secondary border-t border-secondary-fixed/50 mt-1">
+              Cumplimos estrictamente la Ley Estatutaria 1581 de Protección de Datos Personales en Colombia y normativas de Habeas Data para menores de edad. La información de calificaciones y desempeño pertenece exclusivamente a la institución y nunca es compartida con terceros ni utilizada para fines comerciales externos.
+            </div>
+</details>
+<!-- Accordion Item 4 -->
+<details class="group bg-surface-white rounded-2xl border border-secondary-fixed transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+<h3 class="font-headline-sm text-base font-bold text-ink pr-4">
+                ¿Los simulacros son físicos en papel o exclusivamente digitales?
+              </h3>
+<span class="material-symbols-outlined text-ink group-open:rotate-180 transition-transform duration-200 shrink-0">
+                keyboard_arrow_down
+              </span>
+</summary>
+<div class="px-6 pb-6 pt-0 font-body-md text-sm text-text-secondary border-t border-secondary-fixed/50 mt-1">
+              Recomendamos y proveemos el formato híbrido. Enviamos cuadernillos impresos sellados y hojas de lectura óptica idénticas al examen de estado para simular con exactitud la experiencia presencial, complementando la práctica cotidiana con módulos digitales interactivos accesibles desde cualquier dispositivo.
+            </div>
+</details>
+<!-- Accordion Item 5 -->
+<details class="group bg-surface-white rounded-2xl border border-secondary-fixed transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer select-none">
+<h3 class="font-headline-sm text-base font-bold text-ink pr-4">
+                ¿Cómo participan los docentes de planta en el proceso?
+              </h3>
+<span class="material-symbols-outlined text-ink group-open:rotate-180 transition-transform duration-200 shrink-0">
+                keyboard_arrow_down
+              </span>
+</summary>
+<div class="px-6 pb-6 pt-0 font-body-md text-sm text-text-secondary border-t border-secondary-fixed/50 mt-1">
+              Los docentes de cada área son los protagonistas del programa. Reciben sesiones de inducción y acceso a bancos de reactivos explicados para articularlos en sus evaluaciones regulares. Les proporcionamos informes analíticos de su grupo para orientar sus planes de refuerzo sin sobrecargarlos con correcciones manuales.
+            </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Institutional Contact Form Section Anchor -->
+<section class="w-full bg-surface-white py-20" id="contacto">
+<div class="max-w-4xl mx-auto px-gutter text-center">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-paper border border-secondary-fixed mb-3">
+<span class="font-label-md text-xs font-semibold text-text-secondary">ALIANZA EDUCATIVA</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-ink">
+          Coordine una sesión diagnóstica institucional
+        </h2>
+<p class="font-body-md text-body-md text-text-secondary max-w-xl mx-auto mt-2">
+          Permítanos presentarle la matriz de proyección específica para su colegio. Complete los datos de su institución educativa.
+        </p>
+<form class="mt-10 text-left grid grid-cols-1 md:grid-cols-2 gap-6 bg-paper p-8 md:p-10 rounded-3xl border border-secondary-fixed shadow-sm">
+<div>
+<label class="block font-label-md text-xs font-semibold text-ink mb-2">Nombre completo del directivo *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-secondary-fixed bg-surface-white text-ink font-body-md text-sm focus:border-ink focus:ring-0 outline-none" placeholder="Ej. Dr. Carlos Mendoza" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-xs font-semibold text-ink mb-2">Cargo directivo *</label>
+<select class="w-full px-4 py-3 rounded-xl border border-secondary-fixed bg-surface-white text-ink font-body-md text-sm focus:border-ink focus:ring-0 outline-none">
+<option>Rector / Rectora</option>
+<option>Coordinador(a) Académico(a)</option>
+<option>Director(a) de Área</option>
+<option>Miembro de Consejo Directivo</option>
+</select>
+</div>
+<div>
+<label class="block font-label-md text-xs font-semibold text-ink mb-2">Nombre de la Institución Educativa *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-secondary-fixed bg-surface-white text-ink font-body-md text-sm focus:border-ink focus:ring-0 outline-none" placeholder="Colegio..." required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-xs font-semibold text-ink mb-2">Ciudad y Departamento *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-secondary-fixed bg-surface-white text-ink font-body-md text-sm focus:border-ink focus:ring-0 outline-none" placeholder="Ej. Bucaramanga, Santander" required="" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-xs font-semibold text-ink mb-2">Correo institucional *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-secondary-fixed bg-surface-white text-ink font-body-md text-sm focus:border-ink focus:ring-0 outline-none" placeholder="rectoria@colegio.edu.co" required="" type="email"/>
+</div>
+<div>
+<label class="block font-label-md text-xs font-semibold text-ink mb-2">Número de teléfono celular *</label>
+<input class="w-full px-4 py-3 rounded-xl border border-secondary-fixed bg-surface-white text-ink font-body-md text-sm focus:border-ink focus:ring-0 outline-none" placeholder="300 000 0000" required="" type="tel"/>
+</div>
+<div class="md:col-span-2 pt-2">
+<button class="w-full py-4 rounded-full bg-primary-container text-on-primary font-headline-sm text-sm font-semibold tracking-wide shadow-md hover:bg-primary transition-all active:scale-[0.99] text-center" type="submit">
+              Solicitar diagnóstico y propuesta institucional
+            </button>
+<p class="font-label-md text-center text-xs text-text-secondary mt-3">
+              Respuesta formal garantizada en un plazo no mayor a 24 horas hábiles.
+            </p>
+</div>
+</form>
+</div>
+</section>
+</main>
+<!-- 8. Footer (Shared Component from JSON) -->
+<!-- Strict rules: Background charcoal #1A1A1A. All texts and icons pure white #FFFFFF on charcoal. Flat, no shadows. -->
+<footer class="w-full bg-charcoal text-surface-white border-t border-secondary">
+<div class="w-full max-w-7xl mx-auto px-gutter py-space-xl flex flex-col md:flex-row justify-between items-center gap-space-md">
+<!-- Brand & Description -->
+<div class="flex flex-col items-center md:items-start text-center md:text-left max-w-md">
+<div class="font-headline-sm text-headline-sm font-bold tracking-tight text-surface-white mb-2">
+          SEAMOSGENIOS Instituciones
+        </div>
+<p class="font-body-md text-body-md text-secondary-fixed text-xs leading-relaxed">
+          © 2024 SEAMOSGENIOS Instituciones. Todos los derechos reservados. Fortalecimiento institucional y preparación para la excelencia académica Saber 11.
+        </p>
+</div>
+<!-- Links from JSON -->
+<div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
+<a class="font-label-md text-label-md text-secondary-fixed hover:text-surface-white hover:underline transition-colors duration-200" href="#modelo-educativo">
+          Modelo Educativo
+        </a>
+<a class="font-label-md text-label-md text-secondary-fixed hover:text-surface-white hover:underline transition-colors duration-200" href="#privacidad">
+          Privacidad Institucional
+        </a>
+<a class="font-label-md text-label-md text-secondary-fixed hover:text-surface-white hover:underline transition-colors duration-200" href="#terminos">
+          Términos del Servicio
+        </a>
+<a class="font-label-md text-label-md text-secondary-fixed hover:text-surface-white hover:underline transition-colors duration-200" href="#validacion">
+          Validación de Certificaciones
+        </a>
+<a class="font-label-md text-label-md text-surface-white font-medium hover:text-surface-white hover:underline transition-colors duration-200" href="#contacto">
+          Contacto Directivo
+        </a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,275 @@
+/* Flip clock — estilo mecánico (cf. digitalclock.live flip-clock) */
+
+.clock {
+  --vf-digit-bg: color-mix(in srgb, var(--course-text) 6%, var(--course-surface));
+  --vf-digit-bg-deep: color-mix(in srgb, var(--course-text) 14%, var(--course-surface));
+  --vf-digit-fg: var(--course-text);
+  --vf-line: color-mix(in srgb, var(--course-border) 85%, transparent);
+  --vf-shadow: color-mix(in srgb, var(--course-text) 22%, transparent);
+  --vf-width: 1.35rem;
+  --vf-height: 1.85rem;
+  --vf-font: 1.05rem;
+  --vf-radius: 0.35rem;
+  --vf-flip-ms: 520ms;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.sep {
+  margin-bottom: 1.1rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1;
+  color: color-mix(in srgb, var(--course-text-muted) 75%, transparent);
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.pair {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--course-text-muted);
+}
+
+@media (min-width: 640px) {
+  .clock {
+    --vf-width: 1.5rem;
+    --vf-height: 2.05rem;
+    --vf-font: 1.15rem;
+  }
+
+  .label {
+    font-size: 10px;
+  }
+}
+
+.shell {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.compactShell {
+  padding: 0.45rem 0.35rem 0.55rem;
+  container-type: inline-size;
+}
+
+/* ~80% del tamaño normal; baja solo si la columna es muy estrecha */
+.compactShell .clock {
+  --vf-width: 1.05rem;
+  --vf-height: 1.45rem;
+  --vf-font: 0.82rem;
+  --vf-radius: 0.28rem;
+  --vf-flip-ms: 500ms;
+}
+
+@container (max-width: 9.25rem) {
+  .compactShell .clock {
+    --vf-width: 0.92rem;
+    --vf-height: 1.28rem;
+    --vf-font: 0.72rem;
+    --vf-radius: 0.24rem;
+  }
+}
+
+@container (max-width: 8rem) {
+  .compactShell .clock {
+    --vf-width: 0.82rem;
+    --vf-height: 1.15rem;
+    --vf-font: 0.65rem;
+    --vf-radius: 0.22rem;
+  }
+}
+
+.compactShell .row {
+  gap: 0.2rem;
+}
+
+.compactShell .pair {
+  gap: 0.12rem;
+}
+
+.compactShell .sep {
+  margin-bottom: 0.95rem;
+  font-size: 0.88rem;
+}
+
+.compactShell .label {
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+.digit {
+  position: relative;
+  width: var(--vf-width);
+  height: var(--vf-height);
+  flex-shrink: 0;
+  perspective: 220px;
+  border-radius: var(--vf-radius);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow:
+    0 1px 0 var(--vf-shadow),
+    0 3px 8px color-mix(in srgb, var(--course-text) 12%, transparent);
+}
+
+.digit[data-flipping='true'] .halfTop {
+  visibility: hidden;
+}
+
+.digitStatic {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--vf-radius);
+  overflow: hidden;
+  background: var(--vf-digit-bg-deep);
+}
+
+.half {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  color: var(--vf-digit-fg);
+  font-size: var(--vf-font);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.halfTop {
+  top: 0;
+  border-radius: var(--vf-radius) var(--vf-radius) 0 0;
+  background: linear-gradient(
+    180deg,
+    var(--vf-digit-bg) 0%,
+    var(--vf-digit-bg-deep) 100%
+  );
+  border-bottom: 1px solid var(--vf-line);
+}
+
+.halfBottom {
+  bottom: 0;
+  border-radius: 0 0 var(--vf-radius) var(--vf-radius);
+  background: linear-gradient(
+    180deg,
+    var(--vf-digit-bg-deep) 0%,
+    color-mix(in srgb, var(--course-text) 10%, var(--course-surface)) 100%
+  );
+}
+
+.halfText {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.halfTop .halfText {
+  top: 0;
+}
+
+.halfBottom .halfText {
+  bottom: 0;
+}
+
+.flipper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  transform-origin: bottom center;
+  transform-style: preserve-3d;
+  z-index: 2;
+  border-radius: var(--vf-radius) var(--vf-radius) 0 0;
+  animation: vacacionalFlipDown var(--vf-flip-ms) ease-in forwards;
+}
+
+.flipFace {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--vf-digit-bg) 0%,
+    var(--vf-digit-bg-deep) 100%
+  );
+  color: var(--vf-digit-fg);
+  font-size: var(--vf-font);
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.flipFaceFront {
+  border-bottom: 1px solid var(--vf-line);
+}
+
+.flipFaceFront .halfText {
+  top: 0;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flipFaceBack {
+  transform: rotateX(180deg);
+  border-radius: 0 0 var(--vf-radius) var(--vf-radius);
+  background: linear-gradient(
+    180deg,
+    var(--vf-digit-bg-deep) 0%,
+    color-mix(in srgb, var(--course-text) 10%, var(--course-surface)) 100%
+  );
+}
+
+.flipFaceBack .halfText {
+  bottom: 0;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes vacacionalFlipDown {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flipper {
+    animation: none;
+    display: none;
+  }
+}

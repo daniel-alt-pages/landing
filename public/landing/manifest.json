@@ -1,0 +1,27 @@
+[
+  {
+    "src": "/landing/brand/logo-sg-blanco.svg",
+    "kind": "svg"
+  },
+  {
+    "src": "/landing/brand/qr-canal.svg",
+    "kind": "svg"
+  },
+  {
+    "src": "/landing/hero/mapa.svg",
+    "kind": "svg"
+  },
+  {
+    "src": "/landing/paneles/coord-poster.svg",
+    "kind": "svg"
+  },
+  {
+    "src": "/landing/paneles/estudiante-poster.svg",
+    "kind": "svg"
+  },
+  {
+    "src": "/landing/og.jpg",
+    "width": 1200,
+    "height": 630
+  }
+]

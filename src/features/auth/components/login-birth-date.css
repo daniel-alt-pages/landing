@@ -1,0 +1,207 @@
+/* Shared birth-date picker (login + perfil). Imported by LoginBirthDatePicker. */
+
+.login-birth-input {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.login-birth-field .login-birth-input:focus {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+}
+
+.login-birth-input.hasDatepicker {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+.login-birth-select-wrap {
+  position: relative;
+}
+
+.login-birth-select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #64748b;
+  transform: translateY(-25%);
+  z-index: 2;
+}
+
+.login-birth-select-trigger {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 28px 0 14px;
+  border-radius: 9999px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  text-align: left;
+}
+
+.login-birth-select-trigger:hover {
+  border-color: #94a3b8;
+}
+
+.login-birth-select-trigger.is-open {
+  border-color: #64748b;
+  box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.25);
+}
+
+.login-birth-select-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  z-index: 100002;
+  max-height: 200px;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+}
+
+.login-birth-select-option {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.login-birth-select-option:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.login-birth-select-option.is-active {
+  background: #f8fafc;
+  font-weight: 600;
+}
+
+.login-birth-select-option:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.login-birth-calendar {
+  pointer-events: auto;
+}
+
+.login-birth-calendar-inner {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
+  padding: 12px 12px 14px;
+}
+
+.login-birth-calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 10px;
+}
+
+.login-birth-nav {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #64748b;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.login-birth-nav:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.login-birth-nav:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.login-birth-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 6px;
+}
+
+.login-birth-weekday {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  padding: 4px 0;
+}
+
+.login-birth-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.login-birth-day {
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.login-birth-day--empty {
+  pointer-events: none;
+}
+
+.login-birth-day:hover:not(:disabled):not(.login-birth-day--selected) {
+  background: #f1f5f9 !important;
+}
+
+.login-birth-day--selected {
+  background: #334155 !important;
+  color: #fff !important;
+}
+
+.login-birth-day:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+.login-birth-calendar .login-birth-nav:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.login-birth-calendar .login-birth-day:hover:not(:disabled):not(.login-birth-day--selected) {
+  background: #f1f5f9 !important;
+}

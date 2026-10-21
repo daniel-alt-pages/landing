@@ -1,0 +1,170 @@
+// Tipos para el sistema de reportes ICFES
+
+export interface InformacionPersonal {
+  nombres: string;
+  apellidos: string;
+  tipo_identificacion: string;
+  numero_identificacion: string;
+  telefono: string;
+  municipio: string;
+  departamento?: string;
+  institucion?: string;
+  /** Grupo/curso crudo PIFA (ej. 11-1, UNDÉCIMO). */
+  curso_grupo?: string;
+  /** Grado normalizado PIFA: 9 | 10 | 11. */
+  grado?: string;
+}
+
+export interface PuntajeMateria {
+  correctas: number;
+  total_preguntas: number;
+  puntaje: number;
+}
+
+export interface RespuestaDetallada {
+  numero: number;
+  respuesta_estudiante: string;
+  respuesta_correcta: string;
+  es_correcta: boolean;
+}
+
+export interface Estudiante {
+  informacion_personal: InformacionPersonal & {
+    correo_electronico?: string;
+  };
+  tipo: string;
+  puntajes: {
+    [materia: string]: PuntajeMateria;
+  };
+  respuestas_detalladas?: {
+    [materia: string]: RespuestaDetallada[];
+  };
+  score_reportado?: number;
+  score_real?: number;
+  puntaje_global: number;
+  nivel_desempeno?: string;
+  usa_calibracion?: boolean;
+  fecha?: string;
+  secciones_completadas?: string[];
+  sesiones?: string[];
+  s1_aciertos?: number;
+  s1_total?: number;
+  s2_aciertos?: number;
+  s2_total?: number;
+}
+
+export interface ResultadosFinales {
+  estudiantes: Estudiante[];
+}
+
+export interface DistribucionRespuestas {
+  A: number;
+  B: number;
+  C: number;
+  D: number;
+  E?: number;
+  F?: number;
+  G?: number;
+  H?: number;
+  NR: number;
+  [key: string]: number | undefined;
+}
+
+export interface EstadisticaPregunta {
+  numero: number;
+  respuesta_correcta: string;
+  distribucion: DistribucionRespuestas;
+  porcentaje_acierto: number;
+  total_evaluados: number;
+  // Aliases from procesar_simulacro.py
+  total_respuestas?: number;
+  porcentaje_aciertos?: number;
+  aciertos?: number;
+}
+
+export interface EstadisticasMateria {
+  [pregunta: string]: EstadisticaPregunta;
+}
+
+export interface MetadataEstadisticas {
+  /** Estudiantes que entran en % acierto / promedios de grupo (excluye puntaje global 0). */
+  total_evaluados: number;
+  /** Total de registros del simulacro (incluye sin puntaje). Opcional: pipelines antiguos. */
+  total_registros?: number;
+  fecha_generacion: string;
+}
+
+export interface EstadisticasGrupo {
+  metadata: MetadataEstadisticas;
+  materias: {
+    [materia: string]: EstadisticasMateria;
+  };
+}
+
+// Constantes
+export const MATERIAS_NOMBRES: { [key: string]: string } = {
+  'lectura crítica': 'Lectura Crítica',
+  'matemáticas': 'Matemáticas',
+  'sociales y ciudadanas': 'Ciencias Sociales',
+  'ciencias naturales': 'Ciencias Naturales',
+  'inglés': 'Inglés'
+};
+
+export const COLORES_MATERIAS: { [key: string]: string } = {
+  'lectura crítica': '#FF4D4D',
+  'matemáticas': '#33CCFF',
+  'sociales y ciudadanas': '#FF8C00',
+  'ciencias naturales': '#33FF77',
+  'inglés': '#B366FF'
+};
+
+export interface DashboardStats {
+  // Métricas básicas
+  promedio: number;
+  maximo: number;
+  minimo: number;
+  niveles: { superior: number; alto: number; medio: number; bajo: number };
+  distribucion: Record<string, number>;
+  promediosPorMateria: Array<{
+    nombre: string;
+    promedio: number;
+    correctas: number;
+    estudiantes: number;
+  }>;
+  top5: Estudiante[];
+  enRiesgo: Estudiante[];
+  conAmbas: number;
+  total: number;
+
+  // Estadísticas Avanzadas
+  mediana: number;
+  desviacionEstandar: number;
+  coeficienteVariacion: number;  // Porcentaje
+  percentil90: number;
+  percentil25: number;
+  percentil75: number;
+  rangoIntercuartilico: number;  // IQR = P75 - P25
+  tasaAprobacion: number;        // % >= 300
+  brechaMaxMin: number;          // maximo - minimo
+
+  // Análisis por materia
+  materiaMasDebil: { nombre: string; promedio: number } | null;
+  materiaMasFuerte: { nombre: string; promedio: number } | null;
+
+  // Tendencias (opcional, para comparar con simulacro anterior)
+  cambioPromedio?: number;
+  cambioTasaAprobacion?: number;
+}
+
+
+export interface InstitucionData {
+  estudiantes: Estudiante[];
+  promedio: number;
+  niveles: {
+    superior: number;
+    alto: number;
+    medio: number;
+    bajo: number;
+  };
+}
+

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hyperframes · Vista estudiante</title>
+    <link rel="stylesheet" href="../shared-brand.css" />
+  </head>
+  <body>
+    <div
+      id="student-demo"
+      data-composition-id="student-access-preview"
+      data-start="0"
+      data-duration="9"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+      <div class="noise"></div>
+
+      <div class="composition-shell">
+        <header id="student-topbar" class="topbar clip" data-start="0" data-duration="9" data-track-index="1">
+          <div class="brand">
+            <div class="brand-mark">SG</div>
+            <div>
+              <p class="eyebrow">estudiante.preview</p>
+              <h1 class="title">Resultados que explican como mejorar</h1>
+            </div>
+          </div>
+          <span class="status-pill">Retroalimentacion en vivo</span>
+        </header>
+
+        <main class="grid student">
+          <section id="student-score-panel" class="panel clip" data-start="0.4" data-duration="8" data-track-index="2">
+            <p class="eyebrow">puntaje global</p>
+            <p class="metric-value">358</p>
+            <p class="body-copy">
+              El estudiante consulta su desempeno por area, entiende sus brechas y vuelve a ver
+              la explicacion grabada cuando necesita reforzar.
+            </p>
+
+            <div class="metric-row" style="margin-top: 22px">
+              <article class="metric">
+                <p class="metric-label">Ranking</p>
+                <p class="metric-value" style="font-size: 34px">Top 18%</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Fortaleza</p>
+                <p class="metric-value" style="font-size: 34px; color: var(--sg-emerald)">Lectura</p>
+              </article>
+              <article class="metric">
+                <p class="metric-label">Prioridad</p>
+                <p class="metric-value" style="font-size: 34px; color: var(--sg-amber)">Mat.</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="student-area-panel" class="panel clip" data-start="1" data-duration="8" data-track-index="3">
+            <p class="eyebrow">areas evaluadas</p>
+            <div class="bars">
+              <div class="bar">
+                <span>Lectura</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 82%"></span></span>
+                <span>82%</span>
+              </div>
+              <div class="bar">
+                <span>Sociales</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 74%"></span></span>
+                <span>74%</span>
+              </div>
+              <div class="bar">
+                <span>Naturales</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 68%"></span></span>
+                <span>68%</span>
+              </div>
+              <div class="bar">
+                <span>Matematicas</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 56%"></span></span>
+                <span>56%</span>
+              </div>
+              <div class="bar">
+                <span>Ingles</span>
+                <span class="bar-track"><span class="bar-fill" style="display:block; width: 71%"></span></span>
+                <span>71%</span>
+              </div>
+            </div>
+
+            <div class="timeline-card" style="margin-top: 20px">
+              <div class="step">P</div>
+              <div>
+                <p class="metric-label">Plan de estudio</p>
+                <p class="body-copy">Temas priorizados segun errores del simulacro y explicacion grabada.</p>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+      <script>
+        window.__timelines = window.__timelines || {};
+        const studentTimeline = {
+          duration: () => 9,
+          seek: () => studentTimeline,
+          pause: () => studentTimeline
+        };
+        window.__timelines["student-access-preview"] = studentTimeline;
+      </script>
+    </div>
+  </body>
+</html>

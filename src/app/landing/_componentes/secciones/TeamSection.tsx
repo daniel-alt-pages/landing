@@ -1,0 +1,321 @@
+'use client';
+
+import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { MEDIA_MENTIONS } from '@/lib/mediaMentions';
+import { EQUIPO } from '../../_contenido/equipo';
+import { FUNDADOR_HISTORIA } from '../../_contenido/quienes';
+import { DisplayTitle } from '../primitivas/DisplayTitle';
+import { Lead } from '../primitivas/Lead';
+import { Section } from '../primitivas/Section';
+import PixelCard from './PixelCard';
+
+const FOTOS_FUNDADOR = [
+  '/landing/fundador/daniel-de-la-cruz-1.svg',
+  '/landing/fundador/daniel-de-la-cruz-2.svg',
+  '/landing/fundador/daniel-de-la-cruz-3.svg',
+];
+
+const PRENSA = ['Samsung Newsroom', 'Forbes Colombia', 'El Nuevo Siglo', 'Universidad del Rosario', 'Revista C-Level', 'AVI Latinoamérica'];
+
+const PRENSA_LOGO: Record<string, { src: string; plate?: 'dark' }> = {
+  'Samsung Newsroom': { src: '/landing/prensa/samsung.svg?v=2' },
+  'Universidad del Rosario': { src: '/landing/prensa/urosario.svg' },
+  'Forbes Colombia': { src: '/landing/prensa/forbes.svg' },
+  'El Nuevo Siglo': { src: '/landing/prensa/nuevo-siglo.png' },
+  'AVI Latinoamérica': { src: '/landing/prensa/avi.png' },
+  'Revista C-Level': { src: '/landing/prensa/clevel.png', plate: 'dark' },
+};
+
+const FUNDADOR_MARCAS = [
+  { src: '/landing/fundador/insignia-py.svg', alt: 'Insignia de programación' },
+  { src: '/landing/fundador/insignia-ia.svg', alt: 'Insignia de inteligencia artificial' },
+  { src: '/landing/fundador/universidad-rosario.svg', alt: 'Universidad del Rosario' },
+  { src: '/landing/fundador/together-for-tomorrow.svg', alt: 'Together for Tomorrow, Enabling People' },
+] as const;
+
+export function FounderSection() {
+  const prensa = MEDIA_MENTIONS.filter((item) => PRENSA.includes(item.name));
+  const [shot, setShot] = useState(0);
+  const swapTimer = useRef(0);
+
+  useEffect(() => () => window.clearTimeout(swapTimer.current), []);
+
+  function swapPhoto() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.clearTimeout(swapTimer.current);
+    swapTimer.current = window.setTimeout(() => {
+      setShot((current) => (current + 1) % FOTOS_FUNDADOR.length);
+    }, reduce ? 0 : 280);
+  }
+
+  return (
+    <Section id="fundador" tone="paper" label="fundador-title">
+      <div className="ag-founder">
+        <article className="ag-founder-card">
+          <div className="ag-founder-side">
+            <figure className="ag-founder-figure" onMouseEnter={swapPhoto} onFocus={swapPhoto}>
+              <PixelCard noFocus colors="#1a1a1a,#3a1014,#CC0000" gap={8} speed={36}>
+                <img className="ag-pixel-shot" src={FOTOS_FUNDADOR[shot]} alt="Daniel Eduardo De La Cruz Vega" />
+              </PixelCard>
+              <figcaption>
+                <strong>Daniel De La Cruz</strong>
+                <span>Presidente y fundador</span>
+              </figcaption>
+            </figure>
+            <div className="ag-founder-marks" aria-label="Reconocimientos">
+              {FUNDADOR_MARCAS.map((mark) => (
+                <img key={mark.src} src={mark.src} alt={mark.alt} />
+              ))}
+            </div>
+          </div>
+          <div className="ag-founder-copy">
+            <h2 id="fundador-title">Rompiendo barreras con tecnología</h2>
+            {FUNDADOR_HISTORIA.parrafos.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
+            <blockquote className="ag-founder-quote">{FUNDADOR_HISTORIA.cita}</blockquote>
+            <img className="ag-founder-samsung" src="/landing/prensa/samsung.svg" alt="Samsung" />
+          </div>
+        </article>
+        <p className="ag-founder-source">
+          Tomado y adaptado de{' '}
+          <a href="https://csr.samsung.com/en/story/inspiring-journeys/breaking-barriers-with-tech" target="_blank" rel="noreferrer">
+            Samsung Newsroom, «Breaking barriers with tech»
+          </a>
+        </p>
+      </div>
+      <div className="ag-press">
+        <p className="ag-eyebrow">En los medios</p>
+        <ul>
+          {prensa.map((item) => (
+            <li key={item.url}>
+              <a href={item.url} target="_blank" rel="noreferrer">
+                <span className={PRENSA_LOGO[item.name]?.plate === 'dark' ? 'ag-press-mark is-on-dark' : 'ag-press-mark'}>
+                  <img src={PRENSA_LOGO[item.name]?.src} alt="" />
+                </span>
+                <strong>{item.name}</strong>
+                <span>{item.headline}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Section>
+  );
+}
+
+const AREAS = [
+  { id: 'todos', label: 'Todos' },
+  { id: 'lectura', label: 'Lectura crítica' },
+  { id: 'matematicas', label: 'Matemáticas' },
+  { id: 'sociales', label: 'Sociales' },
+  { id: 'ciencias', label: 'Ciencias' },
+  { id: 'ingles', label: 'Inglés' },
+  { id: 'direccion', label: 'Dirección' },
+] as const;
+
+type AreaId = (typeof AREAS)[number]['id'];
+
+const AREAS_DE: Record<string, readonly AreaId[]> = {
+  hellen: ['lectura'],
+  alexandra: ['lectura'],
+  sofia: ['lectura'],
+  luis: ['matematicas'],
+  sara: ['matematicas', 'ingles'],
+  diego: ['matematicas', 'direccion'],
+  david: ['sociales'],
+  carlos: ['sociales'],
+  valentina: ['sociales', 'ciencias'],
+  jesus: ['ciencias'],
+  cuspoca: ['ciencias'],
+  gabriel: ['ingles'],
+  christian: ['ingles'],
+  daniel: ['direccion'],
+  angel: ['direccion'],
+  leon: ['direccion'],
+};
+
+function PersonCard({ person }: { person: (typeof EQUIPO)[number] }) {
+  return (
+    <article className="ag-card ag-person-card">
+      <img className="ag-person-guide" src={`/landing/equipo/${person.id}.svg`} alt="" />
+      <h3 className="ag-h3">{person.name}</h3>
+      <p className="ag-person-role">
+        {person.role} · {person.years}
+      </p>
+      <p>{person.bio}</p>
+    </article>
+  );
+}
+
+export function TeamSection() {
+  const [area, setArea] = useState<AreaId>('todos');
+  const [pinned, setPinned] = useState(false);
+  const hold = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLDivElement>(null);
+  const scroller = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ left: false, right: false, overflow: false });
+
+  useLayoutEffect(() => {
+    const holdEl = hold.current;
+    const barEl = bar.current;
+    if (!holdEl || !barEl) return;
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const section = document.getElementById('equipo');
+      const header = document.querySelector<HTMLElement>('.ag-header');
+      if (!section) return;
+      const sticky = header ? getComputedStyle(header).position === 'sticky' : false;
+      const headerH = sticky && header ? header.offsetHeight : 0;
+      const holdTop = holdEl.getBoundingClientRect().top;
+      const sectionBottom = section.getBoundingClientRect().bottom;
+      const height = barEl.offsetHeight;
+      const pin = holdTop <= headerH && sectionBottom > headerH + height + 8;
+      holdEl.style.minHeight = pin ? `${height}px` : '';
+      barEl.style.top = pin ? `${headerH + 8}px` : '';
+      setPinned((current) => (current === pin ? current : pin));
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [area, pinned]);
+
+  useEffect(() => {
+    const el = scroller.current;
+    if (!el) return;
+    const sync = () => {
+      const max = el.scrollWidth - el.clientWidth;
+      setEdges({
+        overflow: max > 4,
+        left: el.scrollLeft > 4,
+        right: max > 4 && el.scrollLeft < max - 4,
+      });
+    };
+    sync();
+    el.addEventListener('scroll', sync, { passive: true });
+    const observer = new ResizeObserver(sync);
+    observer.observe(el);
+    window.addEventListener('resize', sync);
+    return () => {
+      el.removeEventListener('scroll', sync);
+      observer.disconnect();
+      window.removeEventListener('resize', sync);
+    };
+  }, [area, pinned]);
+
+  useEffect(() => {
+    const rail = scroller.current;
+    const tab = rail?.querySelector<HTMLElement>('[aria-selected="true"]');
+    if (!rail || !tab) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const left = tab.offsetLeft - (rail.clientWidth - tab.offsetWidth) / 2;
+    rail.scrollTo({ left: Math.max(0, left), behavior: reduce ? 'auto' : 'smooth' });
+  }, [area]);
+
+  const desplazar = (delta: number) => {
+    const rail = scroller.current;
+    if (!rail) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    rail.scrollBy({ left: delta, behavior: reduce ? 'auto' : 'smooth' });
+  };
+
+  const grupos = AREAS.filter((item) => item.id !== 'todos').map((item) => ({
+    ...item,
+    people: EQUIPO.filter((person) => {
+      const areas = AREAS_DE[person.id] ?? [];
+      return area === 'todos' ? areas[0] === item.id : area === item.id && areas.includes(item.id);
+    }),
+  })).filter((group) => group.people.length > 0);
+
+  const mover = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const index = AREAS.findIndex((item) => item.id === area);
+    const next =
+      event.key === 'Home' ? 0
+      : event.key === 'End' ? AREAS.length - 1
+      : event.key === 'ArrowRight' ? (index + 1) % AREAS.length
+      : (index - 1 + AREAS.length) % AREAS.length;
+    setArea(AREAS[next].id);
+    const button = event.currentTarget.querySelectorAll('button')[next];
+    if (button instanceof HTMLButtonElement) button.focus();
+  };
+
+  return (
+    <Section id="equipo" tone="grey" label="equipo-title">
+      <DisplayTitle id="equipo-title" lines={[{ text: 'Un equipo' }, { text: 'de élite', accent: true }]} />
+      <Lead>Tutores que ya obtuvieron los puntajes que hoy enseñan a alcanzar. Estudian en las mejores universidades del país y conocen el examen desde adentro.</Lead>
+      <div className="ag-team-hold" ref={hold}>
+        <div className={pinned ? 'ag-team-bar is-fixed' : 'ag-team-bar'} ref={bar}>
+          {edges.overflow ? (
+            <button
+              type="button"
+              className="ag-team-arrow"
+              aria-label="Desplazar áreas a la izquierda"
+              disabled={!edges.left}
+              onClick={() => desplazar(-220)}
+            >
+              <ChevronLeft size={18} strokeWidth={2.25} aria-hidden />
+            </button>
+          ) : null}
+          <div
+            className="ag-team-scroller"
+            ref={scroller}
+            role="tablist"
+            aria-label="Áreas del equipo"
+            onKeyDown={mover}
+          >
+            {AREAS.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                id={`equipo-tab-${item.id}`}
+                aria-selected={area === item.id}
+                aria-controls="equipo-panel"
+                tabIndex={area === item.id ? 0 : -1}
+                onClick={() => setArea(item.id)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          {edges.overflow ? (
+            <button
+              type="button"
+              className="ag-team-arrow"
+              aria-label="Desplazar áreas a la derecha"
+              disabled={!edges.right}
+              onClick={() => desplazar(220)}
+            >
+              <ChevronRight size={18} strokeWidth={2.25} aria-hidden />
+            </button>
+          ) : null}
+        </div>
+      </div>
+      <div id="equipo-panel" className="ag-team-groups" role="tabpanel" aria-labelledby={`equipo-tab-${area}`}>
+        {grupos.map((group) => (
+          <section key={group.id} aria-label={group.label}>
+            <h3 className="ag-team-area">{group.label}</h3>
+            <div className="ag-grid-3">
+              {group.people.map((person) => (
+                <PersonCard key={person.id} person={person} />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
+    </Section>
+  );
+}

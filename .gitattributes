@@ -1,0 +1,6 @@
+# Normalizar finales de línea: LF en el repo, CRLF al hacer checkout en Windows
+* text=auto eol=lf
+*.{cmd,bat} text eol=crlf
+public/data/resultados_finales.json filter=lfs diff=lfs merge=lfs -text
+public/data/simulations/SG11-17/resultados_finales.json filter=lfs diff=lfs merge=lfs -text
+public/data/simulations/SG11-17/students.json filter=lfs diff=lfs merge=lfs -text

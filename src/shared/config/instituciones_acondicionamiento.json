@@ -1,0 +1,299 @@
+{
+  "version": 1,
+  "note": "Acondicionamiento de instituciones. Alias ↔ canónico (mismo colegio). Pipeline escribe canónico; panel trata aliases como alternativas y muestra canónico. Espejo UI: reportes-sg-next/src/shared/config/instituciones_acondicionamiento.json (mantener sync).",
+  "instituciones": [
+    {
+      "id": 1,
+      "aliases": ["COLEGIO PRADO VERANIEGO - SUBA, BOGOTÁ"],
+      "canonical": "COLEGIO PRADO VERANIEGO - SUBA, BOGOTÁ",
+      "municipio": "SUBA",
+      "departamento": "BOGOTÁ"
+    },
+    {
+      "id": 2,
+      "aliases": [
+        "IETA ANTONIO NARIÑO - PORE, CASANARE",
+        "IETA ANTONIO NARINO - PORE, CASANARE"
+      ],
+      "canonical": "INSTITUTO EDUCATIVO ANTONIO NARIÑO - PORE, CASANARE",
+      "municipio": "PORE",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 3,
+      "aliases": [
+        "IESA",
+        "I.E.S.A",
+        "I.E. SAN AGUSTIN",
+        "IE SAN AGUSTIN",
+        "IE SAN AGUSTÍN",
+        "INSTITUCION EDUCATIVA SAN AGUSTIN - AGUAZUL, CASANARE"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA SAN AGUSTIN - AGUAZUL, CASANARE",
+      "municipio": "AGUAZUL",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 4,
+      "aliases": ["IE LA INMACULADA - OROCUÉ, CASANARE", "IE LA INMACULADA - OROCUE, CASANARE"],
+      "canonical": "INSTITUCIÓN EDUCATIVA LA INMACULADA - OROCUÉ, CASANARE",
+      "municipio": "OROCUÉ",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 5,
+      "aliases": ["IE LOS CUROS - PIEDECUESTA, SANTANDER"],
+      "canonical": "INSTITUCIÓN EDUCATIVA LOS CUROS - PIEDECUESTA, SANTANDER",
+      "municipio": "PIEDECUESTA",
+      "departamento": "SANTANDER"
+    },
+    {
+      "id": 6,
+      "aliases": ["IE EL CUSIANA - TAURAMENA, CASANARE"],
+      "canonical": "INSTITUCIÓN EDUCATIVA EL CUSIANA - TAURAMENA, CASANARE",
+      "municipio": "TAURAMENA",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 7,
+      "aliases": ["IE GUATACA SUR - MARGARITA, BOLÍVAR", "IE GUATACA SUR - MARGARITA, BOLIVAR"],
+      "canonical": "INSTITUCIÓN EDUCATIVA TÉCNICA GUATACA SUR - MARGARITA, BOLÍVAR",
+      "municipio": "MARGARITA",
+      "departamento": "BOLÍVAR"
+    },
+    {
+      "id": 8,
+      "aliases": [
+        "IT NACIONAL DE COMERCIO - CÚCUTA, NORTE DE SANTANDER",
+        "IT NACIONAL DE COMERCIO - CUCUTA, NORTE DE SANTANDER"
+      ],
+      "canonical": "INSTITUTO TÉCNICO NACIONAL DE COMERCIO - CÚCUTA, N. DE SANTANDER",
+      "municipio": "CÚCUTA",
+      "departamento": "NORTE DE SANTANDER"
+    },
+    {
+      "id": 9,
+      "aliases": ["IED DE DESARROLLO RURAL - FOSCA, CUNDINAMARCA"],
+      "canonical": "INSTITUCIÓN EDUCATIVA DEPARTAMENTAL DE DESARROLLO RURAL - FOSCA, CUNDINAMARCA",
+      "municipio": "FOSCA",
+      "departamento": "CUNDINAMARCA"
+    },
+    {
+      "id": 10,
+      "aliases": [],
+      "canonical": "ESCUELA NORMAL SUPERIOR DE PIEDECUESTA - PIEDECUESTA, SANTANDER",
+      "municipio": "PIEDECUESTA",
+      "departamento": "SANTANDER"
+    },
+    {
+      "id": 11,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA DEPARTAMENTAL CAÑO DE AGUAS - CAÑO DE AGUAS, MAGDALENA",
+      "municipio": "CAÑO DE AGUAS",
+      "departamento": "MAGDALENA"
+    },
+    {
+      "id": 12,
+      "aliases": [
+        "IE VICTOR GÓMEZ CORREDOR - EL TABLON, CASANARE",
+        "IE VICTOR GOMEZ CORREDOR - EL TABLON, CASANARE"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA VICTOR GÓMEZ CORREDOR - EL TABLON, CASANARE",
+      "municipio": "EL TABLÓN",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 13,
+      "aliases": [
+        "IE BONIFACIO GUTIÉRREZ - HATO COROZAL, CASANARE",
+        "IE BONIFACIO GUTIERREZ - HATO COROZAL, CASANARE"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA BONIFACIO GUTIÉRREZ - HATO COROZAL, CASANARE",
+      "municipio": "HATO COROZAL",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 14,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA SANTA IRENE - TRINIDAD, CASANARE",
+      "municipio": "TRINIDAD",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 15,
+      "aliases": [],
+      "canonical": "COLEGIO NUESTRA SEÑORA DE NAZARETH - PURIFICACIÓN, TOLIMA",
+      "municipio": "PURIFICACIÓN",
+      "departamento": "TOLIMA"
+    },
+    {
+      "id": 16,
+      "aliases": [],
+      "canonical": "IED REINO DE HOLANDA - TUENJELITO, BOGOTÁ",
+      "municipio": "TUENJELITO",
+      "departamento": "BOGOTÁ"
+    },
+    {
+      "id": 17,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA SAGRADO CORAZÓN DE JESÚS - CÚCUTA, N. DE SANTANDER",
+      "municipio": "CÚCUTA",
+      "departamento": "NORTE DE SANTANDER"
+    },
+    {
+      "id": 18,
+      "aliases": [],
+      "canonical": "COLEGIO INTEGRADO MONSEÑOR EVARISTO BLANCO - SAN MIGUEL, SANTANDER",
+      "municipio": "SAN MIGUEL",
+      "departamento": "SANTANDER"
+    },
+    {
+      "id": 19,
+      "aliases": [],
+      "canonical": "COLEGIO VILLEMAR DEL CARMEN - FONTIBÓN, BOGOTÁ",
+      "municipio": "FONTIBÓN",
+      "departamento": "BOGOTÁ"
+    },
+    {
+      "id": 20,
+      "aliases": ["I.E.D. LOMA DEL BALSAMO", "IED LOMA DEL BALSAMO", "I.E.D. LOMA DEL BÁLSAMO"],
+      "canonical": "INSTITUCIÓN EDUCATIVA DEPARTALMENTAL LOMA DEL BÁLSAMO - ALGARROBO, MAGDALENA",
+      "municipio": "ALGARROBO",
+      "departamento": "MAGDALENA"
+    },
+    {
+      "id": 21,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA HORACIO PERDOMO - HATO COROZAL, CASANARE",
+      "municipio": "HATO COROZAL",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 22,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA ALONSO CARVAJAL PERALTA - CHITAGÁ, N. DE SANTANDER",
+      "municipio": "CHITAGÁ",
+      "departamento": "NORTE DE SANTANDER"
+    },
+    {
+      "id": 23,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA BERNARDO URIBE LONDOÑO - LA CEJA DEL TAMBO, ANTIOQUIA",
+      "municipio": "LA CEJA DEL TAMBO",
+      "departamento": "ANTIOQUIA"
+    },
+    {
+      "id": 24,
+      "aliases": [
+        "IE LICEO ALEGRE JUVENTUD - MALAMBO",
+        "INSTITUCIÓN EDUCATIVA LICEO ALEGRE JUVENTUD - MALAMBO, ATLÁNTICO"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA LICEO ALEGRE JUVENTUD - MALAMBO, ATLÁNTICO",
+      "municipio": "MALAMBO",
+      "departamento": "ATLÁNTICO"
+    },
+    {
+      "id": 25,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA JÉSUS BERNAL PINZÓN - MANÍ, CASANARE",
+      "municipio": "MANÍ",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 26,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA ENRIQUE OLAYA HERRERA - ARMENIA, QUINDÍO",
+      "municipio": "ARMENIA",
+      "departamento": "QUINDÍO"
+    },
+    {
+      "id": 27,
+      "aliases": [
+        "IED PEDRO DE HEREDIA",
+        "INSTITUCIÓN EUCATIVA DEPARTAMENTAL PEDRO DE HEREDIA - PEDRAZA, MAGDALENA"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA DEPARTAMENTAL PEDRO DE HEREDIA - PEDRAZA, MAGDALENA",
+      "municipio": "PEDRAZA",
+      "departamento": "MAGDALENA"
+    },
+    {
+      "id": 28,
+      "aliases": [],
+      "canonical": "COLEGIO SANTA MARÍA DEL ROSARIO - MEDELLÍN, ANTIOQUIA",
+      "municipio": "MEDELLÍN",
+      "departamento": "ANTIOQUIA"
+    },
+    {
+      "id": 29,
+      "aliases": ["IE CUPIAGUA - AGUAZUL, CASANARE"],
+      "canonical": "INSTITUCIÓN EDUCATIVA CUPIAGUA - AGUAZUL, CASANARE",
+      "municipio": "AGUAZUL",
+      "departamento": "CASANARE"
+    },
+    {
+      "id": 30,
+      "aliases": ["I.E.D. MARÍA MEDINA FOSCA", "IED MARIA MEDINA FOSCA", "I.E.D. MARIA MEDINA FOSCA"],
+      "canonical": "INSTITUCIÓN EDUCATIVA DEPARTAMENTAL MARÍA MEDINA FOSCA - FOSCA, CUNDINAMARCA",
+      "municipio": "FOSCA",
+      "departamento": "CUNDINAMARCA"
+    },
+    {
+      "id": 31,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA CUSTODIO GARCIA ROVIRA - INÍRIDA, GUAINÍA",
+      "municipio": "INÍRIDA",
+      "departamento": "GUAINÍA"
+    },
+    {
+      "id": 32,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA LUIS SÁNCHEZ PORTO - SOLEDAD, ATLÁNTICO",
+      "municipio": "SOLEDAD",
+      "departamento": "ATLÁNTICO"
+    },
+    {
+      "id": 33,
+      "aliases": [],
+      "canonical": "CORPORACION EDUCATIVA COLEGIO COMUNAL MIXTO - BARRANQUILLA, ATLÁNTICO",
+      "municipio": "BARRANQUILLA",
+      "departamento": "ATLÁNTICO"
+    },
+    {
+      "id": 34,
+      "aliases": [],
+      "canonical": "INSTITUCIÓN EDUCATIVA JAIME GARZÓN - CÚCUTA, N. DE SANTANDER",
+      "municipio": "CÚCUTA",
+      "departamento": "NORTE DE SANTANDER"
+    },
+    {
+      "id": 35,
+      "aliases": [
+        "IED RURAL DE PALERMO",
+        "INSTITUCIÓN EDUCATIVA DEPARTAMENTAL RURAL DE PALERMO - SITIO NUEVO, MAGDALENA"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA DEPARTAMENTAL RURAL DE PALERMO - SITIO NUEVO, MAGDALENA",
+      "municipio": "SITIO NUEVO",
+      "departamento": "MAGDALENA"
+    },
+    {
+      "id": 36,
+      "aliases": [],
+      "canonical": "COLEGIO INTEGRADO SIMÓN BOLÍVAR - CÚCUTA, N. DE SANTANDER",
+      "municipio": "CÚCUTA",
+      "departamento": "NORTE DE SANTANDER"
+    },
+    {
+      "id": 37,
+      "aliases": [
+        "IESC",
+        "IE SAGRADO CORAZON - PAZ DE ARIPORO, CASANARE",
+        "IE SAGRADO CORAZÓN - PAZ DE ARIPORO, CASANARE",
+        "INSTITUCION EDUCATIVA SAGRADO CORAZON OFICIAL PAZ DE ARIPORO CASANARE",
+        "INSTITUCIÓN EDUCATIVA SAGRADO CORAZON - PAZ DE ARIPORO, CASANARE"
+      ],
+      "canonical": "INSTITUCIÓN EDUCATIVA SAGRADO CORAZÓN - PAZ DE ARIPORO, CASANARE",
+      "municipio": "PAZ DE ARIPORO",
+      "departamento": "CASANARE"
+    }
+  ]
+}
