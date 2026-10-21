@@ -1,7 +1,14 @@
 .ag-b2b,
 #n1,
 #n2,
-#n3 { overflow-x: clip; scroll-margin-top: calc(var(--ag-header) + 56px); }
+#n3 { overflow-x: clip; scroll-margin-top: calc(var(--ag-header) + 16px); }
+/* Sin subnav fijo (SPEC aprobado): todas las anclas B2B solo descuentan el header. */
+.ag-b2b[id], #solicitar-reunion { scroll-margin-top: calc(var(--ag-header) + 16px); }
+/* Niveles 2 y 3 siempre en el HTML estático. Con JS solo se ve el nivel activo; sin JS se ven los tres. */
+.js .ag-b2b-nivel[data-activo='false'] { display: none; }
+.ag-b2b-nivel[data-activo='true'] { animation: ag-b2b-nivel-in 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes ag-b2b-nivel-in { from { opacity: 0.4; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ag-b2b-nivel[data-activo='true'] { animation: none; } }
 .ag-b2b-sec { min-width: 0; }
 .ag-b2b-title {
   margin: 0;

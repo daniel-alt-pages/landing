@@ -1,6 +1,5 @@
 'use client';
 
-import { motion, useReducedMotion } from 'motion/react';
 import { useEffect, useState, type KeyboardEvent } from 'react';
 import { B2B_N1, B2B_N2, B2B_N3 } from '../../../_contenido/b2b/programa';
 import { DatoB2b } from './base/DatoB2b';
@@ -79,7 +78,6 @@ const PANELES = { n1: Panel1, n2: Panel2, n3: Panel3 } as const;
 
 export function B2bPrograma() {
   const [activo, setActivo] = useState<NivelId>('n1');
-  const reducir = useReducedMotion();
 
   useEffect(() => {
     const abrir = () => {
@@ -96,8 +94,6 @@ export function B2bPrograma() {
     if (window.location.hash.replace('#', '') !== activo) return;
     document.getElementById(activo)?.scrollIntoView({ block: 'start' });
   }, [activo]);
-
-  const Panel = PANELES[activo];
 
   const mover = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
@@ -128,6 +124,7 @@ export function B2bPrograma() {
             href={`#${id}`}
             role="tab"
             aria-selected={activo === id}
+            aria-controls={`b2b-panel-${id}`}
             tabIndex={activo === id ? 0 : -1}
             onClick={(event) => {
               event.preventDefault();
@@ -139,14 +136,21 @@ export function B2bPrograma() {
           </a>
         ))}
       </div>
-      <motion.div
-        key={activo}
-        initial={reducir ? false : { opacity: 0, x: 12 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <Panel />
-      </motion.div>
+      {NIVELES.map((id) => {
+        const Panel = PANELES[id];
+        return (
+          <div
+            key={id}
+            className="ag-b2b-nivel"
+            role="tabpanel"
+            id={`b2b-panel-${id}`}
+            aria-labelledby={`b2b-nivel-${id}`}
+            data-activo={activo === id ? 'true' : 'false'}
+          >
+            <Panel />
+          </div>
+        );
+      })}
     </SeccionB2b>
   );
 }

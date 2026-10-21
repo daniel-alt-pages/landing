@@ -181,12 +181,24 @@ export function LeadForm() {
         ) : null}
       </label>
       <label className="ag-consent-check">
-        <input type="checkbox" name="consentimiento" checked={values.consentimiento} onChange={(event) => set('consentimiento', event.target.checked)} />
+        <input
+          type="checkbox"
+          name="consentimiento"
+          required
+          aria-required="true"
+          aria-invalid={err('consentimiento') ? true : undefined}
+          aria-describedby={err('consentimiento') ? `${formId}-consentimiento-error` : undefined}
+          checked={values.consentimiento}
+          onChange={(event) => set('consentimiento', event.target.checked)}
+        />
         <span>
-          Autorizo el tratamiento de mis datos según la <a href="/landing/politica-de-datos">Política de datos</a>.
+          Autorizo de manera previa, expresa e informada a SEAMOSGENIOS para recolectar y tratar los datos de este formulario
+          con el fin de contactarme sobre esta solicitud, conforme a la Ley 1581 de 2012, el Decreto 1377 de 2013 y la{' '}
+          <a href="/landing/politica-de-datos">Política de tratamiento de datos</a>. Puedo conocer, actualizar, rectificar o
+          suprimir mis datos y revocar esta autorización en cualquier momento.
         </span>
       </label>
-      {err('consentimiento') ? <p className="ag-error">{err('consentimiento')}</p> : null}
+      {err('consentimiento') ? <p className="ag-error" id={`${formId}-consentimiento-error`}>{err('consentimiento')}</p> : null}
       <div className="ag-hp" aria-hidden>
         <label>
           Sitio web

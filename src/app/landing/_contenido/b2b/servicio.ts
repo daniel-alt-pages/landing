@@ -115,7 +115,7 @@ export const B2B_CANALES = {
   title: ['Comunicaciones,', 'soporte y PQRS'] as const,
   lead: 'Cada canal cumple una función distinta, para que la información crítica no quede dispersa.',
   canales: [
-    { title: 'Noticias', text: 'Información oficial, general o segmentada. Comunicación unidireccional.' },
+    { title: 'Noticias', text: 'Información institucional, general o segmentada. Comunicación unidireccional.' },
     { title: 'Mensajería', text: 'Conversación y coordinación dentro de la plataforma.' },
     { title: 'PQRS', text: 'Canal formal, trazable, con radicado, estado e historial.' },
     { title: 'Notificaciones', text: 'Alertas automáticas o recordatorios.' },
@@ -152,9 +152,9 @@ export const B2B_CALIDAD = {
     'Puntaje global.',
     'Incremento de puntos y porcentaje de mejora.',
     'Avance observado.',
-    'Resultados oficiales.',
-    'Delta de puntaje, retención y desempeño oficial.',
-    'Resultado oficial de la institución.',
+    'Resultados del Saber 11 publicados por el ICFES.',
+    'Delta de puntaje, retención y desempeño en el Saber 11.',
+    'Resultado de la institución en el Saber 11 (ICFES).',
   ],
   promesa: 'SEAMOSGENIOS no promete un puntaje específico: el resultado requiere el compromiso de toda la comunidad educativa. Se garantiza un sistema riguroso para alcanzarlo.',
 };

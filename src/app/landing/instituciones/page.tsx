@@ -7,7 +7,6 @@ import { B2bNosotros } from '../_componentes/secciones/b2b/B2bNosotros';
 import { B2bPlataforma } from '../_componentes/secciones/b2b/B2bPlataforma';
 import { B2bPrograma } from '../_componentes/secciones/b2b/B2bPrograma';
 import { B2bResumen } from '../_componentes/secciones/b2b/B2bResumen';
-import { SubnavB2b } from '../_componentes/secciones/b2b/SubnavB2b';
 import './b2b-base.css';
 import './b2b-secciones.css';
 import './b2b-diagramas.css';
@@ -23,7 +22,6 @@ export default function InstitucionesPage() {
   return (
     <>
       <B2bHero />
-      <SubnavB2b />
       <B2bResumen />
       <B2bNosotros />
       <B2bNiveles />

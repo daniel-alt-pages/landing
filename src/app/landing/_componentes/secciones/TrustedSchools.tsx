@@ -1,3 +1,4 @@
+import { MarqueePause } from '../primitivas/MarqueePause';
 import { COLEGIOS } from '../../_contenido/colegios';
 import type { SchoolLogo } from '../../_contenido/tipos';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
@@ -33,7 +34,7 @@ export function TrustedSchools({ tone = 'white' }: { tone?: 'white' | 'paper' | 
         Cada escudo es un colegio que ya aplicó, como mínimo, un simulacro de SeamosGenios con sus estudiantes. Oficial
         o privado, en distintas regiones: el modelo ya entró al aula.
       </Lead>
-      <div className="ag-school-rows">
+      <div className="ag-school-rows" id="ag-colegios-cintas">
         {ROWS.map((row, index) => (
           <Marquee
             key={ROW_LABEL[index]}
@@ -47,6 +48,7 @@ export function TrustedSchools({ tone = 'white' }: { tone?: 'white' | 'paper' | 
           </Marquee>
         ))}
       </div>
+      <MarqueePause target="ag-colegios-cintas" label="los escudos de las instituciones" />
     </Section>
   );
 }

@@ -29,11 +29,17 @@ const LANDING_DEV_PORT = '3010';
 /** App pública. El sitio de la alianza (Vercel) no tiene /login: lo redirige a la landing. */
 const PUBLIC_APP_ORIGIN = 'https://app.seamosgenios.org';
 
-/** Hosts que sirven solo la landing (alianza.seamosgenios.org, previews de Vercel). */
+/** Hosts que sirven solo la landing (alianza.seamosgenios.org, previews de Vercel, GitHub Pages). */
 function isLandingOnlyHost(hostname: string) {
   const host = hostname.toLowerCase();
   if (host === 'app.seamosgenios.org') return false;
-  return host === 'seamosgenios.org' || host.endsWith('.seamosgenios.org') || host.endsWith('.vercel.app');
+  return (
+    host === 'seamosgenios.org' ||
+    host.endsWith('.seamosgenios.org') ||
+    host.endsWith('.vercel.app') ||
+    // GitHub Pages (daniel-alt-pages.github.io/landing) no tiene /login.
+    host.endsWith('.github.io')
+  );
 }
 
 function isLoopback(hostname: string) {
