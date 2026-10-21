@@ -29,7 +29,7 @@ describe('platformLoginUrl', () => {
     const previous = global.window;
     global.window = {
       location: { hostname: '192.168.1.36', port: '3010', protocol: 'http:', origin: 'http://192.168.1.36:3010' },
-    };
+    } as unknown as typeof global.window;
     expect(platformLoginUrl('192.168.1.36')).toBe('http://192.168.1.36:8081/login');
     global.window = previous;
   });

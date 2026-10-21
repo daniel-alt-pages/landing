@@ -11,8 +11,8 @@ import {
 
 type GoogleAuthBundle = {
   signInWithPopup: (a: typeof auth, p: typeof googleProvider) => Promise<{ user: ReturnType<typeof __createLocalUser> }>;
-  signInWithRedirect: () => Promise<never>;
-  getRedirectResult: () => Promise<null>;
+  signInWithRedirect: (a?: unknown, p?: unknown) => Promise<never>;
+  getRedirectResult: (a?: unknown) => Promise<null>;
   auth: typeof auth;
   googleProvider: typeof googleProvider;
 };

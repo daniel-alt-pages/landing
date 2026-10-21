@@ -29,8 +29,8 @@ function StoryViewer({
       if (event.key === 'ArrowRight') onIndex((index + 1) % story.images.length);
       if (event.key === 'ArrowLeft') onIndex((index - 1 + story.images.length) % story.images.length);
     };
-    dialog.addEventListener('keydown', onKey);
-    return () => dialog.removeEventListener('keydown', onKey);
+    dialog.addEventListener('keydown', onKey as unknown as EventListener);
+    return () => dialog.removeEventListener('keydown', onKey as unknown as EventListener);
   }, [index, onIndex, story.images.length]);
 
   return (

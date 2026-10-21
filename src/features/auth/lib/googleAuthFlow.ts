@@ -51,7 +51,7 @@ export async function startGoogleLogin(options: { forceRedirect?: boolean } = {}
 
   try {
     const result = await signInWithPopup(auth, googleProvider);
-    return { status: 'signed-in', result };
+    return { status: 'signed-in', result: result as unknown as UserCredential };
   } catch (err) {
     if (!shouldFallbackToRedirect(err)) throw err;
     await signInWithRedirect(auth, googleProvider);

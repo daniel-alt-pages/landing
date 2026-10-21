@@ -49,7 +49,7 @@ export function SubnavB2b() {
   useEffect(() => {
     if (!visible) return;
     const fila = document.querySelector('.ag-b2b-subnav-row');
-    const enlace = fila?.querySelector('a[aria-current="true"]');
+    const enlace = fila?.querySelector<HTMLElement>('a[aria-current="true"]');
     if (!fila || !enlace) return;
     const izquierda = enlace.offsetLeft - fila.clientWidth / 2 + enlace.clientWidth / 2;
     fila.scrollTo({ left: Math.max(0, izquierda) });

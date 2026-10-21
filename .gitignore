@@ -80,3 +80,4 @@ logs/migracion/_*.txt
 # Scripts auxiliares temporales
 reorganizar.ps1
 *.tmp
+/out-pages

@@ -154,5 +154,14 @@ export async function waitForRealUser(timeoutMs = 7000): Promise<LocalUser> {
   });
 }
 
-export { auth, googleProvider, db };
+/**
+ * Tipado de compatibilidad: los módulos legados llaman a las funciones de
+ * `firebase/auth` y `firebase/firestore` con estos objetos locales. En runtime
+ * no cambia nada; solo se exponen con los tipos que esas firmas esperan.
+ */
+const typedAuth = auth as unknown as import('firebase/auth').Auth;
+const typedGoogleProvider = googleProvider as unknown as import('firebase/auth').AuthProvider;
+const typedDb = db as unknown as import('firebase/firestore').Firestore;
+
+export { typedAuth as auth, typedGoogleProvider as googleProvider, typedDb as db };
 export type { LocalUser };

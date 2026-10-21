@@ -17,6 +17,7 @@ export function FooterMark() {
         color="#ffffff"
         accentColor="#CC0000"
         reveal="letter"
+        style={undefined}
         dashLength={4}
         dashGap={2}
         specks={15}

@@ -8,6 +8,7 @@ export type SemanaId =
   | 's23'
   | 's4'
   | 's56'
+  | 's6'
   | 's7'
   | 's8'
   | 's9'

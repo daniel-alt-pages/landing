@@ -106,8 +106,17 @@ const securityHeaders = [
   { key: "X-Reports-Mode", value: "local-only" },
 ];
 
+/**
+ * GitHub Pages sirve el sitio en https://daniel-alt-pages.github.io/landing/.
+ * Las rutas de la app ya viven bajo /landing/*, así que NO se usa basePath
+ * (duplicaría /landing/landing). Solo se prefija /_next con assetPrefix y
+ * scripts/pages-assemble.mjs reubica out/landing/* en la raíz del artefacto.
+ */
+const isGithubPages = process.env.GITHUB_PAGES === "true";
+
 const nextConfig: NextConfig = {
   ...(isNextDev ? {} : { output: "export" as const }),
+  ...(isGithubPages ? { assetPrefix: "/landing" } : {}),
   env: {
     NEXT_PUBLIC_BUILD_ID: process.env.NEXT_PUBLIC_BUILD_ID || "landing-local",
     NEXT_PUBLIC_LOCAL_ONLY: "true",

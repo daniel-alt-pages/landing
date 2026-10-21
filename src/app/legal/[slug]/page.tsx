@@ -33,7 +33,7 @@ export default async function LegalDocumentPage({ params }: LegalParams) {
       </p>
       <h1 style={titleStyle}>{doc.title}</h1>
       <p style={metaStyle}>Actualizado el {doc.updated}</p>
-      {doc.sections.map((section) => (
+      {(doc.sections as { heading: string; paragraphs?: string[]; bullets?: string[] }[]).map((section) => (
         <section key={section.heading} style={{ marginTop: 28 }}>
           <h2 style={headingStyle}>{section.heading}</h2>
           {(section.paragraphs || []).map((paragraph) => (

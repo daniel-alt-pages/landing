@@ -41,7 +41,7 @@ export function ProgramDetail({ item, inCart, onClose, onAdd }: Props) {
       const first = list[0];
       const last = list[list.length - 1];
       const active = document.activeElement;
-      const outside = !root.contains(active);
+      const outside = !root?.contains(active);
       if (event.shiftKey && (active === first || outside)) {
         event.preventDefault();
         last.focus();

@@ -2,6 +2,7 @@
  * Snapshot embebido (mismo shape que el dashboard real del estudiante).
  * Fuente: public/data/simulations/SG11-19/estudiantes/1043146435.json
  */
+// @ts-ignore -- snapshot local no versionado en este repo (ruta legada de /landing-profesional).
 import studentSnapshot from '../../../../../../../public/data/simulations/SG11-19/estudiantes/1043146435.json';
 
 import { SHOWCASE_DEFAULT_SIM } from '../constants/dom-ids';
