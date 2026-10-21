@@ -1,6 +1,9 @@
 import { RUTAS } from '../../_contenido/sitio';
 import { ILUSTRACIONES } from '../../_contenido/sitio-ilustraciones';
+import { Caveat } from 'next/font/google';
 import { MotionIn } from '../primitivas/MotionIn';
+
+const caveat = Caveat({ subsets: ['latin'], weight: '700', display: 'swap' });
 
 /**
  * «Qué encuentra en el sitio»: índice de navegación debajo del hero.
@@ -11,11 +14,32 @@ export function MapaSitio() {
   return (
     <section id="explorar" className="qe" aria-labelledby="mapa-titulo">
       <div className="qe-wrap">
-        <MotionIn>
+        <div className="qe-head">
+        <MotionIn className="qe-intro">
+          <svg className="qe-burst" viewBox="0 0 50 50" fill="none" aria-hidden="true" focusable="false">
+            <path d="M26 8 L33 22" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" />
+            <path d="M10 19 L25 27" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" />
+            <path d="M8 35 L23 32" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" />
+          </svg>
           <h2 id="mapa-titulo" className="qe-title">Qué encuentra en el sitio</h2>
           <p className="qe-lead">Una página para cada pregunta: el modelo para colegios, la plataforma, los programas para estudiantes y la evidencia.</p>
-          <p className="qe-note">Todo lo que usted necesita, en un solo lugar.</p>
         </MotionIn>
+        <div className="qe-anno">
+          <p className={`qe-hand ${caveat.className}`}>
+            Todo lo que necesitas,<br />
+            <span className="qe-hand-last">
+              en un solo lugar
+              <svg className="qe-underline" viewBox="0 0 70 12" fill="none" aria-hidden="true" focusable="false">
+                <path d="M4 9 C 25 5, 45 4, 66 2" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+              </svg>
+            </span>
+          </p>
+          <svg className="qe-curve" viewBox="0 0 70 70" fill="none" aria-hidden="true" focusable="false">
+            <path d="M58 10 C 35 16, 22 35, 20 58" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M14 49 L 20 59 L 28 51" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        </div>
         <ul className="qe-grid">
           {RUTAS.map((r, i) => (
             <MotionIn as="li" key={r.id} delay={i * 40} className="qe-item">

@@ -3718,9 +3718,15 @@ a.ag-product-cart.is-soon {
 .qe-wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; box-sizing: content-box; }
 .qe-title { margin: 0; font: 800 40px/1.1 var(--ag-font); letter-spacing: -0.03em; color: var(--qe-ink); }
 .qe-lead { max-width: 40rem; margin: 16px 0 0; font: 400 16px/1.5 var(--font-alianza-body), var(--ag-font); color: var(--qe-muted); }
-.qe-note { margin: 8px 0 0; font: 700 16px/1.5 var(--ag-font); color: var(--qe-ink); }
-.qe-note::after { content: ""; display: block; width: 64px; height: 2px; margin-top: 8px; background: var(--qe-red); }
-.qe-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: minmax(0,1fr); gap: 16px; }
+.qe-head { position: relative; }
+.qe-intro { position: relative; }
+.qe-burst { position: absolute; top: -20px; left: -12px; width: 40px; height: 40px; color: var(--qe-red); pointer-events: none; }
+.qe-anno { margin-top: 24px; display: flex; flex-direction: column; align-items: flex-start; color: var(--qe-ink); }
+.qe-hand { margin: 0; padding-left: 8px; font-weight: 700; font-size: 24px; line-height: 1.05; letter-spacing: 0.02em; text-align: center; transform: rotate(-6deg); }
+.qe-hand-last { position: relative; display: inline-block; }
+.qe-underline { position: absolute; right: 0; bottom: -8px; width: 64px; height: 12px; }
+.qe-curve { display: none; }
+.qe-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
 .qe-item { display: flex; min-width: 0; }
 .qe-card { display: flex; flex-direction: column; gap: 16px; width: 100%; padding: 24px; box-sizing: border-box;
   border: 1px solid var(--qe-muted); border-radius: 8px; box-shadow: none; text-decoration: none;
@@ -3750,15 +3756,38 @@ a.ag-product-cart.is-soon {
   .qe-wrap { padding: 0 32px; }
   .qe-title { font-size: 48px; }
   .qe-lead { font-size: 18px; }
+  .qe-burst { left: -24px; }
+  .qe-hand { font-size: 29px; }
+  .qe-curve { display: block; width: 48px; height: 48px; margin: -4px 0 0 96px; }
   .qe-grid { margin-top: 64px; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
 }
 @media (min-width: 1200px) {
   .qe { padding: 96px 0; }
   .qe-title { font-size: 56px; }
-  .qe-grid { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 32px; }
-  .qe-card { flex-direction: row; align-items: stretch; gap: 24px; padding: 32px; }
-  .qe-ilus { width: 80px; height: 80px; }
+  .qe-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
+  .qe-anno { flex: none; margin: 0 48px 0 0; align-items: flex-end; }
+  .qe-curve { width: 64px; height: 64px; margin: -8px 176px 0 0; }
+  .qe-grid { gap: 32px; }
+  .qe-card { padding: 32px; }
   .qe-card-title { font-size: 24px; }
+}
+/* 2 columnas en todo ancho reducido (incl. móvil, tarjetas compactas); 3 solo si cada tarjeta mide >= ~360px (contenedor >= ~1144px). */
+@media (max-width: 767px) {
+  .qe-card { padding: 16px; gap: 12px; }
+  .qe-ilus { width: 48px; height: 48px; }
+  .qe-card-title { font-size: 18px; }
+  .qe-card-title { hyphens: auto; overflow-wrap: anywhere; }
+  .qe-text { overflow-wrap: break-word; }
+  .qe-ir { padding-top: 16px; }
+  .qe-arrow { width: 32px; height: 32px; }
+}
+@media (max-width: 371px) { .qe-grid { grid-template-columns: minmax(0,1fr); } }
+@media (min-width: 900px) {
+  .qe-card { flex-direction: row; align-items: stretch; gap: 24px; }
+  .qe-ilus { width: 80px; height: 80px; }
+}
+@media (min-width: 1208px) {
+  .qe-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
 }
 .ag-mapa-casos { display: grid; gap: 16px; margin-top: 56px; }
 .ag-mapa-casos h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; }

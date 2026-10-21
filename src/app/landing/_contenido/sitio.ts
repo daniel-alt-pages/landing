@@ -21,5 +21,5 @@ export const RUTAS = [
   { id: 'programas', para: 'Estudiantes y familias', href: '/landing/programas', titulo: 'Programas, simulacros y cursos', texto: 'Compare por necesidad y pague en línea si es estudiante o familia.' },
   { id: 'resultados', para: 'Evidencia', href: '/landing/resultados', titulo: 'Resultados y mensajes 2026-A', texto: 'Resultados y mensajes de estudiantes del Calendario A 2026.' },
   { id: 'nosotros', para: 'El equipo', href: '/landing/nosotros', titulo: feature('nosotros').feature.title, texto: 'Quiénes somos, nuestro fundador y el equipo de tutores.' },
+  { id: 'legal', para: 'Legal', href: '/landing/politica-de-datos', titulo: 'Política de datos y cookies', texto: 'Tratamiento de datos personales según la Ley 1581 de 2012 y el Decreto 1377 de 2013, y cookies del sitio.' },
 ] as const;
-// La política de datos no va en este índice: ya está enlazada en el footer (SiteFooter) y en el banner de cookies.
