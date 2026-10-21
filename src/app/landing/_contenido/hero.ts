@@ -1,10 +1,16 @@
 export const HERO = {
   eyebrow: 'Programa nacional de fortalecimiento académico · Saber 11',
-  title: ['Vea el Saber 11', 'antes del examen'],
+  title: ['Sepa qué reforzar', 'antes del Saber 11'],
   rotatingPrefix: 'Una alianza para',
   rotating: ['subir el promedio de su institución', 'ver qué reforzar antes del examen', 'probar el modelo sin costo'],
   lead:
-    'Un simulacro tipo ICFES, el análisis al día siguiente y dos pantallas: una para su rectoría y otra para cada estudiante. El primero no tiene costo y no obliga a contratar.',
+    'Aplicamos un simulacro con formato ICFES y al día siguiente su rectoría ve en qué competencias está cada curso, y cada estudiante ve qué estudiar.',
+  bullets: [
+    'Una pantalla para rectoría y otra para cada estudiante',
+    'Análisis al día siguiente del simulacro',
+    'El primer simulacro no tiene costo ni lo obliga a contratar',
+  ],
+  prueba: 'Ya lo aplicamos con 716 estudiantes de 9 colegios oficiales de Soacha.',
   trust: '65 instituciones ya aplicaron al menos un simulacro.',
   ctaPrimary: 'Agendar reunión de 30 min',
   ctaSecondary: 'Solicitar simulacro gratis',
