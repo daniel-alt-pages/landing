@@ -23,7 +23,7 @@ export function FinalCta() {
               card.id === 'whatsapp' ? buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.cta_final) : contactoHref(card.id === 'simulacro' ? 'simulacro' : 'reunion');
             return (
               <article key={card.id} className="ag-close-card">
-                <img src={card.mascot} alt={card.mascotAlt} width={512} height={512} />
+                <img src={card.mascot} alt={card.mascotAlt} width={512} height={512} loading="lazy" decoding="async" />
                 <h3 className="ag-h3">{card.title}</h3>
                 <p>{card.text}</p>
                 <a className="ag-btn" href={href}>

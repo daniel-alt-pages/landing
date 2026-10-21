@@ -52,3 +52,31 @@ export const B2B_COMUNICACION = [
   { tipo: 'Formal', canales: [{ title: 'Correo', text: 'Comunicación formal y respaldo cuando corresponda.' }, { title: 'PQRS', text: 'Canal formal, trazable, con radicado, estado e historial.' }] },
   { tipo: 'Externa', canales: [{ title: 'WhatsApp', text: 'Canal complementario de coordinación rápida, sobre todo con la institución. No sustituye los canales formales.' }] },
 ] as const;
+
+/** Lámina 13 (p.12), texto literal con la ortografía corregida. */
+export const B2B_ECOSISTEMA_L13 = {
+  eyebrow: 'Nivel 3 · Programa institucional integral',
+  titulo: 'El ecosistema articulado de los 4 actores',
+  acento: 'El ecosistema articulado',
+  lead: 'El estudiante en el centro, respaldado permanentemente por directivos, docentes y familia',
+  actores: {
+    estudiante: { title: 'ESTUDIANTE (CENTRO)', sub: 'FORMACIÓN + SEGUIMIENTO', text: ['PreICFES + Práctica + Orientación'] },
+    sg: { title: 'SEAMOSGENIOS', sub: 'PLATAFORMA + DATOS + ACOMPAÑAMIENTO', text: ['Orquestador pedagógico y analítico institucional'] },
+    docentes: { title: 'DOCENTES', sub: 'DATOS + HERRAMIENTAS', text: ['Quizizz/Kahoot SG', 'Banco de Preguntas'] },
+    familias: { title: 'FAMILIAS', sub: 'SEGUIMIENTO SENCILLO', text: ['Dashboard privado', '2 Encuentros (3h)'] },
+    directivos: { title: 'DIRECTIVOS & RECTORÍA', sub: 'GESTIÓN + TOMA DE DECISIONES ESTRATÉGICAS', text: ['Panel institucional en vivo + Hasta 15h de comité'] },
+  },
+  /** Sentido único, como en la lámina. Rojas: salen de SEAMOSGENIOS. */
+  relaciones: [
+    { de: 'sg', a: 'estudiante', label: 'Aprendizaje & Datos' },
+    { de: 'sg', a: 'docentes', label: 'Herramientas & Diagnósticos' },
+    { de: 'sg', a: 'familias', label: 'Alertas & Reportes' },
+    { de: 'sg', a: 'directivos', label: 'Informes & Planes' },
+    { de: 'docentes', a: 'estudiante', label: 'Clases & Seguimiento' },
+    { de: 'familias', a: 'estudiante', label: 'Motivación & Apoyo' },
+    { de: 'directivos', a: 'docentes', label: 'Respaldo & Coordinación' },
+    { de: 'directivos', a: 'familias', label: 'Respaldo institucional' },
+  ],
+} as const;
+
+export const B2B_NOMBRE_ACTOR = { estudiante: 'Estudiante', sg: 'SEAMOSGENIOS', docentes: 'Docentes', familias: 'Familias', directivos: 'Directivos & Rectoría' } as const;

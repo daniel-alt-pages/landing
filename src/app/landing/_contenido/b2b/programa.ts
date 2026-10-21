@@ -44,7 +44,7 @@ export const B2B_N1 = {
     { title: 'Seguimiento', text: 'Mide la efectividad del trabajo pedagógico intermedio y la retención.' },
     { title: 'Cierre', text: 'Simula las condiciones reales de examen y calcula la proyección final Saber 11.' },
   ],
-  aclaracion: 'Los puntajes y resultados generados por SEAMOSGENIOS son de una evaluación tipo Saber 11 y no constituyen una calificación oficial del ICFES.',
+  aclaracion: 'Los puntajes y resultados generados por SEAMOSGENIOS son de una evaluación tipo Saber 11: no son resultados del ICFES ni los reemplazan.',
   modalidad: 'La modalidad recomendada es digital. Si la institución imprime y aplica el instrumento, la impresión, la logística, la vigilancia y la captura de respuestas son responsabilidad de la institución. SEAMOSGENIOS recibe las respuestas por el medio digital definido y después califica y analiza.',
   doble: {
     title: 'Arquitectura de datos de doble impacto',

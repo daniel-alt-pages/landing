@@ -87,6 +87,13 @@ export default function AlianzaLayout({ children }: { children: ReactNode }) {
   return (
     <div className={`alianza-root ${montserrat.variable}`} lang="es-CO" data-app-surface="alianza">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
+      {/* Sin JS: framer-motion deja opacity:0 / blur en el HTML del servidor. Se fuerza visible. */}
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html:
+            '<style>.alianza-root [style*="opacity:0"]{opacity:1!important;filter:none!important;transform:none!important}</style>',
+        }}
+      />
       <ConsentBanner />
       <SiteHeader />
       <main id="contenido">

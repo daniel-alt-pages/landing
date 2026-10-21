@@ -83,6 +83,8 @@ export function DepthCarousel({
   const reducedRef = useRef(false);
   const onActivateRef = useRef(onActivate);
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [canAuto, setCanAuto] = useState(false);
 
   onActivateRef.current = onActivate;
 
@@ -262,7 +264,8 @@ export function DepthCarousel({
 
   useEffect(() => {
     reducedRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!autoplay || reducedRef.current || count < 2) return undefined;
+    setCanAuto(autoplay && !reducedRef.current && count > 1);
+    if (!autoplay || reducedRef.current || count < 2 || paused) return undefined;
     const root = rootRef.current;
     let hovered = false;
     let focused = false;
@@ -292,7 +295,7 @@ export function DepthCarousel({
       root?.removeEventListener('focusin', onFocusIn);
       root?.removeEventListener('focusout', onFocusOut);
     };
-  }, [autoplay, autoplayDelay, count, navigateBy]);
+  }, [autoplay, autoplayDelay, count, navigateBy, paused]);
 
   useEffect(() => {
     layout(posRef.current);
@@ -347,7 +350,16 @@ export function DepthCarousel({
               else setFocus(index, true);
             }}
           >
-            <img className="depth-carousel__img" src={item.image} alt={item.alt} draggable={false} />
+            <img
+              className="depth-carousel__img"
+              src={item.image}
+              srcSet={/-1080\.webp$/.test(item.image) ? `${item.image.replace(/-1080\.webp$/, '-540.webp')} 540w, ${item.image} 1080w` : undefined}
+              sizes={/-1080\.webp$/.test(item.image) ? `(max-width: 600px) 90vw, ${cardWidth}px` : undefined}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+            />
             <span
               className="depth-carousel__tint"
               ref={(el) => { overlayRefs.current[index] = el; }}
@@ -369,6 +381,17 @@ export function DepthCarousel({
             </svg>
           </button>
         </>
+      ) : null}
+      {canAuto ? (
+        <button
+          type="button"
+          className="depth-carousel__pause"
+          aria-pressed={paused}
+          aria-label={paused ? `Reanudar el carrusel ${label}` : `Pausar el carrusel ${label}`}
+          onClick={() => setPaused((value) => !value)}
+        >
+          {paused ? 'Reanudar' : 'Pausar'}
+        </button>
       ) : null}
       {showIndicators && count > 1 ? (
         <div className="depth-carousel__dots" role="tablist" aria-label={label}>

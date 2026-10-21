@@ -1,5 +1,6 @@
 import { B2B_CADENA, B2B_CICLO_CENTRO, B2B_CICLO_CIERRE, B2B_RESUMEN } from '../../../_contenido/b2b/modelo';
 import { SeccionB2b } from './base/SeccionB2b';
+import { IdeaCentral } from './diagramas/Laminas';
 import { CicloSvg } from './diagramas/CicloSvg';
 
 export function B2bResumen() {
@@ -20,6 +21,7 @@ export function B2bResumen() {
         ))}
       </ol>
       <p className="ag-b2b-cierre-linea">{B2B_CICLO_CIERRE}</p>
+      <IdeaCentral />
     </SeccionB2b>
   );
 }

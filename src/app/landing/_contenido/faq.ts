@@ -45,7 +45,7 @@ export const FAQ: FaqItem[] = [
   {
     question: '¿Cómo se calcula el puntaje?',
     answer:
-      'Con el modelo TRI que usa el ICFES. Es una aproximación rigurosa al puntaje real, no el resultado oficial del examen de Estado.',
+      'Con el modelo TRI que usa el ICFES. Es una aproximación rigurosa al puntaje real, no el resultado del examen de Estado que publica el ICFES.',
   },
   {
     question: '¿Cuándo llegan los resultados?',

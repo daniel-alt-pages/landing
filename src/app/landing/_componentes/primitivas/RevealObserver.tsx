@@ -20,7 +20,7 @@ export function RevealObserver() {
           observer.unobserve(entry.target);
         }
       },
-      { rootMargin: '0px 0px -10% 0px', threshold: 0.08 },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0 },
     );
     const watch = (target: HTMLElement) => {
       if (seen.has(target) || target.classList.contains('is-in')) return;

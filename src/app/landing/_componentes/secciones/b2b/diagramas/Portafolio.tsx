@@ -6,7 +6,6 @@ import {
   B2B_ALERTAS_CADENA,
   B2B_COHORTE,
   B2B_COMUNICACION,
-  B2B_ECOSISTEMA,
 } from '../../../../_contenido/b2b/portafolio';
 import { AlEntrar } from '../base/AlEntrar';
 import { CicloSvg } from './CicloSvg';
@@ -95,36 +94,6 @@ export function EntregablesN2() {
       <ol className="ag-pf-cadena">{B2B_N2.ciclo.map((x) => <li key={x}>{x}</li>)}</ol>
       <ul className="ag-pf-checks">{B2B_N2.metodo.map((x) => <li key={x}>{x}</li>)}</ul>
       <p className="ag-pf-nota"><strong>Complemento.</strong> {B2B_N2.addon}</p>
-    </AlEntrar>
-  );
-}
-
-function Nodo({ n, clase }: { n: { title: string; sub: string; text: string }; clase: string }) {
-  return (
-    <div className={`ag-pf-actor ${clase}`}>
-      <strong>{n.title}</strong>
-      <em>{n.sub}</em>
-      <span>{n.text}</span>
-    </div>
-  );
-}
-
-/** p.12: ecosistema articulado de los 4 actores. */
-export function Ecosistema() {
-  const e = B2B_ECOSISTEMA;
-  return (
-    <AlEntrar className="ag-pf ag-pf-eco-wrap">
-      <h4 className="ag-pf-h">{e.titulo}</h4>
-      <p className="ag-pf-lead">{B2B_N3.ecoLead}</p>
-      <figure className="ag-pf-eco" aria-labelledby="pf-eco-cap">
-        <Nodo n={e.estudiante} clase="is-est" />
-        <Nodo n={e.docentes} clase="is-doc" />
-        <Nodo n={e.centro} clase="is-sg" />
-        <Nodo n={e.familias} clase="is-fam" />
-        <Nodo n={e.directivos} clase="is-dir" />
-        <figcaption id="pf-eco-cap" className="ag-b2b-sr">El estudiante en el centro; SEAMOSGENIOS conecta a docentes, familias y directivos.</figcaption>
-      </figure>
-      <ul className="ag-pf-flujos">{e.flujos.map((x) => <li key={x}>{x}</li>)}</ul>
     </AlEntrar>
   );
 }

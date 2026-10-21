@@ -3,6 +3,12 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import AppRootChrome from "@/components/AppRootChrome";
 /** Bajo /landing para que exista también en GitHub Pages. */
 const PRISMIC_APP_ICON = "/landing/brand/sg-services-logo.svg";
+/**
+ * GitHub Pages sirve solo /landing/*: /sw.js no existe ahí (404). Además sw.js es un
+ * kill switch que se desregistra y recarga la pestaña; en Pages nunca hubo un SW previo,
+ * así que ahí no se registra nada.
+ */
+const REGISTER_SW = process.env.GITHUB_PAGES !== "true";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -87,8 +93,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   viewportFit: "cover",
 };
 
@@ -128,7 +132,7 @@ export default function RootLayout({
                   }
                 });
               `
-                : process.env.NODE_ENV === 'production'
+                : process.env.NODE_ENV === 'production' && REGISTER_SW
                   ? `
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', function() {
@@ -136,7 +140,9 @@ export default function RootLayout({
                   });
                 }
               `
-                  : `
+                  : process.env.NODE_ENV === 'production'
+                    ? ''
+                    : `
                 if ('serviceWorker' in navigator) {
                   window.addEventListener('load', function() {
                     navigator.serviceWorker.getRegistrations()

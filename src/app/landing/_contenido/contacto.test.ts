@@ -10,6 +10,7 @@ describe('platformLoginUrl', () => {
   it('en el sitio público de la alianza abre la app pública', () => {
     expect(platformLoginUrl('alianza.seamosgenios.org')).toBe('https://app.seamosgenios.org/login');
     expect(platformLoginUrl('alianza-sg.vercel.app')).toBe('https://app.seamosgenios.org/login');
+    expect(platformLoginUrl('daniel-alt-pages.github.io')).toBe('https://app.seamosgenios.org/login');
   });
 
   it('en la red local abre el login en esa misma IP', () => {

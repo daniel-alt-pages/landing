@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { PAGINAS } from '../_contenido/paginas';
 import { FinalCta } from '../_componentes/secciones/FinalCta';
 import { PageIntro } from '../_componentes/secciones/PageIntro';
-import { HistoriasCarrusel } from '../_componentes/secciones/HistoriasCarrusel';
 import { ResultsGallery } from '../_componentes/secciones/ResultsGallery';
 import { TrustedSchools } from '../_componentes/secciones/TrustedSchools';
 import { VoicesSection } from '../_componentes/secciones/VoicesSection';
@@ -17,7 +16,6 @@ export default function ResultadosPage() {
     <>
       <PageIntro eyebrow={PAGINAS.resultados.eyebrow} title={PAGINAS.resultados.title} lead={PAGINAS.resultados.lead} />
       <ResultsGallery />
-      <HistoriasCarrusel />
       <VoicesSection tone="white" />
       <TrustedSchools tone="paper" />
       <FinalCta />

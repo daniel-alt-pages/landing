@@ -1,4 +1,4 @@
-import { CASOS, RUTAS, ALIANZAS_URL } from '../../_contenido/sitio';
+import { RUTAS } from '../../_contenido/sitio';
 import { MotionIn } from '../primitivas/MotionIn';
 
 /** Qué hay en el resto del sitio, con resúmenes tomados del contenido de cada página. */
@@ -22,18 +22,6 @@ export function MapaSitio() {
             </MotionIn>
           ))}
         </ul>
-        <div className="ag-mapa-casos">
-          <MotionIn>
-            <h3>Casos de alianza</h3>
-            <a className="ag-text-link" href={ALIANZAS_URL} target="_blank" rel="noopener noreferrer">Ver la pantalla de alianzas</a>
-          </MotionIn>
-          {CASOS.map((c, i) => (
-            <MotionIn key={c.id} delay={60 + i * 60} className="ag-mapa-caso">
-              <strong>{c.titulo}</strong>
-              <p>{c.texto}</p>
-            </MotionIn>
-          ))}
-        </div>
       </div>
     </section>
   );

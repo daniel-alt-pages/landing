@@ -1770,9 +1770,27 @@
 }
 
 .ag-marquee[data-dir='right'] .ag-marquee-track { animation-direction: reverse; }
-.ag-marquee:hover .ag-marquee-track { animation-play-state: paused; }
-.ag-marquee-schools:hover .ag-marquee-track,
-.ag-hero-logos:hover .ag-marquee-track { animation-play-state: running; }
+.ag-marquee:hover .ag-marquee-track,
+.ag-marquee:focus-within .ag-marquee-track,
+[data-marquee-paused='true'] .ag-marquee-track { animation-play-state: paused; }
+.ag-marquee-pause {
+  display: block;
+  margin: 16px 0 0 auto;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 14px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  opacity: 0.85;
+}
+.ag-marquee-pause:focus-visible { outline: 3px solid var(--ag-red, #cc0000); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .ag-marquee-pause { display: none; } }
 
 .ag-school-rows {
   display: grid;
@@ -3715,6 +3733,13 @@ a.ag-product-cart.is-soon {
   .ag-consent { left: 12px; right: 12px; bottom: 12px; max-width: none; padding: 12px 14px; gap: 10px; }
   .ag-consent-note { display: none; }
   .ag-consent p { font-size: 13px; }
+  /* WCAG 2.4.11: el banner no puede tapar el foco. Máx. ~30 % del alto, botones en una fila. */
+  .ag-consent { max-height: 30vh; max-height: 30dvh; overflow-y: auto; gap: 8px; padding: 10px 12px; }
+  .ag-consent p { line-height: 1.35; }
+  .ag-consent-actions { flex-wrap: nowrap; gap: 6px; }
+  .ag-consent-actions .ag-btn,
+  .ag-consent-actions .ag-btn-ghost { flex: 1 1 auto; min-height: 44px; padding: 6px 8px; font-size: 13px; white-space: nowrap; }
+  html:has(.ag-consent) { scroll-padding-bottom: 32vh; }
 }
 
 /* ───────── Hero en una columna (rama hero-una-columna) ───────── */
@@ -3781,9 +3806,10 @@ a.ag-product-cart.is-soon {
 .ag-hero-v2.ag-hero-fx.ag-section:has(.ag-hero-1col) { background: linear-gradient(135deg, #0a0a0a 0%, #2a0a0d 50%, #8f0000 100%); padding: 56px 0 0; }
 .ag-hero-fx-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .ag-hero-fx-plane { position: absolute; inset: 0; background: linear-gradient(90deg, #cc0000 0%, #4a0b0e 55%, #0a0a0a 100%); clip-path: polygon(0 86%, 100% 62%, 100% 100%, 0 100%); }
-.ag-hero-fx-glow { position: absolute; border-radius: 999px; filter: blur(120px); }
-.ag-hero-fx-glow.is-a { left: -8rem; top: 2.5rem; width: 600px; height: 600px; background: rgba(255, 255, 255, 0.06); }
-.ag-hero-fx-glow.is-b { left: 25%; bottom: 2.5rem; width: 800px; height: 500px; background: rgba(204, 0, 0, 0.18); filter: blur(140px); }
+.ag-hero-fx-glow { position: absolute; border-radius: 999px; }
+/* Brillos con degradado radial en vez de filter: blur(120–140px): mismo efecto difuso sin el coste de pintura del filtro. */
+.ag-hero-fx-glow.is-a { left: -14rem; top: -3rem; width: 840px; height: 840px; background: radial-gradient(closest-side, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03) 55%, transparent); }
+.ag-hero-fx-glow.is-b { left: calc(25% - 140px); bottom: -2rem; width: 1080px; height: 780px; background: radial-gradient(closest-side, rgba(204, 0, 0, 0.18), rgba(204, 0, 0, 0.08) 55%, transparent); }
 .ag-hero-fx-mark { position: absolute; right: -2%; top: 3rem; font-size: clamp(14rem, 34vw, 32rem); font-weight: 900; line-height: .8; letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.08); user-select: none; }
 .ag-hero-fx .ag-hero-fx-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: min(1190px, calc(100% - 32px)); }
 .ag-hero-fx .ag-display { color: #fff; max-width: 22ch; font-size: clamp(1.6rem, 0.95rem + 2vw, 2.35rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; text-transform: uppercase; }
@@ -3843,3 +3869,8 @@ a.ag-product-cart.is-soon {
 }
 .ag-hero-fx .ag-hero-mascota { inset: auto; }
 @media (min-width: 1024px) { .ag-hero-fx .ag-hero-fx-grid { padding: 0; } }
+
+/* Entrada de la mascota del hero solo con CSS (sin opacity:0 en el HTML del servidor). */
+.ag-hero-mascota-in { animation: ag-mascota-in 800ms ease-out both; }
+@keyframes ag-mascota-in { from { opacity: 0.01; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ag-hero-mascota-in { animation: none; } }

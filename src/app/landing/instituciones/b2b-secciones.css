@@ -256,6 +256,15 @@
 .ag-b2b-cierre .ag-b2b-btn { background: #fff; color: var(--ag-ink); }
 .ag-b2b-cierre .ag-b2b-btn-ghost { background: transparent; color: #fff; border: 2px solid #fff; }
 .ag-b2b-cierre .ag-b2b-nota { color: #fff; }
+.ag-b2b-cierre .ag-b2b-nota a { color: #fff; font-weight: 700; }
+.ag-b2b-cierre .ag-b2b-form-card { margin-top: 32px; max-width: 720px; padding: 24px; border-radius: 8px; background: #fff; color: var(--ag-ink); text-align: left; }
+.ag-b2b-cierre .ag-b2b-form-card p,
+.ag-b2b-cierre .ag-b2b-form-card label,
+.ag-b2b-cierre .ag-b2b-form-card legend { color: var(--ag-ink); font-size: 16px; }
+.ag-b2b-cierre .ag-b2b-form-card .ag-error { color: var(--ag-red-hover, #a30000); font-size: 14px; }
+.ag-b2b-cierre .ag-b2b-form-card .ag-form-note { color: var(--ag-muted); font-size: 14px; }
+.ag-b2b-cierre .ag-b2b-form-card a { color: var(--ag-ink); }
+@media (max-width: 640px) { .ag-b2b-cierre .ag-b2b-form-card { padding: 16px; } }
 
 @media (max-width: 639px) {
   .ag-b2b-acciones .ag-b2b-btn { width: 100%; }
