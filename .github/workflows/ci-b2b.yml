@@ -1,0 +1,32 @@
+name: CI (b2b)
+
+# Solo verifica: no despliega. El deploy a Pages sigue en deploy-pages.yml (push a main).
+on:
+  pull_request:
+  push:
+    branches: [b2b]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Typecheck
+        run: npx tsc --noEmit -p .
+      - name: Build (export estático, igual que Pages)
+        run: npm run build:pages
+        env:
+          GITHUB_PAGES: 'true'
+          NEXT_TELEMETRY_DISABLED: '1'
