@@ -2,12 +2,11 @@ import { HERO } from '../../_contenido/hero';
 import { ALCANCE } from '../../_contenido/sitio';
 import { contactoHref } from '../../_lib/links';
 import { MotionIn } from '../primitivas/MotionIn';
-import { HeroAlianzas } from './HeroAlianzas';
 
 export function Hero() {
   return (
     <section id="inicio" className="ag-section ag-hero ag-hero-v2" aria-labelledby="hero-title">
-      <div className="ag-hero-grid">
+      <div className="ag-hero-grid ag-hero-1col">
         <div className="ag-hero-copy">
           {/* H1 en un solo nodo de texto y sin animación: es el texto del primer pliegue. */}
           <h1 id="hero-title" className="ag-display">{`${HERO.title[0]} ${HERO.title[1]}`}</h1>
@@ -28,9 +27,6 @@ export function Hero() {
               ))}
             </dl>
           </MotionIn>
-        </div>
-        <div className="ag-hero-side">{/* Sin animación: el póster es el LCP. */}
-          <HeroAlianzas />
         </div>
       </div>
     </section>

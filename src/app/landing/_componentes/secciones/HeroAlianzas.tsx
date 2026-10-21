@@ -5,7 +5,7 @@ import { ALIANZAS_URL } from '../../_contenido/sitio';
 
 /**
  * Pantalla de alianzas publicada (alianzas-react, solo lectura, única fuente).
- * - El póster estático (captura de la página publicada) es el LCP: carga con prioridad.
+ * - Póster estático (captura de la página publicada) primero; ya no está en el hero, carga diferida.
  * - Desde 768 px, el iframe en vivo se monta después de `load` encima del póster.
  * - En móvil no se monta el iframe (evita scroll anidado y ~240 KB de JS): póster + enlace.
  */
@@ -23,9 +23,8 @@ export function HeroAlianzas() {
     return () => window.removeEventListener('load', mount);
   }, []);
   return (
-    <figure id="alianzas" className="ag-hero-alianzas" aria-labelledby="alianzas-titulo">
+    <figure className="ag-hero-alianzas" aria-labelledby="alianzas-titulo">
       <figcaption className="ag-hero-alianzas-head">
-        <h2 id="alianzas-titulo">Alianzas en curso</h2>
         <a className="ag-text-link" href={ALIANZAS_URL} target="_blank" rel="noopener noreferrer">
           Abrir en otra pestaña
         </a>
@@ -38,7 +37,8 @@ export function HeroAlianzas() {
             sizes="(min-width: 1024px) 600px, 100vw"
             width={1280}
             height={1240}
-            fetchPriority="high"
+            loading="lazy"
+            decoding="async"
             alt="Pantalla de alianzas de SEAMOSGENIOS: PreICFES Gratuito Jóvenes Bogotá, Soacha y Casanare."
           />
         </a>

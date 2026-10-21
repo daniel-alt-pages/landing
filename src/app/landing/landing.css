@@ -3716,3 +3716,20 @@ a.ag-product-cart.is-soon {
   .ag-consent-note { display: none; }
   .ag-consent p { font-size: 13px; }
 }
+
+/* ───────── Hero en una columna (rama hero-una-columna) ───────── */
+.ag-hero-grid.ag-hero-1col { display: block; width: min(1040px, calc(100% - 32px)); }
+.ag-hero-1col .ag-display { max-width: 16ch; }
+.ag-hero-1col .ag-hero-alcance { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--ag-grey-2, rgba(0,0,0,.1)); }
+@media (min-width: 1024px) {
+  .ag-hero-v2.ag-section:has(.ag-hero-1col) { padding: 96px 0 104px; }
+  .ag-hero-1col .ag-display { font-size: clamp(3rem, 1.6rem + 3.4vw, 4.6rem); }
+  .ag-hero-1col .ag-lead { font-size: 20px; max-width: 40rem; }
+  .ag-hero-1col .ag-hero-alcance { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .ag-hero-1col .ag-hero-alcance div { grid-template-columns: 1fr; gap: 6px; }
+  .ag-hero-1col .ag-hero-alcance dt { font-size: 40px; }
+}
+.ag-alianzas-sec.ag-section { padding: 88px 0; background: var(--ag-white); }
+.ag-alianzas-sec-body { margin-top: 24px; min-width: 0; }
+.ag-alianzas-sec .ag-hero-alianzas-head { justify-content: flex-end; }
+@media (min-width: 768px) { .ag-alianzas-sec .ag-hero-alianzas-frame { height: clamp(480px, 52vw, 680px); } }

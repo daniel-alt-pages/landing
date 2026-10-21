@@ -1,3 +1,4 @@
+import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
 import { FinalCta } from './_componentes/secciones/FinalCta';
 import { Hero } from './_componentes/secciones/Hero';
@@ -9,7 +10,7 @@ import { StorefrontBanner } from './_componentes/secciones/StorefrontBanner';
 import { VoicesSection } from './_componentes/secciones/VoicesSection';
 
 /**
- * Orden (propuesta rediseno-home): qué es y alcance → mapa del sitio → cómo empezar →
+ * Orden (propuesta rediseno-home): qué es y alcance → mapa del sitio → alianzas en curso → cómo empezar →
  * producto → evidencia (Voces, sin cambios) → tienda B2C (aparte del embudo B2B) →
  * dudas → cierre con formulario como final real de la página.
  */
@@ -18,6 +19,7 @@ export default function AlianzaInicio() {
     <>
       <Hero />
       <MapaSitio />
+      <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
       <VoicesSection compact tone="grey" />
