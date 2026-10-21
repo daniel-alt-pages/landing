@@ -3817,3 +3817,29 @@ a.ag-product-cart.is-soon {
 .ag-hero-fx-side::before { content: ""; position: absolute; left: 50%; top: 55%; width: min(110%, 560px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.22), rgba(255,255,255,.06) 60%, transparent); pointer-events: none; }
 .ag-hero-fx .ag-hero-mascota { position: relative; }
 .ag-hero-fx .ag-hero-tienda-card { color: var(--ag-ink); }
+
+/* ===== Hero claro (reemplaza el fondo oscuro-rojo). Se conservan tipografía y 2 columnas. ===== */
+.ag-hero-v2.ag-hero-fx.ag-section:has(.ag-hero-1col) { background: var(--ag-white); color: var(--ag-ink); }
+.ag-hero-fx { color: var(--ag-ink); background: var(--ag-white); }
+.ag-hero-fx-plane { background: linear-gradient(90deg, #f6f6f7 0%, #fafafa 100%); clip-path: polygon(0 88%, 100% 66%, 100% 100%, 0 100%); }
+.ag-hero-fx-glow, .ag-hero-fx-mark { display: none; }
+.ag-hero-fx .ag-display { color: var(--ag-ink); }
+.ag-hero-fx .ag-lead { color: var(--ag-muted); }
+.ag-hero-fx .ag-hero-bullets li { color: var(--ag-ink); }
+.ag-hero-fx .ag-hero-bullets svg { color: var(--ag-red); }
+.ag-hero-fx .ag-hero-cta .ag-btn { background: var(--ag-red); color: #fff; }
+.ag-hero-fx .ag-hero-cta .ag-btn:hover { background: var(--ag-red-hover); }
+.ag-hero-fx .ag-hero-cta .ag-text-link { color: var(--ag-ink); }
+.ag-hero-fx .ag-hero-tienda-head { color: var(--ag-muted); }
+.ag-hero-fx .ag-hero-tienda-head .ag-text-link { color: var(--ag-ink); }
+.ag-hero-fx-side::before { display: none; }
+.ag-hero-fx .ag-hero-mascota { max-width: 360px; }
+.ag-hero-fx .ag-hero-mascota img { filter: drop-shadow(0 20px 24px rgb(15 23 42 / .14)); }
+@media (min-width: 1024px) {
+  .ag-hero-fx .ag-hero-fx-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 0 32px; }
+  .ag-hero-fx .ag-hero-copy { padding: 72px 0; }
+  .ag-hero-fx-side { align-self: center; justify-content: center; align-items: center; padding: 32px 0; }
+  .ag-hero-fx .ag-hero-mascota { width: min(100%, 40vw, 580px); max-width: none; }
+}
+.ag-hero-fx .ag-hero-mascota { inset: auto; }
+@media (min-width: 1024px) { .ag-hero-fx .ag-hero-fx-grid { padding: 0; } }
