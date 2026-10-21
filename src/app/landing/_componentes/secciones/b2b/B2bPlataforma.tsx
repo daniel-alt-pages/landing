@@ -10,13 +10,12 @@ export function B2bPlataforma() {
   return (
     <SeccionB2b
       id="plataforma"
-      tone="black"
+      tone="white"
       numero="05"
       pregunta="¿Qué ve mi comunidad?"
       titulo="Cuatro roles, un ecosistema"
       acento="un ecosistema"
       bajada={B2B_PLATAFORMA.lead}
-      onDark
     >
       <B2bEscenario />
       <RutaSvg etiqueta="De la prueba al resultado" pasos={B2B_SIMULACROS.rows.map((fila) => ({ title: fila[0] }))} />

@@ -9,6 +9,8 @@ import {
   B2B_ECOSISTEMA,
 } from '../../../../_contenido/b2b/portafolio';
 import { AlEntrar } from '../base/AlEntrar';
+import { CicloSvg } from './CicloSvg';
+import { FlujoPqrs } from './FlujoPqrs';
 
 /** p.3: cinco capacidades y cinco diferenciadores. */
 export function Capacidades() {
@@ -40,7 +42,13 @@ export function DobleImpacto() {
       <h4 className="ag-pf-h">{d.title}</h4>
       <p className="ag-pf-lead">{d.lead}</p>
       <div className="ag-pf-fuente"><strong>Simulacro institucional tipo Saber 11</strong><span>Instrumento unificado con baremos estandarizados</span></div>
-      <div className="ag-pf-ramas" aria-hidden="true"><span>Reporte del estudiante</span><span>Informe directivo</span></div>
+      <div className="ag-pf-ramas" aria-hidden="true">
+        <svg viewBox="0 0 600 48" preserveAspectRatio="xMidYMid meet">
+          <path className="ag-pf-trazo" d="M300 0 V20 H150 V44 M300 20 H450 V44" />
+          <polygon points="150,48 145,40 155,40" /><polygon points="450,48 445,40 455,40" />
+        </svg>
+        <span className="ag-pf-flecha">↓</span>
+      </div>
       <div className="ag-pf-salidas">
         <article><h5>Salida A · Reporte individual del estudiante</h5><ul>{d.alumno.map((x) => <li key={x}>{x}</li>)}</ul></article>
         <article><h5>Salida B · Tablero e informe institucional</h5><ul>{d.directivo.map((x) => <li key={x}>{x}</li>)}</ul></article>
@@ -90,10 +98,6 @@ export function Ecosistema() {
       <h4 className="ag-pf-h">{e.titulo}</h4>
       <p className="ag-pf-lead">{B2B_N3.ecoLead}</p>
       <figure className="ag-pf-eco" aria-labelledby="pf-eco-cap">
-        <svg className="ag-pf-eco-lineas" viewBox="0 0 300 300" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M150 60 V240 M50 150 H250" />
-          <path className="is-arco" d="M60 120 Q60 50 120 45 M240 120 Q240 50 180 45 M60 180 Q60 250 120 255 M240 180 Q240 250 180 255" />
-        </svg>
         <Nodo n={e.estudiante} clase="is-est" />
         <Nodo n={e.docentes} clase="is-doc" />
         <Nodo n={e.centro} clase="is-sg" />
@@ -216,12 +220,7 @@ export function CicloAnual() {
       <h4 className="ag-pf-h">Ciclo de mejora continua anual</h4>
       <p className="ag-pf-lead">No es repetir el curso: es una espiral ascendente de diagnóstico, refuerzo e impacto acumulado.</p>
       <div className="ag-pf-anual">
-        <ol className="ag-pf-rueda" aria-label="Ciclo anual en 6 pasos">
-          {B2B_N3.ciclo.map((c, i) => (
-            <li key={c.n} style={{ ['--i' as string]: i }}><span>{c.n}</span><strong>{c.title}</strong><em>{c.text}</em></li>
-          ))}
-          <li className="ag-pf-rueda-centro" aria-hidden="true"><strong>Mejora continua</strong><em>Calendario 1 → Calendario 2</em></li>
-        </ol>
+        <CicloSvg pasos={B2B_N3.ciclo} centro="Mejora continua · Calendario 1 → Calendario 2" />
         <div className="ag-pf-plan">
           <p className="ag-pf-plan-t">Plan de mejora institucional interciclo</p>
           <article><h5>Componente A · Refuerzo académico estudiantil</h5><ul>{B2B_N3.refuerzo.map((x) => <li key={x}>{x}</li>)}</ul></article>
@@ -282,11 +281,7 @@ export function Comunicaciones() {
         ))}
       </div>
       <h4 className="ag-pf-h">Flujo PQRS</h4>
-      <ol className="ag-pf-pqrs">
-        {PQRS.map(([t, d], i) => (
-          <li key={t} style={{ ['--i' as string]: i }}><span>{String(i + 1).padStart(2, '0')}</span><strong>{t}</strong><em>{d}</em></li>
-        ))}
-      </ol>
+      <FlujoPqrs pasos={PQRS} />
     </AlEntrar>
   );
 }

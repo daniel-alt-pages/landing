@@ -26,7 +26,7 @@ export function SeccionB2b({
   return (
     <section id={id} className={`ag-section ag-tone-${tone} ag-b2b`} aria-labelledby={etiqueta}>
       <div className="ag-wrap ag-b2b-sec">
-        <p className={`ag-b2b-pregunta${onDark ? ' is-on-dark' : ''}`}><span>{numero}</span> {pregunta}</p>
+        <p className={`ag-b2b-pregunta${onDark ? ' is-on-dark' : ''}`}><span>{numero} ·</span> {pregunta}</p>
         <h2 id={etiqueta} className="ag-b2b-title">
           {antes}
           <span className={onDark ? 'ag-accent-line' : 'ag-accent'}>{acento}</span>

@@ -12,6 +12,7 @@ import './b2b-base.css';
 import './b2b-secciones.css';
 import './b2b-diagramas.css';
 import './b2b-portafolio.css';
+import './b2b-pdf.css';
 
 export const metadata: Metadata = {
   title: { absolute: 'Modelo de servicios institucionales B2B | SEAMOSGENIOS' },

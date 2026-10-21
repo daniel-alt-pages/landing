@@ -1,0 +1,65 @@
+/* Acercamiento al Portafolio B2B (PDF): solo /instituciones. Ver comparacion/COMPARACION.md, cambios 1–10. */
+.ag-b2b, .ag-b2b-subnav {
+  --ag-ink: #0a0a0a;
+  --ag-muted: #545454;
+  --ag-red: #cc0000;
+  --ag-red-tint: #F9E0DF;
+  --ag-red-dark: #9B1116;
+  --ag-red-line: #C2C2C2;
+  --ag-grey: #F5F5F5;
+  --ag-ink-2: #545454;
+  --ag-radius-sm: 4px;
+  --ag-radius: 8px;
+}
+/* 10. densidad de documento */
+.ag-section.ag-b2b { padding: 56px 0; }
+@media (min-width: 900px) { .ag-section.ag-b2b { padding: 72px 0; } }
+/* 9. secciones blancas; la cuadrícula va solo en lienzos de diagrama (CCO) */
+.ag-b2b.ag-tone-grey { background: #fff; color: var(--ag-ink); }
+.ag-b2b.ag-tone-black { border-bottom: 4px solid var(--ag-red); }
+/* 3. H2 en mayúsculas 900, dos tonos; etiqueta roja "0N ·" */
+.ag-b2b .ag-b2b-title { font-weight: 900; letter-spacing: -0.01em; text-transform: uppercase; }
+.ag-b2b .ag-b2b-title .ag-accent, .ag-b2b .ag-b2b-title .ag-accent-line { color: var(--ag-red); background: none; text-decoration: none; }
+.ag-b2b .ag-b2b-pregunta { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ag-ink); }
+.ag-b2b .ag-b2b-pregunta span, .ag-b2b .ag-b2b-pregunta.is-on-dark span { min-height: 0; padding: 0; border-radius: 0; background: none; color: var(--ag-red); }
+/* 2. radios rectos */
+.ag-b2b [class*="ag-b2b-"]:not(.ag-b2b-chips li):not(.ag-b2b-punto):not(.ag-b2b-subnav),
+.ag-b2b .ag-pf, .ag-b2b [class*="ag-pf-"]:not(.ag-pf-hito):not(.ag-pf-badge):not(.ag-pf-estado):not(.ag-pf-rueda li span):not(.ag-pf-numerada li) { border-radius: var(--ag-radius); }
+.ag-b2b .ag-pf-tarjeta, .ag-b2b .ag-pf-capacidades li, .ag-b2b .ag-pf-checks li, .ag-b2b .ag-pf-cadena li, .ag-b2b .ag-pf-tipos li { border-radius: var(--ag-radius-sm); }
+.ag-b2b .ag-b2b-dato { border-radius: var(--ag-radius); border-width: 1.5px; }
+/* 5. caja PDF: borde fino negro, sin sombra suave; destacada en rosado con sombra dura */
+.ag-b2b .ag-pf-tarjeta, .ag-b2b .ag-pf-capacidades li, .ag-b2b .ag-pf-salidas article, .ag-b2b .ag-pf-actor,
+.ag-b2b .ag-pf-timeline > li > div, .ag-b2b .ag-pf-plan, .ag-b2b .ag-pf-com article, .ag-b2b .ag-pf-pqrs li,
+.ag-b2b .ag-pf-extras li, .ag-b2b .ag-pf-tabla-wrap { box-shadow: none; border-width: 1.5px; }
+.ag-b2b .ag-pf-tarjeta.is-cotiza, .ag-b2b .ag-pf-actor.is-sg, .ag-b2b .ag-pf-barra {
+  background: var(--ag-red-tint); border-color: var(--ag-red); box-shadow: none;
+}
+/* 6. cadena de 7 pasos (p.4) */
+.ag-b2b-cadena7 { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(150px, 1fr); gap: 8px; margin: 28px 0 0; padding: 0 0 8px; list-style: none; overflow-x: auto; scroll-snap-type: x mandatory; }
+.ag-b2b-cadena7 li { scroll-snap-align: start; border: 1.5px solid var(--ag-ink); border-radius: var(--ag-radius-sm); background: #fff; overflow: hidden; }
+.ag-b2b-cadena7 span { display: block; padding: 8px 10px; background: var(--ag-red); color: #fff; font-size: 12px; font-weight: 800; text-transform: uppercase; }
+.ag-b2b-cadena7 p { margin: 0; padding: 10px; font-size: 14px; line-height: 1.4; }
+/* 7. escalera de niveles, rectilínea */
+.ag-b2b .ag-b2b-peldano rect { rx: 4px; fill: var(--ag-ink); }
+.ag-b2b .ag-b2b-peldano.p3 rect { fill: var(--ag-red); }
+/* 8. tablas: cabecera negra, columna Nivel 3 roja, filas finas */
+.ag-b2b table th, .ag-b2b table td { padding: 8px 10px; border-color: #E5E5E5; }
+.ag-b2b thead th { background: var(--ag-ink); color: #fff; text-transform: uppercase; font-size: 12px; }
+.ag-b2b thead th.is-ultimo { background: var(--ag-red); }
+.ag-b2b td.is-ultimo { background: var(--ag-red-tint); }
+
+/* P0.1 portada blanca con banda roja superior */
+.ag-b2b-portada.is-claro { position: relative; background: #fff; color: var(--ag-ink); border-top: 8px solid var(--ag-red); }
+.ag-b2b-portada.is-claro h1 { color: var(--ag-ink); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
+.ag-b2b-portada.is-claro h1 .ag-accent { color: var(--ag-red); background: none; }
+.ag-b2b-portada.is-claro .ag-b2b-kicker { color: var(--ag-red); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.ag-b2b-portada.is-claro .ag-b2b-bajada, .ag-b2b-portada.is-claro .ag-b2b-nota { color: var(--ag-ink-2); }
+.ag-b2b-portada.is-claro .ag-b2b-chip { background: var(--ag-ink); color: #fff; border-radius: 4px; }
+.ag-b2b-portada.is-claro .ag-b2b-chips li { background: #fff; color: var(--ag-ink); border: 1.5px solid var(--ag-ink); border-radius: 4px; }
+.ag-b2b-portada.is-claro .ag-b2b-btn-ghost { background: #fff; color: var(--ag-ink); border: 1.5px solid var(--ag-ink); }
+.ag-b2b-portada.is-claro .ag-b2b-panel { border: 1.5px solid var(--ag-ink); border-radius: 8px; box-shadow: none; }
+.ag-b2b-portada.is-claro .ag-b2b-panel figcaption { color: var(--ag-ink-2); }
+/* sin sombras en toda la página */
+.ag-b2b *, .ag-b2b-subnav { box-shadow: none !important; }
+.ag-b2b .ag-b2b-tabs a, .ag-b2b .ag-b2b-tabs button, .ag-b2b [role="tab"] { border-radius: 4px; }
+.ag-b2b-escenario { grid-template-columns: 1fr !important; }

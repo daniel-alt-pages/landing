@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { B2B_MODULOS_VISIBLES, B2B_PLATAFORMA } from '../../../_contenido/b2b/servicio';
-import { MapaActores } from './diagramas/MapaActores';
 
 const ROLES = [
   {
@@ -50,7 +49,6 @@ export function B2bEscenario() {
 
   return (
     <div className="ag-b2b-escenario">
-      <MapaActores activo={activo} onChange={setActivo} />
       <div className="ag-b2b-visor">
         <div className="ag-b2b-tabs" role="tablist" aria-label="Vista según el rol">
           {ROLES.map((item, index) => (
