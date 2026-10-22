@@ -5,10 +5,10 @@ import { AlEntrar } from './base/AlEntrar';
 
 const caveat = Caveat({ subsets: ['latin'], weight: '700', display: 'swap' });
 
-function Ir() {
+function Ir({ texto = 'Ver página' }: { texto?: string }) {
   return (
     <span className="ag-b2m-ir">
-      Ver página
+      {texto}
       <span className="ag-b2m-circulo" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" focusable="false"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
       </span>
@@ -47,7 +47,7 @@ export function B2bMapa() {
                   <span className="ag-b2m-etiqueta">{r.etiqueta}</span>
                   <h3 id={`b2m-t-${r.id}`} className="ag-b2m-card-titulo">{r.titulo}</h3>
                   <span className="ag-b2m-texto">{r.texto}</span>
-                  <Ir />
+                  <Ir texto={'ir' in r ? r.ir : undefined} />
                 </a>
               </li>
             ))}
