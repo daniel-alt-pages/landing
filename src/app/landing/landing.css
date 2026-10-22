@@ -3721,11 +3721,8 @@ a.ag-product-cart.is-soon {
 .qe-head { position: relative; }
 .qe-intro { position: relative; }
 .qe-burst { position: absolute; top: -20px; left: -12px; width: 40px; height: 40px; color: var(--qe-red); pointer-events: none; }
-.qe-anno { margin-top: 24px; display: flex; flex-direction: column; align-items: flex-start; color: var(--qe-ink); }
-.qe-hand { margin: 0; padding-left: 8px; font-weight: 700; font-size: 24px; line-height: 1.05; letter-spacing: 0.02em; text-align: center; transform: rotate(-6deg); }
 .qe-hand-last { position: relative; display: inline-block; }
 .qe-underline { position: absolute; right: 0; bottom: -8px; width: 64px; height: 12px; }
-.qe-curve { display: none; }
 .qe-grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
 .qe-item { display: flex; min-width: 0; }
 .qe-card { display: flex; flex-direction: column; gap: 16px; width: 100%; padding: 24px; box-sizing: border-box;
@@ -3754,16 +3751,11 @@ a.ag-product-cart.is-soon {
   .qe-wrap { padding: 0 32px; }
   .qe-title { font-size: 48px; }
   .qe-lead { font-size: 18px; }
-  .qe-hand { font-size: 29px; }
-  .qe-curve { display: block; width: 48px; height: 48px; margin: -4px 0 0 96px; }
   .qe-grid { margin-top: 64px; gap: 24px; }
 }
 @media (min-width: 1200px) {
   .qe { padding: 96px 0; }
   .qe-title { font-size: 56px; }
-  .qe-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; }
-  .qe-anno { flex: none; margin: 0 48px 0 0; align-items: flex-end; }
-  .qe-curve { width: 64px; height: 64px; margin: -8px 176px 0 0; }
   .qe-grid { gap: 32px; }
   .qe-card { padding: 32px; }
   .qe-card-title { font-size: 24px; }
@@ -3789,8 +3781,6 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 .qe-arrow, .qe-card.is-dark .qe-arrow { width: auto; height: auto; background: none; color: #fff; border-radius: 0; }
 .qe-arrow svg { width: 20px; height: 20px; }
 .qe-body { width: 100%; }
-@media (max-width: 1199px) { .qe-anno { margin-top: 28px; } }
-@media (max-width: 767px) { .qe-hand { font-size: 28px; } }
 @media (min-width: 480px) {
   .qe-card, .qe-card.is-light, .qe-card.is-dark { flex-direction: row; align-items: center; gap: 24px; padding: 32px; }
   .qe-ilus { width: 96px; height: 96px; }
@@ -4021,8 +4011,6 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .qe-intro, .qe-title, .qe-lead { text-align: center; }
   .qe-lead { margin-left: auto; margin-right: auto; }
   .qe-burst { left: calc(50% - 150px); }
-  .qe-anno { align-items: center; }
-  .qe-hand { padding-left: 0; }
   .qe-grid { justify-items: stretch; margin-left: auto; margin-right: auto; }
   .ag-pantallas-mas { text-align: center; }
 }
@@ -4033,38 +4021,11 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .qe-ir, .qe-body > .qe-ir { align-self: center; }
 }
 /* >=768: la nota se alinea a la derecha del contenedor; la flecha apunta abajo-izquierda hacia las tarjetas. */
-@media (min-width: 768px) {
-  .qe-anno { align-items: flex-end; margin-right: 0; }
-  .qe-curve { margin: -4px 120px 0 0; }
-}
-@media (min-width: 1200px) { .qe-anno { margin-right: 0; } .qe-curve { margin: -8px 140px 0 0; } }
 
 /* Nota v7 (Daniel): chispas + texto + flecha en una sola fila, bloque centrado bajo el encabezado a todo ancho;
    flecha en línea a la derecha del texto, apuntando hacia abajo a las tarjetas. Tipografía +30%. */
-.qe-anno, .qe-anno { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 6px;
-  width: fit-content; max-width: 100%; margin: 28px auto 0; color: var(--qe-ink); }
-.qe-hand { flex: 0 1 auto; min-width: 0; padding: 0; font-size: 30px; line-height: 1.05; text-align: center; transform: rotate(-3deg); white-space: normal; }
-.qe-hand-1 { display: block; white-space: nowrap; }
-.qe-hand-last { display: inline-block; white-space: nowrap; }
-.qe-curve, .qe-anno .qe-curve { display: block; flex: none; width: 40px; height: 40px; margin: 0; }
-@media (max-width: 359px) { .qe-hand { font-size: 28px; } }
-@media (min-width: 768px) {
-  .qe-anno { margin: 32px auto 0; gap: 10px; }
-  .qe-hand { font-size: 36px; white-space: nowrap; }
-    .qe-curve, .qe-anno .qe-curve { width: 52px; height: 52px; margin: 0; }
-}
-@media (min-width: 1024px) {
-  .qe-head { display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
-  .qe-intro { flex: 1 1 auto; min-width: 0; }
-  .qe-anno { flex: 0 0 auto; margin: 0; max-width: none; }
-  .qe-hand { font-size: 34px; white-space: normal; text-align: right; }
-  .qe-curve, .qe-anno .qe-curve { width: 56px; height: 56px; margin: 0; }
-}
-@media (min-width: 1280px) {
-  .qe-head { gap: 40px; }
-  .qe-hand { font-size: 38px; }
-  .qe-curve, .qe-anno .qe-curve { width: 60px; height: 60px; }
-}
+.qe-hand-1 { display: block; }
+.qe-hand-last { display: inline-block; max-width: 100%; }
 
 /* Tarjetas v7 (Daniel): misma altura compacta en toda la retícula (filas 1fr), sin cambiar orden,
    distribución ni posición del botón; icono centrado en vertical. */
@@ -4081,16 +4042,22 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .qe-text { max-width: 60ch; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
-  .qe-grid { grid-template-columns: minmax(0,1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
+  /* 2 columnas (~340px): icono arriba, alineado a la izquierda, para no dejar el texto <200px. */
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .qe-ilus, .qe-card.is-dark .qe-ilus { align-self: flex-start; }
+  .qe-body { width: 100%; }
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .qe-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
   .qe-grid > .qe-item:nth-child(1) { order: 1; } .qe-grid > .qe-item:nth-child(2) { order: 2; }
   .qe-grid > .qe-item:nth-child(3) { order: 4; } .qe-grid > .qe-item:nth-child(4) { order: 3; }
   .qe-grid > .qe-item:nth-child(5) { order: 5; } .qe-grid > .qe-item:nth-child(6) { order: 6; }
 }
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .qe-head { display: block; }
-  .qe-anno { margin: 32px auto 0; justify-content: center; }
-  .qe-hand { text-align: center; }
-}
+
+/* Nota fluida (Daniel 21-oct-2026): sin anchos por breakpoint. Cabecera flex-wrap: la nota va a la
+   derecha, centrada verticalmente, cuando cabe; si no, baja centrada. */
+.qe-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: clamp(24px, 4vw, 48px); row-gap: 28px; }
+.qe-intro { flex: 1 1 32rem; min-width: 0; }
+.qe-anno { flex: 0 1 auto; display: flex; flex-direction: row; align-items: center; gap: 8px; margin: 0 auto; max-width: 100%; color: var(--qe-ink); }
+.qe-hand { margin: 0; padding: 0; min-width: 0; font-weight: 700; font-size: clamp(28px, 1.2vw + 22px, 38px); line-height: 1.05; letter-spacing: 0.02em; text-align: center; transform: rotate(-3deg); }
+.qe-curve, .qe-anno .qe-curve { display: block; flex: none; width: clamp(40px, 4vw, 60px); height: clamp(40px, 4vw, 60px); margin: 0; }
