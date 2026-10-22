@@ -6,6 +6,7 @@ export type TiendaConfig = {
   ctaLabel?: string;
   urgencyBanner?: boolean;
   urgencyText?: string;
+  bold?: boolean;
   transfer?: boolean;
   allowInstallments?: boolean;
 };

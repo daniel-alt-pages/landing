@@ -13,7 +13,7 @@ type Props = {
   /** En la tienda abre el detalle; fuera de ella, el enlace lleva a la tienda. */
   onOpen?: (id: string) => void;
   href?: string;
-  /** Vitrina del home: sin precios, insignia sobre la imagen. */
+  /** Vitrina del home: insignia sobre la imagen. */
   variant?: 'rail';
 };
 
@@ -77,7 +77,7 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Prop
           {item.badge && !rail ? <span className="ag-mk-badge">{item.badge}</span> : null}
           <span>{seatsLabel(item)}</span>
         </p>
-        {rail ? null : <p className="ag-mk-price">
+        {<p className="ag-mk-price">
           <span>{priceLabel(price)}</span>
           {compare > price ? <s className="ag-mk-was">{priceLabel(compare)}</s> : null}
           {off ? <span className="ag-mk-offer">Oferta</span> : null}

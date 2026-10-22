@@ -3940,6 +3940,7 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
 .ag-hero-fx-mark { position: absolute; right: -2%; top: 3rem; font-size: clamp(14rem, 34vw, 32rem); font-weight: 900; line-height: .8; letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,.08); user-select: none; }
 .ag-hero-fx .ag-hero-fx-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; width: min(1190px, calc(100% - 32px)); }
 .ag-hero-fx .ag-display { color: #fff; max-width: 22ch; font-size: clamp(1.6rem, 0.95rem + 2vw, 2.35rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.025em; text-transform: uppercase; }
+@media (max-width: 767px) { .ag-hero-fx .ag-display { font-size: clamp(2rem, 1.2rem + 4vw, 2.4rem); } }
 .ag-hero-fx .ag-lead { color: rgba(255,255,255,.9); font-size: 16px; font-weight: 300; line-height: 1.6; max-width: 32rem; margin-top: 16px; }
 .ag-hero-fx .ag-hero-bullets li { color: rgba(255,255,255,.82); font-size: 15px; }
 .ag-hero-fx .ag-hero-bullets svg { color: #ff6b6b; }
@@ -4075,3 +4076,13 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
   outline-offset: 3px;
 }
 .ag-hero-alianzas-frame iframe:focus-visible { outline: 2px solid var(--ag-red, #cc0000); outline-offset: -2px; }
+
+/* «Qué encuentra» v1.0.9: orden visual en 1 columna (<1024px). RUTAS y escritorio sin cambios. */
+@media (max-width: 1023px) {
+  .qe-item--nosotros { order: 1; }
+  .qe-item--resultados { order: 2; }
+  .qe-item--programas { order: 3; }
+  .qe-item--instituciones { order: 4; }
+  .qe-item--plataforma { order: 5; }
+  .qe-item--legal { order: 6; }
+}

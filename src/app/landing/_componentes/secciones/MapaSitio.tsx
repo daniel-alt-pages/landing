@@ -50,7 +50,7 @@ export function MapaSitio({ variante }: { variante?: 'b2b' } = {}) {
         </div>
         <ul className="qe-grid">
           {RUTAS.map((r, i) => (
-            <MotionIn as="li" key={r.id} delay={i * 40} className="qe-item">
+            <MotionIn as="li" key={r.id} delay={i * 40} className={`qe-item qe-item--${r.id}`}>
               <a href={r.href} aria-labelledby={`qe-t-${r.id}`} className={`qe-card ${i % 2 === 0 ? 'is-dark' : 'is-light'}`}>
                 <span className="qe-ilus" dangerouslySetInnerHTML={{ __html: ILUSTRACIONES[r.id] ?? '' }} />
                 <span className="qe-body">

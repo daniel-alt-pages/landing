@@ -12,7 +12,12 @@ import type { CatalogItem } from '../../programas/catalogo/catalogUi';
 
 function payLine(config: TiendaConfig | null) {
   if (!config) return '';
-  return 'Solicite su cotización';
+  const pays = [
+    config.bold !== false ? 'Tarjeta, PSE y Nequi con Bold' : '',
+    config.transfer !== false ? 'Transferencia' : '',
+    config.allowInstallments ? 'Pago en cuotas' : '',
+  ].filter(Boolean);
+  return pays.length ? `Medios de pago: ${pays.join(' · ')}` : '';
 }
 
 /** Vitrina del inicio. Solo muestra productos activos de Comercio. */

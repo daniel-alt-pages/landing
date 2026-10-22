@@ -13,7 +13,7 @@ import { buildWaUrl, WA_TEXT } from '../_lib/whatsapp';
 export const metadata: Metadata = {
   title: { absolute: 'Elige tu programa | Alianza SEAMOSGENIOS' },
   description:
-    'Programas preICFES y simulacros de SEAMOSGENIOS. Solicite su cotización.',
+    'Programas preICFES y simulacros de SEAMOSGENIOS. Solicite su cotización y pague con Bold, un programa a la vez.',
 };
 
 export default function ProgramasPage() {

@@ -18,7 +18,7 @@ const WA_COTIZACION = 'Hola, quisiera solicitar una cotización de los programas
 const FAQ = [
   {
     q: '¿Con qué se paga?',
-    a: 'Le enviamos una cotización con las opciones de pago disponibles. Solicítela por WhatsApp o con el botón de cotizar.',
+    a: 'Con Bold: tarjeta, PSE, Nequi o Bancolombia. El cobro es de un programa a la vez.',
   },
   {
     q: '¿Hay factura?',

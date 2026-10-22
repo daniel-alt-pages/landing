@@ -5,7 +5,7 @@ import { CatalogoClient } from './CatalogoClient';
 export const metadata: Metadata = {
   title: { absolute: 'Elige tu programa | Alianza SEAMOSGENIOS' },
   description:
-    'Programas preICFES y simulacros de SEAMOSGENIOS. Solicite su cotización.',
+    'Programas preICFES y simulacros de SEAMOSGENIOS. Solicite su cotización y pague con Bold.',
 };
 
 export default function CatalogoPage() {

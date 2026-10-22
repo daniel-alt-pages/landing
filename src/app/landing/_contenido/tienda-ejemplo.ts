@@ -3,7 +3,7 @@
  *
  * Sirven solo para diseñar la vitrina (ProductRail) y el aviso (StorefrontBanner)
  * cuando la API de Comercio (127.0.0.1:5000) no responde.
- * Nombres y precios son marcadores evidentes: no corresponden a ningún producto.
+ * Nombres y precios son marcadores evidentes (precios fijos ilustrativos): no corresponden a ningún producto.
  *
  * Bandera: NEXT_PUBLIC_TIENDA_EJEMPLO
  *   - '1'  → se usan también en build (rama de revisión).
@@ -26,6 +26,7 @@ export const TIENDA_EJEMPLO_CONFIG: TiendaConfig = {
   heroSubtitle: 'Ejemplo ilustrativo de la tienda. Estos productos no están a la venta.',
   urgencyBanner: false,
   urgencyText: 'Ejemplo ilustrativo · Así se verá un aviso de la tienda.',
+  bold: true,
   transfer: true,
 };
 
@@ -39,9 +40,9 @@ const p = (id: string, name: string, kind: string, priceCop: number): TiendaProd
 });
 
 export const TIENDA_EJEMPLO_PRODUCTOS: TiendaProduct[] = [
-  p('a', 'Pase A', 'pase', 0),
-  p('b', 'Combo B', 'combo', 0),
-  p('c', 'Simulacro C', 'simulacro', 0),
-  p('d', 'Curso D', 'material', 0),
-  p('e', 'Simulacro E', 'simulacro', 0),
+  p('a', 'Pase A', 'pase', 180000),
+  p('b', 'Combo B', 'combo', 320000),
+  p('c', 'Simulacro C', 'simulacro', 60000),
+  p('d', 'Curso D', 'material', 250000),
+  p('e', 'Simulacro E', 'simulacro', 90000),
 ];
