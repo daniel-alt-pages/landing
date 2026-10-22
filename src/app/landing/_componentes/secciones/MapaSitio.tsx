@@ -2,6 +2,7 @@ import { RUTAS } from '../../_contenido/sitio';
 import { ILUSTRACIONES } from '../../_contenido/sitio-ilustraciones';
 import { Caveat } from 'next/font/google';
 import { MotionIn } from '../primitivas/MotionIn';
+import { B2bMapa } from './b2b/B2bMapa';
 
 const caveat = Caveat({ subsets: ['latin'], weight: '700', display: 'swap' });
 
@@ -16,7 +17,8 @@ function noPartir(t: string) {
   return m.map((p, k) => (k % 2 ? <span key={k} className="qe-nb">{p}</span> : p));
 }
 
-export function MapaSitio() {
+export function MapaSitio({ variante }: { variante?: 'b2b' } = {}) {
+  if (variante === 'b2b') return <B2bMapa />;
   return (
     <section id="explorar" className="qe" aria-labelledby="mapa-titulo">
       <div className="qe-wrap">
