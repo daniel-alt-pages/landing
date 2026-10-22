@@ -1,0 +1,137 @@
+/* v1.0.12 · Secciones 01 (ciclo), 02 (Analizar) y 05 (niveles) según la propuesta UI/UX (shots/seccion5, shots/filtros-analizar).
+   Radios: tarjeta v4 26px, cajas internas 18px, pestañas y chips 999px. Rojo solo como acento (#CC0000 en texto pequeño). */
+
+/* ── Pestañas comunes (segmentadas) ── */
+.b2b-v4 :is(.cic-tabs, .s5-tabs, .ag-b2b-tabs.s5-niveles-tabs) {
+  display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; margin: 0; border-radius: 999px; background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06); overflow: visible; scroll-snap-type: none; max-width: 100%;
+}
+.b2b-v4 .ag-b2b .ag-b2b-tabs.s5-niveles-tabs { margin: 20px 0 20px; }
+.b2b-v4 .ag-b2b :is(.cic-tab, .s5-tabs [role='tab'], .s5-niveles-tabs [role='tab']) {
+  flex: 1 1 auto; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 999px; background: transparent; color: #0D0E11;
+  font: inherit; font-size: 15px; font-weight: 700; line-height: 1.2; cursor: pointer; white-space: nowrap;
+  transition: background-color 200ms cubic-bezier(0.23, 1, 0.32, 1), color 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.b2b-v4 .ag-b2b :is(.cic-tab, .s5-tabs [role='tab'], .s5-niveles-tabs [role='tab'])[aria-selected='true'] { background: #0D0E11; color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .b2b-v4 .ag-b2b :is(.cic-tab, .s5-tabs [role='tab'], .s5-niveles-tabs [role='tab'])[aria-selected='false']:hover { background: #F2F2F1; }
+}
+.b2b-v4 .ag-b2b :is(.cic-tab, .s5-tabs [role='tab'], .s5-niveles-tabs [role='tab']):focus-visible { outline: 3px solid #CC0000; outline-offset: 2px; }
+
+/* ── 01 · Filtros del ciclo: una fila ── */
+.b2b-v4 .cic-controles { position: relative; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.cic-acciones { display: flex; gap: 8px; }
+.b2b-v4 .cic-boton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: auto; min-height: 44px; padding: 8px 18px;
+  border: 1.5px solid #767676; border-radius: 999px; background: #fff; color: #0D0E11; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; }
+.b2b-v4 .cic-boton[aria-expanded='true'], .b2b-v4 .cic-pausa[aria-pressed='true'] { border-color: #0D0E11; }
+.b2b-v4 .cic-boton.is-primario { background: #0D0E11; border-color: #0D0E11; color: #fff; }
+.cic-hoja { position: absolute; z-index: 20; right: 0; top: calc(100% + 8px); display: grid; gap: 12px; width: min(420px, 100%); padding: 20px;
+  border-radius: 26px; background: #fff; box-shadow: 0 10px 28px -6px rgba(13, 14, 17, 0.18); }
+.cic-hoja[hidden] { display: none; }
+.cic-hoja-t { margin: 0; font-size: 16px; font-weight: 800; }
+.cic-hoja .cic-grupo { justify-content: flex-start; }
+.cic-hoja-ok { justify-self: start; }
+.cic-velo { display: none; }
+
+/* ── Inspector del ciclo: cajas internas 18px, sin borde rojo lateral ── */
+.b2b-v4 .cic-caja { border: 1.5px solid #E5E7EB; border-radius: 18px; }
+.b2b-v4 .cic-caja.is-rosa { border-color: #F5C2C2; }
+.b2b-v4 .cic-badge { border-radius: 999px; }
+.b2b-v4 .cic-badge.is-rojo { background: #CC0000; border-color: #CC0000; }
+
+/* ── 02 · Analizar ── */
+.s5-informe { max-width: 880px; margin: 40px auto 0; padding: 28px; border-radius: 26px; background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06) !important; }
+.s5-informe-cab { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; }
+.s5-informe-n { display: grid; place-items: center; flex: 0 0 auto; width: 44px; height: 44px; border: 2px solid #FF2323; border-radius: 50%; color: #CC0000; font-weight: 800; }
+.s5-informe-k { margin: 0; color: #CC0000; font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.s5-informe-t { margin: 2px 0 0; font-size: 22px; font-weight: 800; line-height: 1.2; color: #0D0E11; }
+.s5-tabs { background: #F7F7F6 !important; box-shadow: none !important; }
+.s5-panel { margin-top: 14px; padding: 18px 20px; border: 1.5px solid #E5E7EB; border-radius: 18px; background: #fff; }
+.s5-panel[hidden] { display: none; }
+.s5-panel:focus-visible { outline: 3px solid #CC0000; outline-offset: 2px; }
+.s5-panel h4 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 17px; font-weight: 800; }
+.s5-panel p { margin: 0; font-size: 16px; line-height: 1.5; color: #374151; }
+.s5-ejemplo { display: inline-block; padding: 2px 10px; border: 1.5px dashed #CC0000; border-radius: 999px; color: #CC0000; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.s5-filas { display: grid; gap: 8px; margin: 14px 0 10px; padding: 0; list-style: none; }
+.s5-filas li { display: grid; grid-template-columns: minmax(0, 15em) 1fr; gap: 12px; align-items: center; font-size: 15px; color: #0D0E11; }
+.s5-barra { display: block; height: 10px; border-radius: 999px; background: linear-gradient(90deg, #D1D5DB var(--w), #F3F4F6 var(--w)); }
+.s5-panel .s5-nota { font-size: 14px; color: #6B7280; }
+.s5-acciones { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.s5-btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 8px 20px; border: 1.5px solid #0D0E11; border-radius: 999px;
+  background: #fff; color: #0D0E11; font: inherit; font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer; }
+.s5-btn.is-primario { background: #CC0000; border-color: #CC0000; color: #fff; }
+.s5-btn:focus-visible, .s5-mas-lista button:focus-visible { outline: 3px solid #CC0000; outline-offset: 2px; }
+.s5-mas { position: relative; }
+.s5-mas-lista { position: absolute; z-index: 10; left: 0; top: calc(100% + 6px); min-width: 180px; padding: 6px; border-radius: 18px; background: #fff;
+  box-shadow: 0 10px 28px -6px rgba(13, 14, 17, 0.18) !important; }
+.s5-mas-lista[hidden] { display: none; }
+.s5-mas-lista button { display: block; width: 100%; min-height: 44px; padding: 8px 14px; border: 0; border-radius: 12px; background: transparent; font: inherit; font-size: 16px; font-weight: 600; text-align: left; cursor: pointer; }
+.s5-mas-lista button:hover { background: #F7F7F6; }
+
+/* ── 05 · Niveles ── */
+/* Paneles inactivos: fuera del flujo (display:none ya lo aplica .js); el contenedor reserva altura al cambiar (JS). */
+.s5-viene { display: inline-flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; margin: 0 0 16px; padding: 8px 16px; border-radius: 999px; background: #FFE5E5; color: #0D0E11; font-size: 15px; }
+.s5-n2 { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.s5-n2-main, .s5-recibe { padding: 24px; border-radius: 26px; background: #fff; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06) !important; }
+.s5-n2-main h3 { margin-top: 0; }
+.s5-n2-side { display: grid; gap: 16px; }
+.s5-pasos { display: grid; gap: 14px; margin: 20px 0 0; padding: 0; list-style: none; }
+.s5-pasos li { display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+.s5-pasos li > span { display: grid; place-items: center; width: 34px; height: 34px; border: 1.5px solid #0D0E11; border-radius: 50%; font-weight: 800; font-size: 15px; }
+.s5-pasos strong { display: block; font-size: 16px; }
+.s5-pasos p { margin: 2px 0 0; font-size: 16px; line-height: 1.45; color: #4B5563; }
+.s5-k { margin: 0 0 12px; font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #0D0E11; }
+.s5-tabs.is-llenas { display: flex; width: 100%; }
+.s5-recibe-lista { display: grid; gap: 10px; margin: 14px 0 0; padding: 0; list-style: none; }
+.s5-recibe-lista[hidden] { display: none; }
+.s5-recibe-lista li { display: grid; gap: 2px; padding: 12px 14px; border: 1.5px solid #E5E7EB; border-radius: 18px; }
+.s5-recibe-lista strong { font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+.s5-recibe-lista span { font-size: 16px; line-height: 1.45; color: #374151; }
+.b2b-v4 .s5-metodo .ag-b2b-fold { margin: 0; border-radius: 26px; background: #fff; border-color: transparent; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06) !important; }
+.b2b-v4 .s5-metodo .ag-pf-cadena { margin-top: 0; }
+/* Sin borde rojo lateral: caja interna de 18px. */
+.b2b-v4 .ag-pf-nota { border: 1.5px solid #F5C2C2; border-radius: 18px; }
+.b2b-v4 .s5-addon { margin-top: 16px; }
+
+@media (max-width: 1023px) {
+  .s5-n2 { grid-template-columns: 1fr; }
+}
+
+/* ── Móvil: texto 16px, controles 48px, chips a la izquierda, hoja inferior ── */
+@media (max-width: 767px) {
+  .b2b-v4 .ag-b2b :is(.cic-tab, .s5-tabs [role='tab'], .s5-niveles-tabs [role='tab']) { min-height: 48px; font-size: 16px; padding: 8px 12px; }
+  .b2b-v4 :is(.cic-tabs, .s5-niveles-tabs) { display: flex; width: 100%; }
+  .b2b-v4 .cic-controles { flex-direction: column; align-items: stretch; }
+  .cic-acciones { justify-content: space-between; }
+  .b2b-v4 .cic-boton, .s5-btn, .s5-mas-lista button { min-height: 48px; font-size: 16px; }
+  .b2b-v4 .cic-chip { min-height: 48px; font-size: 16px; padding: 8px 14px; }
+  .cic-grupo, .b2b-v4 .ag-b2b-chips { justify-content: flex-start; }
+  .cic-velo { display: block; position: fixed; inset: 0; z-index: 60; border: 0; background: rgba(13, 14, 17, 0.4); }
+  .cic-hoja { position: fixed; z-index: 61; left: 0; right: 0; top: auto; bottom: 0; width: auto; padding: 24px 20px calc(20px + env(safe-area-inset-bottom));
+    border-radius: 26px 26px 0 0; animation: cic-hoja-in 240ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .cic-hoja-ok { justify-self: stretch; }
+  .b2b-v4 .cic-caja h4 { font-size: 14px; }
+  .b2b-v4 .cic-caja p, .b2b-v4 .cic-es-q, .b2b-v4 .cic-centro-d { font-size: 16px; }
+  .s5-informe { padding: 20px; margin-top: 32px; }
+  .s5-tabs:not(.is-llenas) { display: flex; width: 100%; }
+  .s5-tabs [role='tab'] { white-space: normal; }
+  .s5-filas li { grid-template-columns: 1fr; gap: 4px; font-size: 16px; }
+  .s5-viene { border-radius: 18px; font-size: 16px; }
+  .s5-n2-main, .s5-recibe { padding: 20px; }
+}
+@keyframes cic-hoja-in { from { transform: translateY(100%); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .cic-hoja { animation: none; }
+  .b2b-v4 .ag-b2b :is(.cic-tab, .s5-tabs [role='tab'], .s5-niveles-tabs [role='tab']) { transition: none; }
+  /* Sin recorrido automático: pausa y vista no aplican (se ve la lista estática). */
+  .cic-acciones, .cic-hoja { display: none !important; }
+}
+/* Ajustes tras la revisión de capturas */
+.b2b-v4 .s5-metodo.ag-pf { margin: 0; }
+.b2b-v4 .s5-n2 .ag-b2b-dato { border-radius: 18px; }
+.b2b-v4 .s5-n2-main h3 { font-size: clamp(20px, 1.6vw + 12px, 26px); font-weight: 800; line-height: 1.2; }
+@media (max-width: 767px) {
+  .b2b-v4 .cic-controles .cic-tabs { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; border-radius: 26px; }
+  .b2b-v4 .ag-b2b .cic-tabs .cic-tab { min-width: 0; white-space: normal; padding: 6px 6px; font-size: 16px; }
+}

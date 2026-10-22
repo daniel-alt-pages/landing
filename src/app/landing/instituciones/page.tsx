@@ -25,6 +25,7 @@ import './b2b-desktop.css';
 import './b2b-rediseno.css';
 import './b2b-ciclo.css';
 import './b2b-plataforma-v4.css';
+import './b2b-seccion5.css';
 
 /** Lenguaje visual de la referencia de Daniel (maqueta-daniel.html): Plus Jakarta Sans + Caveat. Solo dentro del panel; el header no cambia. */
 /* Subconjuntos propios (fonttools, todas las features OpenType conservadas, misma apariencia):

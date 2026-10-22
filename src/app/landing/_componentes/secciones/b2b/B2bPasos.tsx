@@ -2,10 +2,7 @@ import { B2B_N1 } from '../../../_contenido/b2b/programa';
 import { B2B_SIMULACROS } from '../../../_contenido/b2b/servicio';
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
-
-/** Chips del informe movidos desde #plataforma (UIUX §4); sin «Percentiles» ni «Preguntas críticas», que ya dicen las viñetas. */
-const INFORME = ['Global y por área', 'Por cohorte', 'Histórico', 'Alertas N3', 'Benchmark'];
-const ANALIZAR = 3;
+import { InformeAnalizar } from './InformeAnalizar';
 
 /**
  * Etapas del Nivel 1 (propuesta UIUX.md §1): las 5 etapas siempre abiertas, sin desbloqueo.
@@ -28,22 +25,17 @@ export function B2bPasos() {
           <path d="M104 1H1096" vectorEffect="non-scaling-stroke" />
         </svg>
         <ol className="et8-etapas">
-          {etapas.map((e, i) => (
+          {etapas.map((e) => (
             <li key={e.n} className="et8-etapa">
               <span className="et8-n" aria-hidden="true">{e.n}</span>
               <h3 className="et8-t">{e.title}</h3>
               <p className="et8-sub">{e.sub}</p>
               <ul className="et8-puntos">{e.points.map((p) => <li key={p}>{p}</li>)}</ul>
-              {i === ANALIZAR && (
-                <div className="et8-informe">
-                  <p className="et8-informe-t">Qué trae el informe</p>
-                  <ul className="et8-chips">{INFORME.map((c) => <li key={c}>{c}</li>)}</ul>
-                </div>
-              )}
             </li>
           ))}
         </ol>
       </div>
+      <InformeAnalizar />
       <Plegable titulo="Cómo se construye cada simulacro" cuenta="7 aspectos">
         <div className="ag-pf-tabla-wrap" tabIndex={0} role="region" aria-label="Cómo se construye cada simulacro">
           <table className="ag-pf-tabla">

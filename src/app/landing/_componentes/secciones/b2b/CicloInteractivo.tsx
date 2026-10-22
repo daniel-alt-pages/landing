@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { CICLO_CADENA, CICLO_DURACIONES_MS, CICLO_FILTROS, CICLO_PASOS } from '../../../_contenido/b2b/ciclo';
 
 const CX = 270, CY = 225, R = 150, RP = 196;
@@ -8,6 +8,8 @@ const ANG = [-90, -30, 30, 90, 150, 210];
 const pt = (a: number, r: number) => [Math.round((CX + r * Math.cos((a * Math.PI) / 180)) * 100) / 100, Math.round((CY + r * Math.sin((a * Math.PI) / 180)) * 100) / 100] as const;
 const CIRC = 2 * Math.PI * R;
 const TOTAL = CICLO_PASOS.length;
+/** Etiquetas cortas de las pestañas; el nombre largo del filtro se muestra en el inspector. */
+const CORTO: Record<(typeof CICLO_FILTROS)[number]['id'], string> = { todos: 'Ciclo completo', N1: 'Nivel 1', N2: 'Nivel 2', N3: 'Nivel 3' };
 
 
 /**
@@ -28,6 +30,8 @@ export function CicloInteractivo() {
   const [foco, setFoco] = useState(false);
   // Pausa persistente elegida por el usuario (WCAG 2.2.2): detiene arco y halo hasta que la reanude.
   const [detenido, setDetenido] = useState(false);
+  // «Más filtros»: panel bajo los controles en escritorio, hoja inferior en móvil.
+  const [hoja, setHoja] = useState(false);
   const raiz = useRef<HTMLDivElement>(null);
 
   const aplica = CICLO_FILTROS.find((f) => f.id === filtro)!.pasos as readonly number[];
@@ -63,6 +67,17 @@ export function CicloInteractivo() {
     if (!p.includes(activo)) setActivo(p[0]);
   };
 
+  const tecladoFiltro = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const ids = CICLO_FILTROS.map((f) => f.id);
+    const i = ids.indexOf(filtro);
+    const sig = event.key === 'Home' ? ids[0] : event.key === 'End' ? ids[ids.length - 1]
+      : ids[(i + (event.key === 'ArrowRight' ? 1 : -1) + ids.length) % ids.length];
+    elegirFiltro(sig);
+    document.getElementById(`cic-tab-${sig}`)?.focus();
+  };
+
   const p = CICLO_PASOS[activo];
   const nv = (n: readonly string[]) => n.join(' · ');
 
@@ -71,13 +86,17 @@ export function CicloInteractivo() {
       onMouseEnter={() => setEncima(true)} onMouseLeave={() => setEncima(false)}
       onFocus={() => setFoco(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFoco(false); }}>
       <div className="cic-controles">
-        <div className="cic-grupo" role="group" aria-label="Filtrar por nivel">
+        <div className="cic-tabs" role="tablist" aria-label="Filtrar por nivel" onKeyDown={tecladoFiltro}>
           {CICLO_FILTROS.map((f) => (
-            <button key={f.id} type="button" className="cic-chip" aria-pressed={filtro === f.id} onClick={() => elegirFiltro(f.id)}>{f.label}</button>
+            <button key={f.id} type="button" role="tab" id={`cic-tab-${f.id}`} className="cic-tab" aria-selected={filtro === f.id}
+              aria-controls="cic-escena" tabIndex={filtro === f.id ? 0 : -1} onClick={() => elegirFiltro(f.id)}>{CORTO[f.id]}</button>
           ))}
         </div>
-        <div className="cic-grupo" role="group" aria-label="Vista">
-          <button type="button" className="cic-pausa" aria-pressed={detenido}
+        <div className="cic-acciones">
+          <button type="button" className="cic-boton cic-mas-btn" aria-expanded={hoja} aria-controls="cic-mas-filtros" onClick={() => setHoja((h) => !h)}>
+            Más filtros
+          </button>
+          <button type="button" className="cic-boton cic-pausa" aria-pressed={detenido}
             aria-label={detenido ? 'Reanudar el recorrido automático del ciclo' : 'Pausar el recorrido automático del ciclo'}
             onClick={() => setDetenido((d) => !d)}>
             {detenido ? (
@@ -85,13 +104,22 @@ export function CicloInteractivo() {
             ) : (
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" /></svg>
             )}
+            <span aria-hidden="true">{detenido ? 'Reanudar' : 'Pausar'}</span>
           </button>
-          <button type="button" className="cic-chip" aria-pressed={vista === 'circulo'} onClick={() => setVista('circulo')}>Solo círculo</button>
-          <button type="button" className="cic-chip" aria-pressed={vista === 'completo'} onClick={() => setVista('completo')}>Círculo + inspector + 6 pasos</button>
+        </div>
+        {hoja && <button type="button" className="cic-velo" aria-label="Cerrar más filtros" tabIndex={-1} onClick={() => setHoja(false)} />}
+        <div id="cic-mas-filtros" className="cic-hoja" role="group" aria-labelledby="cic-hoja-t" hidden={!hoja}
+          onKeyDown={(e) => { if (e.key === 'Escape') setHoja(false); }}>
+          <p id="cic-hoja-t" className="cic-hoja-t">Vista</p>
+          <div className="cic-grupo">
+            <button type="button" className="cic-chip" aria-pressed={vista === 'circulo'} onClick={() => setVista('circulo')}>Solo círculo</button>
+            <button type="button" className="cic-chip" aria-pressed={vista === 'completo'} onClick={() => setVista('completo')}>Círculo + inspector + 6 pasos</button>
+          </div>
+          <button type="button" className="cic-boton is-primario cic-hoja-ok" onClick={() => setHoja(false)}>Listo</button>
         </div>
       </div>
 
-      <div className="cic-grid">
+      <div className="cic-grid" id="cic-escena" role="tabpanel" aria-labelledby={`cic-tab-${filtro}`}>
         <div className="cic-svgcaja">
           <svg className="cic-svg" viewBox="0 0 540 450" aria-hidden="true">
             <defs>
@@ -142,6 +170,7 @@ export function CicloInteractivo() {
           <div className="cic-badges">
             <span className="cic-badge is-rojo">PASO {p.n} DE 06 · ACTIVO</span>
             <span className="cic-badge">{nv(p.niveles)}</span>
+            {filtro !== 'todos' && <span className="cic-badge">{CICLO_FILTROS.find((f) => f.id === filtro)!.label}</span>}
           </div>
           <p className="cic-q">{p.pregunta}</p>
           <h3 className="cic-t">{p.title}</h3>
