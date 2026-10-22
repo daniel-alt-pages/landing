@@ -56,5 +56,5 @@ export const CIERRE = {
     },
   ],
   formTitulo: 'Cuéntenos de su institución',
-  formLead: 'Un asesor le contactará para agendar la reunión o coordinar el simulacro.',
+  formLead: 'Un asesor se comunicará con usted para agendar la reunión o coordinar el simulacro.',
 } as const;

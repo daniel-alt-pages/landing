@@ -136,7 +136,7 @@ export function LeadForm() {
       <h3 className="ag-h3">{CIERRE.formTitulo}</h3>
       <p className="ag-form-lead">{CIERRE.formLead}</p>
       <p id={`${formId}-live`} aria-live="polite" className="ag-form-alert">
-        {status === 'error' ? 'No pudimos registrar su solicitud en este momento. Envíela por WhatsApp y le respondemos igual de rápido.' : ''}
+        {status === 'error' ? 'No pudimos registrar su solicitud en este momento. Puede enviarla por WhatsApp y le responderemos por ese medio.' : ''}
       </p>
       <fieldset className="ag-field ag-segment">
         <legend>¿Qué desea solicitar?</legend>
@@ -157,21 +157,21 @@ export function LeadForm() {
         <Field label="Nombre completo" name="nombre" value={values.nombre} error={err('nombre')} onChange={(value) => set('nombre', value)} autoComplete="name" />
         <SearchChoice label="Cargo" name="cargo" value={values.cargo} options={CARGOS} placeholder="Seleccione su cargo" error={err('cargo')} onChange={(value) => set('cargo', value)} />
         <Field label="Institución" name="institucion" value={values.institucion} error={err('institucion')} onChange={(value) => set('institucion', value)} autoComplete="organization" />
-        <SearchChoice label="Departamento" name="departamento" value={values.departamento} options={DEPARTAMENTOS} placeholder="Elija uno" error={err('departamento')} onChange={(value) => set('departamento', value)} />
+        <SearchChoice label="Departamento" name="departamento" value={values.departamento} options={DEPARTAMENTOS} placeholder="Seleccione un departamento" error={err('departamento')} onChange={(value) => set('departamento', value)} />
         <Field label="Municipio" name="municipio" value={values.municipio} error={err('municipio')} onChange={(value) => set('municipio', value)} />
         <SearchChoice label="Estudiantes de grado 11" name="estudiantes11" value={values.estudiantes11} options={RANGOS_ESTUDIANTES} placeholder="Seleccione un rango" error={err('estudiantes11')} onChange={(value) => set('estudiantes11', value)} />
-        <Field label="WhatsApp" name="whatsapp" value={values.whatsapp} error={err('whatsapp')} onChange={(value) => set('whatsapp', value)} inputMode="tel" autoComplete="tel" />
-        <Field label="Correo (opcional)" name="correo" value={values.correo} error={err('correo')} onChange={(value) => set('correo', value)} type="email" autoComplete="email" />
+        <Field label="WhatsApp de contacto" name="whatsapp" value={values.whatsapp} error={err('whatsapp')} onChange={(value) => set('whatsapp', value)} inputMode="tel" autoComplete="tel" />
+        <Field label="Correo institucional (opcional)" name="correo" value={values.correo} error={err('correo')} onChange={(value) => set('correo', value)} type="email" autoComplete="email" />
       </div>
       <label className="ag-field ag-field-grow">
-        <span>Qué quiere lograr (opcional)</span>
+        <span>¿Qué desea lograr con su institución? (opcional)</span>
         <textarea
           name="mensaje"
           rows={4}
           value={values.mensaje}
           aria-invalid={Boolean(err('mensaje'))}
           aria-describedby={err('mensaje') ? 'mensaje-error' : undefined}
-          placeholder="Grados, calendario o la duda que quiere resolver"
+          placeholder="Grados, calendario académico o la inquietud que desea resolver"
           onChange={(event) => set('mensaje', event.target.value)}
         />
         {err('mensaje') ? (
@@ -206,7 +206,7 @@ export function LeadForm() {
         </label>
       </div>
       <button className="ag-btn ag-btn-block" type="submit" disabled={status === 'submitting'}>
-        {status === 'submitting' ? 'Enviando' : interes === 'simulacro' ? 'Solicitar simulacro gratis' : 'Solicitar reunión'}
+        {status === 'submitting' ? 'Enviando…' : interes === 'simulacro' ? 'Solicitar simulacro gratis' : 'Agendar reunión'}
       </button>
       <p className="ag-form-note">Sin costo y sin compromiso. Respondemos en un día hábil.</p>
       {status === 'error' && fallback ? (

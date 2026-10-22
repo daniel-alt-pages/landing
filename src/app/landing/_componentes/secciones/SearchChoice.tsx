@@ -88,7 +88,7 @@ export function SearchChoice({
           <input
             className="ag-choice-search"
             value={query}
-            placeholder="Buscar o escribir otro"
+            placeholder="Buscar o escribir otra opción"
             aria-label={`Buscar ${label}`}
             autoComplete="off"
             onChange={(event) => setQuery(event.target.value)}
@@ -124,8 +124,8 @@ export function SearchChoice({
             <input
               className="ag-choice-other"
               value={otherText(value)}
-              placeholder="Escribe otro"
-              aria-label={`Escribe otro ${label}`}
+              placeholder="Escriba otra opción"
+              aria-label={`Escriba otro ${label}`}
               onChange={(event) => onChange(event.target.value.trim() ? `Otro: ${event.target.value}` : 'Otro')}
             />
           ) : null}

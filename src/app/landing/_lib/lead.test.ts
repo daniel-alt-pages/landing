@@ -9,7 +9,7 @@ function base(over: Partial<LeadInput> = {}): LeadInput {
     institucion: 'I. E. El Prado',
     departamento: 'La Guajira',
     municipio: 'Maicao',
-    estudiantes11: '50 a 100',
+    estudiantes11: '50 a 99',
     mensaje: '',
     whatsapp: '304 235 9048',
     correo: '',

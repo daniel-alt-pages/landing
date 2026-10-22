@@ -6,7 +6,7 @@ export const CARGOS = [
   'Otro',
 ] as const;
 
-export const RANGOS_ESTUDIANTES = ['Menos de 50', '50 a 100', '100 a 200', 'Más de 200'] as const;
+export const RANGOS_ESTUDIANTES = ['Menos de 50', '50 a 99', '100 a 200', 'Más de 200'] as const;
 
 export const DEPARTAMENTOS = [
   'Amazonas',
@@ -95,37 +95,37 @@ export function isListedOrOther(value: string, list: readonly string[], min = 2)
 export function validateLead(input: LeadInput): LeadFieldError[] {
   const errors: LeadFieldError[] = [];
   if (input.interes !== 'reunion' && input.interes !== 'simulacro') {
-    errors.push({ field: 'interes', message: 'Elige reunión o simulacro gratis.' });
+    errors.push({ field: 'interes', message: 'Seleccione reunión o simulacro.' });
   }
   if (input.nombre.trim().length < 3 || input.nombre.trim().length > 80) {
-    errors.push({ field: 'nombre', message: 'Escribe tu nombre completo.' });
+    errors.push({ field: 'nombre', message: 'Escriba su nombre completo.' });
   }
   if (!isListedOrOther(input.cargo, CARGOS)) {
-    errors.push({ field: 'cargo', message: 'Elige un cargo o escribe otro.' });
+    errors.push({ field: 'cargo', message: 'Seleccione un cargo o escriba otro.' });
   }
   if (input.institucion.trim().length < 3 || input.institucion.trim().length > 120) {
-    errors.push({ field: 'institucion', message: 'Escribe el nombre de la institución.' });
+    errors.push({ field: 'institucion', message: 'Escriba el nombre de la institución.' });
   }
   if (!isListedOrOther(input.departamento, DEPARTAMENTOS)) {
-    errors.push({ field: 'departamento', message: 'Elige un departamento o escribe otro.' });
+    errors.push({ field: 'departamento', message: 'Seleccione un departamento o escriba otro.' });
   }
   if (input.municipio.trim().length < 2 || input.municipio.trim().length > 80) {
-    errors.push({ field: 'municipio', message: 'Escribe el municipio.' });
+    errors.push({ field: 'municipio', message: 'Escriba el municipio.' });
   }
   if (!isListedOrOther(input.estudiantes11, RANGOS_ESTUDIANTES)) {
-    errors.push({ field: 'estudiantes11', message: 'Elige un rango o escribe otro.' });
+    errors.push({ field: 'estudiantes11', message: 'Seleccione un rango o escriba otro.' });
   }
   if (input.mensaje.trim().length > 400) {
-    errors.push({ field: 'mensaje', message: 'Resume lo que quiere lograr en menos de 400 caracteres.' });
+    errors.push({ field: 'mensaje', message: 'Resuma lo que desea lograr en menos de 400 caracteres.' });
   }
   if (!/^3\d{9}$/.test(normalizeWhatsapp(input.whatsapp))) {
-    errors.push({ field: 'whatsapp', message: 'Escribe un celular de Colombia, 10 dígitos, que empiece por 3.' });
+    errors.push({ field: 'whatsapp', message: 'Escriba un número celular de Colombia de 10 dígitos que empiece por 3.' });
   }
   if (input.correo.trim() && !EMAIL.test(input.correo.trim())) {
-    errors.push({ field: 'correo', message: 'El correo no tiene un formato válido.' });
+    errors.push({ field: 'correo', message: 'Revise el correo: el formato no es válido.' });
   }
   if (!input.consentimiento) {
-    errors.push({ field: 'consentimiento', message: 'Necesitamos tu autorización para tratar los datos.' });
+    errors.push({ field: 'consentimiento', message: 'Necesitamos su autorización para tratar sus datos.' });
   }
   return errors;
 }
@@ -162,7 +162,7 @@ export function leadWhatsappBody(input: LeadInput): string {
     `Institución: ${input.institucion.trim()}`,
     `Lugar: ${input.municipio.trim()}, ${input.departamento}`,
     `Estudiantes de grado 11: ${input.estudiantes11}`,
-    input.mensaje.trim() ? `Qué quiere lograr: ${input.mensaje.trim()}` : '',
+    input.mensaje.trim() ? `Qué desea lograr: ${input.mensaje.trim()}` : '',
     `WhatsApp: ${normalizeWhatsapp(input.whatsapp)}`,
     input.correo.trim() ? `Correo: ${input.correo.trim()}` : '',
   ]
