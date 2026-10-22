@@ -49,7 +49,7 @@ export function MapaSitio() {
         <ul className="qe-grid">
           {RUTAS.map((r, i) => (
             <MotionIn as="li" key={r.id} delay={i * 40} className="qe-item">
-              <a href={r.href} aria-labelledby={`qe-t-${r.id}`} className={`qe-card ${i % 2 ? 'is-dark' : 'is-light'}`}>
+              <a href={r.href} aria-labelledby={`qe-t-${r.id}`} className={`qe-card ${i % 2 === 0 ? 'is-dark' : 'is-light'}`}>
                 <span className="qe-ilus" dangerouslySetInnerHTML={{ __html: ILUSTRACIONES[r.id] ?? '' }} />
                 <span className="qe-body">
                   <span className="qe-eyebrow">{r.para}</span>
