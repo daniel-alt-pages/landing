@@ -135,3 +135,82 @@
   .b2b-v4 .cic-controles .cic-tabs { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; border-radius: 26px; }
   .b2b-v4 .ag-b2b .cic-tabs .cic-tab { min-width: 0; white-space: normal; padding: 6px 6px; font-size: 16px; }
 }
+
+/* ── v1.0.15 · Ciclo solo manual: barra de controles arriba; 2 columnas (círculo + pasos | detalle); móvil apilado ── */
+.b2b-v4 .cic[data-manual] .cic-arco { animation: none !important; stroke-dashoffset: var(--hasta); transition: stroke-dashoffset 400ms cubic-bezier(0.23, 1, 0.32, 1); }
+.b2b-v4 .cic[data-manual] .cic-halo, .b2b-v4 .cic[data-manual] .cic-glow { animation: none !important; }
+.b2b-v4 .cic[data-manual] .cic-nodo:not([data-off]) { cursor: pointer; }
+.b2b-v4 .cic[data-manual] .cic-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; align-items: start; }
+.b2b-v4 .cic[data-manual] .cic-col { grid-column: 1; grid-row: 1; display: grid; gap: 16px; }
+.b2b-v4 .cic[data-manual] .cic-svgcaja { grid-column: auto; grid-row: auto; }
+.b2b-v4 .cic[data-manual] .cic-inspector { grid-column: 2; grid-row: 1; }
+.b2b-v4 .cic[data-manual][data-vista='circulo'] .cic-grid { grid-template-columns: minmax(0, 1fr); max-width: 760px; margin: 0 auto; }
+.cic-vista { display: inline-flex; gap: 8px; }
+.cic-nav { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.cic-pasos { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.cic-paso, .cic-paso-btn { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1.5px solid #D1D5DB; border-radius: 999px;
+  background: #fff; color: #0D0E11; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer; transition: background-color 200ms, border-color 200ms, color 200ms; }
+.cic-paso-btn { border-color: #0D0E11; }
+.cic-paso[aria-current='step'] { background: #CC0000; border-color: #CC0000; color: #fff; }
+.cic-paso:disabled { opacity: 0.35; cursor: not-allowed; }
+@media (hover: hover) and (pointer: fine) { .cic-paso:not(:disabled):not([aria-current]):hover, .cic-paso-btn:hover { background: #FFE5E5; } }
+.cic-paso:focus-visible, .cic-paso-btn:focus-visible { outline: 3px solid #CC0000; outline-offset: 2px; }
+/* Sin recorrido automático ya no hace falta la lista estática alternativa: con movimiento reducido se ve el mismo círculo, sin transiciones. */
+@media (prefers-reduced-motion: reduce) {
+  .b2b-v4 .cic[data-manual] .cic-grid { display: grid !important; }
+  .b2b-v4 .cic[data-manual] .cic-arco, .cic-paso, .cic-paso-btn { transition: none !important; }
+}
+@media (max-width: 1023px) {
+  .b2b-v4 .cic[data-manual] .cic-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .b2b-v4 .cic[data-manual] .cic-col, .b2b-v4 .cic[data-manual] .cic-inspector { grid-column: 1; grid-row: auto; }
+}
+@media (max-width: 767px) {
+  /* Pestañas en una fila con desplazamiento horizontal si hace falta; objetivos de 48px. */
+  .b2b-v4 .cic-controles .cic-tabs { display: flex; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; border-radius: 999px; width: 100%; }
+  .b2b-v4 .cic-controles .cic-tabs::-webkit-scrollbar { display: none; }
+  .b2b-v4 .ag-b2b .cic-tabs .cic-tab { flex: 0 0 auto; white-space: nowrap; padding: 8px 16px; min-height: 48px; }
+  .cic-vista { width: 100%; }
+  .cic-vista .cic-chip { flex: 1 1 0; }
+  /* Chips de los 6 pasos en su propia fila; «Anterior» y «Siguiente» debajo, juntos. */
+  .cic-nav { flex-wrap: wrap; gap: 8px 12px; }
+  .cic-pasos { order: -1; flex: 1 0 100%; justify-content: center; gap: 4px; }
+}
+@media (max-width: 359px) { .cic-paso { width: 40px; } }
+
+/* ── v1.0.15 · Nivel 2: «Metodología: el ciclo de corrección» (details/summary) ── */
+.b2b-v4 .s5-metodo { --pf-red: #CC0000; --pf-soft: #FFE5E5; --pf-black: #0D0E11; border-radius: 26px; background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06) !important; }
+.s5-metodo > summary { display: flex; align-items: center; gap: 14px; min-height: 48px; padding: 16px 18px; list-style: none; cursor: pointer; border-radius: 26px; }
+.s5-metodo > summary::-webkit-details-marker { display: none; }
+.s5-metodo > summary:focus-visible { outline: 3px solid #CC0000; outline-offset: 2px; }
+.s5-metodo-ico { display: grid; place-items: center; flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; background: #CC0000; color: #fff; }
+.s5-metodo-txt { display: flex; flex-wrap: wrap; overflow-wrap: anywhere; align-items: baseline; gap: 2px 12px; flex: 1 1 auto; min-width: 0; }
+.s5-metodo-txt strong { font-size: 16px; font-weight: 800; color: #0D0E11; white-space: nowrap; }
+.s5-metodo-txt small { font-size: 14px; color: #6B7280; white-space: nowrap; }
+.s5-metodo-btn { display: grid; place-items: center; flex: 0 0 auto; width: 40px; height: 40px; border: 1.5px solid #0D0E11; border-radius: 50%; color: #0D0E11;
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1); }
+.s5-metodo[open] .s5-metodo-btn { transform: rotate(180deg); }
+.s5-metodo-body { padding: 0 18px 18px; }
+.s5-momentos { margin-top: 4px; }
+.s5-momentos li { position: relative; align-items: center; }
+.s5-momentos li > span { background: #fff; position: relative; z-index: 1; }
+.s5-momentos li:not(:last-child)::after { content: ''; position: absolute; left: 16.25px; top: 34px; bottom: -14px; width: 1.5px; background: #CC0000; }
+.s5-metodo .ag-pf-checks { margin-top: 16px; }
+@media (prefers-reduced-motion: reduce) { .s5-metodo-btn { transition: none; } }
+@media (max-width: 767px) {
+  .s5-metodo-txt { flex-direction: column; align-items: flex-start; }
+  .s5-metodo > summary { padding: 14px 14px; gap: 12px; }
+  .s5-metodo-txt strong { font-size: 15px; white-space: normal; text-wrap: balance; }
+  .s5-metodo-ico { width: 32px; height: 32px; }
+}
+@media (max-width: 359px) { .s5-metodo-txt strong { white-space: normal; } }
+
+/* ── v1.0.15 · Ruta «Inicio / Portafolio B2B» sobre el rojo de la portada también en <1024px (sin franja blanca).
+   Blanco sobre el rojo móvil #CC0000 = 5.9:1 (AA). El header principal no cambia. ── */
+@media (max-width: 1023px) {
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar { position: absolute; left: 0; right: 0; z-index: 2; padding: 16px 0 0; background: none; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb { font-size: 16px; font-weight: 700; color: #fff; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb a { color: #fff; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .b2b-panel .sg-hero-main { padding-top: 72px; }
+}

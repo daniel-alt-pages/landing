@@ -93,12 +93,26 @@ function Panel2() {
         </div>
         <div className="s5-n2-side">
           <QueRecibe />
-          <div className="s5-metodo ag-pf">
-            <Plegable titulo="Metodología: el ciclo de corrección" cuenta="6 momentos">
-              <ol className="ag-pf-cadena">{B2B_N2.ciclo.map((x) => <li key={x}>{x}</li>)}</ol>
+          <details className="s5-metodo">
+            <summary>
+              <span className="s5-metodo-ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </span>
+              <span className="s5-metodo-txt">
+                <strong>Metodología: el ciclo de corrección</strong>
+                <small>6 momentos · ver el método</small>
+              </span>
+              <span className="s5-metodo-btn" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </span>
+            </summary>
+            <div className="s5-metodo-body">
+              <ol className="s5-pasos s5-momentos">
+                {B2B_N2.ciclo.map((x, i) => <li key={x}><span aria-hidden="true">{i + 1}</span><div><strong>{x}</strong></div></li>)}
+              </ol>
               <ul className="ag-pf-checks">{B2B_N2.metodo.map((x) => <li key={x}>{x}</li>)}</ul>
-            </Plegable>
-          </div>
+            </div>
+          </details>
         </div>
       </div>
       <p className="ag-pf-nota s5-addon"><strong>Complemento.</strong> {B2B_N2.addon}</p>
