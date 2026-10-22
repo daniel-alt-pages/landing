@@ -13,6 +13,8 @@ import BlurText from '../../_componentes/bits/BlurText';
 import FadeContent from '../../_componentes/bits/FadeContent';
 import type { CatalogItem } from './catalogUi';
 
+const WA_COTIZACION = 'Hola, quisiera solicitar una cotización de los programas de SEAMOSGENIOS.';
+
 const FAQ = [
   {
     q: '¿Con qué se paga?',
@@ -37,6 +39,7 @@ export function CatalogoClient() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [notice, setNotice] = useState(0);
   const wa = buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes);
+  const waCotizacion = buildWaUrl(CONTACTO.whatsappEstudiantes, WA_COTIZACION);
   const ready = !catalog.loading && !catalog.error;
   const resume = catalog.resume;
   const cartIds = cart.map((row) => row.id);
@@ -118,10 +121,12 @@ export function CatalogoClient() {
             ) : null}
 
             {catalog.error ? (
-              <div className="ag-store-status">
-                <p>No pudimos cargar la tienda.</p>
-                <button type="button" className="ag-store-primary" onClick={catalog.retry}>Reintentar</button>
-                <a href={wa}>Escríbenos por WhatsApp</a>
+              <div className="ag-store-status ag-store-vacia">
+                <h2>Programas a su medida</h2>
+                <p>Cuéntenos qué necesita y le enviamos una cotización.</p>
+                <a className="ag-store-vacia-cta" href={waCotizacion} target="_blank" rel="noopener noreferrer">
+                  Solicite su cotización
+                </a>
               </div>
             ) : null}
 
