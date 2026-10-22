@@ -26,7 +26,6 @@ export const TIENDA_EJEMPLO_CONFIG: TiendaConfig = {
   heroSubtitle: 'Ejemplo ilustrativo de la tienda. Estos productos no están a la venta.',
   urgencyBanner: false,
   urgencyText: 'Ejemplo ilustrativo · Así se verá un aviso de la tienda.',
-  bold: true,
   transfer: true,
 };
 

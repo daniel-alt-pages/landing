@@ -49,7 +49,7 @@ export const MENU: MenuGroup[] = [
     feature: {
       eyebrow: 'Tienda',
       title: 'Elige y paga en línea',
-      text: 'Programas, simulacros y cursos. Cada uno se cobra por separado con Bold.',
+      text: 'Solicite su cotización',
     },
     items: [
       { href: '/landing/programas', label: 'Elige tu programa', text: 'Compara por necesidad y paga en línea si eres estudiante o familia.' },
