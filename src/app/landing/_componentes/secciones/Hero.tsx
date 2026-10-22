@@ -2,7 +2,6 @@ import { HERO } from '../../_contenido/hero';
 import { contactoHref } from '../../_lib/links';
 import { MotionIn } from '../primitivas/MotionIn';
 import { HeroMascota } from './HeroMascota';
-import { HeroTiendaEjemplo } from './HeroTiendaEjemplo';
 
 export function Hero() {
   return (
@@ -36,9 +35,6 @@ export function Hero() {
         </div>
         <div className="ag-hero-fx-side">
           <HeroMascota />
-        </div>
-        <div className="ag-hero-fx-extra">
-          <HeroTiendaEjemplo />
         </div>
       </div>
     </section>
