@@ -1,15 +1,12 @@
 import { COMPARATIVA, PROGRAMAS } from '../../_contenido/programas';
 import { Pending } from '../primitivas/bits';
-import { DisplayTitle } from '../primitivas/DisplayTitle';
-import { Lead } from '../primitivas/Lead';
 import { Section } from '../primitivas/Section';
 
 export function ProgramCompare() {
   return (
     <Section id="comparar" tone="grey" label="comparar-title">
-      <DisplayTitle id="comparar-title" lines={[{ text: 'Dos ritmos' }, { text: 'un mismo examen', accent: true }]} />
-      <Lead>El intensivo construye la base. El vacacional corrige en corto. Las horas en vivo sostienen la diferencia.</Lead>
-      <div className="ag-grid-2" style={{ marginTop: 28 }}>
+      <h2 id="comparar-title" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)', whiteSpace: 'nowrap' }}>Comparar programas</h2>
+      <div className="ag-grid-2" >
         {COMPARATIVA.map((programa) => (
           <article key={programa.id} className="ag-card ag-compare-card">
             <p className="ag-eyebrow">{programa.semanas}</p>

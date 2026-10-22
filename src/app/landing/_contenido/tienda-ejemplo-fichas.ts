@@ -5,7 +5,7 @@
  */
 import { TIENDA_EJEMPLO_PRODUCTOS } from './tienda-ejemplo';
 
-export type ResenaEjemplo = { nombre: string; fecha: string; estrellas: number; texto: string };
+export type ResenaEjemplo = { nombre: string; fecha: string; estrellas: number; texto: string; utiles?: number; foto?: string };
 export type PreguntaEjemplo = { q: string; a: string };
 export type FichaEjemplo = {
   descripcion: string[];
@@ -19,11 +19,11 @@ export type FichaEjemplo = {
 };
 
 const RESENAS: ResenaEjemplo[] = [
-  { nombre: 'Laura M.', fecha: '12 de septiembre de 2026', estrellas: 5, texto: 'Las clases son claras y los simulacros se parecen mucho a la prueba. Mi hija subió su puntaje en matemáticas.' },
-  { nombre: 'Andrés R.', fecha: '28 de agosto de 2026', estrellas: 5, texto: 'Muy buena organización. Los horarios se cumplen y los profesores responden las dudas.' },
-  { nombre: 'Valentina G.', fecha: '3 de agosto de 2026', estrellas: 4, texto: 'El material es completo. Me habría gustado tener más ejercicios de lectura crítica.' },
-  { nombre: 'Camilo P.', fecha: '19 de julio de 2026', estrellas: 4, texto: 'Buen acompañamiento. La plataforma es fácil de usar desde el celular.' },
-  { nombre: 'Sofía T.', fecha: '2 de julio de 2026', estrellas: 3, texto: 'Buen contenido, aunque algunas sesiones fueron muy rápidas para mi ritmo.' },
+  { nombre: 'Laura M.', foto: '/landing/avatares/a1.svg', fecha: '12 de septiembre de 2026', estrellas: 5, texto: 'Las clases son claras y los simulacros se parecen mucho a la prueba. Mi hija subió su puntaje en matemáticas.', utiles: 14 },
+  { nombre: 'Andrés R.', foto: '/landing/avatares/a2.svg', fecha: '28 de agosto de 2026', estrellas: 5, texto: 'Muy buena organización. Los horarios se cumplen y los profesores responden las dudas.', utiles: 9 },
+  { nombre: 'Valentina G.', foto: '/landing/avatares/a3.svg', fecha: '3 de agosto de 2026', estrellas: 4, texto: 'El material es completo. Me habría gustado tener más ejercicios de lectura crítica.', utiles: 6 },
+  { nombre: 'Camilo P.', foto: '/landing/avatares/a4.svg', fecha: '19 de julio de 2026', estrellas: 4, texto: 'Buen acompañamiento. La plataforma es fácil de usar desde el celular.', utiles: 3 },
+  { nombre: 'Sofía T.', foto: '/landing/avatares/a5.svg', fecha: '2 de julio de 2026', estrellas: 3, texto: 'Buen contenido, aunque algunas sesiones fueron muy rápidas para mi ritmo.', utiles: 1 },
 ];
 
 const PREGUNTAS: PreguntaEjemplo[] = [
@@ -67,3 +67,13 @@ export function fichaEjemploDe(id: string): FichaEjemplo | null {
 }
 
 export const FICHA_EJEMPLO_IDS = TIENDA_EJEMPLO_PRODUCTOS.map((row) => row.id);
+
+/** Datos cortos para la tarjeta de la tienda (calificación, insignia, «Incluye»). */
+export type ExtrasTarjeta = { promedio: number; total: number; destacado?: string; incluye: string };
+const DESTACADO: Record<string, string> = { combo: 'Más elegido', material: 'Nuevo' };
+export function extrasTarjeta(id: string): ExtrasTarjeta | null {
+  const prod = TIENDA_EJEMPLO_PRODUCTOS.find((row) => row.id === id);
+  const ficha = fichaEjemploDe(id);
+  if (!prod || !ficha) return null;
+  return { promedio: ficha.promedio, total: ficha.totalOpiniones, destacado: DESTACADO[prod.kind], incluye: ficha.incluye[0] };
+}

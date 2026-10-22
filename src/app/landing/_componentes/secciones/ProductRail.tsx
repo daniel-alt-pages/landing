@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { programasUrl, tiendaLandingUrl } from '../../_contenido/contacto';
-import { addToCart, readCart, requestCartOpen, subscribeCart, type CartItem } from '../../_lib/carrito';
-import { storeFromCommerce, type TiendaConfig } from '../../_lib/tienda';
-import { TIENDA_EJEMPLO_CONFIG, TIENDA_EJEMPLO_PRODUCTOS, tiendaEjemploActiva } from '../../_contenido/tienda-ejemplo';
+import { addToCart, readCart, subscribeCart, type CartItem } from '../../_lib/carrito';
+import { volarAlCarrito } from '../../_lib/volarAlCarrito';
+import { coverForKind, storeFromCommerce, type TiendaConfig } from '../../_lib/tienda';
+import { fuenteTienda, tiendaEjemploActiva } from '../../_datos/tienda';
 import BlurText from '../bits/BlurText';
 import { ProgramCard } from '../../programas/catalogo/ProgramCard';
 import type { CatalogItem } from '../../programas/catalogo/catalogUi';
@@ -34,8 +35,9 @@ export function ProductRail() {
     // Sin API: productos ficticios de _contenido/tienda-ejemplo.ts (solo si la bandera lo permite).
     const applyExample = () => {
       if (!tiendaEjemploActiva()) return;
-      setConfig(TIENDA_EJEMPLO_CONFIG);
-      setItems(storeFromCommerce(TIENDA_EJEMPLO_PRODUCTOS));
+      const ejemplo = fuenteTienda().catalogo();
+      setConfig(ejemplo.config);
+      setItems(storeFromCommerce(ejemplo.products));
     };
     if (!shopUrl) { applyExample(); return undefined; }
     const aulasUrl = programasUrl();
@@ -97,8 +99,9 @@ export function ProductRail() {
       priceCop: item.priceCop || 0,
       productId: item.commerce?.productId,
       aulaId: item.commerce?.aulaId,
+      image: item.catalog?.coverUrl || coverForKind(item.catalog?.kind),
     });
-    window.setTimeout(() => requestCartOpen(), 0);
+    volarAlCarrito(item.catalog?.coverUrl || coverForKind(item.catalog?.kind));
   }
 
   const pays = payLine(config);

@@ -16,7 +16,7 @@ export function ProgramShelf({ items, cartIds, onOpen, onAdd }: Props) {
     <ul className="ag-mk-grid">
       {items.map((item) => (
         <li key={item.id}>
-          <ProgramCard item={item} inCart={cartIds.includes(item.id)} onOpen={onOpen} onAdd={onAdd} />
+          <ProgramCard item={item} inCart={cartIds.includes(item.id)} onOpen={onOpen} onAdd={onAdd} href={item.id.startsWith('ejemplo-') ? `/landing/programas/ficha/${encodeURIComponent(item.id)}` : undefined} />
         </li>
       ))}
     </ul>

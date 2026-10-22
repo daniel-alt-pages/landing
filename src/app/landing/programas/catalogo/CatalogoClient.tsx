@@ -7,6 +7,8 @@ import { addToCart, readCart, requestCartOpen, subscribeCart, type CartItem } fr
 import { CatalogFilters } from './CatalogFilters';
 import { ProgramDetail } from './ProgramDetail';
 import { ProgramShelf } from './ProgramShelf';
+import { volarAlCarrito } from '../../_lib/volarAlCarrito';
+import { coverForKind } from '../../_lib/tienda';
 import { useCatalogQuery } from './useCatalogQuery';
 import { StorefrontBanner } from '../../_componentes/secciones/StorefrontBanner';
 import BlurText from '../../_componentes/bits/BlurText';
@@ -38,6 +40,8 @@ export function CatalogoClient() {
   const catalog = useCatalogQuery();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [notice, setNotice] = useState(0);
+  const [orden, setOrden] = useState('');
+  const [tope, setTope] = useState(0);
   const wa = buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes);
   const waCotizacion = buildWaUrl(CONTACTO.whatsappEstudiantes, WA_COTIZACION);
   const ready = !catalog.loading && !catalog.error;
@@ -56,6 +60,10 @@ export function CatalogoClient() {
     return () => window.clearTimeout(timer);
   }, [notice]);
 
+  const shown = catalog.items
+    .filter((row) => !tope || (Number(row.priceCop) || 0) <= tope)
+    .sort((a, b) => (orden === 'asc' ? 1 : orden === 'desc' ? -1 : 0) * ((Number(a.priceCop) || 0) - (Number(b.priceCop) || 0)));
+
   function addItem(item: CatalogItem) {
     if (item.seatsFull) return;
     addToCart({
@@ -64,14 +72,21 @@ export function CatalogoClient() {
       priceCop: item.priceCop || 0,
       productId: item.commerce?.productId,
       aulaId: item.commerce?.aulaId,
+      image: item.catalog?.coverUrl || coverForKind(item.catalog?.kind),
     });
-    setNotice((value) => value + 1);
+    volarAlCarrito(item.catalog?.coverUrl || coverForKind(item.catalog?.kind));
   }
 
   return (
     <section className="ag-section ag-store ag-mk" aria-busy={catalog.loading}>
       <StorefrontBanner />
       <div className="ag-wrap">
+        <nav className="ag-mk-crumbs" aria-label="Ruta de navegación">
+          <ol>
+            <li><a href="/landing">Inicio</a></li>
+            <li aria-current="page">Tienda</li>
+          </ol>
+        </nav>
         <header className="ag-mk-head">
           <p className="ag-mk-kicker">Tienda</p>
           <h1>
@@ -105,7 +120,23 @@ export function CatalogoClient() {
               onNeed={catalog.setNeed}
             />
             <div className="ag-mk-bar">
-              <p>{resultsLabel(catalog.items.length)}</p>
+              <p>{resultsLabel(shown.length)}</p>
+              <label className="ag-mk-sort">
+                <span>Precio</span>
+                <select value={tope} onChange={(e) => setTope(Number(e.target.value))}>
+                  <option value={0}>Todos</option>
+                  <option value={100000}>Hasta $ 100.000</option>
+                  <option value={200000}>Hasta $ 200.000</option>
+                </select>
+              </label>
+              <label className="ag-mk-sort">
+                <span>Ordenar por</span>
+                <select value={orden} onChange={(e) => setOrden(e.target.value)}>
+                  <option value="">Más relevantes</option>
+                  <option value="asc">Menor precio</option>
+                  <option value="desc">Mayor precio</option>
+                </select>
+              </label>
               {catalog.filtered ? (
                 <button type="button" onClick={catalog.clearFilters}>Quitar filtros</button>
               ) : null}
@@ -130,7 +161,7 @@ export function CatalogoClient() {
               </div>
             ) : null}
 
-            {ready && !catalog.items.length ? (
+            {ready && !shown.length ? (
               <div className="ag-store-status">
                 <p>
                   {catalog.filtered
@@ -148,7 +179,7 @@ export function CatalogoClient() {
             ) : null}
 
             {ready ? (
-              <ProgramShelf items={catalog.items} cartIds={cartIds} onOpen={catalog.openProgram} onAdd={addItem} />
+              <ProgramShelf items={shown} cartIds={cartIds} onOpen={catalog.openProgram} onAdd={addItem} />
             ) : null}
         </FadeContent>
 

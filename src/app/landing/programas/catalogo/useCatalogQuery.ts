@@ -7,6 +7,10 @@ import { programasUrl, tiendaLandingUrl } from '../../_contenido/contacto';
 import { readConsent, readVista, writeVista } from '../../_lib/cookies';
 import { storeFromCommerce, type TiendaConfig, type TiendaProduct } from '../../_lib/tienda';
 import { type CatalogItem, type CatalogNeed } from './catalogUi';
+import { fuenteTienda, tiendaEjemploActiva } from '../../_datos/tienda';
+
+/** Tiempo máximo de espera a la API de Comercio antes de usar el respaldo. */
+const API_TIMEOUT_MS = 3000;
 
 const KIND_IDS = new Set(['', 'programa', 'simulacro', 'curso']);
 
@@ -43,43 +47,53 @@ export function useCatalogQuery() {
   }, [params, pathname, router]);
 
   useEffect(() => {
-    const url = programasUrl();
-    if (!url) {
-      setPayload({ items: [], needs: [] });
-      setError(false);
-      return undefined;
-    }
     const controller = new AbortController();
-    setError(false);
-    fetch(url, { signal: controller.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error('catalog');
-        return res.json();
-      })
-      .then((body: Payload) => setPayload(body))
-      .catch((err: { name?: string }) => {
-        if (err?.name === 'AbortError') return;
-        setError(true);
-      });
+    let settled = false;
+    // Respaldo: productos de ejemplo (misma bandera que ProductRail) o estado vacío/error.
+    const fallback = (failed: boolean) => {
+      if (settled) return;
+      settled = true;
+      controller.abort();
+      if (tiendaEjemploActiva()) {
+        const ejemplo = fuenteTienda().catalogo();
+        setConfig(ejemplo.config);
+        setProducts(ejemplo.products);
+        setPayload({ items: [], needs: [] });
+        setError(false);
+        return;
+      }
+      setPayload((prev) => prev || { items: [], needs: [] });
+      setProducts((prev) => prev || []);
+      setError(failed);
+    };
+    const url = programasUrl();
     const shopUrl = tiendaLandingUrl();
-    if (shopUrl) {
-      fetch(shopUrl, { signal: controller.signal })
-        .then((res) => {
-          if (!res.ok) throw new Error('tienda');
-          return res.json();
-        })
-        .then((body: { config?: TiendaConfig; products?: TiendaProduct[] }) => {
-          setConfig(body?.config || null);
-          setProducts(Array.isArray(body?.products) ? body.products : []);
-        })
-        .catch((err: { name?: string }) => {
-          if (err?.name === 'AbortError') return;
-          setError(true);
-        });
-    } else {
-      setProducts([]);
+    if (!url || !shopUrl) {
+      const frame = window.requestAnimationFrame(() => fallback(false));
+      return () => { window.cancelAnimationFrame(frame); controller.abort(); };
     }
-    return () => controller.abort();
+    const timer = window.setTimeout(() => fallback(true), API_TIMEOUT_MS);
+    const load = (target: string) => fetch(target, { signal: controller.signal }).then((res) => {
+      if (!res.ok) throw new Error('api');
+      return res.json();
+    });
+    Promise.all([load(url), load(shopUrl)])
+      .then(([body, shop]: [Payload, { config?: TiendaConfig; products?: TiendaProduct[] }]) => {
+        if (settled) return;
+        const list = Array.isArray(shop?.products) ? shop.products : [];
+        if (!list.length) { fallback(false); return; }
+        settled = true;
+        setPayload(body || { items: [], needs: [] });
+        setConfig(shop?.config || null);
+        setProducts(list);
+      })
+      .catch(() => fallback(true))
+      .finally(() => window.clearTimeout(timer));
+    return () => {
+      settled = true;
+      window.clearTimeout(timer);
+      controller.abort();
+    };
   }, [attempt]);
 
   useEffect(() => {
@@ -139,11 +153,15 @@ export function useCatalogQuery() {
     write({ tipo: '', necesidad: '' }, 'replace');
   }, [write]);
   const openProgram = useCallback((id: string) => {
+    if (id.startsWith('ejemplo-')) {
+      router.push(`/landing/programas/ficha/${encodeURIComponent(id)}`);
+      return;
+    }
     openedHere.current = true;
     vistaTouched.current = true;
     setResumeId(id);
     write({ programa: id }, 'push');
-  }, [write]);
+  }, [router, write]);
   const closeProgram = useCallback(() => {
     if (openedHere.current) {
       openedHere.current = false;

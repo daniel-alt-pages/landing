@@ -4,12 +4,12 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { programasUrl, tiendaLandingUrl } from '../../_contenido/contacto';
 import { addToCart, readCart, subscribeCart } from '../../_lib/carrito';
-import { storeFromCommerce, type TiendaConfig, type TiendaProduct } from '../../_lib/tienda';
+import { volarAlCarrito } from '../../_lib/volarAlCarrito';
+import { coverForKind, storeFromCommerce, type TiendaConfig, type TiendaProduct } from '../../_lib/tienda';
 import type { CatalogItem } from './catalogUi';
 import { ProductOffer } from './ProductOffer';
 import { FichaEjemploVista } from './FichaEjemploVista';
-import { TIENDA_EJEMPLO_CONFIG, TIENDA_EJEMPLO_PRODUCTOS, tiendaEjemploActiva } from '../../_contenido/tienda-ejemplo';
-import { fichaEjemploDe } from '../../_contenido/tienda-ejemplo-fichas';
+import { fuenteTienda } from '../../_datos/tienda';
 
 export function FichaPagina({ id }: { id: string }) {
   const [item, setItem] = useState<CatalogItem | null>(null);
@@ -22,8 +22,10 @@ export function FichaPagina({ id }: { id: string }) {
     return subscribeCart(sync);
   }, [id]);
 
-  const ejemplo = tiendaEjemploActiva() ? fichaEjemploDe(id) : null;
-  const ejemploItem = ejemplo ? storeFromCommerce(TIENDA_EJEMPLO_PRODUCTOS).find((row) => row.id === id) || null : null;
+  const fuente = fuenteTienda();
+  const ejemplo = fuente.ficha(id);
+  const catalogoLocal = fuente.catalogo();
+  const ejemploItem = ejemplo ? storeFromCommerce(catalogoLocal.products).find((row) => row.id === id) || null : null;
 
   useEffect(() => {
     if (ejemplo) return undefined;
@@ -54,14 +56,17 @@ export function FichaPagina({ id }: { id: string }) {
     return () => controller.abort();
   }, [id, ejemplo]);
 
-  const add = (next: CatalogItem) => addToCart({ id: next.id, title: next.title, priceCop: next.priceCop || 0, productId: next.commerce?.productId, aulaId: next.commerce?.aulaId });
+  const add = (next: CatalogItem) => {
+    addToCart({ id: next.id, title: next.title, priceCop: next.priceCop || 0, productId: next.commerce?.productId, aulaId: next.commerce?.aulaId, image: next.catalog?.coverUrl || coverForKind(next.catalog?.kind) });
+    volarAlCarrito(next.catalog?.coverUrl || coverForKind(next.catalog?.kind));
+  };
 
   if (ejemplo && ejemploItem) {
     return (
       <section className="ag-section ag-store ag-mk">
         <div className="ag-wrap">
           <p className="ag-mk-kicker"><Link href="/landing/programas">Tienda</Link> › {ejemploItem.title}</p>
-          <FichaEjemploVista item={ejemploItem} ficha={ejemplo} config={TIENDA_EJEMPLO_CONFIG} inCart={inCart} onAdd={add} />
+          <FichaEjemploVista item={ejemploItem} ficha={ejemplo} config={catalogoLocal.config} inCart={inCart} onAdd={add} />
         </div>
       </section>
     );

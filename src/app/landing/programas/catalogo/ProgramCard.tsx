@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
+import { fuenteTienda } from '../../_datos/tienda';
 import { coverForKind } from '../../_lib/tienda';
 import GlareHover from '../../_componentes/bits/GlareHover';
 import { kindLabel, priceLabel, seatsLabel, type CatalogItem } from './catalogUi';
@@ -45,6 +46,7 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Prop
   const compare = Number(item.comparePriceCop) || 0;
   const off = discount(price, compare);
   const cover = item.catalog?.coverUrl || coverForKind(item.catalog?.kind);
+  const extra = fuenteTienda().extras(item.id);
   const addLabel = full ? 'Sin cupos' : inCart ? 'En el carrito' : 'Agregar al carrito';
 
   return (
@@ -60,6 +62,7 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Prop
         rimGlint={false}
       >
         {rail && item.badge ? <span className="ag-mk-flag">{item.badge}</span> : null}
+        {extra?.destacado ? <span className="ag-mk-hot">{extra.destacado}</span> : null}
         <Open item={item} onOpen={onOpen} href={href} className="ag-mk-photo">
           {broken ? (
             <span className="ag-mk-photo-label">{kindLabel(item.catalog?.kind)}</span>
@@ -73,6 +76,14 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Prop
         <h3 className="ag-mk-title">
           <Open item={item} onOpen={onOpen} href={href} className="ag-mk-title-hit">{item.title}</Open>
         </h3>
+        {extra ? (
+          <p className="ag-mk-rating">
+            <span role="img" aria-label={`${extra.promedio.toLocaleString('es-CO')} de 5 estrellas`}>
+              {[1, 2, 3, 4, 5].map((n) => <span key={n} aria-hidden className={extra.promedio >= n - 0.25 ? 'on' : ''}>★</span>)}
+            </span>
+            <span className="ag-mk-rating-n">({extra.total})</span>
+          </p>
+        ) : null}
         <p className="ag-mk-meta">
           {item.badge && !rail ? <span className="ag-mk-badge">{item.badge}</span> : null}
           <span>{seatsLabel(item)}</span>
@@ -82,6 +93,7 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Prop
           {compare > price ? <s className="ag-mk-was">{priceLabel(compare)}</s> : null}
           {off ? <span className="ag-mk-offer">Oferta</span> : null}
         </p>}
+        {extra ? <p className="ag-mk-free">Incluye: {extra.incluye}</p> : null}
         <div className="ag-mk-actions">
           <Open item={item} onOpen={onOpen} href={href} className="ag-mk-link">Ver programa</Open>
           <button

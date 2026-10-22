@@ -7,7 +7,13 @@ export type CartItem = {
   /** Id del producto en Comercio. Vacío si la línea es un aula publicada. */
   productId?: string;
   aulaId?: string;
+  /** Cantidad (1-10). */
+  qty?: number;
+  /** Miniatura (solo localStorage, no va a la cookie). */
+  image?: string;
 };
+
+const qtyOf = (value: unknown) => Math.min(10, Math.max(1, Math.round(Number(value)) || 1));
 
 const KEY = 'ag-programas-cart';
 const EVENT = 'ag-programas-cart';
@@ -33,6 +39,8 @@ function parse(raw: string | null): CartItem[] {
         };
         if (row.productId) item.productId = String(row.productId).slice(0, 80);
         if (row.aulaId) item.aulaId = String(row.aulaId).slice(0, 80);
+        if (row.qty) item.qty = qtyOf(row.qty);
+        if (typeof row.image === 'string') item.image = row.image.slice(0, 300);
         return item;
       });
   } catch {
@@ -42,9 +50,14 @@ function parse(raw: string | null): CartItem[] {
 
 export function readCart(): CartItem[] {
   if (typeof window === 'undefined') return [];
+  const local = parse(window.localStorage.getItem(KEY));
   const cookie = browserCookieStore().read(COOKIE.cart);
-  if (cookie !== null) return parse(cookie);
-  return parse(window.localStorage.getItem(KEY));
+  if (cookie === null) return local;
+  // La cookie manda; la miniatura sale de localStorage.
+  return parse(cookie).map((row) => {
+    const img = local.find((l) => l.id === row.id)?.image;
+    return img ? { ...row, image: img } : row;
+  });
 }
 
 function write(items: CartItem[]) {
@@ -58,6 +71,7 @@ function write(items: CartItem[]) {
     };
     if (item.productId) row.productId = item.productId.slice(0, 80);
     if (item.aulaId) row.aulaId = item.aulaId.slice(0, 80);
+    if (item.qty && item.qty > 1) row.qty = item.qty;
     return row;
   }));
   const store = browserCookieStore();
@@ -77,12 +91,19 @@ export function mirrorCartCookie() {
 }
 
 export function addToCart(item: CartItem) {
-  const items = readCart().filter((row) => row.id !== item.id);
-  const next: CartItem = { id: item.id, title: item.title, priceCop: Number(item.priceCop) || 0 };
+  const current = readCart();
+  const prev = current.find((row) => row.id === item.id);
+  const items = current.filter((row) => row.id !== item.id);
+  const next: CartItem = { id: item.id, title: item.title, priceCop: Number(item.priceCop) || 0, qty: prev?.qty || 1 };
+  if (item.image || prev?.image) next.image = item.image || prev?.image;
   if (item.productId) next.productId = item.productId;
   if (item.aulaId) next.aulaId = item.aulaId;
   items.push(next);
   write(items);
+}
+
+export function setCartQty(id: string, qty: number) {
+  write(readCart().map((row) => (row.id === id ? { ...row, qty: qtyOf(qty) } : row)));
 }
 
 export function removeFromCart(id: string) {

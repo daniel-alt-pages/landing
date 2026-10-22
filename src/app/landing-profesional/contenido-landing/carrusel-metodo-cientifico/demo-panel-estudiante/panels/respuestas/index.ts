@@ -1,1 +1,0 @@
-export { ShowcaseRespuestasPanel } from './ShowcaseRespuestasPanel';

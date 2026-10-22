@@ -1,7 +1,11 @@
 'use client';
 
+import { useState } from 'react';
+
 import { coverForKind, type TiendaConfig } from '../../_lib/tienda';
-import type { FichaEjemplo } from '../../_contenido/tienda-ejemplo-fichas';
+import type { FichaPrograma as FichaEjemplo } from '../../_datos/tienda';
+import { Avatar } from '../../_componentes/bits/Avatar';
+import { DejaOpinion } from './DejaOpinion';
 import { kindLabel, priceLabel, type CatalogItem } from './catalogUi';
 
 function Estrellas({ valor, size = 16 }: { valor: number; size?: number }) {
@@ -32,14 +36,29 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
   const cover = item.catalog?.coverUrl || coverForKind(item.catalog?.kind);
   const total = ficha.distribucion.reduce((a, b) => a + b, 0) || 1;
   const pays = payLine(config);
+  const fotos = Array.from(new Set([cover, '/landing/productos/simulacro.jpg', '/landing/productos/curso.jpg', coverForKind('programa')]));
+  const [foto, setFoto] = useState(0);
+  const [utiles, setUtiles] = useState<Record<number, boolean>>({});
   return (
     <article className="ag-fx" aria-labelledby="ag-fx-title">
-      <div className="ag-fx-main">
+      <div className="ag-fx-top">
         <figure className="ag-fx-card ag-fx-gallery">
-          <img src={cover} alt={`Imagen de ejemplo de ${item.title}`} />
+          <div className="ag-fx-gallery-in">
+            <ul className="ag-fx-thumbs" aria-label="Imágenes del programa">
+              {fotos.map((src, i) => (
+                <li key={src}>
+                  <button type="button" aria-label={`Ver imagen ${i + 1} de ${fotos.length}`} aria-pressed={foto === i} onClick={() => setFoto(i)}>
+                    <img src={src} alt="" />
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <img className="ag-fx-hero" src={fotos[foto]} alt={`Imagen de ejemplo ${foto + 1} de ${item.title}`} />
+          </div>
           <figcaption><Ejemplo /></figcaption>
         </figure>
 
+      <div className="ag-fx-side-col">
         <aside className="ag-fx-card ag-fx-buy" aria-label="Compra">
           <p className="ag-fx-kind">{kindLabel(item.catalog?.kind)} · <Ejemplo /></p>
           <h1 id="ag-fx-title">{item.title}</h1>
@@ -50,22 +69,58 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
           <p className="ag-fx-price">{priceLabel(item.priceCop)}</p>
           <p className="ag-mk-badge">EJEMPLO</p>
           {pays ? <p className="ag-fx-pays">Medios de pago: {pays}</p> : null}
+          <p className="ag-fx-stock"><strong>Cupos disponibles</strong> · quedan 12 (ejemplo)</p>
           <button type="button" className="ag-store-primary" disabled title="Producto de ejemplo. No está a la venta.">Inscribirme</button>
           <button type="button" className="ag-store-secondary" disabled={inCart} onClick={() => onAdd(item)}>
             {inCart ? 'En el carrito' : 'Agregar al carrito'}
           </button>
           <p className="ag-fx-note">Este producto es de ejemplo y no está a la venta.</p>
+          <h2 className="ag-fx-know">Lo que tiene que saber de este programa</h2>
+          <ul className="ag-fx-list">
+            {ficha.detalles.slice(0, 3).map((d) => <li key={d.label}>{d.label}: {d.value}.</li>)}
+            {ficha.incluye.slice(0, 2).map((t) => <li key={t}>{t}.</li>)}
+          </ul>
         </aside>
+          <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-acceso">
+            <h2 id="fx-acceso">Cómo accede <Ejemplo /></h2>
+            <ul className="ag-fx-list">
+              <li>Acceso inmediato a su panel de estudiante al confirmar el pago.</li>
+              <li>Clases en vivo, simulacros e informes por área en el mismo panel.</li>
+              <li>Modalidad: {ficha.detalles.find((d) => d.label === 'Modalidad')?.value || 'Virtual'}.</li>
+              <li>Duración: {ficha.detalles.find((d) => d.label === 'Duración')?.value || '—'}.</li>
+              <li>Inicio: 3 de noviembre de 2026.</li>
+            </ul>
+          </section>
+          <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-vende">
+            <h2 id="fx-vende">Quién lo dicta <Ejemplo /></h2>
+            <p><strong>SEAMOSGENIOS</strong> · Preparación Saber 11</p>
+            <ul className="ag-fx-list">
+              <li>Tutores por área con seguimiento semanal.</li>
+              <li>+2.000 estudiantes acompañados (dato de ejemplo).</li>
+              <li>Atención por WhatsApp de lunes a sábado.</li>
+              <li>Responde en menos de 24 horas.</li>
+            </ul>
+          </section>
+          <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-pagos">
+            <h2 id="fx-pagos">Medios de pago</h2>
+            <ul className="ag-fx-paychips">
+              {config.bold !== false ? ['Tarjeta', 'PSE', 'Nequi', 'Bancolombia'].map((m) => <li key={m}>{m}</li>) : null}
+              {config.transfer !== false ? <li>Transferencia</li> : null}
+            </ul>
+            {config.bold !== false ? <p className="ag-fx-note">Pagos procesados con Bold.</p> : null}
+          </section>
+          <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-garantias">
+            <h2 id="fx-garantias">Garantías y datos clave <Ejemplo /></h2>
+            <ul className="ag-fx-list">
+              <li>Clases grabadas si no puede asistir en vivo.</li>
+              <li>Informe de resultados después de cada simulacro.</li>
+              <li>Soporte por WhatsApp durante todo el programa.</li>
+            </ul>
+          </section>
+        </div>
+      </div>
 
-        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-desc">
-          <h2 id="fx-desc">Descripción</h2>
-          {ficha.descripcion.map((p) => <p key={p}>{p}</p>)}
-        </section>
-
-        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-inc">
-          <h2 id="fx-inc">Qué incluye</h2>
-          <ul className="ag-fx-list">{ficha.incluye.map((t) => <li key={t}>{t}</li>)}</ul>
-        </section>
+      <div className="ag-fx-bottom">
 
         <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-det">
           <h2 id="fx-det">Características del programa</h2>
@@ -77,6 +132,17 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
             </tbody>
           </table>
         </section>
+
+        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-desc">
+          <h2 id="fx-desc">Descripción</h2>
+          {ficha.descripcion.map((p) => <p key={p}>{p}</p>)}
+        </section>
+
+        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-inc">
+          <h2 id="fx-inc">Qué incluye</h2>
+          <ul className="ag-fx-list">{ficha.incluye.map((t) => <li key={t}>{t}</li>)}</ul>
+        </section>
+
 
         <section id="opiniones" className="ag-fx-card ag-fx-block" aria-labelledby="fx-op">
           <h2 id="fx-op">Opiniones del programa <Ejemplo /></h2>
@@ -98,15 +164,23 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
             </ul>
           </div>
           <ul className="ag-fx-reviews">
-            {ficha.resenas.map((r) => (
+            {ficha.resenas.map((r, i) => (
               <li key={r.nombre}>
                 <Estrellas valor={r.estrellas} size={14} />
-                <p className="ag-fx-review-meta"><strong>{r.nombre}</strong> · {r.fecha}</p>
+                <div className="ag-fx-review-head">
+                  <Avatar name={r.nombre} src={r.foto} alt={`Avatar ilustrado de ${r.nombre} (ejemplo)`} />
+                  <p className="ag-fx-review-meta"><strong>{r.nombre} (ejemplo)</strong> · {r.fecha}</p>
+                </div>
                 <p>{r.texto}</p>
+                <button type="button" className="ag-fx-useful" aria-pressed={Boolean(utiles[i])} onClick={() => setUtiles((u) => ({ ...u, [i]: !u[i] }))}>
+                  Es útil · {(r.utiles ?? 0) + (utiles[i] ? 1 : 0)}
+                </button>
               </li>
             ))}
           </ul>
         </section>
+
+        <DejaOpinion programaId={item.id} />
 
         <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-qa">
           <h2 id="fx-qa">Preguntas y respuestas <Ejemplo /></h2>
