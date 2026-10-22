@@ -29,18 +29,6 @@ export function B2bHero() {
           <a className="sg-hero-btn is-borde" href={b2bWhatsappUrl()}>Escribir por WhatsApp</a>
         </div>
       </div>
-      {/* Mascota: oficialidad y derechos pendientes de confirmar con Daniel. */}
-      <figure className="sg-hero-mascota">
-        <img
-          src="/landing/mascota/mascota-480.webp"
-          srcSet="/landing/mascota/mascota-480.webp 480w, /landing/mascota/mascota-1000.webp 1000w"
-          sizes="(max-width: 767px) 200px, 360px"
-          width={480}
-          height={472}
-          alt="Mascota de SEAMOSGENIOS"
-          decoding="async"
-        />
-      </figure>
     </section>
   );
 }
