@@ -64,7 +64,10 @@ export function EcosistemaArticulado() {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
+    const lz = el.firstElementChild as HTMLElement | null;
     const sync = () => {
+      // <1024: la cruz fija de 860px se reduce con zoom al ancho disponible (misma distribución que escritorio).
+      if (lz) lz.style.zoom = window.innerWidth >= 768 && window.innerWidth < 1024 ? String(Math.min(1, el.clientWidth / 860)) : '';
       if (el.scrollWidth > el.clientWidth + 1) {
         el.tabIndex = 0; el.setAttribute('role', 'region'); el.setAttribute('aria-label', 'Diagrama del ecosistema, desplazable en horizontal');
       } else {
@@ -81,7 +84,7 @@ export function EcosistemaArticulado() {
       <h4 className="sg-eco-titulo"><span>{E.acento}</span>{E.titulo.slice(E.acento.length)}</h4>
       <p className="sg-eco-lead">{E.lead}</p>
       <figure className="sg-eco-fig" aria-label="Diagrama del ecosistema: el estudiante en el centro; SEAMOSGENIOS envía a cada actor y los directivos respaldan a docentes y familias. Las relaciones se listan a continuación.">
-        <div className="sg-eco-scroll" ref={scrollRef}>
+        <div className="sg-eco-scroll sg-eco-escala" ref={scrollRef}>
           <Lienzo />
         </div>
       <ul className="sg-eco-lista" aria-label="Relaciones del ecosistema">

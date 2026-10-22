@@ -195,3 +195,61 @@
 .sg-roles-card header { flex-direction: column; justify-content: center; gap: 8px; }
 .sg-roles-card .sg-roles-ico { margin: 0 auto; }
 .sg-roles-card > p, .sg-roles-card dd { text-wrap: pretty; }
+
+/* v5 (768–1023): vista en línea con la misma cruz del escritorio, a ancho fijo de 860px y reducida con zoom (JS). */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+.sg-eco-escala .sg-eco-con.is-dir { grid-area: tdir; display: block; }
+.sg-eco-escala .sg-eco-con.is-doc { grid-area: tdoc; display: block; }
+.sg-eco-escala .sg-eco-con.is-fam { grid-area: tfam; display: block; }
+.sg-eco-escala .sg-eco-con.is-h .rt { display: none; }
+.sg-eco-escala .sg-eco-con.is-h .ln { left: 14px; }
+.sg-eco-escala .sg-eco-con.is-h .pt { left: 2px; }
+.sg-eco-escala .sg-eco-con.is-h.is-der .ln { left: 0; right: 14px; }
+.sg-eco-escala .sg-eco-con.is-h.is-der .pt { left: auto; right: 2px; }
+.sg-eco-escala .sg-eco-caja { padding: 24px; }
+.sg-eco-escala .sg-eco-caja.is-estudiante, .sg-eco-escala .sg-eco-caja.is-directivos { width: auto; justify-self: stretch; }
+.sg-eco-escala .sg-eco-caja.is-estudiante h5 { white-space: nowrap; }
+.sg-eco-escala .sg-eco-con.is-h .rt { display: block; }
+.sg-eco-escala .sg-eco-con.is-h .ln { left: 20px; }
+.sg-eco-escala .sg-eco-con.is-h .pt { left: 8px; }
+.sg-eco-escala .sg-eco-con.is-h.is-der .ln { left: 0; right: 20px; }
+.sg-eco-escala .sg-eco-con.is-h.is-der .pt { left: auto; right: 8px; }
+.sg-eco-escala .sg-eco-con.is-ltl { grid-area: ltl; display: block; }
+.sg-eco-escala .sg-eco-con.is-ltr { grid-area: ltr; display: block; }
+.sg-eco-escala .sg-eco-con.is-lbl { grid-area: lbl; display: block; }
+.sg-eco-escala .sg-eco-con.is-lbr { grid-area: lbr; display: block; }
+.sg-eco-escala .sg-eco-lienzo { --g: 96px; gap: 0; margin: 0; width: 860px; max-width: none; grid-template-columns: 220px 104px minmax(0, 1fr) 104px 220px; grid-template-rows: auto 96px auto 96px auto;
+  grid-template-areas: 'ltl est est est ltr' 'ltl test test test ltr' 'doc tdoc sg tfam fam' 'lbl tdir tdir tdir lbr' 'lbl dir dir dir lbr'; }
+.sg-eco-escala .sg-eco-con.is-h .rt { font-size: 14px; left: 0; right: 0; }
+.sg-eco-scroll.sg-eco-escala { overflow: hidden; }
+.sg-eco-lista { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sg-eco-ampliar { display: block; }
+}
+
+/* v5 (<768): esquema vertical en eje. Estudiante arriba, SEAMOSGENIOS como eje, Docentes | Familias, Directivos abajo. */
+@media (max-width: 767.98px) {
+.sg-eco { padding: 24px 12px; }
+.sg-eco-escala .sg-eco-lienzo { gap: 0; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); grid-template-rows: auto 72px auto 88px auto 88px auto;
+  grid-template-areas: 'est est est' 'test test test' 'sg sg sg' 'tdoc tdir tfam' 'doc tdir fam' 'lbl tdir lbr' 'dir dir dir'; }
+.sg-eco-escala .sg-eco-caja { padding: 12px 8px; }
+.sg-eco-escala .sg-eco-caja.is-estudiante, .sg-eco-escala .sg-eco-caja.is-directivos { justify-self: center; width: min(320px, 100%); }
+.sg-eco-escala .sg-eco-ico { width: 40px; height: 40px; margin-bottom: 8px; }
+.sg-eco-escala .sg-eco-caja h5 { font-size: 16px; }
+.sg-eco-escala .sg-eco-caja p { font-size: 14px; line-height: 20px; }
+.sg-eco-escala .sg-eco-con .rt { font-size: 14px; line-height: 1.2; }
+/* Rojas verticales: eje → estudiante (arriba) y eje → docentes/familias (abajo). */
+.sg-eco-escala .sg-eco-con.is-doc { grid-area: tdoc; } .sg-eco-escala .sg-eco-con.is-fam { grid-area: tfam; }
+.sg-eco-escala .sg-eco-con.is-doc, .sg-eco-escala .sg-eco-con.is-fam, .sg-eco-escala .sg-eco-con.is-lbl, .sg-eco-escala .sg-eco-con.is-lbr, .sg-eco-escala .sg-eco-con.is-dir { display: block; }
+.sg-eco-escala .sg-eco-con.is-h .ln { left: 50%; right: auto; margin: 0 0 0 -1px; border-top-width: 0; border-left-width: 2px; top: 0; bottom: 18px; }
+.sg-eco-escala .sg-eco-con.is-h .pt { left: 50%; right: auto; margin: 0 0 0 -6px; top: auto; bottom: 6px; border: 6px solid transparent; border-top: 12px solid var(--c); border-bottom-width: 0; }
+.sg-eco-escala .sg-eco-con.is-h .rt, .sg-eco-escala .sg-eco-con.is-bucle .rt { display: block; left: 2px; right: 2px; top: 50%; bottom: auto; transform: translateY(-50%); text-align: center; background: #fff; padding: 2px 0; overflow-wrap: normal; text-wrap: balance; }
+.sg-eco-escala .sg-eco-con.is-v .rt { white-space: normal; max-width: 70%; text-align: center; }
+/* Gris: directivos → docentes / familias (flecha hacia arriba). */
+.sg-eco-escala .sg-eco-con.is-lbl { grid-area: lbl; } .sg-eco-escala .sg-eco-con.is-lbr { grid-area: lbr; }
+.sg-eco-escala .sg-eco-con.is-bucle .ln { left: 50%; right: auto; margin-left: -1px; height: auto; top: 18px; bottom: 0; border: 0 solid var(--c); border-left-width: 2px; }
+.sg-eco-escala .sg-eco-con.is-bucle .pt { left: 50%; right: auto; margin: 0 0 0 -6px; top: 6px; border: 6px solid transparent; border-bottom: 12px solid var(--c); border-top-width: 0; }
+/* Roja central: eje → directivos, baja entre docentes y familias con rótulo vertical. */
+.sg-eco-escala .sg-eco-con.is-dir { grid-area: tdir; }
+.sg-eco-escala .sg-eco-con.is-dir .rt { left: 50%; top: 50%; max-width: none; transform: translate(-50%, -50%) rotate(180deg); writing-mode: vertical-rl; padding: 8px 0; color: var(--r); }
+.sg-eco-lista { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
