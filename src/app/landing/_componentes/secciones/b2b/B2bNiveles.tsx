@@ -21,7 +21,7 @@ export function B2bNiveles() {
       numero="03"
       pregunta="¿Qué puedo contratar?"
       titulo="Tres niveles de servicio para su institución"
-      acento="misma cadena"
+      acento="Tres niveles"
       bajada={B2B_CADENA.nota}
     >
       <EscaleraNiveles />

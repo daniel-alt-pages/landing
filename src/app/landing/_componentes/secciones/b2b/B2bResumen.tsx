@@ -11,7 +11,7 @@ export function B2bResumen() {
       numero="01"
       pregunta="¿Cómo funciona?"
       titulo="Cómo funcionan los simulacros Saber 11 para colegios"
-      acento="volver a medir"
+      acento="simulacros Saber 11"
       bajada="Seis pasos que se repiten. El colegio elige hasta dónde llega."
     >
       <CicloSvg pasos={B2B_RESUMEN.pasos} centro={B2B_CICLO_CENTRO} />

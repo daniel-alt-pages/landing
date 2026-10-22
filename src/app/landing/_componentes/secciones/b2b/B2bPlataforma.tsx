@@ -13,7 +13,7 @@ export function B2bPlataforma() {
       numero="05"
       pregunta="¿Qué ve mi comunidad?"
       titulo="Plataforma y reportes para directivos, docentes, estudiantes y familias"
-      acento="un ecosistema"
+      acento="Plataforma y reportes"
       bajada={B2B_PLATAFORMA.lead}
     >
       <CuatroRoles />
