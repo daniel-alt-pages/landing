@@ -6,7 +6,7 @@ import { Section } from '../primitivas/Section';
 
 export function PrimerPaso() {
   return (
-    <Section id="como-empieza" tone="paper" label="empieza-title" className="ag-primer">
+    <Section id="como-empieza" tone="paper" label="empieza-title" className="ag-primer ag-primer-paso-band">
       <DisplayTitle id="empieza-title" lines={[{ text: 'Cómo funciona' }, { text: 'el primer paso', accent: true }]} />
       <Lead>{OFERTA.lead}</Lead>
       <ol className="ag-step-rail ag-steps-4 ag-step-photos ag-plain-list">

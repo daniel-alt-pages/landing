@@ -5,6 +5,7 @@
   --ag-red: #cc0000;
   --ag-red-hover: #a30000;
   --ag-paper: #fdf8f3;
+  --ag-hero-band: linear-gradient(90deg, #f6f6f7 0%, #fafafa 100%);
   --ag-white: #ffffff;
   --ag-grey-1: #f4f4f5;
   --ag-grey-2: #e4e4e7;
@@ -3033,6 +3034,8 @@
   line-height: 1.45;
   min-height: calc(1.45em * 3);
 }
+/* Banda «Cómo funciona el primer paso»: mismo degradado gris que el plano de la banda de la mascota (.ag-hero-fx-plane). */
+.ag-tone-paper.ag-primer-paso-band { background: var(--ag-hero-band); }
 #como-empieza .ag-primer-foot {
   display: grid;
   justify-items: center;
