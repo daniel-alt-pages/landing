@@ -1,36 +1,32 @@
 'use client';
 
 import { useEffect, type RefObject } from 'react';
-import { animate, inView } from 'motion';
+import { inView } from 'motion';
 
 /**
  * Dibuja los conectores al entrar en pantalla. Sin JS (SSR) y con prefers-reduced-motion
- * los trazos quedan completos: el estado oculto solo se aplica dentro del efecto.
- * Trazos: [data-trazo] con pathLength="1". Puntas y rótulos: [data-punta].
+ * los trazos quedan completos. Trazos: [data-trazo] con pathLength="1". Puntas y rótulos: [data-punta].
+ * El ocultado y el dibujo se hacen con clases + transiciones CSS (b2b-diagramas-v2.css), no con
+ * estilos inline animados: en SVG Motion animaba atributos y el estilo inline (offset 1 / opacity 0)
+ * ganaba, así que las flechas nunca aparecían. Si el diagrama está en una pestaña oculta
+ * (display:none, rect 0×0) se espera a que entre en vista al mostrarse.
  */
 export function useTrazos(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const raiz = ref.current;
     if (!raiz || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const trazos = Array.from(raiz.querySelectorAll<SVGElement>('[data-trazo]'));
-    const puntas = Array.from(raiz.querySelectorAll<SVGElement | HTMLElement>('[data-punta]'));
     const r = raiz.getBoundingClientRect();
-    if (r.top < window.innerHeight && r.bottom > 0) return; // ya visible: no ocultar lo que se está leyendo
-    trazos.forEach((t) => { t.style.strokeDasharray = '1'; t.style.strokeDashoffset = '1'; });
-    puntas.forEach((p) => { p.style.opacity = '0'; });
+    if (r.height > 0 && r.top < window.innerHeight && r.bottom > 0) return; // ya visible
+    raiz.querySelectorAll<HTMLElement | SVGElement>('[data-trazo]').forEach((t, i) => t.style.setProperty('--i', String(i)));
+    raiz.querySelectorAll<HTMLElement | SVGElement>('[data-punta]').forEach((p, i) => p.style.setProperty('--i', String(i)));
+    raiz.classList.add('is-trazos-ocultos');
     const parar = inView(raiz, () => {
-      trazos.forEach((t, i) => {
-        animate(t, { strokeDashoffset: [1, 0] }, { duration: 0.7, delay: 0.08 * i, ease: [0.77, 0, 0.175, 1] });
-      });
-      puntas.forEach((p, i) => {
-        animate(p, { opacity: [0, 1] }, { duration: 0.25, delay: 0.6 + 0.04 * i, ease: [0.23, 1, 0.32, 1] });
-      });
+      requestAnimationFrame(() => raiz.classList.add('is-trazos-on'));
       return undefined;
     }, { amount: 0.2 });
     return () => {
       parar();
-      trazos.forEach((t) => { t.style.strokeDasharray = ''; t.style.strokeDashoffset = ''; });
-      puntas.forEach((p) => { p.style.opacity = ''; });
+      raiz.classList.remove('is-trazos-ocultos', 'is-trazos-on');
     };
   }, [ref]);
 }

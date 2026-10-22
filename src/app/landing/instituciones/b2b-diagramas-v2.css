@@ -69,7 +69,7 @@
 .sg-eco-lista li.is-rojo svg { color: var(--r); }
 
 /* Tableta: cruz compacta con las 4 flechas rojas; las negras en la lista. */
-@media (min-width: 768px) and (max-width: 1199.98px) {
+@media (min-width: 768px) and (max-width: 1023.98px) {
   .sg-eco { padding: 32px; }
   .sg-eco-lienzo { grid-template-columns: minmax(0, 1fr) 132px minmax(0, 1.1fr) 132px minmax(0, 1fr); grid-template-areas: '. . est . .' '. . test . .' 'doc tdoc sg tfam fam' '. . tdir . .' '. . dir . .'; align-items: stretch; }
   .sg-eco-caja { padding: 64px 14px 14px; margin: 0 !important; }
@@ -84,15 +84,15 @@
   .sg-eco-lista { grid-template-columns: 1fr 1fr; }
 }
 
-/* Escritorio: lienzo de la lámina con las 8 flechas y sus rótulos. */
-@media (min-width: 1200px) {
+/* Escritorio (≥1024): lienzo de la lámina con las 8 flechas y sus rótulos. */
+@media (min-width: 1024px) {
   .sg-eco { padding: 40px; }
   .sg-eco-lienzo { display: block; position: relative; aspect-ratio: 1000 / 620; max-width: 1120px; margin: 0 auto; }
-  .sg-eco-svg { display: block; position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .sg-eco-svg { display: block; position: absolute; z-index: 0; pointer-events: none; inset: 0; width: 100%; height: 100%; overflow: visible; }
   .sg-eco-svg path { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
   .sg-eco-svg .is-rojo path { stroke: var(--r); } .sg-eco-svg .is-negro path { stroke: var(--n); }
   .sg-eco-svg .is-rojo .is-punta { fill: var(--r); stroke: none; } .sg-eco-svg .is-negro .is-punta { fill: var(--n); stroke: none; }
-  .sg-eco-rotulo { display: block; position: absolute; transform: translate(-50%, -50%); max-width: 150px; padding: 2px 8px; background: #fff; font-size: 16px; line-height: 1.25; text-align: center; font-weight: 600; white-space: normal; }
+  .sg-eco-rotulo { display: block; z-index: 1; position: absolute; transform: translate(-50%, -50%); max-width: 150px; padding: 2px 8px; background: #fff; font-size: 16px; line-height: 1.25; text-align: center; font-weight: 600; white-space: normal; }
   .sg-eco-rotulo.is-rojo { color: var(--r); }
   .sg-eco-caja { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); min-height: 0; margin: 0 !important; padding: 14px 14px 14px 68px; display: flex; flex-direction: column; justify-content: center; }
   .sg-eco-ico { top: 50%; transform: translateY(-50%); }
@@ -100,3 +100,12 @@
   .sg-eco-lista { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) { .sg-eco [data-trazo], .sg-roles [data-trazo] { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; } .sg-eco [data-punta], .sg-roles [data-punta] { opacity: 1 !important; } }
+
+/* Dibujo de trazos (useTrazos). Estado base = visible (sin JS, reduced-motion). Solo se ocultan
+   con .is-trazos-ocultos y se revelan con .is-trazos-on mediante transiciones CSS (las animaciones
+   de Motion sobre estilos inline de SVG quedaban congeladas en 0). */
+.is-trazos-ocultos [data-trazo] { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.is-trazos-ocultos [data-punta] { opacity: 0; }
+.is-trazos-ocultos.is-trazos-on [data-trazo] { stroke-dashoffset: 0; transition: stroke-dashoffset .7s cubic-bezier(.77,0,.175,1) calc(var(--i, 0) * 80ms); }
+.is-trazos-ocultos.is-trazos-on [data-punta] { opacity: 1; transition: opacity .25s cubic-bezier(.23,1,.32,1) calc(600ms + var(--i, 0) * 40ms); }
+@media (prefers-reduced-motion: reduce) { .is-trazos-ocultos [data-trazo] { stroke-dasharray: none; stroke-dashoffset: 0; } .is-trazos-ocultos [data-punta] { opacity: 1; } }
