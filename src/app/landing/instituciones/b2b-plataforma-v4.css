@@ -32,13 +32,13 @@
 .b2b-v4 .cic-caja { border-radius: 18px; }
 .b2b-v4 .b2m-modal { border-radius: 26px; border-color: transparent; box-shadow: 0 24px 60px -12px rgba(13, 14, 17, 0.35); font-family: var(--ag-font); }
 .b2b-v4 .b2m-tab { background: var(--v4-red); }
-.b2b-v4 .cic-chip, .b2b-v4 .cic-btn, .b2b-v4 .b2p-sig { border-radius: 999px; }
+.b2b-v4 .cic-chip, .b2b-v4 .b2p-sig { border-radius: 999px; }
 .b2b-v4 .cic-chip[aria-pressed='true'] { background: var(--v4-dark); border-color: var(--v4-dark); }
 
 /* Ciclo: arco rojo que avanza, pulso del nodo activo y notas en Caveat. */
 .b2b-v4 .cic-mancha { fill: #ECECEA; }
 .b2b-v4 .cic-base { stroke: var(--v4-dark); }
-.b2b-v4 .cic-arco { stroke: var(--v4-red); transition: stroke-dashoffset 600ms var(--v4-ease); }
+.b2b-v4 .cic-arco { stroke: var(--v4-red); }
 .b2b-v4 .cic-nodo[data-estado='pasado'] .cic-punto, .b2b-v4 .cic-nodo[data-estado='activo'] .cic-punto { fill: var(--v4-red); }
 .b2b-v4 .cic-nodo[data-estado='activo'] .cic-pill { fill: var(--v4-red); stroke: var(--v4-red); }
 .b2b-v4 .cic-glow { fill: var(--v4-red); }

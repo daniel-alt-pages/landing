@@ -54,12 +54,8 @@
 .cic-caja.is-rosa { background: var(--crosa); border-color: var(--cr); }
 .cic-caja h4 { margin: 0 0 4px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
 .cic-caja p { margin: 0; font-size: 15px; line-height: 1.5; }
-.cic-nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.cic-btn { min-height: 44px; padding: 8px 14px; border: 1.5px solid var(--cr); border-radius: 8px; background: #fff; color: var(--cr); font: inherit; font-size: 14px; font-weight: 800; cursor: pointer;
-  transition: transform 140ms var(--cease), background-color var(--cdur); }
-.cic-btn:active { transform: scale(0.97); }
-.cic-btn.is-auto[aria-pressed='true'] { background: var(--cr); color: #fff; }
-.cic-inspector > :not(.cic-nav) { animation: cic-fade var(--cdur) var(--cease); }
+
+.cic-inspector > * { animation: cic-fade var(--cdur) var(--cease); }
 
 /* Cadena de 7 */
 .cic-cadena { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
@@ -94,7 +90,23 @@
 @media (prefers-reduced-motion: reduce) {
   .cic * { transition-property: opacity !important; transition-duration: 200ms !important; }
   .cic-arco { transition: none !important; }
-  .cic-inspector > :not(.cic-nav) { animation: cic-fade-solo 200ms linear; }
+  .cic-inspector > * { animation: cic-fade-solo 200ms linear; }
 }
 @keyframes cic-fade-solo { from { opacity: 0; } to { opacity: 1; } }
 .cic-mancha, .cic-punteado, .cic-base, .cic-arco, .cic-flecha, .cic-glow, .cic-halo { pointer-events: none; }
+
+/* v6 · Recorrido solo automático. La lista estática lleva el contenido completo para lectores de pantalla
+   (visualmente oculta) y se muestra en lugar del círculo/inspector con prefers-reduced-motion. */
+.cic-estatico { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; list-style: none; }
+@media (prefers-reduced-motion: reduce) {
+  .cic-grid, .cic-controles .cic-grupo:last-child { display: none; }
+  .cic-estatico { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; white-space: normal;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; padding: 0; }
+  .cic-estatico > li { padding: 20px; border-radius: 26px; background: #fff; box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03); }
+  .cic-estatico .cic-t { font-size: 26px; }
+}
+/* v6 · Arco sincronizado: se llena del paso activo al siguiente durante CICLO_DURACIONES_MS[activo]; al terminar avanza el paso. */
+.cic .cic-arco { transition: none; stroke-dashoffset: var(--hasta); animation-name: cic-arco; animation-timing-function: linear; animation-fill-mode: both; }
+.cic[data-pausado] .cic-arco { animation-play-state: paused; }
+@keyframes cic-arco { from { stroke-dashoffset: var(--desde); } to { stroke-dashoffset: var(--hasta); } }
+@media (prefers-reduced-motion: reduce) { .cic .cic-arco { animation: none; stroke-dashoffset: var(--desde); } }

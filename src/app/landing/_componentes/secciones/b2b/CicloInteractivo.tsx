@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useState, type KeyboardEvent } from 'react';
-import { CICLO_CADENA, CICLO_FILTROS, CICLO_PASOS } from '../../../_contenido/b2b/ciclo';
+import { useEffect, useRef, useState } from 'react';
+import { CICLO_CADENA, CICLO_DURACIONES_MS, CICLO_FILTROS, CICLO_PASOS } from '../../../_contenido/b2b/ciclo';
 
 const CX = 270, CY = 225, R = 150, RP = 196;
 const ANG = [-90, -30, 30, 90, 150, 210];
@@ -9,28 +9,50 @@ const pt = (a: number, r: number) => [Math.round((CX + r * Math.cos((a * Math.PI
 const CIRC = 2 * Math.PI * R;
 const TOTAL = CICLO_PASOS.length;
 
+
+/**
+ * Recorrido solo automático con la duración de cada paso (CICLO_DURACIONES_MS). El avance lo marca el fin de la
+ * animación del arco, así arco y paso van siempre sincronizados y la pausa (animation-play-state) no pierde el tiempo transcurrido.
+ * Del paso 6 vuelve al 1 y el arco se reinicia.
+ * Se pausa con el puntero encima o el foco dentro, y se detiene si la sección no es visible (IntersectionObserver).
+ * Con prefers-reduced-motion no avanza: se muestra una lista estática con los 6 pasos (CSS, también sin JS).
+ */
 export function CicloInteractivo() {
   const [activo, setActivo] = useState(0);
   const [filtro, setFiltro] = useState<(typeof CICLO_FILTROS)[number]['id']>('todos');
   const [vista, setVista] = useState<'circulo' | 'completo'>('completo');
-  const [auto, setAuto] = useState(false);
   const [reducido, setReducido] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [encima, setEncima] = useState(false);
+  const [foco, setFoco] = useState(false);
+  const raiz = useRef<HTMLDivElement>(null);
 
   const aplica = CICLO_FILTROS.find((f) => f.id === filtro)!.pasos as readonly number[];
-  const ir = useCallback((i: number) => setActivo(((i % TOTAL) + TOTAL) % TOTAL), []);
+  const pausado = reducido || !visible || encima || foco;
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const f = () => { setReducido(mq.matches); if (mq.matches) setAuto(false); };
+    const f = () => setReducido(mq.matches);
     f(); mq.addEventListener('change', f);
     return () => mq.removeEventListener('change', f);
   }, []);
 
   useEffect(() => {
-    if (!auto) return;
-    const t = window.setInterval(() => setActivo((a) => (a + 1) % TOTAL), 2600);
-    return () => window.clearInterval(t);
-  }, [auto]);
+    const el = raiz.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.25 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const avanzar = () => {
+    if (reducido) return;
+    setActivo((a) => {
+      const k = aplica.indexOf(a);
+      const sig = aplica[(k + 1) % aplica.length];
+      return sig;
+    });
+  };
 
   const elegirFiltro = (id: typeof filtro) => {
     setFiltro(id);
@@ -38,17 +60,13 @@ export function CicloInteractivo() {
     if (!p.includes(activo)) setActivo(p[0]);
   };
 
-  const teclaNodo = (e: KeyboardEvent, i: number) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); ir(i); }
-    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); ir(i + 1); }
-    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); ir(i - 1); }
-  };
-
   const p = CICLO_PASOS[activo];
   const nv = (n: readonly string[]) => n.join(' · ');
 
   return (
-    <div className="cic" data-vista={vista}>
+    <div ref={raiz} className="cic" data-vista={vista} data-pausado={pausado || undefined}
+      onMouseEnter={() => setEncima(true)} onMouseLeave={() => setEncima(false)}
+      onFocus={() => setFoco(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFoco(false); }}>
       <div className="cic-controles">
         <div className="cic-grupo" role="group" aria-label="Filtrar por nivel">
           {CICLO_FILTROS.map((f) => (
@@ -63,19 +81,25 @@ export function CicloInteractivo() {
 
       <div className="cic-grid">
         <div className="cic-svgcaja">
-          <svg className="cic-svg" viewBox="0 0 540 450" role="group" aria-label="Ciclo de 6 pasos">
+          <svg className="cic-svg" viewBox="0 0 540 450" aria-hidden="true">
             <defs>
               <filter id="cic-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" /></filter>
             </defs>
             <path className="cic-mancha" d="M110 120C150 40 300 20 400 60C500 100 520 220 480 320C440 410 300 440 190 410C80 380 40 300 60 220C70 180 85 150 110 120Z" />
             <circle cx={CX} cy={CY} r={R + 26} className="cic-punteado" />
             <circle cx={CX} cy={CY} r={R} className="cic-base" />
-            <circle cx={CX} cy={CY} r={R} className="cic-arco" transform={`rotate(-90 ${CX} ${CY})`}
-              strokeDasharray={CIRC} strokeDashoffset={CIRC * (1 - activo / TOTAL)} />
+            <circle key={`arco-${activo}-${filtro}`} cx={CX} cy={CY} r={R} className="cic-arco" transform={`rotate(-90 ${CX} ${CY})`}
+              strokeDasharray={CIRC}
+              style={{
+                ['--desde' as string]: CIRC * (1 - activo / TOTAL),
+                ['--hasta' as string]: CIRC * (1 - (activo + 1) / TOTAL),
+                animationDuration: `${CICLO_DURACIONES_MS[activo]}ms`,
+              }}
+              onAnimationEnd={avanzar} />
             {ANG.map((a, i) => {
               const m = a + 30; const [x, y] = pt(m, R + 14);
               return (
-                <path key={a} d="M-3 -5L2 0L-3 5" className="cic-flecha" data-hecha={i < activo || undefined}
+                <path key={a} d="M-3 -5L2 0L-3 5" className="cic-flecha" data-hecha={i <= activo || undefined}
                   transform={`translate(${x} ${y}) rotate(${m + 90})`} vectorEffect="non-scaling-stroke" aria-hidden="true" />
               );
             })}
@@ -84,10 +108,7 @@ export function CicloInteractivo() {
               const estado = i < activo ? 'pasado' : i === activo ? 'activo' : 'futuro';
               const off = !aplica.includes(i);
               return (
-                <g key={s.id} className="cic-nodo" data-estado={estado} data-off={off || undefined}
-                  role="button" tabIndex={0} aria-pressed={i === activo}
-                  aria-label={`Paso ${s.n}: ${s.title}. ${s.pregunta}${off ? ' (no aplica al nivel elegido)' : ''}`}
-                  onClick={() => ir(i)} onKeyDown={(e) => teclaNodo(e, i)}>
+                <g key={s.id} className="cic-nodo" data-estado={estado} data-off={off || undefined} aria-hidden="true">
                   {i === activo && <circle cx={x} cy={y} r={30} className="cic-glow" filter="url(#cic-glow)" />}
                   {i === activo && <circle cx={x} cy={y} r={26} className="cic-halo" />}
                   <circle cx={x} cy={y} r={i === activo ? 18 : 13} className="cic-punto" />
@@ -105,7 +126,7 @@ export function CicloInteractivo() {
           </div>
         </div>
 
-        <aside className="cic-inspector" aria-live="polite" aria-atomic="true">
+        <aside className="cic-inspector" aria-hidden="true">
           <div className="cic-badges">
             <span className="cic-badge is-rojo">PASO {p.n} DE 06 · ACTIVO</span>
             <span className="cic-badge">{nv(p.niveles)}</span>
@@ -117,17 +138,22 @@ export function CicloInteractivo() {
             <div className="cic-caja"><h4>Lo que ejecuta SEAMOSGENIOS</h4><p>{p.ejecuta}</p></div>
             <div className="cic-caja is-rosa"><h4>Entregable para la institución</h4><p>{p.entregable}</p></div>
           </div>
-          <div className="cic-nav">
-            <button type="button" className="cic-btn" onClick={() => ir(activo - 1)} aria-label="Paso anterior">← Anterior</button>
-            <button type="button" className="cic-btn" onClick={() => ir(activo + 1)} aria-label="Paso siguiente">Siguiente →</button>
-            {!reducido && (
-              <button type="button" className="cic-btn is-auto" aria-pressed={auto} onClick={() => setAuto((v) => !v)}>
-                {auto ? 'Pausar auto-recorrido' : 'Auto-recorrido'}
-              </button>
-            )}
-          </div>
         </aside>
       </div>
+
+      <ol className="cic-estatico" aria-label="Los 6 pasos del ciclo">
+        {CICLO_PASOS.map((s) => (
+          <li key={s.id}>
+            <p className="cic-q">{s.n} · {s.pregunta}</p>
+            <h3 className="cic-t">{s.title}</h3>
+            <p className="cic-d">{s.corto} · {nv(s.niveles)}</p>
+            <div className="cic-cajas">
+              <div className="cic-caja"><h4>Lo que ejecuta SEAMOSGENIOS</h4><p>{s.ejecuta}</p></div>
+              <div className="cic-caja is-rosa"><h4>Entregable para la institución</h4><p>{s.entregable}</p></div>
+            </div>
+          </li>
+        ))}
+      </ol>
 
       <ol className="cic-cadena" aria-label="Cadena de valor de 7 eslabones">
         {CICLO_CADENA.map((c, i) => {

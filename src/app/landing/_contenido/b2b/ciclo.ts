@@ -69,3 +69,16 @@ export const CICLO_CADENA = [
   { title: 'Verificar', enlace: '¿Qué cambió?', niveles: ['N2', 'N3'], pasos: [4] },
   { title: 'Mejorar', enlace: '¿Qué sigue?', niveles: ['N3'], pasos: [5] },
 ] as const;
+
+/**
+ * Duración de cada transición del recorrido automático, en ms (definidas por Daniel, 22-oct-2026).
+ * Índice i = tiempo que el paso i+1 queda activo antes de pasar al siguiente; el arco rojo avanza en ese mismo tiempo.
+ */
+export const CICLO_DURACIONES_MS = [
+  3000, // paso 1 → 2
+  2500, // paso 2 → 3
+  4000, // paso 3 → 4
+  2000, // paso 4 → 5
+  3000, // paso 5 → 6
+  2000, // paso 6 → 1 (reinicio)
+] as const;
