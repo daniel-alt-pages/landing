@@ -2543,8 +2543,9 @@
 .ag-footer-mark {
   position: relative;
   width: 100%;
-  height: 240px;
-  margin-top: 8px;
+  height: 140px;
+  margin-top: 4px;
+  margin-bottom: 2px;
   padding-inline: 6%;
   overflow: hidden;
   background: #120f17;

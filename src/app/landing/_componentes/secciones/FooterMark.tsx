@@ -12,7 +12,7 @@ export function FooterMark() {
         text="SeamosGenios"
         fontFamily={geist.style.fontFamily}
         fontWeight={600}
-        fontSize={124}
+        fontSize={92}
         letterSpacing={-0.05}
         color="#ffffff"
         accentColor="#CC0000"
