@@ -3781,8 +3781,11 @@ a.ag-product-cart.is-soon {
 .qe-card.is-dark .qe-eyebrow { color: var(--qe-red); }
 .qe-card.is-dark .qe-text { color: var(--qe-muted); }
 .qe-ilus { width: 96px; height: 96px; }
-.qe-card-title { font-size: 20px; text-transform: uppercase; letter-spacing: 0.01em; hyphens: manual; overflow-wrap: normal; }
-.qe-text { hyphens: manual; overflow-wrap: normal; }
+.qe-card-title { font-size: 20px; text-transform: uppercase; letter-spacing: 0.01em; hyphens: manual; overflow-wrap: anywhere; }
+.qe-text { hyphens: manual; overflow-wrap: anywhere; }
+/* WCAG 2.4.11: el foco no queda bajo el header sticky (48px + 1px de borde) ni bajo el banner de cookies (>640px: ~270px alto + 16px de margen). */
+html { scroll-padding-top: calc(var(--ag-header) + 1px); }
+html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 .qe-ir { align-self: flex-end; justify-content: center; margin-top: auto; padding: 0; gap: 12px; }
 .qe-body > .qe-ir { margin-top: 24px; }
 .qe-ir, .qe-card.is-dark .qe-ir { background: var(--qe-red); color: #fff; border-radius: 999px; padding: 10px 20px; }
