@@ -12,7 +12,7 @@ import type { CatalogItem } from '../../programas/catalogo/catalogUi';
 
 function payLine(config: TiendaConfig | null) {
   if (!config) return '';
-  return 'Pago por transferencia tras su cotización';
+  return 'Solicite su cotización';
 }
 
 /** Vitrina del inicio. Solo muestra productos activos de Comercio. */
