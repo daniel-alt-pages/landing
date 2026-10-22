@@ -44,7 +44,7 @@
 .ag-b2b .ag-b2b-peldano.p3 rect { fill: var(--ag-red); }
 /* 8. tablas: cabecera negra, columna Nivel 3 roja, filas finas */
 .ag-b2b table th, .ag-b2b table td { padding: 8px 10px; border-color: #E5E5E5; }
-.ag-b2b thead th { background: var(--ag-ink); color: #fff; text-transform: uppercase; font-size: 16px; }
+.ag-b2b thead th { background: #F7F5F0; color: #2B2B2B; text-transform: uppercase; font-size: 16px; }
 .ag-b2b thead th.is-ultimo { background: var(--ag-red); }
 .ag-b2b td.is-ultimo { background: var(--ag-red-tint); }
 

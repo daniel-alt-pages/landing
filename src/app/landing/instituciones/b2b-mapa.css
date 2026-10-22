@@ -1,5 +1,5 @@
 /* «Qué encuentra en el sitio» en el panel B2B. Borde fino sin sombra, un solo acento (#CC0000), escala 8, radio 8. */
-.ag-b2m { --b2m-rojo: #cc0000; --b2m-tinta: #0a0a0a; --b2m-gris: #4a4a4a; --b2m-borde: #8a8a8a; --b2m-rosa: #fadbdb; --b2m-ease: cubic-bezier(0.22, 1, 0.36, 1);
+.ag-b2m { --b2m-rojo: #cc0000; --b2m-tinta: #2B2B2B; --b2m-gris: #4a4a4a; --b2m-borde: #E2DED6; --b2m-rosa: #fadbdb; --b2m-ease: cubic-bezier(0.22, 1, 0.36, 1);
   background: #fff; color: var(--b2m-tinta); overflow-x: clip; }
 
 /* Cabecera fluida: la nota va a la derecha si cabe; si no, baja centrada. Sin breakpoints. */
@@ -23,27 +23,27 @@
   transition: transform 200ms var(--b2m-ease), border-color 150ms ease; }
 @media (min-width: 768px) { .ag-b2m-card { padding: 32px; } }
 .ag-b2m-card.is-claro { background: #fff; color: var(--b2m-tinta); }
-.ag-b2m-card.is-oscuro { background: var(--b2m-tinta); color: #fff; border-color: var(--b2m-tinta); }
+.ag-b2m-card.is-oscuro { background: #F7F5F0; color: #2B2B2B; border-color: #E2DED6; }
 .ag-b2m-ilus { display: block; width: 48px; height: 48px; margin-bottom: 8px; }
 .ag-b2m-ilus svg { display: block; width: 100%; height: 100%; }
 .ag-b2m-etiqueta { font: 700 16px/1.4 var(--ag-font); letter-spacing: 0.06em; text-transform: uppercase; color: var(--b2m-rojo); }
-.ag-b2m-card.is-oscuro .ag-b2m-etiqueta { color: var(--b2m-rosa); }
+.ag-b2m-card.is-oscuro .ag-b2m-etiqueta { color: var(--b2m-rojo); }
 .ag-b2m-card-titulo { margin: 0; font: 800 20px/1.25 var(--ag-font); color: inherit; overflow-wrap: anywhere; hyphens: manual; }
 .ag-b2m-texto { font-size: 16px; line-height: 1.5; color: var(--b2m-gris); overflow-wrap: anywhere; }
-.ag-b2m-card.is-oscuro .ag-b2m-texto { color: #d9d9d9; }
+.ag-b2m-card.is-oscuro .ag-b2m-texto { color: var(--b2m-gris); }
 .ag-b2m-dato { font-weight: 700; }
 
 .ag-b2m-ir { display: inline-flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 16px; font: 700 16px/1.2 var(--ag-font); color: inherit; }
 .ag-b2m-circulo { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 44px; height: 44px; border-radius: 50%;
   background: #fae6e6; color: var(--b2m-rojo); transition: background-color 150ms ease, color 150ms ease, transform 180ms var(--b2m-ease); }
-.ag-b2m-card.is-oscuro .ag-b2m-circulo { background: var(--b2m-rojo); color: #fff; }
+.ag-b2m-card.is-oscuro .ag-b2m-circulo { background: var(--b2m-rojo); color: #2B2B2B; }
 .ag-b2m-circulo svg { width: 18px; height: 18px; transition: transform 180ms var(--b2m-ease); }
 .ag-b2m-legal-link { margin-top: auto; color: inherit; text-decoration: none; border-radius: 8px; }
 .ag-b2m-legal-link .ag-b2m-ir { margin-top: 0; }
 
 /* Foco: 3px #CC0000 (blanco en tarjeta oscura). */
 .ag-b2m-card:focus-visible, .ag-b2m-legal-link:focus-visible { outline: 3px solid var(--b2m-rojo); outline-offset: 3px; }
-.ag-b2m-card.is-oscuro:focus-visible, .is-oscuro .ag-b2m-legal-link:focus-visible { outline-color: #fff; }
+.ag-b2m-card.is-oscuro:focus-visible, .is-oscuro .ag-b2m-legal-link:focus-visible { outline-color: var(--b2m-rojo); }
 
 @media (hover: hover) and (pointer: fine) {
   a.ag-b2m-card:hover { transform: translateY(-2px); border-color: var(--b2m-rojo); }

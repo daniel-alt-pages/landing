@@ -1,6 +1,6 @@
 import { AlEntrar } from '../base/AlEntrar';
 
-const COLORES = ['#9B1116', '#CC0000', '#DD5959', '#F9E0DF', '#0a0a0a'] as const;
+const COLORES = ['#9B1116', '#CC0000', '#DD5959', '#F9E0DF', '#2B2B2B'] as const;
 
 function arco(i: number, total: number, r1: number, r2: number) {
   const gap = 0.03;

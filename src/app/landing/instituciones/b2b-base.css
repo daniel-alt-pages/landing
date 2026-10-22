@@ -38,10 +38,10 @@
   min-height: 24px;
   padding: 0 8px;
   border-radius: 10px;
-  background: var(--ag-black);
-  color: #fff;
+  background: #F7F5F0;
+  color: #2B2B2B;
 }
-.ag-b2b-pregunta.is-on-dark { color: rgba(255, 255, 255, 0.78); }
+.ag-b2b-pregunta.is-on-dark { color: #4A4A4A; }
 .ag-b2b-pregunta.is-on-dark span { background: #fff; color: var(--ag-ink); }
 .ag-b2b-bajada {
   max-width: 38rem;
@@ -59,7 +59,7 @@
   border-radius: 16px;
   background: #fff;
 }
-.ag-tone-black .ag-b2b-dato { background: #161618; border-color: rgba(255, 255, 255, 0.16); color: #fff; }
+.ag-tone-black .ag-b2b-dato { background: #F7F5F0; border-color: #E2DED6; color: #2B2B2B; }
 .ag-b2b-dato strong {
   display: block;
   font-size: clamp(2rem, 4vw, 3rem);
@@ -98,8 +98,8 @@
 .ag-b2b-fold summary svg { transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
 .ag-b2b-fold[open] summary svg { transform: rotate(180deg); }
 .ag-b2b-fold-body { padding: 0 16px 16px; }
-.ag-tone-black .ag-b2b-fold { background: #161618; border-color: rgba(255, 255, 255, 0.16); color: #fff; }
-.ag-tone-black .ag-b2b-fold summary em { color: rgba(255, 255, 255, 0.72); }
+.ag-tone-black .ag-b2b-fold { background: #F7F5F0; border-color: #E2DED6; color: #2B2B2B; }
+.ag-tone-black .ag-b2b-fold summary em { color: #4A4A4A; }
 
 .ag-b2b-tabs {
   display: flex;
@@ -131,9 +131,9 @@
 }
 .ag-tone-black .ag-b2b-tabs button,
 .ag-tone-black .ag-b2b-tabs a {
-  background: #161618;
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #fff;
+  background: #F7F5F0;
+  border-color: #E2DED6;
+  color: #2B2B2B;
 }
 
 .ag-b2b-btn {
