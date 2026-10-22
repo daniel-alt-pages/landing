@@ -31,13 +31,8 @@ export function MapaSitio() {
           <p className="qe-lead">Una página para cada pregunta: el modelo para colegios, la plataforma, los programas para estudiantes y la evidencia.</p>
         </MotionIn>
         <div className="qe-anno">
-          <svg className="qe-spark" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
-            <path d="M20 4 L24 14" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
-            <path d="M6 14 L17 20" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
-            <path d="M5 30 L16 27" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" />
-          </svg>
           <p className={`qe-hand ${caveat.className}`}>
-            <span className="qe-hand-1">Todo lo que necesitas,</span>{' '}
+            <span className="qe-hand-1">Todo lo que necesitas,</span>
             <span className="qe-hand-last">
               en un solo lugar
               <svg className="qe-underline" viewBox="0 0 70 12" fill="none" aria-hidden="true" focusable="false">
@@ -57,7 +52,6 @@ export function MapaSitio() {
               <a href={r.href} aria-labelledby={`qe-t-${r.id}`} className={`qe-card ${i % 2 === 0 ? 'is-dark' : 'is-light'}`}>
                 <span className="qe-ilus" dangerouslySetInnerHTML={{ __html: ILUSTRACIONES[r.id] ?? '' }} />
                 <span className="qe-body">
-                  {r.id !== 'programas' && <span className="qe-eyebrow">{r.para}</span>}
                   <span id={`qe-t-${r.id}`} className="qe-card-title">{noPartir(r.titulo)}</span>
                   <span className="qe-text">{r.texto}</span>
                   <span className="qe-ir">

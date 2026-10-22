@@ -3737,9 +3737,7 @@ a.ag-product-cart.is-soon {
 .qe-ilus { flex: none; display: block; width: 64px; height: 64px; }
 .qe-ilus svg { display: block; width: 100%; height: 100%; }
 .qe-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-.qe-eyebrow { font: 700 16px/1.5 var(--ag-font); color: var(--qe-red); }
-.qe-card.is-dark .qe-eyebrow { color: var(--qe-pink); }
-.qe-card-title { margin-top: 8px; font: 800 20px/1.25 var(--ag-font); }
+.qe-card-title { font: 800 20px/1.25 var(--ag-font); }
 .qe-text { margin-top: 8px; font: 400 16px/1.5 var(--font-alianza-body), var(--ag-font); color: var(--qe-muted); }
 .qe-card.is-dark .qe-text { color: #fff; }
 .qe-ir { margin-top: auto; padding-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 8px; font: 700 16px/1.5 var(--ag-font); }
@@ -3778,7 +3776,6 @@ a.ag-product-cart.is-soon {
 .qe-grid { grid-template-columns: minmax(0,1fr); gap: 16px; }
 .qe-card, .qe-card.is-light, .qe-card.is-dark { background: #fff; color: var(--qe-ink); border: 1px solid #e3e3e3; border-radius: 16px;
   flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
-.qe-card.is-dark .qe-eyebrow { color: var(--qe-red); }
 .qe-card.is-dark .qe-text { color: var(--qe-muted); }
 .qe-ilus { width: 96px; height: 96px; }
 .qe-card-title { font-size: 20px; text-transform: uppercase; letter-spacing: 0.01em; hyphens: manual; overflow-wrap: anywhere; }
@@ -3983,8 +3980,6 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 .qe-card, .qe-card.is-light, .qe-card.is-dark { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; border-radius: 24px; }
 .qe-card.is-light { background: #fff; color: #000; border: 1px solid #e6e6e6; }
 .qe-card.is-dark { background: #0a0a0a; color: #fff; border: 1px solid #0a0a0a; }
-.qe-card.is-light .qe-eyebrow { color: #cc0000; }
-.qe-card.is-dark .qe-eyebrow { color: #fadbdb; }
 .qe-card.is-light .qe-text { color: #555; }
 .qe-card.is-dark .qe-text { color: #d9d9d9; }
 .qe-text { max-width: 60ch; }
@@ -4048,16 +4043,15 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
    flecha en línea a la derecha del texto, apuntando hacia abajo a las tarjetas. Tipografía +30%. */
 .qe-anno, .qe-anno { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 6px;
   width: fit-content; max-width: 100%; margin: 28px auto 0; color: var(--qe-ink); }
-.qe-spark { flex: none; width: 26px; height: 26px; color: var(--qe-red); align-self: flex-start; }
 .qe-hand { flex: 0 1 auto; min-width: 0; padding: 0; font-size: 30px; line-height: 1.05; text-align: center; transform: rotate(-3deg); white-space: normal; }
-.qe-hand-1, .qe-hand-last { display: inline-block; white-space: nowrap; }
+.qe-hand-1 { display: block; white-space: nowrap; }
+.qe-hand-last { display: inline-block; white-space: nowrap; }
 .qe-curve, .qe-anno .qe-curve { display: block; flex: none; width: 40px; height: 40px; margin: 0; }
 @media (max-width: 359px) { .qe-hand { font-size: 28px; } }
 @media (min-width: 768px) {
   .qe-anno { margin: 32px auto 0; gap: 10px; }
   .qe-hand { font-size: 36px; white-space: nowrap; }
-  .qe-spark { width: 32px; height: 32px; }
-  .qe-curve, .qe-anno .qe-curve { width: 52px; height: 52px; margin: 0; }
+    .qe-curve, .qe-anno .qe-curve { width: 52px; height: 52px; margin: 0; }
 }
 @media (min-width: 1024px) {
   .qe-head { display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
@@ -4077,3 +4071,26 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 .qe-grid { grid-auto-rows: 1fr; }
 .qe-item > .qe-card { height: 100%; }
 .qe-ilus, .qe-card.is-dark .qe-ilus { align-self: center; margin-top: 0; margin-bottom: 0; }
+
+/* v8 (Daniel 21-oct-2026): tablet/escritorio compactos. <768 sin cambios. */
+@media (min-width: 768px) {
+  .qe-grid { margin-top: 64px; gap: 24px; }
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { flex-direction: row; align-items: center; gap: 24px; padding: 32px; }
+  .qe-ilus, .qe-card.is-dark .qe-ilus { width: 64px; height: 64px; align-self: center; }
+  .qe-body { flex: 1 1 auto; }
+  .qe-text { max-width: 60ch; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .qe-grid { grid-template-columns: minmax(0,1fr); max-width: 720px; margin-left: auto; margin-right: auto; }
+}
+@media (min-width: 1024px) {
+  .qe-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+  .qe-grid > .qe-item:nth-child(1) { order: 1; } .qe-grid > .qe-item:nth-child(2) { order: 2; }
+  .qe-grid > .qe-item:nth-child(3) { order: 4; } .qe-grid > .qe-item:nth-child(4) { order: 3; }
+  .qe-grid > .qe-item:nth-child(5) { order: 5; } .qe-grid > .qe-item:nth-child(6) { order: 6; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .qe-head { display: block; }
+  .qe-anno { margin: 32px auto 0; justify-content: center; }
+  .qe-hand { text-align: center; }
+}
