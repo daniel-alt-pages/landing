@@ -4057,7 +4057,7 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 /* Nota fluida (Daniel 21-oct-2026): sin anchos por breakpoint. Cabecera flex-wrap: la nota va a la
    derecha, centrada verticalmente, cuando cabe; si no, baja centrada. */
 .qe-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; column-gap: clamp(24px, 4vw, 48px); row-gap: 28px; }
-.qe-intro { flex: 1 1 32rem; min-width: 0; }
+.qe-intro { flex: 1 1 40rem; min-width: 0; }
 .qe-anno { flex: 0 1 auto; display: flex; flex-direction: row; align-items: center; gap: 8px; margin: 0 auto; max-width: 100%; color: var(--qe-ink); }
 .qe-hand { margin: 0; padding: 0; min-width: 0; font-weight: 700; font-size: clamp(28px, 1.2vw + 22px, 38px); line-height: 1.05; letter-spacing: 0.02em; text-align: center; transform: rotate(-3deg); }
 .qe-curve, .qe-anno .qe-curve { display: block; flex: none; width: clamp(40px, 4vw, 60px); height: clamp(40px, 4vw, 60px); margin: 0; }
