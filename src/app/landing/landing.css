@@ -2139,7 +2139,12 @@
   border-radius: 12px;
   background: var(--ag-charcoal);
 }
-.ag-team-hold { margin-top: 24px; }
+.ag-team-hold {
+  position: sticky;
+  top: calc(var(--ag-team-top, 0px) + 8px);
+  z-index: 36;
+  margin-top: 24px;
+}
 .ag-team-bar {
   position: relative;
   z-index: 4;
@@ -2155,16 +2160,6 @@
   background: #fff;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
   overflow: hidden;
-}
-.ag-team-bar.is-fixed {
-  position: fixed;
-  top: 12px;
-  left: 50%;
-  right: auto;
-  z-index: 36;
-  width: max-content;
-  max-width: calc(100vw - 40px);
-  transform: translateX(-50%);
 }
 .ag-team-scroller {
   display: flex;
