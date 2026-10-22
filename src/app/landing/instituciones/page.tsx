@@ -27,8 +27,10 @@ import './b2b-ciclo.css';
 import './b2b-plataforma-v4.css';
 
 /** Lenguaje visual de la referencia de Daniel (maqueta-daniel.html): Plus Jakarta Sans + Caveat. Solo dentro del panel; el header no cambia. */
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap', variable: '--font-jakarta' });
-const caveat = Caveat({ subsets: ['latin'], weight: ['600', '700'], display: 'swap', variable: '--font-caveat' });
+/* Ambas son fuentes variables: sin `weight` next/font descarga un solo archivo por subset (rango 200-800 / 400-700)
+ * en vez de uno por peso. Caveat solo se usa a 700 en titulillos decorativos: no se precarga. */
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-jakarta' });
+const caveat = Caveat({ subsets: ['latin'], display: 'swap', variable: '--font-caveat', preload: false });
 
 const DESCRIPCION_SOCIAL = 'Simulacros tipo Saber 11 y clases en vivo para su colegio. Reportes por estudiante y por grupo en la semana siguiente.';
 

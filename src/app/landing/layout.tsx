@@ -8,6 +8,7 @@ import { Breadcrumb } from './_componentes/secciones/Breadcrumb';
 import { SiteFooter } from './_componentes/secciones/SiteFooter';
 import { SiteHeader } from './_componentes/secciones/SiteHeader';
 import { WhatsAppFab } from './_componentes/secciones/WhatsAppFab';
+import './landing-base.css';
 import './landing.css';
 import './tienda.css';
 import { MotionProvider } from './_componentes/primitivas/MotionProvider';
@@ -19,7 +20,7 @@ const ORG_ID = `${SITE}/#organization`;
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-alianza',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  // Fuente variable: sin lista de pesos next/font sirve un solo archivo (100-900) en vez de seis.
   display: 'swap',
 });
 
@@ -28,10 +29,22 @@ const nunito = Nunito({
   variable: '--font-alianza-body',
   weight: ['400', '600', '700'],
   display: 'swap',
+  // Solo lo usan bloques puntuales (.qe-*): no compite con el LCP.
+  preload: false,
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
+  /* Manifest propio bajo /landing (en Pages /manifest.json queda fuera del sitio) con íconos PNG locales
+   * de 5 y 14 KB generados del mismo app-icon.svg de prismic (240 KB) que usaba el manifest raíz. */
+  manifest: '/landing/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/landing/favicon.ico', sizes: '16x16' },
+      { url: '/landing/brand/sg-services-logo.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/landing/brand/app-icon-192.png',
+  },
   title: { absolute: 'Alianza Saber 11 para colegios | SEAMOSGENIOS' },
   description:
     'Simulacros tipo ICFES, panel de coordinación y clases en vivo para mejorar los resultados Saber 11 de su institución. El primer simulacro es gratis.',

@@ -27,13 +27,37 @@ export function WhatsAppFab() {
     const fab = ref.current;
     if (!fab) return;
     let raf = 0;
+    let trailing = 0;
+    let last = 0;
+    // Último valor aplicado: solo se llama a setBlocked cuando cambia (antes, un setState por frame de scroll).
+    let current: boolean | null = null;
+    const apply = (value: boolean) => {
+      if (value === current) return;
+      current = value;
+      setBlocked(value);
+    };
     const check = () => {
       raf = 0;
-      if (document.activeElement === fab) return setBlocked(false);
-      setBlocked(fabCollides(fab));
+      last = performance.now();
+      if (document.activeElement === fab) return apply(false);
+      apply(fabCollides(fab));
     };
+    // Throttle con rAF: como mucho una comprobación (lecturas de layout) cada ~100 ms durante el
+    // scroll, más una final cuando se detiene, para que el estado visible sea el mismo de antes.
+    const THROTTLE_MS = 100;
     const schedule = () => {
-      if (!raf) raf = requestAnimationFrame(check);
+      if (raf) return;
+      const wait = THROTTLE_MS - (performance.now() - last);
+      if (wait <= 0) {
+        raf = requestAnimationFrame(check);
+        return;
+      }
+      if (!trailing) {
+        trailing = window.setTimeout(() => {
+          trailing = 0;
+          if (!raf) raf = requestAnimationFrame(check);
+        }, wait);
+      }
     };
     schedule();
     // Captura: también scroll de carruseles/contenedores internos (no burbujea a window).
@@ -51,6 +75,7 @@ export function WhatsAppFab() {
       mo.disconnect();
       window.clearInterval(t);
       if (raf) cancelAnimationFrame(raf);
+      if (trailing) window.clearTimeout(trailing);
     };
   }, [pathname]);
 

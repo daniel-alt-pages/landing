@@ -1,0 +1,37 @@
+/*
+ * Base mínima de la landing. Sustituye a src/app/globals.css (Tailwind completo, tw-animate,
+ * premiumStudent y estilos de la app: ~680 KB) en /landing/*: la landing no usa utilidades
+ * de Tailwind, solo necesitaba su reset (preflight) y unas pocas reglas base de globals.css.
+ */
+@layer theme, base, components, utilities;
+@import "tailwindcss/preflight.css" layer(base);
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+input[type="text"], input[type="search"], input[type="email"], input[type="number"],
+input[type="tel"], input[type="url"], input[type="password"], textarea, select {
+  font-size: 16px;
+}
+body {
+  touch-action: manipulation;
+  font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  min-height: 100vh;
+}
+button, a, label { touch-action: manipulation; }
+
+@layer base {
+  * {
+    border-color: oklch(0.922 0 0);
+    outline-color: color-mix(in oklab, oklch(0.708 0 0) 50%, transparent);
+  }
+  body {
+    background-color: oklch(1 0 0);
+    color: oklch(0.145 0 0);
+  }
+}

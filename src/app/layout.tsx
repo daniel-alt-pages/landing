@@ -9,22 +9,28 @@ const PRISMIC_APP_ICON = "/landing/brand/sg-services-logo.svg";
  * así que ahí no se registra nada.
  */
 const REGISTER_SW = process.env.GITHUB_PAGES !== "true";
-import "./globals.css";
+/**
+ * globals.css (Tailwind completo + estilos de la app) ya no se importa aquí: lo importa cada
+ * segmento de la app (sus layout.tsx). La landing (/landing/*) carga solo landing/landing-base.css.
+ */
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: false,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
 });
 
 const SITE_NAME = "Seamos Genios · Resultados PreICFES";
