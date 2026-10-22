@@ -71,3 +71,21 @@
 .b2b-v4 .cic-flecha[data-hecha] { stroke: var(--v4-red); }
 .b2b-v4 .cic-base { stroke-width: 2; }
 @media (prefers-reduced-motion: reduce) { .b2b-v4 .cic-flecha { transition: stroke 200ms linear; } }
+
+/* v7 · Etapas del Nivel 1 (B2bPasos): más aire y jerarquía número → título → subtítulo (Caveat) → descripción, cuerpo ≥16 px. */
+.b2b-v4 .b2p-pasos { gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); margin-top: 8px; }
+.b2b-v4 .b2p-paso { display: flex; flex-direction: column; gap: 0; padding: 28px 26px 26px; min-height: 100%; }
+.b2b-v4 .b2p-n { width: 44px; height: 44px; margin-bottom: 18px; border-width: 1.5px; font-size: 15px; }
+.b2b-v4 .b2p-paso h3 { margin: 0 0 4px; font-size: 21px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+.b2b-v4 .b2p-sub { margin: 0 0 14px; font-family: var(--font-caveat), 'Caveat', cursive; font-size: 22px; font-weight: 700; line-height: 1.1; color: var(--v4-red); }
+.b2b-v4 .b2p-paso ul { display: grid; gap: 8px; margin: 0; padding-left: 20px; font-size: 16px; line-height: 1.55; color: #3F4045; }
+.b2b-v4 .b2p-paso ul li::marker { color: var(--v4-red); }
+.b2b-v4 .b2p-lock { margin-top: auto; font-size: 16px; line-height: 1.5; color: #6B6C70; }
+.b2b-v4 .b2p-sig { align-self: flex-start; margin-top: 20px; }
+.b2b-v4 .b2p-paso[data-estado='bloqueado'] { opacity: 0.8; }
+.b2b-v4 .b2p-paso[data-estado='bloqueado'] .b2p-sub { color: #9A9A97; }
+.b2b-v4 .b2p-prog { margin-bottom: 32px !important; }
+@media (max-width: 767px) {
+  .b2b-v4 .b2p-pasos { gap: 16px; }
+  .b2b-v4 .b2p-paso { padding: 24px 20px; }
+}

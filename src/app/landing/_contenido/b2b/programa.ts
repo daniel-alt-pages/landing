@@ -122,7 +122,7 @@ export const B2B_N3 = {
   ],
   experiencia: 'El estudiante no percibe horas de clase: vive un ecosistema integral y progresivo.',
   capas: [
-    { n: '1', title: 'Formación conceptual', text: 'Clases sincrónicas con docentes especialistas en Saber 11, material digital, grabaciones para repasar 24/7 y resolución de dudas.' },
+    { n: '1', title: 'Formación conceptual', text: 'Clases sincrónicas con docentes especialistas en Saber 11, material digital, grabaciones para repasar y resolución de dudas.' },
     { n: '2', title: 'Práctica y resolución guiada', text: 'Banco de preguntas tipo ICFES, desafíos, talleres, maratones y retroalimentación con análisis de distractores.' },
     { n: '3', title: 'Batería evaluativa', text: 'Simulacros periódicos tipo Saber 11, mini simulacros por área, pruebas cortas y diagnóstico de la curva de crecimiento.' },
     { n: '4', title: 'Seguimiento y retención', text: 'Control sincrónico en Google Meet, histórico de notas, puntos, racha, insignias y alertas antes de que caiga el puntaje.' },
