@@ -871,3 +871,33 @@ ul.ag-facts-body li + li { margin-top: 6px; }
 .ag-atc-box { position: absolute; left: 6px; top: 0; width: 8px; height: 8px; border-radius: 2px; background: #cc0000; }
 .ag-atc[data-fase="listo"] svg { color: currentColor; }
 .ag-atc[aria-disabled="true"] { cursor: default; }
+
+/* ===== Ficha: correcciones aprobadas (gaps, botones, listas, anchos, títulos) ===== */
+/* 1 y 4: columna izquierda = galería + características + descripción + qué incluye (ancho completo);
+   derecha = compra + bloques laterales. En móvil se intercalan con order. */
+.ag-fx-main-col, .ag-fx-side-col { display: contents; }
+.ag-fx-top > .ag-fx-main-col > .ag-fx-gallery { order: 1; }
+.ag-fx-top > .ag-fx-side-col > .ag-fx-buy { order: 2; }
+.ag-fx-top > .ag-fx-main-col > .ag-fx-block { order: 3; }
+.ag-fx-top > .ag-fx-side-col > .ag-fx-side { order: 4; }
+.ag-fx-bottom { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1024px) {
+  .ag-fx-main-col, .ag-fx-side-col { display: grid; gap: 20px; align-content: start; min-width: 0; }
+  .ag-fx-main-col { grid-column: 1; }
+  .ag-fx-side-col { grid-column: 2; }
+  .ag-fx-gallery { position: static; }
+  .ag-fx-bottom { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+}
+/* 2: botones con aspecto activo en colores de marca (siguen deshabilitados en el ejemplo). */
+.ag-fx-buy .ag-store-primary:disabled { background: #cc0000; color: #fff; opacity: 1; border-color: #cc0000; cursor: not-allowed; }
+.ag-fx-buy .ag-store-secondary:disabled { background: #fff; color: #0f172a; opacity: 1; border: 1.5px solid #0f172a; cursor: default; }
+.ag-fx-buy .ag-store-secondary:disabled::before { content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 6px; vertical-align: -2px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+/* 3 y 5: listas con check alineadas al título; títulos con el peso del sitio. */
+.ag-fx .ag-fx-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; line-height: 1.5; }
+.ag-fx .ag-fx-list li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: start; text-wrap: pretty; }
+.ag-fx .ag-fx-list li::before { content: ''; width: 18px; height: 18px; margin-top: 2px; border-radius: 999px; background: #0f172a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8.5'/%3E%3C/svg%3E") center / 12px no-repeat; }
+.ag-fx-block h2, .ag-fx-side h2, .ag-fx-know { font-weight: 800; letter-spacing: -0.02em; color: var(--ag-ink); }
+.ag-fx-side h2 { font-size: 17px; }
+.ag-fx-side p { margin: 0 0 8px; }
+.ag-fx-top > .ag-fx-main-col > .ag-fx-side { order: 4; }
+@media (min-width: 1024px) { .ag-fx-side-col { position: sticky; top: calc(var(--ag-header) + 16px); } }

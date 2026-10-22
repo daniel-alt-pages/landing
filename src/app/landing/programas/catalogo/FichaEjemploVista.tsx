@@ -43,6 +43,7 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
   return (
     <article className="ag-fx" aria-labelledby="ag-fx-title">
       <div className="ag-fx-top">
+        <div className="ag-fx-main-col">
         <figure className="ag-fx-card ag-fx-gallery">
           <div className="ag-fx-gallery-in">
             <ul className="ag-fx-thumbs" aria-label="Imágenes del programa">
@@ -58,6 +59,37 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
           </div>
           <figcaption><Ejemplo /></figcaption>
         </figure>
+        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-det">
+          <h2 id="fx-det">Características del programa</h2>
+          <table className="ag-fx-table">
+            <tbody>
+              {ficha.detalles.map((d) => (
+                <tr key={d.label}><th scope="row">{d.label}</th><td>{d.value}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-desc">
+          <h2 id="fx-desc">Descripción</h2>
+          {ficha.descripcion.map((p) => <p key={p}>{p}</p>)}
+        </section>
+
+        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-inc">
+          <h2 id="fx-inc">Qué incluye</h2>
+          <ul className="ag-fx-list">{ficha.incluye.map((t) => <li key={t}>{t}</li>)}</ul>
+        </section>
+          <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-garantias">
+            <h2 id="fx-garantias">Garantías y datos clave <Ejemplo /></h2>
+            <ul className="ag-fx-list">
+              <li>Clases grabadas si no puede asistir en vivo.</li>
+              <li>Informe de resultados después de cada simulacro.</li>
+              <li>Soporte por WhatsApp durante todo el programa.</li>
+            </ul>
+          </section>
+
+
+        </div>
 
       <div className="ag-fx-side-col">
         <aside className="ag-fx-card ag-fx-buy" aria-label="Compra">
@@ -110,40 +142,10 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
             </ul>
             {config.bold !== false ? <p className="ag-fx-note">Pagos procesados con Bold.</p> : null}
           </section>
-          <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-garantias">
-            <h2 id="fx-garantias">Garantías y datos clave <Ejemplo /></h2>
-            <ul className="ag-fx-list">
-              <li>Clases grabadas si no puede asistir en vivo.</li>
-              <li>Informe de resultados después de cada simulacro.</li>
-              <li>Soporte por WhatsApp durante todo el programa.</li>
-            </ul>
-          </section>
         </div>
       </div>
 
       <div className="ag-fx-bottom">
-
-        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-det">
-          <h2 id="fx-det">Características del programa</h2>
-          <table className="ag-fx-table">
-            <tbody>
-              {ficha.detalles.map((d) => (
-                <tr key={d.label}><th scope="row">{d.label}</th><td>{d.value}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
-
-        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-desc">
-          <h2 id="fx-desc">Descripción</h2>
-          {ficha.descripcion.map((p) => <p key={p}>{p}</p>)}
-        </section>
-
-        <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-inc">
-          <h2 id="fx-inc">Qué incluye</h2>
-          <ul className="ag-fx-list">{ficha.incluye.map((t) => <li key={t}>{t}</li>)}</ul>
-        </section>
-
 
         <section id="opiniones" className="ag-fx-card ag-fx-block" aria-labelledby="fx-op">
           <h2 id="fx-op">Opiniones del programa <Ejemplo /></h2>
