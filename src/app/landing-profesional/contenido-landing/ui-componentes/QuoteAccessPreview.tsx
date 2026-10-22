@@ -1,7 +1,6 @@
 ﻿'use client';
 
 import { Video } from 'lucide-react';
-import { formatCOP } from '@/lib/cotizacionSimulacro';
 import { displaySerif, pricingCards } from '@/app/landing-profesional/contenido-landing/content';
 
 type QuoteAccessPreviewProps = {
@@ -72,7 +71,7 @@ export function QuoteAccessPreview({ isLightLanding, embedded = false }: QuoteAc
                 {card.badge}
               </p>
               <p className={`mt-3 text-2xl font-semibold tracking-tight ${isLightLanding ? 'text-slate-900' : 'text-white'}`}>
-                {formatCOP(card.price)}
+                {card.priceText}
               </p>
               <p className={`mt-1 text-xs ${isLightLanding ? 'text-slate-600' : 'text-white/48'}`}>por estudiante</p>
             </div>

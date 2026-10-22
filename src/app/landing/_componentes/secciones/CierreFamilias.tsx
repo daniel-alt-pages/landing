@@ -10,7 +10,7 @@ export function CierreFamilias() {
     <Section id="contacto" tone="white" label="cierre-familias-title">
       <header className="ag-section-head">
         <DisplayTitle id="cierre-familias-title" lines={[{ text: '¿Ya sabe qué programa' }, { text: 'le sirve?', accent: true }]} />
-        <Lead>Elija su programa y pague en línea. Si tiene dudas, escríbanos por WhatsApp antes de comprar.</Lead>
+        <Lead>Elija su programa. Si tiene dudas, escríbanos por WhatsApp antes de comprar.</Lead>
       </header>
       <p className="ag-faq-cta">
         <a className="ag-btn" href="/landing/programas">Ver los programas</a>{' '}

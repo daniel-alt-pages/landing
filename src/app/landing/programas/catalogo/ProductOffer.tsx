@@ -44,14 +44,12 @@ export function ProductOffer({ item, inCart, onAdd, page, close }: Props) {
   const catalog = item.catalog || {};
   const full = Boolean(item.seatsFull);
   const pay = payHref(item);
-  const offer = (item.comparePriceCop || 0) > (item.priceCop || 0);
   const hasIntro = ficha.blocks.some((block) => block.type === 'intro' && (block.title || block.body));
   const hasIncluye = ficha.blocks.some((block) => block.type === 'incluye' && (block.items || []).length);
   const buy = (
     <div className="ag-offer-buy">
       <div className="ag-price-pair">
         <p className="ag-store-price-line">{priceLabel(item.priceCop)}</p>
-        {offer ? <s className="ag-mk-was">{priceLabel(item.comparePriceCop)}</s> : null}
       </div>
       {item.badge ? <p className="ag-mk-badge">{item.badge}</p> : null}
       <p className="ag-store-seat-line">{seatsLabel(item)}</p>

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, Check, MessageCircle, X } from 'lucide-react';
-import { SIMULATION_PRICES, buildWhatsAppSalesLeadUrl, formatCOP, getInstitutionQuote } from '@/lib/cotizacionSimulacro';
+import { SIMULATION_PRICES, buildWhatsAppSalesLeadUrl, getInstitutionQuote } from '@/lib/cotizacionSimulacro';
 import { displaySerif } from '../content';
 import type { ColombiaCatalogItem, SalesLeadKind, SalesLeadStep } from '../tipos';
 import { useColombiaSalesCatalog } from '../utilidades/useColombiaSalesCatalog';
@@ -252,7 +252,6 @@ export function SalesCoordinationModal({
       ? getInstitutionQuote(parsedGradeCount, parsedStudentCount)
       : null;
   const modalFinalPrice = kind === 'individual' ? SIMULATION_PRICES.individual : modalInstitutionQuote?.total;
-  const modalUnitPrice = kind === 'individual' ? SIMULATION_PRICES.individual : modalInstitutionQuote?.unitPrice;
 
   const stepFlow: SalesLeadStep[] =
     kind === 'institution'
@@ -414,12 +413,12 @@ export function SalesCoordinationModal({
                   {
                     value: 'individual' as const,
                     title: 'Estudiante o acudiente',
-                    text: `Compra individual. Solo nombre y contacto. ${formatCOP(SIMULATION_PRICES.individual)}.`,
+                    text: 'Compra individual. Solo nombre y contacto.',
                   },
                   {
                     value: 'institution' as const,
                     title: 'Coordinador o rectoría',
-                    text: `Institución: ubicación, colegio, grados y jornada. Desde ${formatCOP(SIMULATION_PRICES.institution)} por estudiante.`,
+                    text: 'Institución: ubicación, colegio, grados y jornada. Solicite una cotización.',
                   },
                 ].map((option) => (
                   <button
@@ -617,15 +616,15 @@ export function SalesCoordinationModal({
                       <>
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100/70">Precio final</p>
                         <p className={`${displaySerif} mt-2 text-3xl font-medium tracking-tight text-white`}>
-                          {formatCOP(modalInstitutionQuote.total)}
+                          Solicite una cotización
                         </p>
                         <p className="mt-2 text-sm leading-relaxed text-white/58">
-                          {formatCOP(modalInstitutionQuote.unitPrice)} por estudiante × {modalInstitutionQuote.studentCount} estudiantes.
+                          {modalInstitutionQuote.studentCount} estudiantes.
                         </p>
                       </>
                     ) : (
                       <p className="text-sm leading-relaxed text-white/58">
-                        Escribe grados y estudiantes para ver el precio final antes de enviar.
+                        Escribe grados y estudiantes antes de enviar.
                       </p>
                     )}
                   </div>
@@ -665,13 +664,13 @@ export function SalesCoordinationModal({
                   <div className="rounded-2xl border border-cyan-200/20 bg-cyan-200/[0.08] p-4">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-100/70">Precio final</p>
                     <p className={`${displaySerif} mt-2 text-3xl font-medium tracking-tight text-white`}>
-                      {modalFinalPrice ? formatCOP(modalFinalPrice) : 'Pendiente'}
+                      {modalFinalPrice ? 'Solicite una cotización' : 'Pendiente'}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-white/58">
                       {kind === 'individual'
                         ? 'Simulacro individual con retroalimentación en vivo y grabaciones.'
                         : modalInstitutionQuote
-                          ? `${formatCOP(modalUnitPrice ?? 0)} por estudiante × ${modalInstitutionQuote.studentCount} estudiantes.`
+                          ? `${modalInstitutionQuote.studentCount} estudiantes.`
                           : 'Faltan grados y estudiantes para calcular el total institucional.'}
                     </p>
                   </div>

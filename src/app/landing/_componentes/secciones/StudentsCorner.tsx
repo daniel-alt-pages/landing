@@ -1,4 +1,3 @@
-import { formatCOP } from '@/lib/cotizacionSimulacro';
 import { CONTACTO } from '../../_contenido/contacto';
 import { VACACIONAL } from '../../_contenido/vacacional';
 import { buildWaUrl, WA_TEXT } from '../../_lib/whatsapp';
@@ -20,14 +19,13 @@ export function StudentsCorner() {
         <Pending note={VACACIONAL.confirmar}>
           {VACACIONAL.activo ? (
             <article className="ag-card">
-              <span className="ag-badge">{VACACIONAL.descuento}</span>
-              <h3 className="ag-h3" style={{ marginTop: 12 }}>
+              <h3 className="ag-h3">
                 {VACACIONAL.titulo}
               </h3>
               <p>{VACACIONAL.lead}</p>
               {VACACIONAL.fechas ? <p>{VACACIONAL.fechas}</p> : null}
               <p>
-                <s>{formatCOP(VACACIONAL.precioAntes)}</s> <strong className="ag-price">{formatCOP(VACACIONAL.precio)}</strong>
+                <strong>{VACACIONAL.precioTexto}</strong>
               </p>
               <ul>
                 {VACACIONAL.bullets.map((item) => (

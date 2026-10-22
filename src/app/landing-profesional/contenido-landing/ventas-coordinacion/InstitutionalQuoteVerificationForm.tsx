@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import {
   buildWhatsAppSalesLeadUrl,
-  formatCOP,
   getInstitutionQuote,
 } from '@/lib/cotizacionSimulacro';
 import { Pill } from '@/app/landing-profesional/contenido-landing/ui-componentes/LandingPrimitives';
@@ -706,10 +705,10 @@ export function InstitutionalQuoteVerificationForm({
               Cotización verificada
             </p>
             <p className={`${displaySerif} mt-3 text-[clamp(2rem,8vw,3.25rem)] font-medium tracking-tight ${titleClass} sm:text-5xl`}>
-              {quote ? formatCOP(quote.total) : 'Pendiente'}
+              {quote ? 'Solicite una cotización' : 'Pendiente'}
             </p>
             <p className={`mt-2 text-sm ${mutedClass}`}>
-              {quote ? `${formatCOP(quote.unitPrice)} por estudiante x ${quote.studentCount} estudiantes.` : 'Completa grados y estudiantes.'}
+              {quote ? `${quote.studentCount} estudiantes.` : 'Completa grados y estudiantes.'}
             </p>
           </div>
           <Building2 className={`h-9 w-9 ${tone === 'light' ? 'text-slate-300' : 'text-white/35'}`} aria-hidden />

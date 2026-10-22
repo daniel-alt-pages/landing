@@ -16,8 +16,6 @@ import {
 } from 'lucide-react';
 import {
   DIRECTOR_GRADE_LABELS,
-  SIMULATION_PRICES,
-  formatCOP,
   getDirectorCoursesQuote,
   type DirectorCourseInput,
   type DirectorGradeIndex,
@@ -192,7 +190,7 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
                     </span>
                     <span className="cotiz-quote-role-card__title">Soy estudiante</span>
                     <span className={`cotiz-quote-role-card__desc ${mutedClass}`}>
-                      {formatCOP(SIMULATION_PRICES.individual)} · 1 estudiante
+                      1 estudiante · Escríbanos para conocer el valor
                     </span>
                     <ChevronRight className="cotiz-quote-role-card__arrow h-5 w-5 opacity-60 transition group-hover:translate-x-0.5" />
                   </button>
@@ -207,7 +205,7 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
                     </span>
                     <span className="cotiz-quote-role-card__title">Soy directivo</span>
                     <span className={`cotiz-quote-role-card__desc ${mutedClass}`}>
-                      {formatCOP(SIMULATION_PRICES.institution)} / estudiante · por curso y grado
+                      Por curso y grado · Solicite una cotización
                     </span>
                     <ChevronRight className="cotiz-quote-role-card__arrow h-5 w-5 opacity-60 transition group-hover:translate-x-0.5" />
                   </button>
@@ -271,7 +269,7 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
                       Tu simulacro, enfoque individual
                     </h2>
                     <p className={`max-w-xl text-sm leading-relaxed ${mutedClass}`}>
-                      Precio único <strong className={titleClass}>{formatCOP(SIMULATION_PRICES.individual)}</strong>.
+                      Escríbanos para conocer el valor.
                       Sin configurar cursos ni grados.
                     </p>
                     <motion.div
@@ -362,7 +360,7 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
                     <p className={`max-w-xl text-sm leading-relaxed ${mutedClass}`}>
                       <strong className={titleClass}>{quote.courseCount}</strong>{' '}
                       {quote.courseCount === 1 ? 'curso' : 'cursos'} ·{' '}
-                      {formatCOP(SIMULATION_PRICES.institution)} / estudiante
+                      Solicite una cotización
                     </p>
 
                     {courseCount > 1 ? (
@@ -470,7 +468,7 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
                             {row.name} · {row.gradeLabel}
                           </span>
                           <span className={`font-mono font-semibold tabular-nums ${titleClass}`}>
-                            {row.studentCount} × {formatCOP(row.unitPrice)}
+                            {row.studentCount} estudiantes
                           </span>
                         </li>
                       ))}
@@ -510,9 +508,9 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
             {role === 'student' ? (
               <>
                 <p className={`${displaySerif} mt-4 text-[clamp(2rem,5vw,3rem)] font-medium tracking-tight ${titleClass}`}>
-                  {formatCOP(SIMULATION_PRICES.individual)}
+                  Solicite una cotización
                 </p>
-                <p className={`mt-2 text-sm ${mutedClass}`}>Precio final · 1 estudiante</p>
+                <p className={`mt-2 text-sm ${mutedClass}`}>1 estudiante</p>
               </>
             ) : directivoStep === 'count' ? (
               <p className={`mt-6 text-sm leading-relaxed ${mutedClass}`}>
@@ -521,10 +519,10 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
             ) : (
               <>
                 <p className={`${displaySerif} mt-4 text-[clamp(2rem,5vw,3rem)] font-medium tracking-tight ${titleClass}`}>
-                  {formatCOP(quote.total)}
+                  Solicite una cotización
                 </p>
                 <p className={`mt-2 text-sm ${mutedClass}`}>
-                  {formatCOP(quote.unitPrice)} × {quote.studentCount} estudiantes
+                  {quote.studentCount} estudiantes
                 </p>
 
                 <div className={`mt-6 space-y-2 rounded-2xl p-4 text-sm ${nestedClass}`}>
@@ -554,7 +552,7 @@ export function SmartQuoteCalculator({ isLightLanding, onCoordinate }: SmartQuot
                           {row.name} · {row.gradeLabel}
                         </span>
                         <span className={`shrink-0 font-mono tabular-nums ${titleClass}`}>
-                          {formatCOP(row.total)}
+                          {row.studentCount} est.
                         </span>
                       </li>
                     ))}

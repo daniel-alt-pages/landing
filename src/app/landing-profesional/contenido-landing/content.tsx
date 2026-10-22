@@ -1,5 +1,4 @@
 import type { LogoItem } from '@/app/landing-profesional/contenido-landing/ui-componentes/LogoLoop';
-import { SIMULATION_PRICES } from '@/lib/cotizacionSimulacro';
 import {
   BadgeDollarSign,
   BarChart3,
@@ -521,13 +520,13 @@ export const coordinatorAccess = [
 export const pricingCards = [
   {
     segment: 'Estudiante individual',
-    price: SIMULATION_PRICES.individual,
+    priceText: 'Escríbanos para conocer el valor',
     detail: 'Para compra directa de 1 simulacro.',
     badge: 'Individual',
   },
   {
     segment: 'Institución',
-    price: SIMULATION_PRICES.institution,
+    priceText: 'Solicite una cotización',
     detail: 'Por estudiante matriculado en cursos o grados.',
     badge: 'Institucional',
   },
