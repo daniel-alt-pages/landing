@@ -43,14 +43,26 @@ function StoryViewer({
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <img
-        src={image.src}
-        alt={image.alt}
-        onClick={(event) => {
-          event.stopPropagation();
-          onIndex((index + 1) % story.images.length);
-        }}
-      />
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={`${image.src.replace('-1080.webp', '-540.avif')} 540w, ${image.src.replace('.webp', '.avif')} 1080w`}
+          sizes="(min-width: 768px) 540px, 90vw"
+        />
+        <img
+          src={image.src}
+          srcSet={`${image.src.replace('-1080.webp', '-540.webp')} 540w, ${image.src} 1080w`}
+          sizes="(min-width: 768px) 540px, 90vw"
+          width={1080}
+          height={1350}
+          alt={image.alt}
+          decoding="async"
+          onClick={(event) => {
+            event.stopPropagation();
+            onIndex((index + 1) % story.images.length);
+          }}
+        />
+      </picture>
     </dialog>
   );
 }
