@@ -4,13 +4,24 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, LogIn, Menu, ShoppingBag, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, LogIn, Menu, X } from 'lucide-react';
 import { CONTACTO, platformAppUrl, platformLoginUrl, tiendaLandingUrl } from '../../_contenido/contacto';
 import { MENU, RECURSOS } from '../../_contenido/menu';
 import { track } from '../../_lib/analytics';
 import { CART_OPEN_EVENT, readCart, subscribeCart, type CartItem } from '../../_lib/carrito';
 import { pricesFromStore } from '../../_lib/tienda';
 import { CartPanel } from './CartPanel';
+
+/** Ícono del carrito: mismo trazo (2px, extremos redondos) que los íconos lucide del header. */
+function CartIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden focusable="false">
+      <path d="M2.5 3.5h2.2l2.4 11.1a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2l1.6-6.7H6" />
+      <circle cx="9.5" cy="20" r="1.3" />
+      <circle cx="17" cy="20" r="1.3" />
+    </svg>
+  );
+}
 
 function SheetSection({
   groupId,
@@ -105,6 +116,8 @@ export function SiteHeader() {
   const [prices, setPrices] = useState<Record<string, number>>({});
   const [catalogReady, setCatalogReady] = useState(false);
   const [bumpKey, setBumpKey] = useState(0);
+  /** Total de unidades (suma de cantidades), no de programas distintos. */
+  const cartUnits = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
   const [loginHref, setLoginHref] = useState(PUBLIC_LOGIN_FALLBACK);
   const [appHref, setAppHref] = useState(PUBLIC_LOGIN_FALLBACK);
   const headerRef = useRef<HTMLElement>(null);
@@ -126,9 +139,9 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    if (prevCount.current != null && cart.length > prevCount.current) setBumpKey((value) => value + 1);
-    prevCount.current = cart.length;
-  }, [cart.length]);
+    if (prevCount.current != null && cartUnits !== prevCount.current) setBumpKey((value) => value + 1);
+    prevCount.current = cartUnits;
+  }, [cartUnits]);
 
   useEffect(() => {
     const shopUrl = tiendaLandingUrl();
@@ -229,17 +242,17 @@ export function SiteHeader() {
             className="ag-icon-btn ag-cart-btn"
             aria-expanded={cartOpen}
             aria-controls="ag-cart"
-            aria-label={cart.length ? `Carrito, ${cart.length} programas` : 'Carrito'}
+            aria-label={`Carrito, ${cartUnits} ${cartUnits === 1 ? 'producto' : 'productos'}`}
             onClick={() => {
               setOpenId(null);
               setMobile(false);
               setCartOpen((value) => !value);
             }}
           >
-            <ShoppingBag size={18} aria-hidden />
+            <CartIcon />
             <span className="ag-cart-label">Carrito</span>
-            {cart.length ? (
-              <span key={bumpKey} className={bumpKey ? 'ag-cart-count is-bump' : 'ag-cart-count'}>{cart.length}</span>
+            {cartUnits ? (
+              <span key={bumpKey} className={bumpKey ? 'ag-cart-count is-bump' : 'ag-cart-count'} aria-hidden>{cartUnits}</span>
             ) : null}
           </button>
           <a
