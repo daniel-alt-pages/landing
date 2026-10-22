@@ -118,10 +118,13 @@ export function CatalogoClient() {
             ) : null}
 
             {catalog.error ? (
-              <div className="ag-store-status">
-                <p>No pudimos cargar la tienda.</p>
-                <button type="button" className="ag-store-primary" onClick={catalog.retry}>Reintentar</button>
-                <a href={wa}>Escríbenos por WhatsApp</a>
+              <div className="ag-store-status ag-store-vacia">
+                <p className="ag-store-vacia-kicker">Tienda</p>
+                <h2>Programas a su medida</h2>
+                <p>Cuéntenos qué necesita y le enviamos una cotización.</p>
+                <a className="ag-store-vacia-cta" href={wa} target="_blank" rel="noopener noreferrer">
+                  Solicite su cotización
+                </a>
               </div>
             ) : null}
 
