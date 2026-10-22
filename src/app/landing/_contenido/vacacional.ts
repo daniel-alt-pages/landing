@@ -5,7 +5,7 @@ export const VACACIONAL = {
   fechas: '',
   precioAntes: 166667,
   precio: 125000,
-  descuento: '25% OFF',
+  precioTexto: 'Escríbanos para conocer el valor',
   preguntas: '',
   confirmar:
     'Las fechas del PDF (6 de junio al 26 de julio de 2026) ya pasaron. Definir la siguiente cohorte y la cifra exacta de preguntas. El Calendario B 2027-1 anota unas 225 horas en vivo para el vacacional, no «más de 170». Confirmar cuál cifra se publica aquí.',

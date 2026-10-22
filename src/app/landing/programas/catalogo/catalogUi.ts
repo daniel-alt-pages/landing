@@ -113,8 +113,7 @@ export function kindLabel(kind?: string) {
 export function seatsLabel(item: CatalogItem) {
   if (item.seatsFull) return 'Sin cupos';
   if (item.seatsRemaining == null) return 'Cupos abiertos';
-  if (item.seatsRemaining === 1) return 'Queda 1 cupo';
-  return `Quedan ${item.seatsRemaining} cupos`;
+  return 'Cupos disponibles';
 }
 
 export function priceLabel(value?: number) {

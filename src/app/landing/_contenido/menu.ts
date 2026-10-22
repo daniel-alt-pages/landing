@@ -53,7 +53,7 @@ export const MENU: MenuGroup[] = [
     },
     items: [
       { href: '/landing/programas', label: 'Elige tu programa', text: 'Compara por necesidad y paga en línea si eres estudiante o familia.' },
-      { href: '/landing/programas?tipo=programa', label: 'Programas', text: 'Intensivo y vacacional, con precio y cupos.' },
+      { href: '/landing/programas?tipo=programa', label: 'Programas', text: 'Intensivo y vacacional, con fechas y cupos.' },
       { href: '/landing/programas?tipo=simulacro', label: 'Simulacros', text: 'Pruebas sueltas para conocer el nivel.' },
       { href: '/landing/programas#comparar', label: 'Intensivo y vacacional', text: '426 horas frente a 225, y para quién es cada uno.' },
     ],

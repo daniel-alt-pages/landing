@@ -1,5 +1,4 @@
 import { Check } from 'lucide-react';
-import { formatCOP, SIMULATION_PRICES } from '@/lib/cotizacionSimulacro';
 import { CONTACTO } from '../../_contenido/contacto';
 import { OFERTA } from '../../_contenido/oferta';
 import { contactoHref } from '../../_lib/links';
@@ -10,9 +9,7 @@ import { Section } from '../primitivas/Section';
 import { Pending } from '../primitivas/bits';
 
 export function OfferSection() {
-  const precio = OFERTA.mostrarPrecioUnitario
-    ? `Desde ${formatCOP(SIMULATION_PRICES.institution)} por estudiante`
-    : OFERTA.precioTexto;
+  const precio = OFERTA.precioTexto;
   return (
     <Section id="oferta" tone="black" label="oferta-title">
       <DisplayTitle id="oferta-title" onDark lines={[{ text: OFERTA.title[0] }, { text: OFERTA.title[1], accent: true }]} />

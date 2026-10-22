@@ -22,27 +22,27 @@ export function tiendaEjemploActiva() {
 }
 
 export const TIENDA_EJEMPLO_CONFIG: TiendaConfig = {
-  heroTitle: 'Programas a la venta (ejemplo)',
-  heroSubtitle: 'Vitrina de prueba con productos ficticios. No están a la venta.',
-  urgencyBanner: true,
-  urgencyText: 'Ejemplo · Aviso de prueba de la tienda. Texto y fechas ficticios.',
+  heroTitle: 'Programas · Ejemplo ilustrativo',
+  heroSubtitle: 'Ejemplo ilustrativo de la tienda. Estos productos no están a la venta.',
+  urgencyBanner: false,
+  urgencyText: 'Ejemplo ilustrativo · Así se verá un aviso de la tienda.',
   bold: true,
   transfer: true,
 };
 
 const p = (id: string, name: string, kind: string, priceCop: number): TiendaProduct => ({
   id: `ejemplo-${id}`,
-  name: `[Ejemplo] ${name}`,
+  name: `${name} (ejemplo)`,
   kind,
   priceCop,
-  badge: 'Ejemplo',
-  perks: ['Producto ficticio de prueba'],
+  badge: 'EJEMPLO',
+  perks: ['Producto de ejemplo. No está a la venta.'],
 });
 
 export const TIENDA_EJEMPLO_PRODUCTOS: TiendaProduct[] = [
-  p('a', 'Producto de prueba A', 'pase', 111111),
-  p('b', 'Producto de prueba B', 'combo', 222222),
-  p('c', 'Simulacro de prueba C', 'simulacro', 33333),
-  p('d', 'Curso de prueba D', 'material', 44444),
-  p('e', 'Simulacro de prueba E', 'simulacro', 55555),
+  p('a', 'Pase A', 'pase', 0),
+  p('b', 'Combo B', 'combo', 0),
+  p('c', 'Simulacro C', 'simulacro', 0),
+  p('d', 'Curso D', 'material', 0),
+  p('e', 'Simulacro E', 'simulacro', 0),
 ];

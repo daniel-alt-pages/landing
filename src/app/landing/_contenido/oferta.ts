@@ -51,10 +51,10 @@ export const OFERTA = {
   alianzaCta: 'Agendar reunión de 30 min',
   preicfes: {
     titulo: 'PreICFES completo',
-    texto: 'Un programa intensivo para todo el grado 11, con precio especial según el número de estudiantes.',
+    texto: 'Un programa intensivo para todo el grado 11, ajustado al número de estudiantes. Escríbanos para conocer el valor.',
     cta: 'Consultar por WhatsApp',
   },
-  precioTexto: 'Precio según el número de estudiantes',
+  precioTexto: 'Solicite una cotización para su institución',
   micro: ['Sin compromiso', '100% virtual'],
   microImplementacion: 'Sin costo de implementación',
   confirmar:
