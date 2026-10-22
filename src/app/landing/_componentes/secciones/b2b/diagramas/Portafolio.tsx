@@ -47,7 +47,7 @@ export function Capacidades() {
       <ul className="ag-pf-checks">
         {DIFERENCIAS.map((item) => <li key={item}>{item}</li>)}
       </ul>
-      <Cta href="#agendar" label="Agendar una reunión" nota="Contacto: seamosgenios@adpmh.com · SEAMOSGENIOS S.A.S." />
+      <Cta href="#solicitar-reunion" label="Agendar reunión de 30 min" nota="Contacto: seamosgenios@adpmh.com · SEAMOSGENIOS S.A.S." />
     </AlEntrar>
   );
 }

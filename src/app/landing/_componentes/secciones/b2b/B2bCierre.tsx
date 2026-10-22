@@ -9,7 +9,7 @@ export function B2bCierre() {
         <h2 id="b2b-cierre-title">{B2B_CIERRE.titulo}</h2>
         <p>{B2B_CIERRE.linea}</p>
         <div className="ag-b2b-acciones">
-          <a className="ag-b2b-btn" href="#solicitar-reunion">Agendar reunión</a>
+          <a className="ag-b2b-btn" href="#solicitar-reunion">Agendar reunión de 30 min</a>
           <a className="ag-b2b-btn ag-b2b-btn-ghost" href={b2bWhatsappUrl()}>Escribir por WhatsApp</a>
         </div>
         <p className="ag-b2b-nota">
