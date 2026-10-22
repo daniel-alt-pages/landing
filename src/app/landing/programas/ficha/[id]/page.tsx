@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { FichaPagina } from '../../catalogo/FichaPagina';
+import { tiendaEjemploActiva } from '../../../_contenido/tienda-ejemplo';
+import { FICHA_EJEMPLO_IDS } from '../../../_contenido/tienda-ejemplo-fichas';
 
 export const metadata: Metadata = {
   title: { absolute: 'Ficha del programa | Alianza SEAMOSGENIOS' },
@@ -28,6 +30,7 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
       }
     }
   }
+  if (tiendaEjemploActiva()) FICHA_EJEMPLO_IDS.forEach((id) => ids.add(id));
   if (!ids.size) ids.add('_');
   return [...ids].map((id) => ({ id }));
 }

@@ -131,7 +131,7 @@ export function ProductRail() {
                   inCart={cartIds.includes(item.id)}
                   onAdd={add}
                   variant="rail"
-                  href={`/landing/programas?programa=${encodeURIComponent(item.id)}`}
+                  href={item.id.startsWith('ejemplo-') ? `/landing/programas/ficha/${encodeURIComponent(item.id)}` : `/landing/programas?programa=${encodeURIComponent(item.id)}`}
                 />
               </li>
             ))}
