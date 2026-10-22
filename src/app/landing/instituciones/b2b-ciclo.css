@@ -1,4 +1,4 @@
-/* Ciclo interactivo B2B. Montserrat (fuente del sitio), blanco/rosa con acento #CC0000; sin tarjetas negras. */
+/* Ciclo interactivo B2B. Hereda --ag-font (Plus Jakarta Sans en .b2b-v4), blanco/rosa con acento #CC0000; sin tarjetas negras. */
 .cic { --cr: #CC0000; --crosa: #F9E0DF; --cink: #0A0A0A; --cgris: #545454; --clinea: #C2C2C2; --cease: cubic-bezier(0.23, 1, 0.32, 1); --cdur: 300ms;
   margin-top: 24px; font-family: var(--ag-font, Montserrat, sans-serif); color: var(--cink); }
 .cic-controles { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
@@ -115,3 +115,19 @@
 .cic[data-pausado] .cic-halo { animation-play-state: paused; }
 @keyframes cic-arco { from { stroke-dashoffset: var(--desde); } to { stroke-dashoffset: var(--hasta); } }
 @media (prefers-reduced-motion: reduce) { .cic .cic-arco { animation: none; stroke-dashoffset: var(--desde); } }
+
+/* v8 · Título de la sección = mismo h2 del sitio (Plus Jakarta Sans 800, -0.03em). El 900 que heredaba de b2b-pdf.css
+   no existe en el archivo variable (200–800) y el navegador lo sintetizaba: por eso se veía como otra fuente. */
+.b2b-v4 #ciclo .ag-b2b-title { font-family: var(--ag-font); font-weight: 800; letter-spacing: -0.03em; font-synthesis: none; }
+
+/* v8 · Micro-animaciones unificadas: una curva, 200 ms para lo pequeño y 320 ms para lo grande; solo transform/opacity.
+   Los cambios de color (chips, pastillas, puntos, flechas) son instantáneos. El arco y el pulso del halo no cambian. */
+.cic { --cease: cubic-bezier(0.2, 0.8, 0.2, 1); --cdur: 200ms; --cdur-l: 320ms; }
+.b2b-v4 .cic :is(.cic-chip, .cic-tab, .cic-paso, .cic-paso-btn, .cic-punto, .cic-pill, .cic-flecha) { transition: none; }
+.b2b-v4 .cic .cic-nodo { transition: opacity var(--cdur) var(--cease); }
+.b2b-v4 .cic :is(.cic-inspector, .cic-eslabon) { transition: transform var(--cdur) var(--cease), opacity var(--cdur) var(--cease); }
+.b2b-v4 .cic .cic-inspector > * { animation: cic-fade var(--cdur-l) var(--cease); }
+@media (prefers-reduced-motion: reduce) {
+  .b2b-v4 .cic .cic-inspector > * { animation: none; }
+  .b2b-v4 .cic :is(.cic-nodo, .cic-inspector, .cic-eslabon) { transition: none; }
+}
