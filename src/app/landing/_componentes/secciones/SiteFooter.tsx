@@ -8,20 +8,30 @@ import { Pending } from '../primitivas/bits';
 import { CookiePrefsButton } from './CookiePrefsButton';
 import { FooterMark } from './FooterMark';
 
-const CANALES = [
-  {
-    href: buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.header),
-    kicker: 'WhatsApp instituciones',
-    value: CONTACTO.telefonoB2BVisible,
-  },
-  // Línea alterna (304 235 9048) retirada del pie hasta que Daniel confirme si sigue activa.
-  {
-    href: buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes),
-    kicker: 'Estudiantes',
-    value: CONTACTO.whatsappEstudiantesVisible,
-  },
-  { href: `mailto:${FOOTER.correo}`, kicker: 'Correo', value: FOOTER.correo },
-] as const;
+function WhatsAppMark() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="ag-footer-icon">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+    </svg>
+  );
+}
+
+function PhoneMark() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="ag-footer-icon">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+    </svg>
+  );
+}
+
+function MailMark() {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="ag-footer-icon">
+      <rect width="20" height="16" x="2" y="4" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
+  );
+}
 
 function InstagramMark() {
   return (
@@ -54,11 +64,20 @@ const REDES = [
 ] as const;
 
 export function SiteFooter() {
+  const correoContacto = FOOTER.correo || 'soporte@seamosgenios.com';
+
   return (
     <footer className="ag-footer">
+      {/* Navegación y Encabezado del Footer */}
       <div className="ag-wrap ag-footer-grid">
         <div>
-          <Image src="/landing/brand/logo-sg-blanco.svg" alt="SEAMOSGENIOS" width={140} height={40} style={{ height: 40, width: 'auto' }} />
+          <Image
+            src="/landing/brand/logo-sg-blanco.svg"
+            alt="SEAMOSGENIOS"
+            width={140}
+            height={40}
+            style={{ height: 40, width: 'auto' }}
+          />
           <p className="ag-footer-lead">{FOOTER.frase}</p>
           <Link className="ag-btn" href="/landing#solicitar-reunion">
             Agendar reunión
@@ -79,46 +98,95 @@ export function SiteFooter() {
           </div>
         ))}
       </div>
-      <div className="ag-wrap ag-footer-contact">
-        <h2 className="ag-footer-title">Contacto</h2>
-        <ul className="ag-footer-channels">
-          {CANALES.map((item) => (
-            <li key={item.kicker}>
-              <a href={item.href}>
-                <small>{item.kicker}</small>
-                <strong>{item.value}</strong>
+
+      {/* Sección Contacto y Redes: Centrada y Espaciada */}
+      <div className="ag-wrap ag-footer-contact-wrap">
+        <h2 className="ag-footer-contact-heading">CONTACTO Y REDES</h2>
+        <div className="ag-footer-contact-cols">
+          {/* Canales de atención */}
+          <div className="ag-footer-contact-col">
+            <h3 className="ag-footer-contact-subhead">CANALES DE ATENCIÓN</h3>
+            <div className="ag-footer-contact-items">
+              <a
+                href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.header)}
+                className="ag-footer-channel-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppMark />
+                <div className="ag-footer-channel-body">
+                  <span className="ag-footer-channel-label">(icono de WhatsApp)</span>
+                  <strong className="ag-footer-channel-val">{CONTACTO.telefonoB2BVisible}</strong>
+                </div>
               </a>
-            </li>
-          ))}
-        </ul>
-        <ul className="ag-footer-social">
-          {REDES.map((item) => (
-            <li key={item.label}>
-              <a href={item.href} target="_blank" rel="noreferrer">
-                <item.Mark />
-                {item.label}
+              <a
+                href={buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes)}
+                className="ag-footer-channel-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <PhoneMark />
+                <div className="ag-footer-channel-body">
+                  <span className="ag-footer-channel-label">(icono de teléfono)</span>
+                  <strong className="ag-footer-channel-val">{CONTACTO.whatsappEstudiantesVisible}</strong>
+                </div>
               </a>
-            </li>
-          ))}
-        </ul>
-        {CONTACTO.canalWhatsApp ? (
-          <a className="ag-footer-qr" href={CONTACTO.canalWhatsApp}>
-            <Image src="/landing/brand/qr-canal.svg" alt="Código QR del canal de WhatsApp" width={64} height={64} />
-          </a>
-        ) : null}
+            </div>
+          </div>
+
+          {/* Correo electrónico */}
+          <div className="ag-footer-contact-col">
+            <h3 className="ag-footer-contact-subhead">CORREO ELECTRÓNICO</h3>
+            <div className="ag-footer-contact-items">
+              <a href={`mailto:${correoContacto}`} className="ag-footer-channel-link">
+                <MailMark />
+                <div className="ag-footer-channel-body">
+                  <span className="ag-footer-channel-label">(icono de correo)</span>
+                  <strong className="ag-footer-channel-val">{correoContacto}</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Síguenos en */}
+          <div className="ag-footer-contact-col">
+            <h3 className="ag-footer-contact-subhead">SÍGUENOS EN</h3>
+            <div className="ag-footer-social-row">
+              {REDES.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="ag-footer-social-link"
+                >
+                  <item.Mark />
+                  <span>{item.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
+
+      {/* Marca SeamosGenios */}
       <FooterMark />
-      <div className="ag-wrap ag-footer-legal">
-        <Pending note={FOOTER.confirmar}>
-          <p>
-            © {new Date().getFullYear()} SEAMOSGENIOS SAS
-            {FOOTER.nit ? ` · NIT ${FOOTER.nit}` : ''} · <Link href="/landing/politica-de-datos">Política de datos</Link>
-            {' · '}
-            <CookiePrefsButton />
-            {' · '}
-            <a href={CONTACTO.web}>seamosgenios.org</a>
-          </p>
-        </Pending>
+
+      {/* Barra de cookies y legal: Centrada en contenedor con píldora */}
+      <div className="ag-wrap ag-footer-legal-wrap">
+        <div className="ag-footer-legal-pill">
+          <Pending note={FOOTER.confirmar}>
+            <p className="ag-footer-legal-copy">
+              © {new Date().getFullYear()} SEAMOSGENIOS SAS
+              {FOOTER.nit ? ` · NIT ${FOOTER.nit}` : ''} ·{' '}
+              <Link href="/landing/politica-de-datos">Política de datos</Link>
+              {' · '}
+              <CookiePrefsButton />
+              {' · '}
+              <a href={CONTACTO.web}>seamosgenios.org</a>
+            </p>
+          </Pending>
+        </div>
       </div>
     </footer>
   );
