@@ -36,7 +36,6 @@ export function Hero() {
         <div className="ag-hero-fx-side">
           <HeroMascota />
         </div>
-        <div className="ag-hero-fx-extra" />
       </div>
     </section>
   );

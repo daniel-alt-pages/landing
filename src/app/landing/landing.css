@@ -3916,17 +3916,15 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 .ag-hero-fx-side { display: flex; justify-content: center; align-items: flex-end; min-width: 0; padding: 8px 0 0; }
 .ag-hero-fx .ag-hero-mascota { position: static; margin: 0 auto; width: 100%; max-width: 340px; }
 .ag-hero-fx .ag-hero-mascota img { filter: drop-shadow(0 25px 25px rgb(0 0 0 / .35)); }
-.ag-hero-fx-extra { min-width: 0; padding-bottom: 48px; }
-.ag-hero-fx-extra:empty { padding-bottom: 32px; }
+/* Espacio inferior del hero en móvil (antes lo daba el hueco vacío .ag-hero-fx-extra). */
+@media (max-width: 1023.98px) { .ag-hero-fx .ag-hero-fx-grid { padding-bottom: 40px; } } /* 32px + 8px del gap de la fila vacía */
 @media (min-width: 640px) { .ag-hero-fx .ag-lead { font-size: 18px; } }
 @media (min-width: 1024px) {
   .ag-hero-v2.ag-hero-fx.ag-section:has(.ag-hero-1col) { padding: 0; min-height: 640px; }
-  .ag-hero-fx .ag-hero-fx-grid { grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); grid-template-areas: "copy side" "extra extra"; gap: 0 40px; padding: 0 clamp(0px, 3vw, 48px); }
+  .ag-hero-fx .ag-hero-fx-grid { grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); grid-template-areas: "copy side"; gap: 0 40px; padding: 0 clamp(0px, 3vw, 48px); }
   .ag-hero-fx .ag-hero-copy { grid-area: copy; align-self: center; padding: 88px 0 72px; }
   .ag-hero-fx-side { grid-area: side; align-items: flex-end; justify-content: flex-end; padding: 48px 0 40px; }
   .ag-hero-fx .ag-hero-mascota { max-width: none; width: min(100%, 500px); margin: 0; }
-  .ag-hero-fx-extra { grid-area: extra; }
-  .ag-hero-fx-extra:empty { display: none; }
 }
 .ag-hero-fx-side { position: relative; }
 .ag-hero-fx-side::before { content: ""; position: absolute; left: 50%; top: 55%; width: min(110%, 560px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(255,255,255,.22), rgba(255,255,255,.06) 60%, transparent); pointer-events: none; }
