@@ -15,6 +15,7 @@ const TOTAL = CICLO_PASOS.length;
  * animación del arco, así arco y paso van siempre sincronizados y la pausa (animation-play-state) no pierde el tiempo transcurrido.
  * Del paso 6 vuelve al 1 y el arco se reinicia.
  * Se pausa con el puntero encima o el foco dentro, y se detiene si la sección no es visible (IntersectionObserver).
+ * Botón visible de pausa/reanudar (aria-pressed) en todos los anchos: deja arco y halo parados hasta reanudar.
  * Con prefers-reduced-motion no avanza: se muestra una lista estática con los 6 pasos (CSS, también sin JS).
  */
 export function CicloInteractivo() {
@@ -25,10 +26,12 @@ export function CicloInteractivo() {
   const [visible, setVisible] = useState(false);
   const [encima, setEncima] = useState(false);
   const [foco, setFoco] = useState(false);
+  // Pausa persistente elegida por el usuario (WCAG 2.2.2): detiene arco y halo hasta que la reanude.
+  const [detenido, setDetenido] = useState(false);
   const raiz = useRef<HTMLDivElement>(null);
 
   const aplica = CICLO_FILTROS.find((f) => f.id === filtro)!.pasos as readonly number[];
-  const pausado = reducido || !visible || encima || foco;
+  const pausado = reducido || !visible || encima || foco || detenido;
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -74,6 +77,15 @@ export function CicloInteractivo() {
           ))}
         </div>
         <div className="cic-grupo" role="group" aria-label="Vista">
+          <button type="button" className="cic-pausa" aria-pressed={detenido}
+            aria-label={detenido ? 'Reanudar el recorrido automático del ciclo' : 'Pausar el recorrido automático del ciclo'}
+            onClick={() => setDetenido((d) => !d)}>
+            {detenido ? (
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor" /></svg>
+            )}
+          </button>
           <button type="button" className="cic-chip" aria-pressed={vista === 'circulo'} onClick={() => setVista('circulo')}>Solo círculo</button>
           <button type="button" className="cic-chip" aria-pressed={vista === 'completo'} onClick={() => setVista('completo')}>Círculo + inspector + 7 pasos</button>
         </div>

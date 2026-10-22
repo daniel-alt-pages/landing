@@ -73,12 +73,14 @@ export function SearchChoice({
         className="ag-choice-btn"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-controls={listId}
+        // Nombre accesible = etiqueta del campo + valor/placeholder; aria-controls solo cuando la lista existe.
+        aria-labelledby={`${listId}-label ${listId}-value`}
+        aria-controls={open ? listId : undefined}
         aria-invalid={Boolean(error)}
         aria-describedby={described}
         onClick={() => setOpen((current) => !current)}
       >
-        <span className={shown ? undefined : 'ag-choice-placeholder'}>{shown || placeholder}</span>
+        <span id={`${listId}-value`} className={shown ? undefined : 'ag-choice-placeholder'}>{shown || placeholder}</span>
         <ChevronDown size={18} strokeWidth={1.8} aria-hidden />
       </button>
       {open ? (

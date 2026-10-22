@@ -108,5 +108,10 @@
 /* v6 · Arco sincronizado: se llena del paso activo al siguiente durante CICLO_DURACIONES_MS[activo]; al terminar avanza el paso. */
 .cic .cic-arco { transition: none; stroke-dashoffset: var(--hasta); animation-name: cic-arco; animation-timing-function: linear; animation-fill-mode: both; }
 .cic[data-pausado] .cic-arco { animation-play-state: paused; }
+/* Pausa/reanudar (WCAG 2.2.2): visible en todos los anchos; 44×44, borde gris con 3:1 sobre blanco. */
+.cic-pausa { display: inline-grid; place-items: center; flex: 0 0 auto; width: 44px; height: 44px; padding: 0; border: 1.5px solid #767676; border-radius: 999px; background: #fff; color: #0D0E11; cursor: pointer; }
+.cic-pausa[aria-pressed='true'] { border-color: #0D0E11; }
+.cic-pausa:focus-visible { outline: 3px solid #CC0000; outline-offset: 3px; }
+.cic[data-pausado] .cic-halo { animation-play-state: paused; }
 @keyframes cic-arco { from { stroke-dashoffset: var(--desde); } to { stroke-dashoffset: var(--hasta); } }
 @media (prefers-reduced-motion: reduce) { .cic .cic-arco { animation: none; stroke-dashoffset: var(--desde); } }

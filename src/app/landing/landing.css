@@ -3852,6 +3852,15 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .ag-consent-actions .ag-btn-ghost { flex: 1 1 auto; min-height: 44px; padding: 6px 8px; font-size: 13px; white-space: nowrap; }
   html:has(.ag-consent) { scroll-padding-bottom: 32vh; }
 }
+/* 320 px: los tres botones no caben en una fila («Elegir» quedaba fuera, x=348): se reparten en dos. */
+@media (max-width: 360px) {
+  .ag-consent-actions { flex-wrap: wrap; }
+}
+/* WCAG 2.4.11 (todos los anchos): mientras el banner está visible, el final de la página (pie) tiene
+ * espacio extra igual a su alto (--ag-consent-h lo mide ConsentBanner), así lo último enfocable
+ * puede quedar por encima del banner, y el desplazamiento por foco reserva ese mismo alto. */
+html:has(.ag-consent) { scroll-padding-bottom: calc(var(--ag-consent-h, 0px) + 24px); }
+html:has(.ag-consent) .alianza-root { padding-bottom: calc(var(--ag-consent-h, 0px) + 24px); }
 
 /* ───────── Hero en una columna (rama hero-una-columna) ───────── */
 .ag-hero-grid.ag-hero-1col { display: block; width: min(1040px, calc(100% - 32px)); }
