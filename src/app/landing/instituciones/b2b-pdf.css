@@ -1,5 +1,5 @@
 /* Acercamiento al Portafolio B2B (PDF): solo /instituciones. Ver comparacion/COMPARACION.md, cambios 1–10. */
-.ag-b2b, .ag-b2b-subnav {
+.ag-b2b:not(.ag-b2b-portada), .ag-b2b-subnav {
   --ag-ink: #0a0a0a;
   --ag-muted: #545454;
   --ag-red: #cc0000;
@@ -12,18 +12,18 @@
   --ag-radius: 8px;
 }
 /* 10. densidad de documento */
-.ag-section.ag-b2b { padding: 56px 0; }
-@media (min-width: 900px) { .ag-section.ag-b2b { padding: 72px 0; } }
+.ag-section.ag-b2b:not(.ag-b2b-portada) { padding: 56px 0; }
+@media (min-width: 900px) { .ag-section.ag-b2b:not(.ag-b2b-portada) { padding: 72px 0; } }
 /* 9. secciones blancas; la cuadrícula va solo en lienzos de diagrama (CCO) */
-.ag-b2b.ag-tone-grey { background: #fff; color: var(--ag-ink); }
-.ag-b2b.ag-tone-black { border-bottom: 4px solid var(--ag-red); }
+.ag-b2b:not(.ag-b2b-portada).ag-tone-grey { background: #fff; color: var(--ag-ink); }
+.ag-b2b:not(.ag-b2b-portada).ag-tone-black { border-bottom: 4px solid var(--ag-red); }
 /* 3. H2 en mayúsculas 900, dos tonos; etiqueta roja "0N ·" */
 .ag-b2b .ag-b2b-title { font-weight: 900; letter-spacing: -0.01em; text-transform: uppercase; }
 .ag-b2b .ag-b2b-title .ag-accent, .ag-b2b .ag-b2b-title .ag-accent-line { color: var(--ag-red); background: none; text-decoration: none; }
 .ag-b2b .ag-b2b-pregunta { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--ag-ink); }
 .ag-b2b .ag-b2b-pregunta span, .ag-b2b .ag-b2b-pregunta.is-on-dark span { min-height: 0; padding: 0; border-radius: 0; background: none; color: var(--ag-red); }
 /* 2. radios rectos */
-.ag-b2b [class*="ag-b2b-"]:not(.ag-b2b-chips li):not(.ag-b2b-punto):not(.ag-b2b-subnav),
+.ag-b2b:not(.ag-b2b-portada) [class*="ag-b2b-"]:not(.ag-b2b-chips li):not(.ag-b2b-punto):not(.ag-b2b-subnav),
 .ag-b2b .ag-pf, .ag-b2b [class*="ag-pf-"]:not(.ag-pf-hito):not(.ag-pf-badge):not(.ag-pf-estado):not(.ag-pf-rueda li span):not(.ag-pf-numerada li) { border-radius: var(--ag-radius); }
 .ag-b2b .ag-pf-tarjeta, .ag-b2b .ag-pf-capacidades li, .ag-b2b .ag-pf-checks li, .ag-b2b .ag-pf-cadena li, .ag-b2b .ag-pf-tipos li { border-radius: var(--ag-radius-sm); }
 .ag-b2b .ag-b2b-dato { border-radius: var(--ag-radius); border-width: 1.5px; }
@@ -49,18 +49,8 @@
 .ag-b2b td.is-ultimo { background: var(--ag-red-tint); }
 
 /* P0.1 portada blanca con banda roja superior */
-.ag-b2b-portada.is-claro { position: relative; background: #fff; color: var(--ag-ink); border-top: 8px solid var(--ag-red); }
-.ag-b2b-portada.is-claro h1 { color: var(--ag-ink); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; }
-.ag-b2b-portada.is-claro h1 .ag-accent { color: var(--ag-red); background: none; }
-.ag-b2b-portada.is-claro .ag-b2b-kicker { color: var(--ag-red); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.ag-b2b-portada.is-claro .ag-b2b-bajada, .ag-b2b-portada.is-claro .ag-b2b-nota { color: var(--ag-ink-2); }
-.ag-b2b-portada.is-claro .ag-b2b-chip { background: var(--ag-ink); color: #fff; border-radius: 4px; }
-.ag-b2b-portada.is-claro .ag-b2b-chips li { background: #fff; color: var(--ag-ink); border: 1.5px solid var(--ag-ink); border-radius: 4px; }
-.ag-b2b-portada.is-claro .ag-b2b-btn-ghost { background: #fff; color: var(--ag-ink); border: 1.5px solid var(--ag-ink); }
-.ag-b2b-portada.is-claro .ag-b2b-panel { border: 1.5px solid var(--ag-ink); border-radius: 8px; box-shadow: none; }
-.ag-b2b-portada.is-claro .ag-b2b-panel figcaption { color: var(--ag-ink-2); }
 /* sin sombras en toda la página */
-.ag-b2b *, .ag-b2b-subnav { box-shadow: none !important; }
+.ag-b2b:not(.ag-b2b-portada) *, .ag-b2b-subnav { box-shadow: none !important; }
 .ag-b2b .ag-b2b-tabs a, .ag-b2b .ag-b2b-tabs button, .ag-b2b [role="tab"] { border-radius: 4px; }
 .ag-b2b-escenario { grid-template-columns: 1fr !important; }
 /* Ciclo: etiquetas fuera del anillo, sin tapar los nodos; anillo visible al entrar */
@@ -78,7 +68,7 @@
 .ag-b2b .is-armed:not(.is-in) .ag-b2b-ring { stroke-dashoffset: 742; }
 @media (prefers-reduced-motion: reduce) { .ag-b2b .ag-b2b-ring { transition: none; stroke-dashoffset: 0; } }
 /* Sin doble padding entre secciones blancas consecutivas (hueco en móvil) */
-.ag-section.ag-b2b { padding: 40px 0; }
-@media (min-width: 900px) { .ag-section.ag-b2b { padding: 64px 0; } }
+.ag-section.ag-b2b:not(.ag-b2b-portada) { padding: 40px 0; }
+@media (min-width: 900px) { .ag-section.ag-b2b:not(.ag-b2b-portada) { padding: 64px 0; } }
 .ag-section.ag-b2b + .ag-section.ag-b2b:not(.ag-tone-red) { padding-top: 32px; border-top: 1px solid #E9E9E9; }
 @media (min-width: 900px) { .ag-section.ag-b2b + .ag-section.ag-b2b:not(.ag-tone-red) { padding-top: 48px; } }
