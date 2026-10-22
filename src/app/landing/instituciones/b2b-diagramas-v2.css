@@ -4,22 +4,23 @@
 .sg-ico { display: block; width: 24px; height: 24px; }
 
 /* ---------- A. Cuatro roles ---------- */
-.sg-roles { margin: 0 0 40px; padding: 24px; background: #fff; border: 1px solid #e6e6e6; border-radius: 8px; }
-.sg-roles-cap { margin: 0 auto 24px; max-width: 62ch; text-align: center; font-size: 18px; font-weight: 600; }
+.sg-roles { margin: 0 0 40px; padding: 24px; background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+.sg-roles-cap { margin: 0 auto 24px; max-width: 62ch; text-align: center; font-size: 17px; font-weight: 600; color: #4b5563; }
 .sg-roles-grid { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'dir' 'cdir' 'doc' 'cdoc' 'est' 'cfam' 'fam'; }
-.sg-roles-card { grid-area: var(--a); background: #fff; border: 1.5px solid var(--n); border-radius: 8px; padding: 16px; min-width: 0; }
+.sg-roles-card { grid-area: var(--a); background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 18px; padding: 18px; min-width: 0; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03); transition: transform 0.2s, box-shadow 0.2s; }
+.sg-roles-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); }
 .sg-roles-card.is-dir { --a: dir; } .sg-roles-card.is-doc { --a: doc; } .sg-roles-card.is-fam { --a: fam; }
-.sg-roles-card.is-est { --a: est; background: var(--rosa); border: 2px solid var(--r); }
+.sg-roles-card.is-est { --a: est; background: #fffafa; border: 1.5px solid rgba(204, 0, 0, 0.25); box-shadow: 0 8px 24px rgba(204, 0, 0, 0.06); }
 .sg-roles-card header { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
-.sg-roles-ico { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 8px; background: var(--r); color: #fff; }
-.sg-roles-card h3 { margin: 0; font-size: 20px; line-height: 1.2; font-weight: 800; }
+.sg-roles-ico { display: grid; place-items: center; width: 42px; height: 42px; flex: none; border-radius: 12px; background: var(--r); color: #fff; }
+.sg-roles-card h3 { margin: 0; font-size: 19px; line-height: 1.2; font-weight: 800; }
 .sg-roles-card.is-est h3 { color: var(--r); }
-.sg-roles-ruta { margin: 0; font-size: 16px; color: var(--g); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.sg-roles-card > p { margin: 0 0 12px; }
+.sg-roles-ruta { margin: 0; font-size: 14px; color: var(--g); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.sg-roles-card > p { margin: 0 0 12px; font-size: 15px; color: #555; }
 .sg-roles-card dl { margin: 0; display: grid; gap: 8px; }
-.sg-roles-card dl > div { display: grid; gap: 0; padding-top: 8px; border-top: 1px solid rgba(0,0,0,.12); }
-.sg-roles-card dt { font-weight: 700; font-size: 16px; }
-.sg-roles-card dd { margin: 0; font-size: 16px; }
+.sg-roles-card dl > div { display: grid; gap: 0; padding-top: 8px; border-top: 1px solid rgba(0,0,0,.08); }
+.sg-roles-card dt { font-weight: 700; font-size: 14.5px; }
+.sg-roles-card dd { margin: 0; font-size: 14px; color: #555; }
 .sg-roles-con { position: relative; height: 40px; display: grid; place-items: center; }
 .sg-roles-con.is-dir { grid-area: cdir; } .sg-roles-con.is-doc { grid-area: cdoc; } .sg-roles-con.is-fam { grid-area: cfam; }
 .sg-roles-con svg { position: absolute; overflow: visible; }
@@ -38,20 +39,20 @@
 @media (min-width: 1200px) { .sg-roles-grid { grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1.15fr) 56px minmax(0, 1fr); } .sg-roles-card { padding: 20px; } }
 
 /* ---------- B. Ecosistema (lámina 13) ---------- */
-.sg-eco { margin: 40px 0; padding: 24px 16px; background: #fff; border-radius: 8px; border: 1px solid #e6e6e6; }
-.sg-eco-eyebrow { margin: 0; text-align: center; color: var(--r); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; }
-.sg-eco-titulo { margin: 4px auto 8px; text-align: center; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.1; font-weight: 900; text-transform: uppercase; text-wrap: balance; }
+.sg-eco { margin: 40px 0; padding: 28px 20px; background: #fff; border-radius: 24px; border: 1px solid rgba(0, 0, 0, 0.08); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); }
+.sg-eco-eyebrow { margin: 0; text-align: center; color: var(--r); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: .05em; }
+.sg-eco-titulo { margin: 6px auto 10px; text-align: center; font-size: clamp(24px, 3.2vw, 38px); line-height: 1.1; font-weight: 900; text-transform: uppercase; text-wrap: balance; }
 .sg-eco-titulo span { color: var(--r); }
-.sg-eco-lead { margin: 0 auto 24px; max-width: 62ch; text-align: center; }
+.sg-eco-lead { margin: 0 auto 24px; max-width: 62ch; text-align: center; color: #555; font-size: 15.5px; }
 .sg-eco-fig { margin: 0; }
 .sg-eco-lienzo { display: grid; gap: 0; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'doc' 'fam' 'est' 'test' 'sg' 'dir'; }
 .sg-eco-svg, .sg-eco-rotulo { display: none; }
-.sg-eco-caja { position: relative; background: #fff; border: 1.5px solid var(--n); border-radius: 8px; padding: 16px 16px 16px 72px; min-height: 96px; }
+.sg-eco-caja { position: relative; background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 18px; padding: 18px 18px 18px 74px; min-height: 90px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03); }
 .sg-eco-caja.is-docentes { grid-area: doc; margin-bottom: 12px; } .sg-eco-caja.is-familias { grid-area: fam; margin-bottom: 16px; }
-.sg-eco-caja.is-estudiante { grid-area: est; border: 2px solid var(--r); box-shadow: 0 0 0 4px var(--rosa); }
-.sg-eco-caja.is-sg { grid-area: sg; background: var(--rosa); border-color: var(--r); margin-bottom: 16px; }
+.sg-eco-caja.is-estudiante { grid-area: est; border: 1.5px solid var(--r); box-shadow: 0 6px 20px rgba(204, 0, 0, 0.08); }
+.sg-eco-caja.is-sg { grid-area: sg; background: #fef2f2; border: 1px solid rgba(204, 0, 0, 0.25); margin-bottom: 16px; }
 .sg-eco-caja.is-directivos { grid-area: dir; }
-.sg-eco-ico { position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--r); color: #fff; }
+.sg-eco-ico { position: absolute; left: 18px; top: 18px; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--r); color: #fff; }
 .sg-eco-caja h5 { margin: 0 0 2px; color: var(--r); font-size: 17px; font-weight: 800; line-height: 1.2; }
 .sg-eco-caja p { margin: 0; font-size: 16px; }
 .sg-eco-caja .sg-eco-sub { font-weight: 700; font-size: 16px; }
