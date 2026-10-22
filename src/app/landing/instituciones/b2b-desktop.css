@@ -2,15 +2,13 @@
 .ag-b2m-trazo { display: none; }
 @media (min-width: 1024px) {
   .b2b-panel {
-    --b2b-rojo: #FF2323;
-    --ag-red: #FF2323;
     --ag-font: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
     font-family: var(--ag-font);
   }
   .b2b-panel :is(h1, h2, h3) { font-family: var(--ag-font); font-weight: 800; letter-spacing: -0.03em; }
 
   /* Ruta de navegación sobre el rojo de la portada (la barra es global; solo cambia en esta página). */
-  body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar { padding: 20px 0 0; background: #FF2323; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar { position: absolute; left: 0; right: 0; z-index: 2; padding: 20px 0 0; background: none; }
   body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar .ag-wrap { width: auto; max-width: none; margin: 0; padding: 0 48px; }
   body:has(.b2b-panel .sg-hero) .ag-breadcrumb { font-family: 'Plus Jakarta Sans', var(--ag-font); font-size: 17px; font-weight: 700; color: #fff; }
   body:has(.b2b-panel .sg-hero) .ag-breadcrumb a { color: #fff; }
@@ -42,4 +40,9 @@
   .b2b-panel .sg-hero-chips li, .b2b-panel .sg-hero-nota { font-size: 19px; font-weight: 700; }
   .b2b-panel .sg-hero-btn { font-size: 19px; }
   .b2b-panel .sg-hero-sub { font-size: 24px; }
+}
+/* v2: el rojo brillante solo en la portada; el texto rojo pequeño sobre claro sigue en #CC0000 (5.9:1). La ruta flota dentro de la portada, sin franja. */
+@media (min-width: 1024px) {
+  .b2b-panel .sg-hero { --b2b-rojo: #FF2323; --ag-red: #FF2323; min-height: calc(100svh - var(--ag-header, 48px)); }
+  .b2b-panel .sg-hero-main { padding-top: 88px; }
 }
