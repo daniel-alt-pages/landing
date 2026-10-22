@@ -110,9 +110,8 @@ export const B2B_CADENA = {
     { n: '2', title: 'Comprender', text: 'Analítica de brechas y datos' },
     { n: '3', title: 'Formar', text: 'Clases en vivo y conceptos' },
     { n: '4', title: 'Acompañar', text: 'Comité directivo y familias' },
-    { n: '5', title: 'Intervenir', text: 'Refuerzo y solución de errores' },
-    { n: '6', title: 'Verificar', text: 'Medición de avance T0, T1 y T2' },
-    { n: '7', title: 'Mejorar', text: 'Impacto sostenido en Saber 11' },
+    { n: '5', title: 'Verificar', text: 'Medición de avance T0, T1 y T2' },
+    { n: '6', title: 'Mejorar', text: 'Impacto sostenido en Saber 11' },
   ],
   nota: 'Los productos no son ofertas aisladas: son niveles crecientes de profundidad en la misma cadena.',
 };
@@ -221,12 +220,12 @@ export const B2B_COMPARATIVO = {
 
 /** Filas N1, N2 y N3. Columnas en el orden de B2B_CADENA.eslabones. */
 export const B2B_COBERTURA = [
-  [true, true, false, false, false, false, false],
-  [true, true, true, false, true, true, false],
-  [true, true, true, true, true, true, true],
+  [true, true, false, false, false, false],
+  [true, true, true, false, true, false],
+  [true, true, true, true, true, true],
 ] as const;
 
-export const B2B_PASOS_CORTOS = ['Evaluar', 'Comprender', 'Formar', 'Acompañar', 'Intervenir', 'Verificar', 'Mejorar'] as const;
+export const B2B_PASOS_CORTOS = ['Evaluar', 'Comprender', 'Formar', 'Acompañar', 'Verificar', 'Mejorar'] as const;
 
 export const B2B_CICLO_CENTRO = 'La evaluación no termina en un puntaje.';
 export const B2B_CICLO_CIERRE = 'SEAMOSGENIOS acompaña con datos. No reemplaza a la institución.';

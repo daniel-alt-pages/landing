@@ -87,7 +87,7 @@ export function CicloInteractivo() {
             )}
           </button>
           <button type="button" className="cic-chip" aria-pressed={vista === 'circulo'} onClick={() => setVista('circulo')}>Solo círculo</button>
-          <button type="button" className="cic-chip" aria-pressed={vista === 'completo'} onClick={() => setVista('completo')}>Círculo + inspector + 7 pasos</button>
+          <button type="button" className="cic-chip" aria-pressed={vista === 'completo'} onClick={() => setVista('completo')}>Círculo + inspector + 6 pasos</button>
         </div>
       </div>
 

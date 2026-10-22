@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   manifest: '/landing/site.webmanifest',
   icons: {
     icon: [
-      { url: '/landing/favicon.ico', sizes: '16x16' },
+      { url: '/landing/favicon.ico', sizes: 'any' },
       { url: '/landing/brand/sg-services-logo.svg', type: 'image/svg+xml' },
     ],
     apple: '/landing/brand/app-icon-192.png',
