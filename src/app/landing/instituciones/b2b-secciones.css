@@ -284,3 +284,4 @@
 .ag-b2b-preicfes-lista p { margin: 0; }
 .ag-b2b-preicfes-ir { align-self: flex-start; margin-top: auto; padding: 10px 0; min-height: 44px; box-sizing: border-box; font-weight: 700; color: var(--ag-ink); text-decoration: underline; text-underline-offset: 3px; }
 .ag-b2b-preicfes-ir:focus-visible { outline: 3px solid #CC0000; outline-offset: 3px; }
+
