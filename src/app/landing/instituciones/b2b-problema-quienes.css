@@ -68,3 +68,15 @@
   .ag-pq-stat, .ag-pq-ciclo, .ag-pq-mv article { padding: 24px; }
 }
 @media (max-width: 767px) { .ag-pq-col > svg, .ag-pq svg[width="44"] { width: 48px; height: 48px; } }
+
+/* v4: en 1024–1279 la columna mide ~430px y tres pasos no caben (palabras de 16px cortadas): se apilan. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .ag-pq-ciclo ol { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .ag-pq-ciclo li, .ag-pq-ciclo li:first-child, .ag-pq-ciclo li:last-child { padding: 0; }
+  .ag-pq-ciclo li + li { border-left: 0; border-top: 1px solid #6B6B6B; padding-top: 16px; }
+}
+.ag-pq-ciclo li { text-align: center; }
+@media (min-width: 1280px) { .ag-pq-ciclo li { padding: 0 12px; } }
+/* v4: tarjetas de cifras y rasgos centradas (icono, título y texto); a 1024–1279 los rasgos usan padding menor para cortar menos palabras. */
+.ag-pq-stat, .ag-pq-rasgos li { text-align: center; align-items: center; }
+@media (min-width: 1024px) and (max-width: 1279.98px) { .ag-pq-rasgos li { padding: 16px 12px; } }

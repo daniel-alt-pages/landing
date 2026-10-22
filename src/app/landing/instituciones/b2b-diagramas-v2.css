@@ -187,3 +187,11 @@
 /* Rótulos laterales: sin cortar palabras; a 1024–1199 bajan a 14px para caber en 104px. */
 .sg-eco-con.is-h .rt { overflow-wrap: normal; }
 @media (min-width: 1024px) and (max-width: 1199.98px) { .sg-eco-con.is-h .rt { font-size: 14px; left: 0; right: 0; } }
+
+/* v4: contenido centrado en las cajas (icono, título y texto) en ambos diagramas. */
+.sg-eco-caja { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.sg-eco-caja h5, .sg-eco-caja p { max-width: 100%; text-wrap: balance; }
+.sg-roles-card { text-align: center; }
+.sg-roles-card header { flex-direction: column; justify-content: center; gap: 8px; }
+.sg-roles-card .sg-roles-ico { margin: 0 auto; }
+.sg-roles-card > p, .sg-roles-card dd { text-wrap: pretty; }
