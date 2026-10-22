@@ -3,9 +3,9 @@ export const QUIENES = {
   lead:
     'La preparación de calidad para el Saber 11 no debería depender del colegio en el que estudia un joven. Por eso llevamos simulacros, tutores y un panel de rectoría a cualquier institución del país, 100% virtual.',
   mision:
-    'Transformar vidas con herramientas reales que abran las puertas del futuro académico de cualquier estudiante.',
+    'Transformar vidas brindando herramientas reales para abrir las puertas del futuro académico de cualquier estudiante.',
   vision:
-    'Democratizar la educación en Colombia y consolidarnos como el programa virtual líder en calidad, impacto social y oportunidad para todos.',
+    'Democratizar la educación en Colombia y ser el programa virtual líder, comprometido con la calidad, el impacto social y la oportunidad para todos.',
   diferenciales: [
     {
       id: 'tutores',
