@@ -280,3 +280,8 @@
   .ag-b2b-viaje { display: none; }
   .is-in .ag-b2b-ruta li, .is-in .ag-b2b-flujo li, .is-in .ag-b2b-brecha g { animation: none; opacity: 1; }
 }
+
+/* Movimiento reducido: sin la entrada ag-b2b-rise en los diagramas (la portada no se toca). */
+@media (prefers-reduced-motion: reduce) {
+  .is-in .ag-b2b-ruta li, .is-in .ag-b2b-flujo li { animation: none; }
+}
