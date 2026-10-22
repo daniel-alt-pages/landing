@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { MEDIA_MENTIONS } from '@/lib/mediaMentions';
 import { EQUIPO } from '../../_contenido/equipo';
@@ -151,45 +151,25 @@ function PersonCard({ person }: { person: (typeof EQUIPO)[number] }) {
 
 export function TeamSection() {
   const [area, setArea] = useState<AreaId>('todos');
-  const [pinned, setPinned] = useState(false);
   const hold = useRef<HTMLDivElement>(null);
-  const bar = useRef<HTMLDivElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const [edges, setEdges] = useState({ left: false, right: false, overflow: false });
 
-  useLayoutEffect(() => {
+  // La barra se pega con `position: sticky` (CSS). Aquí solo se mide la altura del
+  // header pegajoso cuando cambia de tamaño, nunca en cada frame de scroll.
+  useEffect(() => {
     const holdEl = hold.current;
-    const barEl = bar.current;
-    if (!holdEl || !barEl) return;
-    let frame = 0;
-    const measure = () => {
-      frame = 0;
-      const section = document.getElementById('equipo');
-      const header = document.querySelector<HTMLElement>('.ag-header');
-      if (!section) return;
-      const sticky = header ? getComputedStyle(header).position === 'sticky' : false;
-      const headerH = sticky && header ? header.offsetHeight : 0;
-      const holdTop = holdEl.getBoundingClientRect().top;
-      const sectionBottom = section.getBoundingClientRect().bottom;
-      const height = barEl.offsetHeight;
-      const pin = holdTop <= headerH && sectionBottom > headerH + height + 8;
-      holdEl.style.minHeight = pin ? `${height}px` : '';
-      barEl.style.top = pin ? `${headerH + 8}px` : '';
-      setPinned((current) => (current === pin ? current : pin));
+    const header = document.querySelector<HTMLElement>('.ag-header');
+    if (!holdEl || !header) return;
+    const sync = () => {
+      const sticky = getComputedStyle(header).position === 'sticky';
+      holdEl.style.setProperty('--ag-team-top', `${sticky ? header.offsetHeight : 0}px`);
     };
-    const onScroll = () => {
-      if (frame) return;
-      frame = requestAnimationFrame(measure);
-    };
-    measure();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
-  }, [area, pinned]);
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const el = scroller.current;
@@ -212,7 +192,7 @@ export function TeamSection() {
       observer.disconnect();
       window.removeEventListener('resize', sync);
     };
-  }, [area, pinned]);
+  }, [area]);
 
   useEffect(() => {
     const rail = scroller.current;
@@ -257,7 +237,7 @@ export function TeamSection() {
       <DisplayTitle id="equipo-title" lines={[{ text: 'Un equipo' }, { text: 'de élite', accent: true }]} />
       <Lead>Tutores que ya obtuvieron los puntajes que hoy enseñan a alcanzar. Estudian en las mejores universidades del país y conocen el examen desde adentro.</Lead>
       <div className="ag-team-hold" ref={hold}>
-        <div className={pinned ? 'ag-team-bar is-fixed' : 'ag-team-bar'} ref={bar}>
+        <div className="ag-team-bar">
           {edges.overflow ? (
             <button
               type="button"
