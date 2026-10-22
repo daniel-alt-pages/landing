@@ -15,7 +15,7 @@ export function ScreenGallery() {
       <Pending note={PANTALLAS_NOTA} block>
         <PhoneRow />
       </Pending>
-      <p style={{ marginTop: 8 }}>
+      <p className="ag-pantallas-mas" style={{ marginTop: 8 }}>
         <Link className="ag-text-link" href="/landing/plataforma">
           Ver la plataforma <ArrowRight size={16} aria-hidden />
         </Link>
