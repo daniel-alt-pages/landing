@@ -3843,23 +3843,6 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .ag-mapa.ag-section { padding: 128px 0; }
 }
 
-/* Cookies: compacto en móvil (antes tapaba medio primer pantallazo). */
-@media (max-width: 640px) {
-  .ag-consent { left: 12px; right: 12px; bottom: 12px; max-width: none; padding: 12px 14px; gap: 10px; }
-  .ag-consent-note { display: none; }
-  .ag-consent p { font-size: 13px; }
-  /* WCAG 2.4.11: el banner no puede tapar el foco. Máx. ~30 % del alto, botones en una fila. */
-  .ag-consent { max-height: 30vh; max-height: 30dvh; overflow-y: auto; gap: 8px; padding: 10px 12px; }
-  .ag-consent p { line-height: 1.35; }
-  .ag-consent-actions { flex-wrap: nowrap; gap: 6px; }
-  .ag-consent-actions .ag-btn,
-  .ag-consent-actions .ag-btn-ghost { flex: 1 1 auto; min-height: 44px; padding: 6px 8px; font-size: 13px; white-space: nowrap; }
-  html:has(.ag-consent) { scroll-padding-bottom: 32vh; }
-}
-/* 320 px: los tres botones no caben en una fila («Elegir» quedaba fuera, x=348): se reparten en dos. */
-@media (max-width: 360px) {
-  .ag-consent-actions { flex-wrap: wrap; }
-}
 /* WCAG 2.4.11 (todos los anchos): mientras el banner está visible, el pie reserva al final un espacio mayor
  * que el banner (móvil: máx. 30vh; escritorio: ~200 px) y el desplazamiento por foco también. Solo CSS: medirlo
  * con JS y escribirlo en la raíz forzaba un recálculo de estilos/layout de toda la página (+TBT). */
@@ -4135,6 +4118,14 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
   .qe-grid > .qe-item--resultados > .qe-card:hover,
   .qe-grid > .qe-item--instituciones > .qe-card:hover,
   .qe-grid > .qe-item--legal > .qe-card:hover { border-color: #fadbdb; }
+}
+
+/* Cookies en móvil (v1.0.24): diseño normal, texto completo. Ancho completo y desplazable si no cabe. */
+@media (max-width: 640px) {
+  .ag-consent { left: 12px; right: 12px; bottom: 12px; max-width: none; max-height: calc(100dvh - 96px); overflow-y: auto; overscroll-behavior: contain; }
+  .ag-consent .ag-only-mobile { display: none; }
+  html:has(.ag-consent) { scroll-padding-bottom: 60vh; }
+  html:has(.ag-consent) .ag-footer-legal { padding-bottom: 60vh; }
 }
 
 /* v1.0.23 · Cookies en vidrio (glassmorphism). Texto blanco sobre negro al 72 %: contraste AA aun sobre fondo blanco. */
