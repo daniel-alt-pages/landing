@@ -80,6 +80,7 @@ export function EcosistemaArticulado() {
         <figcaption id="sg-eco-cap" className="ag-b2b-sr">
           Diagrama del ecosistema: el estudiante en el centro; SEAMOSGENIOS envía a cada actor y los directivos respaldan a docentes y familias. La lista de relaciones está debajo.
         </figcaption>
+        <div className="sg-eco-scroll" tabIndex={0} role="region" aria-label="Diagrama del ecosistema (desplazable horizontalmente)">
         <div className="sg-eco-lienzo">
           <svg className="sg-eco-svg" viewBox="0 0 1000 620" aria-hidden="true" focusable="false">
             {FLECHAS.map((f) => (
@@ -109,6 +110,7 @@ export function EcosistemaArticulado() {
           <Tramo clase="is-fam" i={2} />
           <Tramo clase="is-dir" i={3} />
           <Caja id="directivos" />
+        </div>
         </div>
       </figure>
       <ul className="sg-eco-lista" aria-label="Relaciones del ecosistema">

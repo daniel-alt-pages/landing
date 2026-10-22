@@ -69,7 +69,7 @@
 .sg-eco-lista li.is-rojo svg { color: var(--r); }
 
 /* Tableta: cruz compacta con las 4 flechas rojas; las negras en la lista. */
-@media (min-width: 768px) and (max-width: 1023.98px) {
+@media (min-width: 768px) and (max-width: 767.98px) { /* desactivado: ≥768 usa el lienzo con scroll */
   .sg-eco { padding: 32px; }
   .sg-eco-lienzo { grid-template-columns: minmax(0, 1fr) 132px minmax(0, 1.1fr) 132px minmax(0, 1fr); grid-template-areas: '. . est . .' '. . test . .' 'doc tdoc sg tfam fam' '. . tdir . .' '. . dir . .'; align-items: stretch; }
   .sg-eco-caja { padding: 64px 14px 14px; margin: 0 !important; }
@@ -84,10 +84,10 @@
   .sg-eco-lista { grid-template-columns: 1fr 1fr; }
 }
 
-/* Escritorio (≥1024): lienzo de la lámina con las 8 flechas y sus rótulos. */
-@media (min-width: 1024px) {
+/* ≥768: lienzo de la lámina con las 8 flechas; bajo 960px de ancho útil se desplaza en horizontal. */
+@media (min-width: 768px) {
   .sg-eco { padding: 40px; }
-  .sg-eco-lienzo { display: block; position: relative; aspect-ratio: 1000 / 620; max-width: 1120px; margin: 0 auto; }
+  .sg-eco-lienzo { display: block; position: relative; aspect-ratio: 1000 / 620; width: 100%; min-width: 900px; margin: 0 auto; }
   .sg-eco-svg { display: block; position: absolute; z-index: 0; pointer-events: none; inset: 0; width: 100%; height: 100%; overflow: visible; }
   .sg-eco-svg path { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
   .sg-eco-svg .is-rojo path { stroke: var(--r); } .sg-eco-svg .is-negro path { stroke: var(--n); }
@@ -109,3 +109,16 @@
 .is-trazos-ocultos.is-trazos-on [data-trazo] { stroke-dashoffset: 0; transition: stroke-dashoffset .7s cubic-bezier(.77,0,.175,1) calc(var(--i, 0) * 80ms); }
 .is-trazos-ocultos.is-trazos-on [data-punta] { opacity: 1; transition: opacity .25s cubic-bezier(.23,1,.32,1) calc(600ms + var(--i, 0) * 40ms); }
 @media (prefers-reduced-motion: reduce) { .is-trazos-ocultos [data-trazo] { stroke-dasharray: none; stroke-dashoffset: 0; } .is-trazos-ocultos [data-punta] { opacity: 1; } }
+
+/* Desborde: contenedor con scroll horizontal accesible; texto fluido (mín. 13px) que corta palabras largas. */
+.sg-eco-scroll { overflow-x: auto; scrollbar-width: thin; scrollbar-color: #9a9a9a #f0f0f0; padding-bottom: 4px; border-radius: 8px; }
+.sg-eco-scroll:focus-visible { outline: 3px solid var(--r); outline-offset: 2px; }
+@media (min-width: 768px) {
+  .sg-eco { padding: clamp(20px, 2.5vw, 40px); }
+  .sg-eco-caja { padding: 10px 10px 10px clamp(50px, 4.6vw, 64px); overflow-wrap: anywhere; hyphens: auto; }
+  .sg-eco-ico { left: 10px; width: clamp(34px, 3.2vw, 44px); height: clamp(34px, 3.2vw, 44px); }
+  .sg-eco-ico svg { width: 60%; height: 60%; }
+  .sg-eco-caja h5 { font-size: clamp(14px, 1.3vw, 17px); }
+  .sg-eco-caja p, .sg-eco-caja .sg-eco-sub { font-size: clamp(13px, 1.15vw, 15px); line-height: 1.3; }
+  .sg-eco-rotulo { font-size: clamp(13px, 1.15vw, 15px); max-width: 140px; overflow-wrap: anywhere; }
+}
