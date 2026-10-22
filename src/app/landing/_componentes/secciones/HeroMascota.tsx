@@ -1,5 +1,5 @@
 /**
- * Mascota del hero. Una sola entrada fade-in-up (20px, 800ms, ease-out) en CSS:
+ * Mascota del hero. Una sola entrada fade-in-up (20px, 400ms, cubic-bezier(.23,1,.32,1)) en CSS:
  * no depende de JS (antes framer-motion dejaba opacity:0 en el HTML hasta hidratar,
  * lo que retrasaba el LCP y la ocultaba sin JS). Con reduced-motion no se anima.
  */

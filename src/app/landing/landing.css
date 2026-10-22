@@ -1176,7 +1176,7 @@
   line-height: 0;
   background: #111;
   box-shadow: 0 28px 70px rgba(15, 23, 42, 0.16);
-  animation: ag-fade-up 800ms var(--ag-ease) 80ms both;
+  animation: ag-fade-up 400ms cubic-bezier(0.23, 1, 0.32, 1) 80ms both;
 }
 .ag-hero-window img {
   display: block;
@@ -2258,7 +2258,7 @@
 }
 
 .ag-faq summary::-webkit-details-marker { display: none; }
-.ag-faq summary::after { content: '+'; flex: 0 0 auto; font-size: 24px; color: var(--ag-red); transition: transform 200ms ease; }
+.ag-faq summary::after { content: '+'; flex: 0 0 auto; font-size: 24px; color: var(--ag-red); transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1); }
 .ag-faq details[open] summary::after { transform: rotate(45deg); }
 
 /* ───────── Cierre y formulario ───────── */
@@ -2813,14 +2813,20 @@
 .ag-close-cards > *:nth-child(2) { animation-delay: 70ms; }
 .ag-close-cards > *:nth-child(3) { animation-delay: 140ms; }
 
-.ag-reveal-on .alianza-root .ag-section > .ag-wrap {
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap > * {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 600ms var(--ag-ease), transform 600ms var(--ag-ease);
+  transform: translateY(12px);
+  transition: opacity 360ms cubic-bezier(0.23, 1, 0.32, 1), transform 360ms cubic-bezier(0.23, 1, 0.32, 1);
 }
+/* Escalonado de 50 ms entre hijos; tope en el 6.º para que nada espere de más. */
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap > :nth-child(2) { transition-delay: 50ms; }
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap > :nth-child(3) { transition-delay: 100ms; }
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap > :nth-child(4) { transition-delay: 150ms; }
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap > :nth-child(5) { transition-delay: 200ms; }
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap > :nth-child(n+6) { transition-delay: 250ms; }
 
-.ag-reveal-on .alianza-root .ag-section > .ag-wrap.is-in,
-.ag-reveal-on .alianza-root .ag-store > .ag-wrap {
+.ag-reveal-on .alianza-root .ag-section > .ag-wrap.is-in > *,
+.ag-reveal-on .alianza-root .ag-store > .ag-wrap > * {
   opacity: 1;
   transform: none;
 }
@@ -2846,7 +2852,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ag-reveal-on .alianza-root .ag-section > .ag-wrap {
+  .ag-reveal-on .alianza-root .ag-section > .ag-wrap,
+  .ag-reveal-on .alianza-root .ag-section > .ag-wrap > * {
     opacity: 1;
     transform: none;
     transition: none;
@@ -3974,7 +3981,7 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 @media (min-width: 1024px) { .ag-hero-fx .ag-hero-fx-grid { padding: 0; } }
 
 /* Entrada de la mascota del hero solo con CSS (sin opacity:0 en el HTML del servidor). */
-.ag-hero-mascota-in { animation: ag-mascota-in 800ms ease-out both; }
+.ag-hero-mascota-in { animation: ag-mascota-in 400ms cubic-bezier(0.23, 1, 0.32, 1) both; }
 @keyframes ag-mascota-in { from { opacity: 0.01; transform: translateY(20px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .ag-hero-mascota-in { animation: none; } }
 /* «Qué encuentra» v5 (21-oct-2026): ilustración pequeña (texto protagonista), oscuras 1·3·5 / claras 2·4·6,
