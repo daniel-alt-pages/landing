@@ -65,7 +65,6 @@ export function CicloInteractivo() {
         <div className="cic-svgcaja">
           <svg className="cic-svg" viewBox="0 0 540 450" role="group" aria-label="Ciclo de 6 pasos">
             <defs>
-              <marker id="cic-fl" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#0A0A0A" strokeWidth="1.8" /></marker>
               <filter id="cic-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" /></filter>
             </defs>
             <path className="cic-mancha" d="M110 120C150 40 300 20 400 60C500 100 520 220 480 320C440 410 300 440 190 410C80 380 40 300 60 220C70 180 85 150 110 120Z" />
@@ -73,9 +72,12 @@ export function CicloInteractivo() {
             <circle cx={CX} cy={CY} r={R} className="cic-base" />
             <circle cx={CX} cy={CY} r={R} className="cic-arco" transform={`rotate(-90 ${CX} ${CY})`}
               strokeDasharray={CIRC} strokeDashoffset={CIRC * (1 - activo / TOTAL)} />
-            {ANG.map((a) => {
-              const [x1, y1] = pt(a + 27, R); const [x2, y2] = pt(a + 33, R);
-              return <path key={a} d={`M${x1} ${y1}L${x2} ${y2}`} className="cic-flecha" markerEnd="url(#cic-fl)" />;
+            {ANG.map((a, i) => {
+              const m = a + 30; const [x, y] = pt(m, R + 14);
+              return (
+                <path key={a} d="M-3 -5L2 0L-3 5" className="cic-flecha" data-hecha={i < activo || undefined}
+                  transform={`translate(${x} ${y}) rotate(${m + 90})`} vectorEffect="non-scaling-stroke" aria-hidden="true" />
+              );
             })}
             {CICLO_PASOS.map((s, i) => {
               const [x, y] = pt(ANG[i], R); const [px, py] = pt(ANG[i], RP);

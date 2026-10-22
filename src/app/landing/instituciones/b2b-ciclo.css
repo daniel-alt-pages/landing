@@ -21,7 +21,8 @@
 .cic-punteado { fill: none; stroke: var(--clinea); stroke-width: 1.5; stroke-dasharray: 3 7; }
 .cic-base { fill: #fff; stroke: var(--cink); stroke-width: 3; }
 .cic-arco { fill: none; stroke: var(--cr); stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset var(--cdur) var(--cease); }
-.cic-flecha { fill: none; stroke: transparent; stroke-width: 1; }
+.cic-flecha { fill: none; stroke: #C9C9C6; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round; transition: stroke 600ms var(--cease); }
+.cic-flecha[data-hecha] { stroke: var(--cr); }
 .cic-nodo { cursor: pointer; outline: none; transition: opacity var(--cdur) var(--cease); }
 .cic-nodo:focus-visible .cic-pill { stroke: var(--cr); stroke-width: 4; }
 .cic-punto { fill: #fff; stroke: var(--cink); stroke-width: 2.5; transition: r var(--cdur) var(--cease), fill var(--cdur); }

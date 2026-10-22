@@ -53,3 +53,21 @@
   .b2b-v4 .cic-halo { animation: none; opacity: 0.35; }
   .b2b-v4 :is(.ag-b2b-cartas article, .b2p-paso, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article):hover { transform: none; }
 }
+
+/* v5 · Cifras confirmadas en la portada: fila de datos con separador, sobre el rojo de la portada. */
+.sg-hero-cifras { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 0; margin: 16px 0 0; padding: 0; list-style: none; max-width: 100%; }
+.sg-hero-cifras li { padding: 0 14px; font-size: 14px; font-weight: 800; line-height: 1.4; color: #fff; border-left: 1.5px solid rgba(255, 255, 255, 0.55); }
+.sg-hero-cifras li:first-child { border-left: 0; }
+@media (max-width: 639px) {
+  .sg-hero-cifras { flex-direction: column; align-items: center; gap: 4px; margin: 0 0 24px; }
+  .sg-hero-cifras li { border-left: 0; padding: 0; }
+  .sg-hero-cifras li::before { content: '✓ '; font-weight: 800; }
+}
+@media (min-width: 640px) { .sg-hero-cifras li { font-size: 15px; } }
+
+/* v5 · Flechas del ciclo: chevron SVG (un <path>), 1,5 px, extremos redondeados, por fuera del círculo.
+   Gris claro en tramos pendientes; #FF2323 en los recorridos, con el mismo easing y duración que el arco. Sin animación propia. */
+.b2b-v4 .cic-flecha { stroke: #C9C9C6; stroke-width: 1.5px; transition: stroke 600ms var(--v4-ease); }
+.b2b-v4 .cic-flecha[data-hecha] { stroke: var(--v4-red); }
+.b2b-v4 .cic-base { stroke-width: 2; }
+@media (prefers-reduced-motion: reduce) { .b2b-v4 .cic-flecha { transition: stroke 200ms linear; } }

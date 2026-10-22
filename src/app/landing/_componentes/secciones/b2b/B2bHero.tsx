@@ -24,6 +24,9 @@ export function B2bHero() {
         <ul className="sg-hero-chips">
           {B2B_HERO.pilares.map((p) => <li key={p.title}>{p.title}</li>)}
         </ul>
+        <ul className="sg-hero-cifras" aria-label="Datos de SEAMOSGENIOS">
+          {B2B_HERO.cifras.map((c) => <li key={c}>{c}</li>)}
+        </ul>
         <div className="sg-hero-btns">
           <a className="sg-hero-btn is-primario" href="#solicitar-reunion">Agendar reunión</a>
           <a className="sg-hero-btn is-borde" href={b2bWhatsappUrl()}>Escribir por WhatsApp</a>

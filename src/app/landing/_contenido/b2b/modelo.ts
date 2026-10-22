@@ -21,6 +21,8 @@ export const B2B_HERO = {
     { title: 'Escala 0-500' },
     { title: '4 actores' },
   ],
+  /** Cifras confirmadas por Daniel (22-oct-2026). */
+  cifras: ['65 instituciones', 'Primer simulacro gratis', 'Respuesta en 1 día hábil'],
 };
 
 export const B2B_RESUMEN = {
