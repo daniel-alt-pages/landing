@@ -5,6 +5,7 @@ import { B2bHero } from '../_componentes/secciones/b2b/B2bHero';
 import { B2bNiveles } from '../_componentes/secciones/b2b/B2bNiveles';
 import { B2bNosotros } from '../_componentes/secciones/b2b/B2bNosotros';
 import { B2bPlataforma } from '../_componentes/secciones/b2b/B2bPlataforma';
+import { B2bPreicfes } from '../_componentes/secciones/b2b/B2bPreicfes';
 import { B2bPrograma } from '../_componentes/secciones/b2b/B2bPrograma';
 import { B2bResumen } from '../_componentes/secciones/b2b/B2bResumen';
 import './b2b-base.css';
@@ -28,6 +29,7 @@ export default function InstitucionesPage() {
       <B2bNosotros />
       <B2bNiveles />
       <B2bPrograma />
+      <B2bPreicfes />
       <B2bPlataforma />
       <B2bGobierno />
       <B2bCierre />

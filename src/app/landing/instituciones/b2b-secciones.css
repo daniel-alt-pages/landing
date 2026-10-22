@@ -273,3 +273,14 @@
   .ag-b2b-acciones .ag-b2b-btn { width: 100%; }
   .ag-b2b-capas li { margin-left: 0 !important; }
 }
+
+/* PreICFES (solo mención; la compra va en la tienda). */
+.ag-b2b-preicfes-lead { max-width: 60ch; margin: 16px 0 0; font-size: 16px; line-height: 1.5; }
+.ag-b2b-preicfes-lista { display: grid; gap: 24px; margin: 32px 0 0; padding: 0; list-style: none; }
+@media (min-width: 768px) { .ag-b2b-preicfes-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ag-b2b-preicfes-lista li { display: flex; flex-direction: column; gap: 8px; padding: 24px; border: 1.5px solid var(--ag-ink); border-radius: 8px; background: #fff; font-size: 16px; line-height: 1.5; }
+.ag-b2b-preicfes-lista h3 { margin: 0; font-size: 20px; line-height: 1.25; }
+.ag-b2b-preicfes-dato { margin: 0; font-weight: 700; color: var(--ag-red); }
+.ag-b2b-preicfes-lista p { margin: 0; }
+.ag-b2b-preicfes-ir { align-self: flex-start; margin-top: auto; padding: 10px 0; min-height: 44px; box-sizing: border-box; font-weight: 700; color: var(--ag-ink); text-decoration: underline; text-underline-offset: 3px; }
+.ag-b2b-preicfes-ir:focus-visible { outline: 3px solid #CC0000; outline-offset: 3px; }
