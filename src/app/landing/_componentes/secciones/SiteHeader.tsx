@@ -87,9 +87,6 @@ function FacebookMark() {
   );
 }
 
-/** href inicial (SSR / sin JS): en Pages no existe /login; el efecto lo ajusta al host. */
-const PUBLIC_LOGIN_FALLBACK = 'https://app.seamosgenios.org/login';
-
 function contactBase(pathname: string | null) {
   if (!pathname) return '/landing';
   return pathname.includes('/gracias') || pathname.includes('/politica-de-datos') ? '/landing' : '';
@@ -105,8 +102,8 @@ export function SiteHeader() {
   const [prices, setPrices] = useState<Record<string, number>>({});
   const [catalogReady, setCatalogReady] = useState(false);
   const [bumpKey, setBumpKey] = useState(0);
-  const [loginHref, setLoginHref] = useState(PUBLIC_LOGIN_FALLBACK);
-  const [appHref, setAppHref] = useState(PUBLIC_LOGIN_FALLBACK);
+  const [loginHref, setLoginHref] = useState('/login');
+  const [appHref, setAppHref] = useState('/login');
   const headerRef = useRef<HTMLElement>(null);
   const sheetRef = useRef<HTMLDivElement>(null);
   const prevCount = useRef<number | null>(null);
