@@ -45,7 +45,7 @@ export function Breadcrumb() {
             return (
               <span key={crumb.href} className="ag-breadcrumb-step">
                 {index > 0 ? <span aria-hidden="true">/</span> : null}
-                {current ? <span>{crumb.label}</span> : <Link href={crumb.href}>{crumb.label}</Link>}
+                {current ? <span>{crumb.label}</span> : <Link href={crumb.href} prefetch={false}>{crumb.label}</Link>}
               </span>
             );
           })}

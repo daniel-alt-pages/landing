@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Caveat, Plus_Jakarta_Sans } from 'next/font/google';
+import localFont from 'next/font/local';
 import { CONTACTO } from '../_contenido/contacto';
 import { B2B_CONTACTO } from '../_contenido/b2b/contacto';
 import { B2bCierre } from '../_componentes/secciones/b2b/B2bCierre';
@@ -27,10 +27,24 @@ import './b2b-ciclo.css';
 import './b2b-plataforma-v4.css';
 
 /** Lenguaje visual de la referencia de Daniel (maqueta-daniel.html): Plus Jakarta Sans + Caveat. Solo dentro del panel; el header no cambia. */
-/* Ambas son fuentes variables: sin `weight` next/font descarga un solo archivo por subset (rango 200-800 / 400-700)
- * en vez de uno por peso. Caveat solo se usa a 700 en titulillos decorativos: no se precarga. */
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-jakarta' });
-const caveat = Caveat({ subsets: ['latin'], display: 'swap', variable: '--font-caveat', preload: false });
+/* Subconjuntos propios (fonttools, todas las features OpenType conservadas, misma apariencia):
+ * Latín básico + Latin-1 (tildes, ñ, ¿¡) + comillas, rayas, viñeta, … y €. Antes: 5 pesos de Jakarta
+ * y 2 de Caveat desde next/font/google (7 archivos, 5 precargados).
+ * - Jakarta: el archivo variable 200-800 (24 KB) cubre todos los pesos que usa el panel.
+ * - Caveat: solo se usa a 700 en titulillos decorativos; no se precarga (display swap). */
+const jakarta = localFont({
+  src: './fuentes/plus-jakarta-sans-var-latin-sub.woff2',
+  weight: '200 800',
+  display: 'swap',
+  variable: '--font-jakarta',
+});
+const caveat = localFont({
+  src: './fuentes/caveat-700-latin-sub.woff2',
+  weight: '700',
+  display: 'swap',
+  variable: '--font-caveat',
+  preload: false,
+});
 
 const DESCRIPCION_SOCIAL = 'Simulacros tipo Saber 11 y clases en vivo para su colegio. Reportes por estudiante y por grupo en la semana siguiente.';
 
