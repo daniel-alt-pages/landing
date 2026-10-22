@@ -3756,10 +3756,9 @@ a.ag-product-cart.is-soon {
   .qe-wrap { padding: 0 32px; }
   .qe-title { font-size: 48px; }
   .qe-lead { font-size: 18px; }
-  .qe-burst { left: -24px; }
   .qe-hand { font-size: 29px; }
   .qe-curve { display: block; width: 48px; height: 48px; margin: -4px 0 0 96px; }
-  .qe-grid { margin-top: 64px; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+  .qe-grid { margin-top: 64px; gap: 24px; }
 }
 @media (min-width: 1200px) {
   .qe { padding: 96px 0; }
@@ -3771,24 +3770,50 @@ a.ag-product-cart.is-soon {
   .qe-card { padding: 32px; }
   .qe-card-title { font-size: 24px; }
 }
-/* 2 columnas en todo ancho reducido (incl. móvil, tarjetas compactas); 3 solo si cada tarjeta mide >= ~360px (contenedor >= ~1144px). */
-@media (max-width: 767px) {
-  .qe-card { padding: 16px; gap: 12px; }
-  .qe-ilus { width: 48px; height: 48px; }
-  .qe-card-title { font-size: 18px; }
-  .qe-card-title { hyphens: auto; overflow-wrap: anywhere; }
-  .qe-text { overflow-wrap: break-word; }
-  .qe-ir { padding-top: 16px; }
-  .qe-arrow { width: 32px; height: 32px; }
+/* Retícula v3 (patrón Factus, decisión de Daniel): 1 col <1024 a todo el ancho, 2 col >=1024, sin 3 columnas.
+   Tarjeta blanca grande: ilustración a la izquierda centrada en vertical, título en mayúsculas, texto y botón píldora abajo a la derecha.
+   <480 la ilustración va arriba del texto. */
+.qe-burst { left: -8px; }
+.qe-nb { white-space: nowrap; }
+.qe-grid { grid-template-columns: minmax(0,1fr); gap: 16px; }
+.qe-card, .qe-card.is-light, .qe-card.is-dark { background: #fff; color: var(--qe-ink); border: 1px solid #e3e3e3; border-radius: 16px;
+  flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; }
+.qe-card.is-dark .qe-eyebrow { color: var(--qe-red); }
+.qe-card.is-dark .qe-text { color: var(--qe-muted); }
+.qe-ilus { width: 96px; height: 96px; }
+.qe-card-title { font-size: 20px; text-transform: uppercase; letter-spacing: 0.01em; hyphens: manual; overflow-wrap: normal; }
+.qe-text { hyphens: manual; overflow-wrap: normal; }
+.qe-ir { align-self: flex-end; justify-content: center; margin-top: auto; padding: 0; gap: 12px; }
+.qe-body > .qe-ir { margin-top: 24px; }
+.qe-ir, .qe-card.is-dark .qe-ir { background: var(--qe-red); color: #fff; border-radius: 999px; padding: 10px 20px; }
+.qe-arrow, .qe-card.is-dark .qe-arrow { width: auto; height: auto; background: none; color: #fff; border-radius: 0; }
+.qe-arrow svg { width: 20px; height: 20px; }
+.qe-body { width: 100%; }
+@media (max-width: 1199px) { .qe-anno { margin-top: 28px; } }
+@media (max-width: 767px) { .qe-hand { font-size: 28px; } }
+@media (min-width: 480px) {
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { flex-direction: row; align-items: center; gap: 24px; padding: 32px; }
+  .qe-ilus { width: 96px; height: 96px; }
 }
-@media (max-width: 371px) { .qe-grid { grid-template-columns: minmax(0,1fr); } }
-@media (min-width: 900px) {
-  .qe-card { flex-direction: row; align-items: stretch; gap: 24px; }
-  .qe-ilus { width: 80px; height: 80px; }
+@media (min-width: 768px) {
+  .qe-grid { gap: 24px; }
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { padding: 40px; gap: 40px; }
+  .qe-ilus { width: 160px; height: 160px; }
 }
-@media (min-width: 1208px) {
-  .qe-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (min-width: 1024px) {
+  .qe-wrap { padding: 0 40px; }
+  .qe-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { padding: 32px; gap: 24px; }
+  .qe-ilus { width: 120px; height: 120px; }
 }
+@media (min-width: 1200px) {
+  .qe-burst { left: -24px; }
+  .qe-grid { gap: 32px; }
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { padding: 40px; gap: 32px; }
+  .qe-ilus { width: 160px; height: 160px; }
+  .qe-card-title { font-size: 24px; }
+}
+@media (hover: hover) and (pointer: fine) { .qe-card.is-light:hover, .qe-card.is-dark:hover { border-color: var(--qe-red); } }
 .ag-mapa-casos { display: grid; gap: 16px; margin-top: 56px; }
 .ag-mapa-casos h3 { margin: 0 0 4px; font-size: 22px; font-weight: 800; }
 .ag-mapa-caso { padding: 20px 22px; border-radius: 16px; background: var(--ag-black, #111); color: #fff; }

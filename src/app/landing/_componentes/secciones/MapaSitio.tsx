@@ -10,6 +10,12 @@ const caveat = Caveat({ subsets: ['latin'], weight: '700', display: 'swap' });
  * Tarjetas como enlaces reales, alternando claro/oscuro, con ilustraciones SVG en línea.
  * Ver landing-analisis/que-encuentra/REVISION-UIUX.md y REVISION-CRITICA.md.
  */
+/** Evita que «2026-A» se parta en dos líneas. */
+function noPartir(t: string) {
+  const m = t.split(/(\d{4}-[A-Z])/);
+  return m.map((p, k) => (k % 2 ? <span key={k} className="qe-nb">{p}</span> : p));
+}
+
 export function MapaSitio() {
   return (
     <section id="explorar" className="qe" aria-labelledby="mapa-titulo">
@@ -43,11 +49,11 @@ export function MapaSitio() {
         <ul className="qe-grid">
           {RUTAS.map((r, i) => (
             <MotionIn as="li" key={r.id} delay={i * 40} className="qe-item">
-              <a href={r.href} className={`qe-card ${i % 2 ? 'is-dark' : 'is-light'}`}>
+              <a href={r.href} aria-labelledby={`qe-t-${r.id}`} className={`qe-card ${i % 2 ? 'is-dark' : 'is-light'}`}>
                 <span className="qe-ilus" dangerouslySetInnerHTML={{ __html: ILUSTRACIONES[r.id] ?? '' }} />
                 <span className="qe-body">
                   <span className="qe-eyebrow">{r.para}</span>
-                  <span className="qe-card-title">{r.titulo}</span>
+                  <span id={`qe-t-${r.id}`} className="qe-card-title">{noPartir(r.titulo)}</span>
                   <span className="qe-text">{r.texto}</span>
                   <span className="qe-ir">
                     Ver página
