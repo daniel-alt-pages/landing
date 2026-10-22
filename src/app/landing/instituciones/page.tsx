@@ -24,9 +24,27 @@ import './b2b-desktop.css';
 /** Fuente del panel B2B en escritorio (referencia de Daniel, 21-oct-2026). */
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap', variable: '--font-jakarta' });
 
+const DESCRIPCION_SOCIAL = 'Simulacros tipo Saber 11 y clases en vivo para su colegio. Reportes por estudiante y por grupo en la semana siguiente.';
+
 export const metadata: Metadata = {
   title: { absolute: 'Modelo de servicios institucionales B2B | SEAMOSGENIOS' },
   description: 'Portafolio B2B Calendario B-A 2027-1: evaluación tipo Saber 11, formación focalizada y programa institucional integral para colegios y consejos directivos.',
+  alternates: { canonical: '/landing/instituciones' },
+  openGraph: {
+    type: 'website',
+    locale: 'es_CO',
+    siteName: 'SEAMOSGENIOS',
+    title: 'Modelo de servicios institucionales B2B | SEAMOSGENIOS',
+    description: DESCRIPCION_SOCIAL,
+    url: '/landing/instituciones',
+    images: [{ url: '/landing/og.jpg', width: 1200, height: 630, alt: 'Preparación Saber 11 para colegios con SEAMOSGENIOS' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Modelo de servicios institucionales B2B | SEAMOSGENIOS',
+    description: DESCRIPCION_SOCIAL,
+    images: ['/landing/og.jpg'],
+  },
 };
 
 export default function InstitucionesPage() {
