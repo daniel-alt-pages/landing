@@ -56,16 +56,14 @@ export const CICLO_FILTROS = [
 ] as const;
 
 /**
- * Cadena de 7 eslabones (textos y cobertura de modelo.ts: B2B_CADENA y B2B_COBERTURA).
- * `pasos`: índices del círculo con los que se sincroniza. «Intervenir» no es un paso del círculo:
- * se marca cuando el paso activo es Acompañar (3) o Verificar (4), porque en la cadena va entre ambos.
+ * Cadena de 6 eslabones, uno por paso del círculo (CICLO_PASOS).
+ * `pasos`: índice del círculo con el que se sincroniza.
  */
 export const CICLO_CADENA = [
   { title: 'Evaluar', enlace: '¿Dónde estamos?', niveles: ['N1', 'N2', 'N3'], pasos: [0] },
   { title: 'Comprender', enlace: '¿Qué está pasando?', niveles: ['N1', 'N2', 'N3'], pasos: [1] },
   { title: 'Formar', enlace: '¿Qué reforzar?', niveles: ['N2', 'N3'], pasos: [2] },
   { title: 'Acompañar', enlace: '¿Quién necesita apoyo?', niveles: ['N3'], pasos: [3] },
-  { title: 'Intervenir', enlace: 'Refuerzo y solución de errores', niveles: ['N2', 'N3'], pasos: [3, 4] },
   { title: 'Verificar', enlace: '¿Qué cambió?', niveles: ['N2', 'N3'], pasos: [4] },
   { title: 'Mejorar', enlace: '¿Qué sigue?', niveles: ['N3'], pasos: [5] },
 ] as const;

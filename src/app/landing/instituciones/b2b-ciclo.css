@@ -58,7 +58,7 @@
 .cic-inspector > * { animation: cic-fade var(--cdur) var(--cease); }
 
 /* Cadena de 7 */
-.cic-cadena { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
+.cic-cadena { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin: 28px 0 0; padding: 0; list-style: none; }
 .cic-eslabon { display: grid; gap: 4px; align-content: start; padding: 12px; border: 1.5px solid var(--clinea); border-radius: 8px; background: #fff;
   transition: background-color var(--cdur) var(--cease), border-color var(--cdur), opacity var(--cdur); }
 .cic-eslabon strong { font-size: 15px; font-weight: 900; }
@@ -70,7 +70,7 @@
 
 @keyframes cic-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-@media (max-width: 1279px) { .cic-cadena { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 1279px) { .cic-cadena { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 1023px) {
   .cic-grid { grid-template-columns: 1fr; }
   .cic-svgcaja, .cic[data-vista='circulo'] .cic-svgcaja { grid-column: 1; grid-row: 1; max-width: 560px; width: 100%; margin: 0 auto; }

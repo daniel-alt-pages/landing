@@ -167,7 +167,7 @@ export function CicloInteractivo() {
         ))}
       </ol>
 
-      <ol className="cic-cadena" aria-label="Cadena de valor de 7 eslabones">
+      <ol className="cic-cadena" aria-label="Cadena de valor de 6 eslabones">
         {CICLO_CADENA.map((c, i) => {
           const on = (c.pasos as readonly number[]).includes(activo);
           const nivelOk = filtro === 'todos' || (c.niveles as readonly string[]).includes(filtro);
