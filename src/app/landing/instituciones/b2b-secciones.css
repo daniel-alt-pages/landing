@@ -81,6 +81,8 @@
   object-fit: cover;
   object-position: top center;
 }
+/* Portada: la mascota ocupa el mismo contenedor (4:3) sin recortarse. */
+.ag-b2b-panel img.ag-b2b-panel-mascota { object-fit: contain; object-position: center; }
 .ag-b2b-panel figcaption {
   padding: 12px 16px;
   background: #161618;

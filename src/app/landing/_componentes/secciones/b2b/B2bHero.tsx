@@ -52,8 +52,11 @@ export function B2bHero() {
           <p className="ag-b2b-nota">{B2B_HERO.panelNote}</p>
         </div>
         <figure className="ag-b2b-panel">
-          <img src="/landing/pantallas/coordinador.webp" alt={B2B_HERO.panelAlt} />
-          <figcaption>{B2B_HERO.panelLabel}</figcaption>
+          <picture>
+            <source type="image/avif" srcSet="/landing/mascota/mascota-480.avif 480w, /landing/mascota/mascota-960.avif 960w" sizes="(min-width: 1024px) 480px, 90vw" />
+            <source type="image/webp" srcSet="/landing/mascota/mascota-480.webp 480w, /landing/mascota/mascota-960.webp 960w" sizes="(min-width: 1024px) 480px, 90vw" />
+            <img className="ag-b2b-panel-mascota" src="/landing/mascota/mascota-480.webp" width={480} height={472} alt="Mascota de SEAMOSGENIOS" decoding="async" fetchPriority="high" />
+          </picture>
         </figure>
       </div>
     </section>

@@ -21,8 +21,6 @@ export const B2B_HERO = {
     { title: 'Escala 0-500' },
     { title: '4 actores' },
   ],
-  panelAlt: 'Ejemplo del panel de rectoría: promedio del grupo y áreas del último simulacro.',
-  panelLabel: 'Vista de rectoría',
   panelNote: '65 instituciones ya aplicaron al menos un simulacro. El primero no tiene costo.',
 };
 
