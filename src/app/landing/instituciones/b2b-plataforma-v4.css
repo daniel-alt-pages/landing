@@ -3,7 +3,7 @@
    Plus Jakarta Sans + Caveat, tarjetas blancas de 26 px con sombra suave y hover -2px. La portada (.sg-hero) y el header no cambian. */
 .b2b-v4 {
   --v4-dark: #0D0E11; --v4-red: #FF2323; --v4-soft: #FFE5E5; --v4-bg: #F7F7F6;
-  --v4-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03); --v4-shadow-hover: 0 10px 28px -6px rgba(13, 14, 17, 0.12);
+  --v4-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06); --v4-shadow-hover: 0 10px 28px -6px rgba(13, 14, 17, 0.12);
   --v4-ease: cubic-bezier(0.23, 1, 0.32, 1);
   --ag-font: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
   font-family: var(--ag-font);
@@ -180,3 +180,10 @@
 }
 @media (prefers-reduced-motion: reduce) { .pro7-prog { animation: none; } }
 @media (max-width: 1023px) { .pro7-con { display: none; } .pro7-informe { border-left: 3px solid var(--v4-red, #FF2323); } .pro7-paso:nth-child(6)::after { background: var(--v4-red, #FF2323); } }
+
+/* v8 · Sombra real: b2b-pdf.css L54 anulaba TODAS las sombras del panel con `.ag-b2b:not(.ag-b2b-portada) * { box-shadow: none !important }`.
+   Las tarjetas v4 la recuperan con una regla !important de mayor especificidad (.b2b-v4 .ag-b2b …). */
+.b2b-v4 .ag-b2b :is(.ag-b2b-cartas article, .cic-inspector, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article, .ag-b2b-form-card, .ag-b2b-cadena7 li, .al7-card, .b2m-modal, .cic-estatico > li) { box-shadow: var(--v4-shadow) !important; }
+@media (hover: hover) and (pointer: fine) {
+  .b2b-v4 .ag-b2b :is(.ag-b2b-cartas article, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article, .al7-card):hover { box-shadow: var(--v4-shadow-hover) !important; }
+}
