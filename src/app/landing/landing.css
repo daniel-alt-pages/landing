@@ -3856,11 +3856,11 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 @media (max-width: 360px) {
   .ag-consent-actions { flex-wrap: wrap; }
 }
-/* WCAG 2.4.11 (todos los anchos): mientras el banner está visible, el final de la página (pie) tiene
- * espacio extra igual a su alto (--ag-consent-h lo mide ConsentBanner), así lo último enfocable
- * puede quedar por encima del banner, y el desplazamiento por foco reserva ese mismo alto. */
-html:has(.ag-consent) { scroll-padding-bottom: calc(var(--ag-consent-h, 0px) + 24px); }
-html:has(.ag-consent) .alianza-root { padding-bottom: calc(var(--ag-consent-h, 0px) + 24px); }
+/* WCAG 2.4.11 (todos los anchos): mientras el banner está visible, el pie reserva al final un espacio mayor
+ * que el banner (móvil: máx. 30vh; escritorio: ~200 px) y el desplazamiento por foco también. Solo CSS: medirlo
+ * con JS y escribirlo en la raíz forzaba un recálculo de estilos/layout de toda la página (+TBT). */
+html:has(.ag-consent) { scroll-padding-bottom: max(32vh, 260px); }
+html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
 
 /* ───────── Hero en una columna (rama hero-una-columna) ───────── */
 .ag-hero-grid.ag-hero-1col { display: block; width: min(1040px, calc(100% - 32px)); }

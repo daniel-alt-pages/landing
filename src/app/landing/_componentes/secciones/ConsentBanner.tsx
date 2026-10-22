@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CONTACTO } from '../../_contenido/contacto';
 import { track } from '../../_lib/analytics';
 import { mirrorCartCookie } from '../../_lib/carrito';
@@ -91,28 +91,8 @@ export function ConsentBanner() {
   const [custom, setCustom] = useState(false);
   const [draft, setDraft] = useState<ConsentFlags>(EMPTY);
   const saved = parseConsentValue(raw);
-  const boxRef = useRef<HTMLDivElement>(null);
   const shown = ready && !(saved && !forced);
 
-  // Alto real del banner (+ su margen inferior) en --ag-consent-h: lo usa landing.css para que no tape el foco.
-  useEffect(() => {
-    const el = boxRef.current;
-    const root = document.documentElement;
-    if (!shown || !el) {
-      root.style.removeProperty('--ag-consent-h');
-      return undefined;
-    }
-    const medir = () => root.style.setProperty('--ag-consent-h', `${Math.ceil(el.offsetHeight + (parseFloat(getComputedStyle(el).bottom) || 0))}px`);
-    medir();
-    const ro = new ResizeObserver(medir);
-    ro.observe(el);
-    window.addEventListener('resize', medir);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener('resize', medir);
-      root.style.removeProperty('--ag-consent-h');
-    };
-  }, [shown, custom]);
 
   useEffect(() => {
     const pull = () => setRaw(readConsentSnapshot());
@@ -182,7 +162,7 @@ export function ConsentBanner() {
   if (!shown) return null;
 
   return (
-    <div ref={boxRef} className="ag-consent" role="region" aria-label="Cookies">
+    <div className="ag-consent" role="region" aria-label="Cookies">
       {custom ? (
         <>
           <p>Elija cada finalidad. Las necesarias siguen activas.</p>
