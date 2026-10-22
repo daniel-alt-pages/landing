@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 const LABELS: Record<string, string> = {
@@ -31,8 +32,26 @@ export function Breadcrumb() {
   let acc = '';
   for (const part of parts) {
     acc += `/${part}`;
+    // /programas/ficha es solo un índice técnico: no se muestra como paso.
+    if (acc === '/landing/programas/ficha') continue;
     crumbs.push({ href: acc, label: labelFor(acc) });
   }
+  const isFicha = path.startsWith('/landing/programas/ficha/');
+  const [fichaName, setFichaName] = useState('');
+  useEffect(() => {
+    setFichaName('');
+    if (!isFicha) return;
+    const read = () => {
+      const t = document.getElementById('ag-fx-title')?.textContent?.trim();
+      if (t) { setFichaName(t); return true; }
+      return false;
+    };
+    if (read()) return;
+    const obs = new MutationObserver(() => { if (read()) obs.disconnect(); });
+    obs.observe(document.body, { childList: true, subtree: true });
+    return () => obs.disconnect();
+  }, [path, isFicha]);
+  if (isFicha && fichaName && crumbs.length) crumbs[crumbs.length - 1].label = fichaName;
   // En la página de inicio no hay ruta que mostrar: la barra sobra.
   if (crumbs.length < 2) return null;
 
