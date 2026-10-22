@@ -4043,3 +4043,37 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .qe-curve { margin: -4px 120px 0 0; }
 }
 @media (min-width: 1200px) { .qe-anno { margin-right: 0; } .qe-curve { margin: -8px 140px 0 0; } }
+
+/* Nota v7 (Daniel): chispas + texto + flecha en una sola fila, bloque centrado bajo el encabezado a todo ancho;
+   flecha en línea a la derecha del texto, apuntando hacia abajo a las tarjetas. Tipografía +30%. */
+.qe-anno, .qe-anno { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 6px;
+  width: fit-content; max-width: 100%; margin: 28px auto 0; color: var(--qe-ink); }
+.qe-spark { flex: none; width: 26px; height: 26px; color: var(--qe-red); align-self: flex-start; }
+.qe-hand { flex: 0 1 auto; min-width: 0; padding: 0; font-size: 30px; line-height: 1.05; text-align: center; transform: rotate(-3deg); white-space: normal; }
+.qe-hand-1, .qe-hand-last { display: inline-block; white-space: nowrap; }
+.qe-curve, .qe-anno .qe-curve { display: block; flex: none; width: 40px; height: 40px; margin: 0; }
+@media (max-width: 359px) { .qe-hand { font-size: 28px; } }
+@media (min-width: 768px) {
+  .qe-anno { margin: 32px auto 0; gap: 10px; }
+  .qe-hand { font-size: 36px; white-space: nowrap; }
+  .qe-spark { width: 32px; height: 32px; }
+  .qe-curve, .qe-anno .qe-curve { width: 52px; height: 52px; margin: 0; }
+}
+@media (min-width: 1024px) {
+  .qe-head { display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .qe-intro { flex: 1 1 auto; min-width: 0; }
+  .qe-anno { flex: 0 0 auto; margin: 0; max-width: none; }
+  .qe-hand { font-size: 34px; white-space: normal; text-align: right; }
+  .qe-curve, .qe-anno .qe-curve { width: 56px; height: 56px; margin: 0; }
+}
+@media (min-width: 1280px) {
+  .qe-head { gap: 40px; }
+  .qe-hand { font-size: 38px; }
+  .qe-curve, .qe-anno .qe-curve { width: 60px; height: 60px; }
+}
+
+/* Tarjetas v7 (Daniel): misma altura compacta en toda la retícula (filas 1fr), sin cambiar orden,
+   distribución ni posición del botón; icono centrado en vertical. */
+.qe-grid { grid-auto-rows: 1fr; }
+.qe-item > .qe-card { height: 100%; }
+.qe-ilus, .qe-card.is-dark .qe-ilus { align-self: center; margin-top: 0; margin-bottom: 0; }
