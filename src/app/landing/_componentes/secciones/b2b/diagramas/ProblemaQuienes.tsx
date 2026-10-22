@@ -29,7 +29,7 @@ const CICLO = [
 const RASGOS = [
   { t: 'Acceso a los Mejores', d: 'Tutores de las mejores universidades: U. Andes, UIS, ICESI, UdeA, Nacional, etc.', i: <IcoBirrete /> },
   { t: 'Cero Desplazamientos', d: 'Más tiempo para estudiar desde la comodidad de sus casas.', i: <IcoCasa /> },
-  { t: 'Flexibilidad Horaria', d: 'Clases en vivo grabadas y disponibles 24/7 en nuestra plataforma.', i: <IcoPantalla /> },
+  { t: 'Flexibilidad Horaria', d: 'Clases en vivo y grabadas en nuestra plataforma.', i: <IcoPantalla /> },
   { t: 'Aprendizaje Adaptativo IA', d: 'Reportes de resultados enfocados en niveles de desempeño individuales y grupales.', i: <IcoCohete /> },
 ];
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Caveat, Plus_Jakarta_Sans } from 'next/font/google';
 import { CONTACTO } from '../_contenido/contacto';
 import { B2B_CONTACTO } from '../_contenido/b2b/contacto';
 import { B2bCierre } from '../_componentes/secciones/b2b/B2bCierre';
@@ -22,6 +23,12 @@ import './b2b-mapa.css';
 import './b2b-hero.css';
 import './b2b-desktop.css';
 import './b2b-rediseno.css';
+import './b2b-ciclo.css';
+import './b2b-plataforma-v4.css';
+
+/** Lenguaje visual de la referencia de Daniel (maqueta-daniel.html): Plus Jakarta Sans + Caveat. Solo dentro del panel; el header no cambia. */
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap', variable: '--font-jakarta' });
+const caveat = Caveat({ subsets: ['latin'], weight: ['600', '700'], display: 'swap', variable: '--font-caveat' });
 
 const DESCRIPCION_SOCIAL = 'Simulacros tipo Saber 11 y clases en vivo para su colegio. Reportes por estudiante y por grupo en la semana siguiente.';
 
@@ -92,7 +99,7 @@ const JSON_LD = {
 
 export default function InstitucionesPage() {
   return (
-    <div className="b2b-panel">
+    <div className={`b2b-panel b2b-v4 ${jakarta.variable} ${caveat.variable}`}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD).replace(/</g, '\\u003c') }} />
       <B2bHero />
       <B2bResumen />

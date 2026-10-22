@@ -1,0 +1,55 @@
+/* v4 · Lenguaje visual de la referencia de Daniel (maqueta-daniel.html, 22-oct-2026):
+   brandDark #0D0E11 solo como acento (texto, bordes, botones pequeños), brandRed #FF2323, fondo #F7F7F6,
+   Plus Jakarta Sans + Caveat, tarjetas blancas de 26 px con sombra suave y hover -2px. La portada (.sg-hero) y el header no cambian. */
+.b2b-v4 {
+  --v4-dark: #0D0E11; --v4-red: #FF2323; --v4-soft: #FFE5E5; --v4-bg: #F7F7F6;
+  --v4-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03); --v4-shadow-hover: 0 10px 28px -6px rgba(13, 14, 17, 0.12);
+  --v4-ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ag-font: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
+  font-family: var(--ag-font);
+}
+.b2b-v4 :where(h1, h2, h3, h4, p, li, button, a, span, strong, td, th) { font-family: inherit; }
+.b2b-v4 .ag-section:not(.ag-b2b-portada):not(.ag-tone-red) { --ag-red: var(--v4-red); --b2b-rojo: var(--v4-red); --cr: var(--v4-red); --ag-ink: var(--v4-dark); background: var(--v4-bg); color: var(--v4-dark); }
+.b2b-v4 .ag-section:not(.ag-b2b-portada):not(.ag-tone-red) .ag-pf { --pf-red: var(--v4-red); --pf-soft: var(--v4-soft); --pf-black: var(--v4-dark); }
+.b2b-v4 .ag-tone-red:not(.ag-b2b-portada) { background: var(--v4-red); }
+
+/* Kicker de sección en Caveat, como las notas manuscritas de la referencia. */
+.b2b-v4 .ag-b2b-pregunta { font-family: var(--font-caveat), 'Caveat', cursive; font-size: 26px; font-weight: 700; letter-spacing: 0.01em; text-transform: none; color: var(--v4-dark); }
+.b2b-v4 .ag-b2b-pregunta span { color: var(--v4-red); }
+
+/* Tarjetas: blancas, 26 px, sombra suave, hover -2px (solo con puntero fino). */
+.b2b-v4 :is(.ag-b2b-cartas article, .b2p-paso, .cic-inspector, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article, .ag-b2b-form-card, .ag-b2b-cadena7 li) {
+  border-radius: 26px; border-color: transparent; background: #fff; box-shadow: var(--v4-shadow);
+  transition: transform 300ms var(--v4-ease), box-shadow 300ms var(--v4-ease), background-color 300ms var(--v4-ease), border-color 300ms var(--v4-ease), opacity 300ms;
+}
+.b2b-v4 .ag-b2b-cartas article.is-foco { box-shadow: inset 0 6px 0 var(--v4-red), var(--v4-shadow); }
+@media (hover: hover) and (pointer: fine) {
+  .b2b-v4 :is(.ag-b2b-cartas article, .b2p-paso, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article):hover { transform: translateY(-2px); box-shadow: var(--v4-shadow-hover); }
+  .b2b-v4 .b2m-abrir:hover, .b2b-v4 .b2p-link:hover { color: var(--v4-red); }
+}
+.b2b-v4 .b2p-paso[data-estado='activo'], .b2b-v4 .cic-eslabon[data-activo] { background: var(--v4-soft); border-color: var(--v4-red); }
+.b2b-v4 .b2p-barra, .b2b-v4 .cic-caja.is-rosa { background: var(--v4-soft); }
+.b2b-v4 .cic-caja { border-radius: 18px; }
+.b2b-v4 .b2m-modal { border-radius: 26px; border-color: transparent; box-shadow: 0 24px 60px -12px rgba(13, 14, 17, 0.35); font-family: var(--ag-font); }
+.b2b-v4 .b2m-tab { background: var(--v4-red); }
+.b2b-v4 .cic-chip, .b2b-v4 .cic-btn, .b2b-v4 .b2p-sig { border-radius: 999px; }
+.b2b-v4 .cic-chip[aria-pressed='true'] { background: var(--v4-dark); border-color: var(--v4-dark); }
+
+/* Ciclo: arco rojo que avanza, pulso del nodo activo y notas en Caveat. */
+.b2b-v4 .cic-mancha { fill: #ECECEA; }
+.b2b-v4 .cic-base { stroke: var(--v4-dark); }
+.b2b-v4 .cic-arco { stroke: var(--v4-red); transition: stroke-dashoffset 600ms var(--v4-ease); }
+.b2b-v4 .cic-nodo[data-estado='pasado'] .cic-punto, .b2b-v4 .cic-nodo[data-estado='activo'] .cic-punto { fill: var(--v4-red); }
+.b2b-v4 .cic-nodo[data-estado='activo'] .cic-pill { fill: var(--v4-red); stroke: var(--v4-red); }
+.b2b-v4 .cic-glow { fill: var(--v4-red); }
+.b2b-v4 .cic-halo { stroke: var(--v4-red); transform-box: fill-box; transform-origin: center; animation: v4-pulso 1.8s var(--v4-ease) infinite; }
+.b2b-v4 .cic-centro b, .b2b-v4 .cic-centro-n, .b2b-v4 .cic-q { color: var(--v4-red); }
+.b2b-v4 .cic-centro-q { font-family: var(--font-caveat), 'Caveat', cursive; font-size: 26px; font-weight: 700; line-height: 1; }
+.b2b-v4 .cic-badge { border-radius: 999px; border-color: var(--v4-dark); }
+.b2b-v4 .cic-badge.is-rojo { background: var(--v4-red); border-color: var(--v4-red); }
+@keyframes v4-pulso { 0% { transform: scale(1); opacity: 0.55; } 70% { transform: scale(1.35); opacity: 0; } 100% { transform: scale(1.35); opacity: 0; } }
+@media (max-width: 767px) { .b2b-v4 .cic-centro-q { font-size: 21px; } .b2b-v4 .ag-b2b-pregunta { font-size: 23px; } }
+@media (prefers-reduced-motion: reduce) {
+  .b2b-v4 .cic-halo { animation: none; opacity: 0.35; }
+  .b2b-v4 :is(.ag-b2b-cartas article, .b2p-paso, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article):hover { transform: none; }
+}
