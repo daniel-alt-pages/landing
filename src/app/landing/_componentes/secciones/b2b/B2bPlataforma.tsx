@@ -1,7 +1,6 @@
 import { B2B_PLATAFORMA } from '../../../_contenido/b2b/servicio';
 import { MatrizPlataforma, SimulacrosAnalitica } from './diagramas/Laminas';
 import { SeccionB2b } from './base/SeccionB2b';
-import { ProcesoInforme } from './diagramas/ProcesoInforme';
 import { Cohorte } from './diagramas/Portafolio';
 import { CuatroRoles } from './diagramas/CuatroRoles';
 
@@ -17,7 +16,6 @@ export function B2bPlataforma() {
       bajada={B2B_PLATAFORMA.lead}
     >
       <CuatroRoles />
-      <ProcesoInforme />
       <Cohorte />
       <MatrizPlataforma />
       <SimulacrosAnalitica />

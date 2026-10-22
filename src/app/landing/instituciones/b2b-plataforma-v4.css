@@ -150,37 +150,6 @@
 .esc7-fl path { stroke: var(--v4-red, #FF2323); }
 .esc7-fl { overflow: visible; }
 
-/* v7 · Proceso de 7 pasos: línea SVG con progreso #FF2323 hasta «Resultado» y chips agrupados bajo ese paso. */
-.pro7 { --pro-n: 44px; position: relative; margin: 36px 0 24px; }
-.pro7-pasos { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 28px 12px; margin: 0; padding: 0; list-style: none; position: relative; }
-.pro7-paso { grid-row: 1; display: grid; justify-items: center; gap: 12px; text-align: center; }
-.pro7-n { position: relative; z-index: 1; display: grid; place-items: center; width: var(--pro-n); height: var(--pro-n); border-radius: 50%; background: var(--v4-red, #FF2323); color: #fff; font-weight: 800; font-size: 16px; box-shadow: 0 0 0 6px var(--v4-bg, #F7F7F6); }
-.pro7-paso:nth-child(7) .pro7-n { background: #fff; color: var(--v4-dark, #0D0E11); border: 1.5px solid #C9C9C6; }
-.pro7-paso strong { font-size: 16px; font-weight: 800; color: var(--v4-dark, #0D0E11); }
-.pro7-linea.is-h { position: absolute; left: 0; top: calc(var(--pro-n) / 2 - 2px); width: 100%; height: 4px; overflow: visible; }
-.pro7-base { stroke: #C9C9C6; stroke-width: 1.5px; fill: none; }
-.pro7-prog { stroke: var(--v4-red, #FF2323); stroke-width: 2px; fill: none; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 0; animation: pro7-dibujo 1.2s var(--v4-ease) both 0.2s; }
-@keyframes pro7-dibujo { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-.pro7-informe { grid-row: 2; grid-column: 4 / -1; position: relative; padding: 22px 24px; border-radius: 22px; background: #fff; box-shadow: var(--v4-shadow, 0 4px 20px -2px rgba(0,0,0,.03)); }
-.pro7-con { position: absolute; left: 62.5%; top: -30px; width: 10px; height: 30px; transform: translateX(-50%); overflow: visible; }
-.pro7-con path { stroke: var(--v4-red, #FF2323); stroke-width: 1.5px; stroke-linecap: round; fill: none; }
-.pro7-sub { margin: 0 0 12px; font-family: var(--font-caveat), 'Caveat', cursive; font-size: 24px; font-weight: 700; line-height: 1; color: var(--v4-red, #FF2323); }
-.pro7-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
-.pro7-chips li { padding: 8px 14px; border: 1.5px solid #E2E2DF; border-radius: 999px; background: #fff; font-size: 15px; font-weight: 700; color: var(--v4-dark, #0D0E11); }
-@media (max-width: 1023px) {
-  .pro7-linea.is-h { display: none; }
-  .pro7-pasos { grid-template-columns: var(--pro-n) 1fr; gap: 0 16px; }
-  .pro7-paso { grid-row: auto; grid-column: 1 / -1 !important; grid-template-columns: var(--pro-n) 1fr; justify-items: start; align-items: center; text-align: left; padding: 0 0 22px; position: relative; }
-  .pro7-paso:not(:nth-child(7))::after { content: ''; position: absolute; left: calc(var(--pro-n) / 2 - 0.75px); top: var(--pro-n); bottom: 0; width: 1.5px; background: var(--v4-red, #FF2323); }
-  .pro7-paso:nth-child(6)::after { background: #C9C9C6; }
-  .pro7-informe { grid-row: auto; grid-column: 2 / -1; order: 0; margin: -8px 0 22px; padding: 18px; }
-  .pro7-paso:nth-child(7) { order: 1; }
-  .pro7-con { left: -26px; top: 50%; width: 26px; height: 2px; transform: none; }
-  .pro7-con path { d: path('M0 1H26'); }
-}
-@media (prefers-reduced-motion: reduce) { .pro7-prog { animation: none; } }
-@media (max-width: 1023px) { .pro7-con { display: none; } .pro7-informe { border-left: 3px solid var(--v4-red, #FF2323); } .pro7-paso:nth-child(6)::after { background: var(--v4-red, #FF2323); } }
-
 /* v8 · Sombra real: b2b-pdf.css L54 anulaba TODAS las sombras del panel con `.ag-b2b:not(.ag-b2b-portada) * { box-shadow: none !important }`.
    Las tarjetas v4 la recuperan con una regla !important de mayor especificidad (.b2b-v4 .ag-b2b …). */
 .b2b-v4 .ag-b2b :is(.ag-b2b-cartas article, .cic-inspector, .cic-eslabon, .ag-pf-tarjeta, .ag-pf-salidas article, .ag-b2b-form-card, .ag-b2b-cadena7 li, .al7-card, .b2m-modal, .cic-estatico > li) { box-shadow: var(--v4-shadow) !important; }
@@ -211,3 +180,11 @@
   .et8-puntos { list-style: disc; padding-left: 18px; }
   .et8-puntos li::marker { color: var(--v4-red, #FF2323); }
 }
+
+/* v8 · «Qué trae el informe» en la etapa Analizar (UIUX §4): 16 px, padding 8/12, radio 4, borde 1 px #E5E7EB, gap 8. */
+.et8-informe { margin-top: 16px; }
+.et8-informe-t { margin: 0 0 8px; font-size: 16px; font-weight: 700; color: var(--v4-dark, #0D0E11); }
+.et8-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.et8-chips li { padding: 8px 12px; border: 1px solid #E5E7EB; border-radius: 4px; background: #fff; font-size: 16px; line-height: 1.25; color: var(--v4-dark, #0D0E11); }
+.b2b-v4 .et8 + .ag-b2b-fold { margin-top: 40px; }
+@media (max-width: 1023px) { .et8-chips { justify-content: flex-start; } }
