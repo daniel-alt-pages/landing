@@ -3854,7 +3854,6 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
 }
 @media (min-width: 1100px) {
   .ag-mapa.ag-section { padding: 128px 0; }
-  .ag-mapa-rutas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* Cookies: compacto en móvil (antes tapaba medio primer pantallazo). */
@@ -4019,14 +4018,14 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
   .qe-card, .qe-card.is-light, .qe-card.is-dark { padding: 40px; gap: 32px; }
   .qe-ilus { width: 80px; height: 80px; padding: 8px; }
 }
-@media (min-width: 1024px) { .qe-grid { grid-template-columns: minmax(0,1fr); } }
+@media (min-width: 1024px) { .qe-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (min-width: 1200px) {
   .qe-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px; }
   .qe-card, .qe-card.is-light, .qe-card.is-dark { padding: 40px; gap: 28px; }
   .qe-ilus { width: 88px; height: 88px; padding: 8px; }
 }
 /* 2 columnas: oscuras alternan de columna (fila 2 = clara izq. / oscura der.). El DOM y el foco siguen 1→6. */
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .qe-grid > .qe-item:nth-child(1) { order: 1; } .qe-grid > .qe-item:nth-child(2) { order: 2; }
   .qe-grid > .qe-item:nth-child(3) { order: 4; } .qe-grid > .qe-item:nth-child(4) { order: 3; }
   .qe-grid > .qe-item:nth-child(5) { order: 5; } .qe-grid > .qe-item:nth-child(6) { order: 6; }
@@ -4085,4 +4084,19 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
   .qe-item--instituciones { order: 4; }
   .qe-item--plataforma { order: 5; }
   .qe-item--legal { order: 6; }
+}
+
+/* «Qué encuentra» v1.0.10: 2 columnas desde 1024px (nunca 3); lista compacta <480px:
+   filas ~64px con icono + título + flecha; sin descripción; toda la fila es el enlace. */
+@media (max-width: 479px) {
+  .qe-grid { gap: 8px; margin-top: 32px; }
+  .qe-card, .qe-card.is-light, .qe-card.is-dark { flex-direction: row; align-items: center; text-align: left; gap: 12px;
+    min-height: 64px; padding: 8px 12px; border-radius: 12px; }
+  .qe-ilus, .qe-card.is-dark .qe-ilus { width: 40px; height: 40px; flex: none; }
+  .qe-body { flex-direction: row; align-items: center; gap: 12px; }
+  .qe-eyebrow, .qe-text, .qe-ir-txt { display: none; }
+  .qe-card-title { flex: 1; min-width: 0; margin: 0; font-size: 15px; line-height: 1.25; text-align: left; }
+  .qe-ir, .qe-body > .qe-ir, .qe-card.is-dark .qe-ir { flex: none; align-self: center; margin: 0; padding: 0;
+    width: 32px; height: 32px; border-radius: 50%; }
+  .qe-arrow svg { width: 16px; height: 16px; }
 }

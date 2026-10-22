@@ -58,7 +58,7 @@ export function MapaSitio({ variante }: { variante?: 'b2b' } = {}) {
                   <span id={`qe-t-${r.id}`} className="qe-card-title">{noPartir(r.titulo)}</span>
                   <span className="qe-text">{r.texto}</span>
                   <span className="qe-ir">
-                    Ver página
+                    <span className="qe-ir-txt">Ver página</span>
                     <span className="qe-arrow" aria-hidden="true">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" focusable="false"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
                     </span>
