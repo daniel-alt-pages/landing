@@ -1,11 +1,12 @@
 /* Ajuste de escritorio del panel B2B (Daniel 21-oct-2026, referencia-daniel-2.html). Solo >=1024px: el móvil no cambia. */
 .ag-b2m-trazo { display: none; }
 @media (min-width: 1024px) {
-  .b2b-panel {
+  /* Alcance (21-oct-2026): Plus Jakarta Sans y #FF2323 solo en la portada; el resto del panel sigue en Montserrat y #CC0000. */
+  .b2b-panel .sg-hero {
     --ag-font: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
     font-family: var(--ag-font);
   }
-  .b2b-panel :is(h1, h2, h3) { font-family: var(--ag-font); font-weight: 800; letter-spacing: -0.03em; }
+  .b2b-panel .sg-hero h1 { font-family: var(--ag-font); font-weight: 800; letter-spacing: -0.03em; }
 
   /* Ruta de navegación sobre el rojo de la portada (la barra es global; solo cambia en esta página). */
   body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar { position: absolute; left: 0; right: 0; z-index: 2; padding: 20px 0 0; background: none; }
