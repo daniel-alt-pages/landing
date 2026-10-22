@@ -50,6 +50,7 @@
 
 /* P0.1 portada blanca con banda roja superior */
 /* sin sombras en toda la página */
+/* Estilo «láminas»: sin sombras. Las tarjetas del panel v4 (referencia de Daniel) recuperan la suya en b2b-plataforma-v4.css (.b2b-v4 … !important). */
 .ag-b2b:not(.ag-b2b-portada) *, .ag-b2b-subnav { box-shadow: none !important; }
 .ag-b2b .ag-b2b-tabs a, .ag-b2b .ag-b2b-tabs button, .ag-b2b [role="tab"] { border-radius: 4px; }
 .ag-b2b-escenario { grid-template-columns: 1fr !important; }

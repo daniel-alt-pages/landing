@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type KeyboardEvent } from 'react';
+import { useId, useRef, useState, type KeyboardEvent } from 'react';
 import { marcaEntregable, type MarcaEntrega } from '../../../../_contenido/b2b/servicio';
 
 function Punto({ marca }: { marca: MarcaEntrega }) {
@@ -21,11 +21,18 @@ export function TablaONivel({
 }) {
   const columnas = headers.slice(1);
   const [columna, setColumna] = useState(columnas.length - 1);
+  // Patrón de pestañas completo (WAI-ARIA): id por pestaña, aria-controls → tabpanel, tabindex itinerante.
+  const base = useId();
+  const tabId = (i: number) => `${base}-tab-${i}`;
+  const panelId = `${base}-panel`;
+  const tabsRef = useRef<HTMLDivElement>(null);
   const mover = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return;
     event.preventDefault();
     const delta = event.key === 'ArrowRight' ? 1 : -1;
-    setColumna((actual) => (actual + delta + columnas.length) % columnas.length);
+    const sig = (columna + delta + columnas.length) % columnas.length;
+    setColumna(sig);
+    tabsRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[sig]?.focus();
   };
 
   return (
@@ -62,13 +69,15 @@ export function TablaONivel({
         </p>
       ) : null}
       <div className="ag-b2b-solo-estrecho">
-        <div className="ag-b2b-tabs" role="tablist" aria-label={caption} onKeyDown={mover}>
+        <div ref={tabsRef} className="ag-b2b-tabs" role="tablist" aria-label={caption} onKeyDown={mover}>
           {columnas.map((nombre, index) => (
-            <button key={nombre} type="button" role="tab" aria-selected={columna === index} onClick={() => setColumna(index)}>
+            <button key={nombre} id={tabId(index)} type="button" role="tab" aria-selected={columna === index}
+              aria-controls={panelId} aria-label={nombre} tabIndex={columna === index ? 0 : -1} onClick={() => setColumna(index)}>
               {nombre}
             </button>
           ))}
         </div>
+        <div id={panelId} role="tabpanel" aria-labelledby={tabId(columna)}>
         <ul className="ag-b2b-filas">
           {rows.map((fila) => (
             <li key={fila[0]}>
@@ -77,6 +86,7 @@ export function TablaONivel({
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </div>
   );

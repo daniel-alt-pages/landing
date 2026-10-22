@@ -1,3 +1,4 @@
+import '@/app/globals.css';
 import type { Metadata } from 'next';
 import { MEDIA_MENTIONS } from '@/lib/mediaMentions';
 import { Montserrat } from 'next/font/google';

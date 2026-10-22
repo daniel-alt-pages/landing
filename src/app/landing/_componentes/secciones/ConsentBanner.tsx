@@ -91,6 +91,8 @@ export function ConsentBanner() {
   const [custom, setCustom] = useState(false);
   const [draft, setDraft] = useState<ConsentFlags>(EMPTY);
   const saved = parseConsentValue(raw);
+  const shown = ready && !(saved && !forced);
+
 
   useEffect(() => {
     const pull = () => setRaw(readConsentSnapshot());
@@ -157,7 +159,7 @@ export function ConsentBanner() {
     setForced(false);
   }
 
-  if (!ready || (saved && !forced)) return null;
+  if (!shown) return null;
 
   return (
     <div className="ag-consent" role="region" aria-label="Cookies">

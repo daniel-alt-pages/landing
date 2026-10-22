@@ -67,6 +67,10 @@
 .alianza-root .ag-skip:focus {
   width: auto;
   height: auto;
+  /* target-size: 44 px de alto al enfocarlo (antes 32×16 efectivos). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   overflow: visible;
   clip: auto;
   position: fixed;
@@ -2552,6 +2556,10 @@
 .ag-footer ul a { color: rgba(255, 255, 255, 0.8); text-decoration: none; }
 .ag-footer ul a:hover { color: #fff; text-decoration: underline; }
 .ag-footer li { color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.35; overflow-wrap: anywhere; }
+/* target-size (WCAG 2.5.8): cada enlace de columna mide al menos 24 px de alto. El gap de 6 px pasa al
+ * propio enlace (17.5 px de línea + 6.5 px), así que la columna mide prácticamente lo mismo que antes. */
+.ag-footer-grid ul { gap: 0; }
+.ag-footer-grid ul a { display: inline-flex; align-items: center; min-height: 24px; }
 .ag-footer-lead { color: rgba(255, 255, 255, 0.8); margin: 10px 0 14px; font-size: 14px; line-height: 1.4; }
 .ag-footer .ag-btn { min-height: 36px; padding: 8px 16px; font-size: 14px; }
 
@@ -3842,6 +3850,15 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .ag-consent-actions .ag-btn-ghost { flex: 1 1 auto; min-height: 44px; padding: 6px 8px; font-size: 13px; white-space: nowrap; }
   html:has(.ag-consent) { scroll-padding-bottom: 32vh; }
 }
+/* 320 px: los tres botones no caben en una fila («Elegir» quedaba fuera, x=348): se reparten en dos. */
+@media (max-width: 360px) {
+  .ag-consent-actions { flex-wrap: wrap; }
+}
+/* WCAG 2.4.11 (todos los anchos): mientras el banner está visible, el pie reserva al final un espacio mayor
+ * que el banner (móvil: máx. 30vh; escritorio: ~200 px) y el desplazamiento por foco también. Solo CSS: medirlo
+ * con JS y escribirlo en la raíz forzaba un recálculo de estilos/layout de toda la página (+TBT). */
+html:has(.ag-consent) { scroll-padding-bottom: max(32vh, 260px); }
+html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
 
 /* ───────── Hero en una columna (rama hero-una-columna) ───────── */
 .ag-hero-grid.ag-hero-1col { display: block; width: min(1040px, calc(100% - 32px)); }

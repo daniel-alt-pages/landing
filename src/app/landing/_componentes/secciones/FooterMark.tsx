@@ -3,7 +3,7 @@
 import { Geist } from 'next/font/google';
 import TechText from './TechText';
 
-const geist = Geist({ subsets: ['latin'], weight: '600', display: 'swap' });
+const geist = Geist({ subsets: ['latin'], weight: '600', display: 'swap', preload: false }); // solo el pie: no compite con el LCP
 
 export function FooterMark() {
   return (

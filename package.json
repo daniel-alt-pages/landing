@@ -9,7 +9,7 @@
     "dev:3000": "next dev --webpack -p 3000 -H 127.0.0.1",
     "dev": "npm run dev:local",
     "dev:next": "npm run dev:local",
-    "prebuild": "node scripts/verify-local-only.mjs && node scripts/verify-landing-content.mjs",
+    "prebuild": "node scripts/verify-local-only.mjs && node scripts/verify-landing-content.mjs && node scripts/verify-landing-env.mjs",
     "build": "next build --webpack",
     "start": "node scripts/serve-out.mjs out 3010",
     "build:pages": "GITHUB_PAGES=true npm run build && node scripts/pages-assemble.mjs",

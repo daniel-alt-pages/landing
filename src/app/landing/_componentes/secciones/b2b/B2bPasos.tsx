@@ -1,20 +1,18 @@
-'use client';
-
-import { useState } from 'react';
 import { B2B_N1 } from '../../../_contenido/b2b/programa';
+import { B2B_SIMULACROS } from '../../../_contenido/b2b/servicio';
+import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
 
+/** Chips del informe movidos desde #plataforma (UIUX §4); sin «Percentiles» ni «Preguntas críticas», que ya dicen las viñetas. */
+const INFORME = ['Global y por área', 'Por cohorte', 'Histórico', 'Alertas N3', 'Benchmark'];
+const ANALIZAR = 3;
+
 /**
- * Paso a paso gamificado (sobrio, B2B): progreso «Paso X de N» y desbloqueo secuencial.
- * Contenido: etapas del Nivel 1 (programa.ts). Los títulos de todas las etapas siempre son visibles;
- * «Ver todas las etapas» abre el detalle completo sin recorrerlo.
+ * Etapas del Nivel 1 (propuesta UIUX.md §1): las 5 etapas siempre abiertas, sin desbloqueo.
+ * 1440: 5 columnas de 208 px (gap 40) unidas por una línea SVG de 1,5 px. 390: línea de tiempo a la izquierda.
  */
 export function B2bPasos() {
   const etapas = B2B_N1.etapas;
-  const total = etapas.length;
-  const [hechos, setHechos] = useState(0);
-  const todo = hechos >= total;
-
   return (
     <SeccionB2b
       id="paso-a-paso"
@@ -25,38 +23,36 @@ export function B2bPasos() {
       acento="Nivel 1"
       bajada={B2B_N1.flujo}
     >
-      <div className="b2p-prog">
-        <span aria-live="polite">{todo ? `${total} de ${total} etapas` : `Paso ${hechos + 1} de ${total}`}</span>
-        <div className="b2p-barra" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={hechos} aria-label="Avance del recorrido">
-          <i style={{ transform: `scaleX(${hechos / total})` }} />
-        </div>
-        {!todo && <button type="button" className="b2p-link" onClick={() => setHechos(total)}>Ver todas las etapas</button>}
-      </div>
-      <ol className="b2p-pasos">
-        {etapas.map((e, i) => {
-          const estado = i < hechos ? 'hecho' : i === hechos ? 'activo' : 'bloqueado';
-          return (
-            <li key={e.n} className="b2p-paso" data-estado={estado}>
-              <span className="b2p-n" aria-hidden="true">{estado === 'hecho' ? '✓' : e.n}</span>
-              <div>
-                <h3>{e.title}</h3>
-                <p className="b2p-sub">{e.sub}</p>
-                {estado !== 'bloqueado' ? (
-                  <ul>{e.points.map((p) => <li key={p}>{p}</li>)}</ul>
-                ) : (
-                  <p className="b2p-lock">Se desbloquea al completar el paso {i}</p>
-                )}
-                {estado === 'activo' && (
-                  <button type="button" className="b2p-sig" onClick={() => setHechos((h) => h + 1)}>
-                    {i === total - 1 ? 'Finalizar recorrido' : 'Siguiente paso'}
-                  </button>
-                )}
-              </div>
+      <div className="et8">
+        <svg className="et8-linea" viewBox="0 0 1200 2" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M104 1H1096" vectorEffect="non-scaling-stroke" />
+        </svg>
+        <ol className="et8-etapas">
+          {etapas.map((e, i) => (
+            <li key={e.n} className="et8-etapa">
+              <span className="et8-n" aria-hidden="true">{e.n}</span>
+              <h3 className="et8-t">{e.title}</h3>
+              <p className="et8-sub">{e.sub}</p>
+              <ul className="et8-puntos">{e.points.map((p) => <li key={p}>{p}</li>)}</ul>
+              {i === ANALIZAR && (
+                <div className="et8-informe">
+                  <p className="et8-informe-t">Qué trae el informe</p>
+                  <ul className="et8-chips">{INFORME.map((c) => <li key={c}>{c}</li>)}</ul>
+                </div>
+              )}
             </li>
-          );
-        })}
-      </ol>
-      {todo && <p className="b2p-fin"><a className="ag-b2b-btn" href="#solicitar-reunion">Agendar reunión</a></p>}
+          ))}
+        </ol>
+      </div>
+      <Plegable titulo="Cómo se construye cada simulacro" cuenta="7 aspectos">
+        <div className="ag-pf-tabla-wrap" tabIndex={0} role="region" aria-label="Cómo se construye cada simulacro">
+          <table className="ag-pf-tabla">
+            <caption className="ag-b2b-sr">Cómo se construye cada simulacro</caption>
+            <thead><tr>{B2B_SIMULACROS.headers.map((h) => <th key={h} scope="col">{h}</th>)}</tr></thead>
+            <tbody>{B2B_SIMULACROS.rows.map((f) => <tr key={f[0]}><th scope="row">{f[0]}</th><td>{f[1]}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </Plegable>
     </SeccionB2b>
   );
 }

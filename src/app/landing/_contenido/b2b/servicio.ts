@@ -70,7 +70,7 @@ export const B2B_ENTREGABLES = {
     ['Benchmark de instituciones focalizadas', 'Incluido', 'Incluido', 'Incluido'],
     ['Socialización de resultados', 'Incluido', 'Incluido', 'Incluido'],
     ['Plan de formación focalizada', 'No aplica', 'Incluido', 'Según la necesidad'],
-    ['Clases focalizadas', 'No aplica', 'Complemento de +20 h, +30 h o +50 h', 'Incluidas en el programa y en los refuerzos'],
+    ['Clases focalizadas', 'No aplica', 'Complemento ampliable', 'Incluidas en el programa y en los refuerzos'],
     ['Grabaciones y material de formación', 'No aplica', 'Incluido', 'Incluido'],
     ['Tablero continuo', 'No aplica', 'Parcial', 'Incluido'],
     ['Seguimiento de asistencia y actividad', 'No aplica', 'Limitado a la intervención', 'Incluido'],

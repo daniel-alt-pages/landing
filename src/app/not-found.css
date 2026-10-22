@@ -1,0 +1,6 @@
+/* Utilidades de Tailwind solo para la página 404. El not-found raíz forma parte del árbol de
+ * todas las rutas, así que importar aquí globals.css lo volvería a meter en la landing. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@source "./not-found.tsx";

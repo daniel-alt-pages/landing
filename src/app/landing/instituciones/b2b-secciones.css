@@ -27,10 +27,6 @@
   line-height: 1.08;
   text-transform: none;
 }
-.ag-b2b-word {
-  display: inline-block;
-  animation: ag-b2b-rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
 @keyframes ag-b2b-rise {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
@@ -67,32 +63,6 @@
 }
 .ag-b2b-nota { margin: 14px 0 0; color: rgba(255, 255, 255, 0.78); font-size: 14px; }
 .ag-b2b:not(.ag-b2b-portada) .ag-b2b-nota { font-size: 16px; }
-.ag-b2b-panel {
-  margin: 0;
-  overflow: hidden;
-  border-radius: 20px;
-  background: #f6f1ea;
-  animation: ag-b2b-rise 0.45s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.ag-b2b-panel img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: top center;
-}
-/* Portada: la mascota ocupa el mismo contenedor (4:3) sin recortarse. */
-.ag-b2b-panel img.ag-b2b-panel-mascota { object-fit: contain; object-position: center; }
-.ag-b2b-panel figcaption {
-  padding: 12px 16px;
-  background: #161618;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
 
 .ag-b2b-cierre-linea { margin-top: 18px; font-weight: 700; }
 .ag-b2b-cita {

@@ -3,28 +3,35 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import AppRootChrome from "@/components/AppRootChrome";
 /** Bajo /landing para que exista también en GitHub Pages. */
 const PRISMIC_APP_ICON = "/landing/brand/sg-services-logo.svg";
+/** favicon.ico vive en public/ (no en app/): así no se emite el /favicon.ico del convenio y la landing usa /landing/favicon.ico. */
 /**
  * GitHub Pages sirve solo /landing/*: /sw.js no existe ahí (404). Además sw.js es un
  * kill switch que se desregistra y recarga la pestaña; en Pages nunca hubo un SW previo,
  * así que ahí no se registra nada.
  */
 const REGISTER_SW = process.env.GITHUB_PAGES !== "true";
-import "./globals.css";
+/**
+ * globals.css (Tailwind completo + estilos de la app) ya no se importa aquí: lo importa cada
+ * segmento de la app (sus layout.tsx). La landing (/landing/*) carga solo landing/landing-base.css.
+ */
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  preload: false,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  preload: false,
 });
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
 });
 
 const SITE_NAME = "Seamos Genios · Resultados PreICFES";

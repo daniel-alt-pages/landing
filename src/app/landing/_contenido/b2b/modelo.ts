@@ -21,6 +21,8 @@ export const B2B_HERO = {
     { title: 'Escala 0-500' },
     { title: '4 actores' },
   ],
+  /** Cifras confirmadas por Daniel (22-oct-2026). */
+  cifras: ['65 instituciones', 'Primer simulacro gratis', 'Respuesta en 1 día hábil'],
 };
 
 export const B2B_RESUMEN = {
@@ -64,7 +66,7 @@ export const B2B_QUIENES = {
   rasgos: [
     { title: 'Acceso a los mejores', text: 'Tutores de las mejores universidades: U. Andes, UIS, ICESI, UdeA, Nacional, etc.' },
     { title: 'Cero desplazamientos', text: 'Más tiempo para estudiar desde casa.' },
-    { title: 'Flexibilidad horaria', text: 'Clases en vivo, grabadas y disponibles 24/7.' },
+    { title: 'Flexibilidad horaria', text: 'Clases en vivo y grabadas.' },
     { title: 'Aprendizaje adaptativo', text: 'Reportes por nivel de desempeño individual y grupal.' },
   ],
   mision: 'Transformar vidas con herramientas reales que abran el futuro académico de cualquier estudiante.',
@@ -108,9 +110,8 @@ export const B2B_CADENA = {
     { n: '2', title: 'Comprender', text: 'Analítica de brechas y datos' },
     { n: '3', title: 'Formar', text: 'Clases en vivo y conceptos' },
     { n: '4', title: 'Acompañar', text: 'Comité directivo y familias' },
-    { n: '5', title: 'Intervenir', text: 'Refuerzo y solución de errores' },
-    { n: '6', title: 'Verificar', text: 'Medición de avance T0, T1 y T2' },
-    { n: '7', title: 'Mejorar', text: 'Impacto sostenido en Saber 11' },
+    { n: '5', title: 'Verificar', text: 'Medición de avance T0, T1 y T2' },
+    { n: '6', title: 'Mejorar', text: 'Impacto sostenido en Saber 11' },
   ],
   nota: 'Los productos no son ofertas aisladas: son niveles crecientes de profundidad en la misma cadena.',
 };
@@ -155,7 +156,7 @@ export const B2B_NIVELES = [
     cta: 'Ver el Nivel 2',
     includesLabel: 'Todo lo del Nivel 1, más:',
     includes: [
-      'Cerca de 20 horas de formación sincrónica sobre las brechas',
+      'Formación sincrónica sobre las brechas',
       'Evaluación corta para verificar el progreso',
       'Analítica de brechas por área',
       'Contenidos junto con los resultados',
@@ -164,7 +165,7 @@ export const B2B_NIVELES = [
     ],
     points: [
       'Simulacro institucional con calificación tipo Saber 11.',
-      'Cerca de 20 horas de formación sincrónica focalizada en las brechas detectadas.',
+      'Formación sincrónica focalizada en las brechas detectadas.',
       'Evaluación corta de verificación de progreso académico.',
     ],
   },
@@ -186,13 +187,13 @@ export const B2B_NIVELES = [
       'Dos encuentros con familias y un tablero',
       'Hasta 15 horas de comité estratégico',
       'Alertas tempranas durante todo el proceso',
-      'Plan de mejora entre calendarios, de 50 horas',
+      'Plan de mejora entre calendarios',
     ],
     points: [
       'Relación estratégica continua durante 1 o 2 calendarios escolares.',
       'PreICFES intensivo completo y evaluación periódica continua.',
       'Ecosistema de 4 actores: estudiante, familias, docentes y directivos.',
-      'Hasta 15 horas de acompañamiento estratégico y plan de mejora interciclo (50 horas).',
+      'Hasta 15 horas de acompañamiento estratégico y plan de mejora interciclo.',
     ],
   },
 ] as const;
@@ -203,28 +204,28 @@ export const B2B_COMPARATIVO = {
   headers: ['Dimensión', 'Nivel 1 · Evaluación', 'Nivel 2 · Focalizada', 'Nivel 3 · Integral'],
   rows: [
     ['Evaluación tipo Saber 11', 'Diagnóstica y de cierre', 'Con verificación', 'Batería periódica'],
-    ['Formación para estudiantes', 'No incluye', 'Cerca de 20 horas sincrónicas', 'PreICFES completo'],
+    ['Formación para estudiantes', 'No incluye', 'Formación sincrónica focalizada', 'PreICFES completo'],
     ['Plataforma y ecosistema', 'Consulta de resultados', 'Resultados y contenidos', 'Ecosistema total y racha'],
     ['Analítica y reportes', 'Individual y del colegio', 'Brechas por área', 'Lectura profunda (BI)'],
     ['Acompañamiento a familias', 'No incluye', 'No, salvo excepción', '2 encuentros y tablero'],
     ['Herramientas docentes', 'Socialización', 'Socialización técnica', 'Sala interactiva'],
     ['Gestión de directivos', 'Entrega de informe', 'Resultados y corte', 'Hasta 15 h de comité estratégico'],
-    ['Monitoreo de asistencia', 'Solo el día de la prueba', 'Asistencia en las 20 horas', 'Control sincrónico permanente'],
+    ['Monitoreo de asistencia', 'Solo el día de la prueba', 'Asistencia en la formación', 'Control sincrónico permanente'],
     ['Sistema de alertas', 'No aplica', 'Parcial', 'Tempranas, en todo el proceso'],
     ['Personalización curricular', 'Baremo estándar', 'Basada en brechas', 'Plan a la medida de la institución'],
-    ['Continuidad anual', 'Transaccional', 'Proyecto acotado', 'Plan de mejora interciclo (50 h)'],
+    ['Continuidad anual', 'Transaccional', 'Proyecto acotado', 'Plan de mejora interciclo'],
     ['Relación con el colegio', 'Puntual: medir', 'Corta: medir e intervenir', 'Estratégica: mejora continua'],
   ],
 };
 
 /** Filas N1, N2 y N3. Columnas en el orden de B2B_CADENA.eslabones. */
 export const B2B_COBERTURA = [
-  [true, true, false, false, false, false, false],
-  [true, true, true, false, true, true, false],
-  [true, true, true, true, true, true, true],
+  [true, true, false, false, false, false],
+  [true, true, true, false, true, false],
+  [true, true, true, true, true, true],
 ] as const;
 
-export const B2B_PASOS_CORTOS = ['Evaluar', 'Comprender', 'Formar', 'Acompañar', 'Intervenir', 'Verificar', 'Mejorar'] as const;
+export const B2B_PASOS_CORTOS = ['Evaluar', 'Comprender', 'Formar', 'Acompañar', 'Verificar', 'Mejorar'] as const;
 
 export const B2B_CICLO_CENTRO = 'La evaluación no termina en un puntaje.';
 export const B2B_CICLO_CIERRE = 'SEAMOSGENIOS acompaña con datos. No reemplaza a la institución.';

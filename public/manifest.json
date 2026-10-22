@@ -14,15 +14,21 @@
   ],
   "icons": [
     {
-      "src": "https://seamosgenios2026.cdn.prismic.io/seamosgenios2026/ahLK2LK9tuLqEGan_app-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/landing/brand/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://seamosgenios2026.cdn.prismic.io/seamosgenios2026/ahLK2LK9tuLqEGan_app-icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/landing/brand/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/landing/brand/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ]
