@@ -4063,3 +4063,19 @@ html:has(.ag-consent) { scroll-padding-bottom: 300px; }
   .qe-curve { margin: -4px 120px 0 0; }
 }
 @media (min-width: 1200px) { .qe-anno { margin-right: 0; } .qe-curve { margin: -8px 140px 0 0; } }
+
+/* Foco visible (QA P1-3) */
+/* Botón flotante: pasa sobre fondos claros y oscuros. Anillo blanco (outline) entre dos anillos oscuros
+   (box-shadow de 6 px bajo el outline): siempre hay un borde con contraste >= 3:1 contra lo que tenga al lado. */
+.ag-fab:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px #111827, 0 8px 30px rgba(15, 23, 42, 0.25);
+}
+/* El marco recorta (overflow:hidden) el outline del iframe y Chrome no aplica :focus al iframe
+   cuando el foco pasa a su documento: HeroAlianzas marca data-foco y el anillo va en el marco. */
+.ag-hero-alianzas-frame[data-foco='true'] {
+  outline: 3px solid var(--ag-red, #cc0000);
+  outline-offset: 3px;
+}
+.ag-hero-alianzas-frame iframe:focus-visible { outline: 2px solid var(--ag-red, #cc0000); outline-offset: -2px; }

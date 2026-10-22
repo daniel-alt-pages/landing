@@ -12,6 +12,7 @@ export function HeroAlianzas() {
   const [live, setLive] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [alto, setAlto] = useState<number | null>(null);
+  const [foco, setFoco] = useState(false);
   const frameRef = useRef<HTMLIFrameElement>(null);
 
   // Mismo origen (daniel-alt-pages.github.io): el iframe toma la altura de su contenido, sin scroll interno.
@@ -48,9 +49,23 @@ export function HeroAlianzas() {
     window.addEventListener('load', mount, { once: true });
     return () => window.removeEventListener('load', mount);
   }, []);
+  // Chrome no aplica :focus al iframe ni dispara focus en él cuando el foco entra en su documento:
+  // al perder el foco la ventana, comprobamos si se fue al iframe y marcamos el marco (anillo visible).
+  useEffect(() => {
+    const sync = () => window.setTimeout(() => setFoco(document.activeElement === frameRef.current && frameRef.current !== null), 0);
+    window.addEventListener('blur', sync);
+    window.addEventListener('focus', sync);
+    document.addEventListener('focusin', sync);
+    return () => {
+      window.removeEventListener('blur', sync);
+      window.removeEventListener('focus', sync);
+      document.removeEventListener('focusin', sync);
+    };
+  }, []);
+
   return (
     <figure className="ag-hero-alianzas" aria-label="Alianzas de SEAMOSGENIOS">
-      <div className="ag-hero-alianzas-frame" style={live && alto ? { height: alto } : undefined}>
+      <div className="ag-hero-alianzas-frame" data-foco={foco ? 'true' : undefined} style={live && alto ? { height: alto } : undefined}>
         <a href={ALIANZAS_URL} target="_blank" rel="noopener noreferrer" className="ag-hero-alianzas-poster" tabIndex={live ? -1 : 0}>
           <img
             src="/landing/hero/alianzas-poster-640.webp"

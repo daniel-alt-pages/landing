@@ -285,3 +285,10 @@
 .ag-b2b-preicfes-ir { align-self: flex-start; margin-top: auto; padding: 10px 0; min-height: 44px; box-sizing: border-box; font-weight: 700; color: var(--ag-ink); text-decoration: underline; text-underline-offset: 3px; }
 .ag-b2b-preicfes-ir:focus-visible { outline: 3px solid var(--b2b-rojo, #CC0000); outline-offset: 3px; }
 
+
+/* Foco visible sobre la franja roja (QA P1-3): contorno blanco (5,9:1 contra #CC0000).
+   Aquí no sirve un box-shadow: b2b-pdf.css lo anula con !important en toda .ag-b2b. */
+.ag-tone-red :is(a, button, [tabindex]):not(.ag-b2b-form-card *):focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
