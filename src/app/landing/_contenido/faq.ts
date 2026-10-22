@@ -79,7 +79,7 @@ const deFaq = (q: string) => FAQ.find((item) => item.question === q)!;
 export const FAQ_FAMILIAS: FaqItem[] = [
   {
     question: '¿Cuánto dura el programa?',
-    answer: 'En el Calendario B, el Intensivo son 16 semanas y unas 426 horas en vivo. El Vacacional son 8 semanas y unas 225 horas en vivo. Arriba puede compararlos.',
+    answer: 'En el Calendario B, el Intensivo son 16 semanas y unas 426 horas en vivo. El Vacacional son 8 semanas y unas 225 horas en vivo. Puede ver ambos en la página de programas.',
   },
   {
     question: '¿Qué necesito para conectarme?',

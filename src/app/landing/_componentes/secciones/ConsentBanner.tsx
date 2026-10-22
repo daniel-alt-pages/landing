@@ -151,7 +151,19 @@ export function ConsentBanner() {
     return () => window.removeEventListener(OPEN_CONSENT_EVENT, open);
   }, []);
 
+  const [leaving, setLeaving] = useState(false);
+
   function commit(flags: ConsentFlags) {
+    // Salida suave (fade + slide); sin espera si el usuario pidió menos movimiento.
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    setLeaving(true);
+    window.setTimeout(() => {
+      apply(flags);
+      setLeaving(false);
+    }, reduce ? 0 : 260);
+  }
+
+  function apply(flags: ConsentFlags) {
     applyConsent(flags, browserCookieStore(), sessionStorage);
     clearLegacyConsent();
     window.dispatchEvent(new Event(CONSENT_EVENT));
@@ -162,7 +174,7 @@ export function ConsentBanner() {
   if (!shown) return null;
 
   return (
-    <div className="ag-consent" role="region" aria-label="Cookies">
+    <div className={leaving ? 'ag-consent ag-consent-leaving' : 'ag-consent'} role="region" aria-label="Cookies">
       {custom ? (
         <>
           <p>Elija cada finalidad. Las necesarias siguen activas.</p>

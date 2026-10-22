@@ -113,11 +113,17 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
             {inCart ? 'En el carrito' : 'Agregar al carrito'}
           </AddToCartButton>
           <p className="ag-fx-note">Este producto es de ejemplo y no está a la venta.</p>
-          <h2 className="ag-fx-know">Lo que tiene que saber de este programa</h2>
-          <ul className="ag-fx-list">
-            {ficha.detalles.slice(0, 3).map((d) => <li key={d.label}>{d.label}: {d.value}.</li>)}
-            {ficha.incluye.slice(0, 2).map((t) => <li key={t}>{t}.</li>)}
-          </ul>
+          {(() => {
+            // Solo lo que no repite la tabla «Características del programa».
+            const enTabla = ficha.detalles.map((d) => `${d.label} ${d.value}`.toLowerCase());
+            const extra = ficha.incluye.slice(0, 2).filter((t) => !enTabla.some((x) => x.includes(t.toLowerCase())));
+            return extra.length ? (
+              <>
+                <h2 className="ag-fx-know">Lo que tiene que saber de este programa</h2>
+                <ul className="ag-fx-list">{extra.map((t) => <li key={t}>{t}.</li>)}</ul>
+              </>
+            ) : null;
+          })()}
         </aside>
           <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-acceso">
             <h2 id="fx-acceso">Cómo accede <Ejemplo /></h2>
