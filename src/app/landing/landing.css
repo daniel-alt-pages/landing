@@ -4100,3 +4100,52 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
     width: 32px; height: 32px; border-radius: 50%; }
   .qe-arrow svg { width: 16px; height: 16px; }
 }
+
+/* «Qué encuentra» v1.0.13: en 1 columna (<1024px) el fondo alterna por posición VISIBLE (orden de v1.0.9),
+   asignado por clase qe-item--id, no por nth-child: blanco, oscuro (--ag-black), blanco… Escritorio sin cambios.
+   Contrastes sobre #0a0a0a: título #fff 19.8:1, texto #d9d9d9 13.9:1, etiqueta #fadbdb 15.6:1,
+   icono #fff 19.8:1, flecha (píldora #cc0000) 3.4:1 y flecha blanca sobre ella 5.9:1, foco #cc0000 3.4:1 (y 5.9:1 sobre el fondo blanco). */
+@media (max-width: 1023px) {
+  .qe-grid > .qe-item--nosotros > .qe-card,
+  .qe-grid > .qe-item--programas > .qe-card,
+  .qe-grid > .qe-item--plataforma > .qe-card { background: #fff; color: #000; border: 1px solid #e6e6e6; }
+  .qe-grid > .qe-item--nosotros > .qe-card .qe-eyebrow,
+  .qe-grid > .qe-item--programas > .qe-card .qe-eyebrow,
+  .qe-grid > .qe-item--plataforma > .qe-card .qe-eyebrow { color: #cc0000; }
+  .qe-grid > .qe-item--nosotros > .qe-card .qe-text,
+  .qe-grid > .qe-item--programas > .qe-card .qe-text,
+  .qe-grid > .qe-item--plataforma > .qe-card .qe-text { color: #555; }
+  .qe-grid > .qe-item--nosotros > .qe-card .qe-ilus,
+  .qe-grid > .qe-item--programas > .qe-card .qe-ilus,
+  .qe-grid > .qe-item--plataforma > .qe-card .qe-ilus { color: #111; --qe-ilus-bg: #fff; }
+  .qe-grid > .qe-item--nosotros > .qe-card .qe-ilus::before,
+  .qe-grid > .qe-item--programas > .qe-card .qe-ilus::before,
+  .qe-grid > .qe-item--plataforma > .qe-card .qe-ilus::before { content: ""; position: absolute; inset: 4% 2% 0 -4%; z-index: -1; background: #ededed;
+    border-radius: 58% 42% 55% 45% / 48% 60% 40% 52%; transform: rotate(-8deg); }
+  .qe-grid > .qe-item--resultados > .qe-card,
+  .qe-grid > .qe-item--instituciones > .qe-card,
+  .qe-grid > .qe-item--legal > .qe-card { background: var(--ag-black, #0a0a0a); color: #fff; border: 1px solid var(--ag-black, #0a0a0a); }
+  .qe-grid > .qe-item--resultados > .qe-card .qe-eyebrow,
+  .qe-grid > .qe-item--instituciones > .qe-card .qe-eyebrow,
+  .qe-grid > .qe-item--legal > .qe-card .qe-eyebrow { color: #fadbdb; }
+  .qe-grid > .qe-item--resultados > .qe-card .qe-text,
+  .qe-grid > .qe-item--instituciones > .qe-card .qe-text,
+  .qe-grid > .qe-item--legal > .qe-card .qe-text { color: #d9d9d9; }
+  .qe-grid > .qe-item--resultados > .qe-card .qe-ilus,
+  .qe-grid > .qe-item--instituciones > .qe-card .qe-ilus,
+  .qe-grid > .qe-item--legal > .qe-card .qe-ilus { color: #fff; --qe-ilus-bg: #0a0a0a; }
+  .qe-grid > .qe-item--resultados > .qe-card .qe-ilus::before,
+  .qe-grid > .qe-item--instituciones > .qe-card .qe-ilus::before,
+  .qe-grid > .qe-item--legal > .qe-card .qe-ilus::before { content: none; }
+  .qe-grid > .qe-item--resultados > .qe-card:focus-visible,
+  .qe-grid > .qe-item--instituciones > .qe-card:focus-visible,
+  .qe-grid > .qe-item--legal > .qe-card:focus-visible { border-color: #fadbdb; }
+}
+@media (max-width: 1023px) and (hover: hover) and (pointer: fine) {
+  .qe-grid > .qe-item--nosotros > .qe-card:hover,
+  .qe-grid > .qe-item--programas > .qe-card:hover,
+  .qe-grid > .qe-item--plataforma > .qe-card:hover { border-color: var(--qe-red); }
+  .qe-grid > .qe-item--resultados > .qe-card:hover,
+  .qe-grid > .qe-item--instituciones > .qe-card:hover,
+  .qe-grid > .qe-item--legal > .qe-card:hover { border-color: #fadbdb; }
+}
