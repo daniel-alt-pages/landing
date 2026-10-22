@@ -4,7 +4,7 @@ const TIENDA = '/landing/programas?tipo=programa';
 
 /**
  * PreICFES Intensivo y Vacacional: aquí solo se mencionan (duración, horas, simulacros).
- * No se venden en el portafolio: sin precio ni carrito; la compra vive en la tienda.
+ * Solo se mencionan en el portafolio.
  */
 export function B2bPreicfes() {
   const programas = CARRILES.filter((c) => c.id === 'intensivo' || c.id === 'vacacional');

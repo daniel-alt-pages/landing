@@ -73,7 +73,7 @@ export const B2B_QUIENES = {
   vision: 'Democratizar la educación en Colombia y ser el programa virtual líder en calidad, impacto social y oportunidad para todos.',
 };
 
-export const B2B_VALOR = {
+export const B2B_PROPUESTA = {
   eyebrow: 'Propuesta de valor',
   title: ['La evaluación no termina', 'en un puntaje'] as const,
   lead: 'Empresa colombiana orientada a la preparación Saber 11, evaluación educativa, tecnología y análisis de datos.',

@@ -1,5 +1,5 @@
 import { B2B_CIERRE } from '../../../_contenido/b2b/modelo';
-import { b2bWhatsappUrl, B2B_CONTACTO } from '../../../_contenido/b2b/precios';
+import { b2bWhatsappUrl, B2B_CONTACTO } from '../../../_contenido/b2b/contacto';
 import { LeadForm } from '../LeadForm';
 
 export function B2bCierre() {

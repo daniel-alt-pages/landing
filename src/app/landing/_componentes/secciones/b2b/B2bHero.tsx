@@ -1,5 +1,5 @@
 import { B2B_HERO } from '../../../_contenido/b2b/modelo';
-import { b2bWhatsappUrl } from '../../../_contenido/b2b/precios';
+import { b2bWhatsappUrl } from '../../../_contenido/b2b/contacto';
 
 /** Portada B2B según el diseño aprobado en Stitch (21-oct-2026): rojo #CC0000 + foto del aula a 15 %, una columna centrada. */
 export function B2bHero() {
