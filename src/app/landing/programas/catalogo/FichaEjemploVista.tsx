@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { coverForKind, type TiendaConfig } from '../../_lib/tienda';
 import type { FichaPrograma as FichaEjemplo } from '../../_datos/tienda';
+import { AddToCartButton } from '../../_componentes/bits/AddToCartButton';
 import { Avatar } from '../../_componentes/bits/Avatar';
 import { DejaOpinion } from './DejaOpinion';
 import { kindLabel, priceLabel, type CatalogItem } from './catalogUi';
@@ -71,9 +72,9 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
           {pays ? <p className="ag-fx-pays">Medios de pago: {pays}</p> : null}
           <p className="ag-fx-stock"><strong>Cupos disponibles</strong> · quedan 12 (ejemplo)</p>
           <button type="button" className="ag-store-primary" disabled title="Producto de ejemplo. No está a la venta.">Inscribirme</button>
-          <button type="button" className="ag-store-secondary" disabled={inCart} onClick={() => onAdd(item)}>
+          <AddToCartButton className="ag-store-secondary" disabled={inCart} onAdd={() => onAdd(item)}>
             {inCart ? 'En el carrito' : 'Agregar al carrito'}
-          </button>
+          </AddToCartButton>
           <p className="ag-fx-note">Este producto es de ejemplo y no está a la venta.</p>
           <h2 className="ag-fx-know">Lo que tiene que saber de este programa</h2>
           <ul className="ag-fx-list">

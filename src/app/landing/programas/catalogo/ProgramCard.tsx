@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
+import { AddToCartButton } from '../../_componentes/bits/AddToCartButton';
 import { fuenteTienda } from '../../_datos/tienda';
 import { coverForKind } from '../../_lib/tienda';
 import GlareHover from '../../_componentes/bits/GlareHover';
@@ -96,14 +97,9 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Prop
         {extra ? <p className="ag-mk-free">Incluye: {extra.incluye}</p> : null}
         <div className="ag-mk-actions">
           <Open item={item} onOpen={onOpen} href={href} className="ag-mk-link">Ver programa</Open>
-          <button
-            type="button"
-            className="ag-mk-cart"
-            disabled={full || inCart}
-            onClick={() => onAdd(item)}
-          >
+          <AddToCartButton className="ag-mk-cart" disabled={full || inCart} onAdd={() => onAdd(item)}>
             {addLabel}
-          </button>
+          </AddToCartButton>
         </div>
       </div>
     </article>

@@ -862,3 +862,12 @@ ul.ag-facts-body li + li { margin-top: 6px; }
 .ag-mk-sort select { font: inherit; font-weight: 600; color: var(--ag-ink); border: 1px solid var(--ag-grey-2); border-radius: 999px; padding: 6px 10px; background: #fff; min-height: 36px; }
 .ag-mk-bar { flex-wrap: wrap; gap: 8px 16px; }
 .ag-fx-gallery figcaption { left: auto; right: 22px; }
+
+/* ===== Botón «Agregar al carrito» con micro-interacción ===== */
+.ag-atc { position: relative; overflow: hidden; }
+.ag-atc-stage { position: relative; display: grid; place-items: center; min-height: 1.4em; width: 100%; }
+.ag-atc-label { display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.ag-atc-cart { position: relative; display: inline-flex; }
+.ag-atc-box { position: absolute; left: 6px; top: 0; width: 8px; height: 8px; border-radius: 2px; background: #cc0000; }
+.ag-atc[data-fase="listo"] svg { color: currentColor; }
+.ag-atc[aria-disabled="true"] { cursor: default; }
