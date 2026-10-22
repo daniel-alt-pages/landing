@@ -243,28 +243,160 @@
 .ag-b2b-partes .is-us span { color: #fff; }
 .ag-b2b-promesa { margin-top: 16px; padding: 16px; border: 2px solid var(--ag-red); border-radius: 16px; font-weight: 700; }
 
-.ag-b2b-cierre { text-align: left; }
+.ag-b2b-cierre {
+  position: relative;
+  text-align: left;
+  background: linear-gradient(135deg, #b80000 0%, #990000 50%, #800000 100%);
+  padding: 64px 0 80px;
+}
+.ag-b2b-cierre-grid {
+  display: grid;
+  gap: 40px;
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .ag-b2b-cierre-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr);
+    gap: 56px;
+    align-items: start;
+  }
+}
+.ag-b2b-cierre-info {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.ag-b2b-cierre-kicker {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 .ag-b2b-cierre h2 {
   margin: 0;
-  max-width: 12em;
+  max-width: 14em;
   color: #fff;
-  font-size: clamp(2rem, 3vw, 3rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  font-size: clamp(2.2rem, 3.2vw + 0.8rem, 3.2rem);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  font-weight: 900;
+  text-transform: uppercase;
 }
-.ag-b2b-cierre p { color: #fff; font-size: 18px; }
-.ag-b2b-cierre .ag-b2b-btn { background: #fff; color: var(--ag-ink); }
-.ag-b2b-cierre .ag-b2b-btn-ghost { background: transparent; color: #fff; border: 2px solid #fff; }
-.ag-b2b-cierre .ag-b2b-nota { color: #fff; }
-.ag-b2b-cierre .ag-b2b-nota a { color: #fff; font-weight: 700; }
-.ag-b2b-cierre .ag-b2b-form-card { margin-top: 32px; max-width: 720px; padding: 24px; border-radius: 8px; background: #fff; color: var(--ag-ink); text-align: left; }
+.ag-b2b-cierre-lead {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 0;
+}
+.ag-b2b-cierre-beneficios {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.ag-b2b-cierre-beneficios li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.ag-b2b-cierre-check {
+  color: #fff;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.ag-b2b-cierre-contacto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+.ag-b2b-cierre .ag-b2b-btn-white {
+  background: #fff;
+  color: #111;
+  border-radius: 9999px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  gap: 8px;
+}
+.ag-b2b-cierre .ag-b2b-btn-white:hover {
+  background: #f4f4f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+.ag-b2b-cierre .ag-b2b-btn-ghost-white {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 9999px;
+  font-weight: 700;
+  gap: 8px;
+}
+.ag-b2b-cierre .ag-b2b-btn-ghost-white:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+.ag-b2b-cierre-tel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+.ag-b2b-cierre-tel strong {
+  color: #fff;
+}
+
+/* Tarjeta del formulario elevada */
+.ag-b2b-cierre .ag-b2b-form-card {
+  margin-top: 0;
+  width: 100%;
+  max-width: 100%;
+  padding: 32px;
+  border-radius: 24px;
+  background: #fff;
+  color: var(--ag-ink);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.35);
+  text-align: left;
+}
+.ag-b2b-form-head {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.ag-b2b-form-head h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #111;
+}
+.ag-b2b-form-head p {
+  margin: 6px 0 0;
+  font-size: 14.5px;
+  color: #555;
+  line-height: 1.45;
+}
 .ag-b2b-cierre .ag-b2b-form-card p,
 .ag-b2b-cierre .ag-b2b-form-card label,
-.ag-b2b-cierre .ag-b2b-form-card legend { color: var(--ag-ink); font-size: 16px; }
+.ag-b2b-cierre .ag-b2b-form-card legend { color: var(--ag-ink); font-size: 15px; }
 .ag-b2b-cierre .ag-b2b-form-card .ag-error { color: var(--ag-red-hover, #a30000); font-size: 14px; }
-.ag-b2b-cierre .ag-b2b-form-card .ag-form-note { color: var(--ag-muted); font-size: 14px; }
+.ag-b2b-cierre .ag-b2b-form-card .ag-form-note { color: var(--ag-muted); font-size: 13.5px; }
 .ag-b2b-cierre .ag-b2b-form-card a { color: var(--ag-ink); }
-@media (max-width: 640px) { .ag-b2b-cierre .ag-b2b-form-card { padding: 16px; } }
+@media (max-width: 640px) {
+  .ag-b2b-cierre .ag-b2b-form-card { padding: 22px 18px; border-radius: 20px; }
+}
 
 @media (max-width: 639px) {
   .ag-b2b-acciones .ag-b2b-btn { width: 100%; }
