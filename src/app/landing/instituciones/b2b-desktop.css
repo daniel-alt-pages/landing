@@ -1,0 +1,49 @@
+/* Ajuste de escritorio del panel B2B (Daniel 21-oct-2026, referencia-daniel-2.html). Solo >=1024px: el móvil no cambia. */
+.ag-b2m-trazo { display: none; }
+@media (min-width: 1024px) {
+  /* Alcance (21-oct-2026): Plus Jakarta Sans y #FF2323 solo en la portada; el resto del panel sigue en Montserrat y #CC0000. */
+  .b2b-panel .sg-hero {
+    --ag-font: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
+    font-family: var(--ag-font);
+  }
+  .b2b-panel .sg-hero h1 { font-family: var(--ag-font); font-weight: 800; letter-spacing: -0.03em; }
+
+  /* Ruta de navegación sobre el rojo de la portada (la barra es global; solo cambia en esta página). */
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar { position: absolute; left: 0; right: 0; z-index: 2; padding: 20px 0 0; background: none; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb-bar .ag-wrap { width: auto; max-width: none; margin: 0; padding: 0 48px; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb { font-family: 'Plus Jakarta Sans', var(--ag-font); font-size: 17px; font-weight: 700; color: #fff; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb a { color: #fff; }
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb a:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+  /* Portada más grande y proporcional. */
+  .b2b-panel .sg-hero { background: #FF2323; min-height: calc(100svh - var(--ag-header, 48px) - 46px); }
+  .b2b-panel .sg-hero-main { max-width: 1160px; padding: 56px 48px 72px; }
+  .b2b-panel .sg-hero-badge { padding: 8px 22px; font-size: 16px; font-weight: 600; }
+  .b2b-panel .sg-hero-eyebrow { margin-top: 22px; font-size: 16px; font-weight: 700; letter-spacing: 0.08em; }
+  .b2b-panel .sg-hero .sg-hero-h1 { max-width: 1100px; margin-top: 20px; font-size: clamp(72px, 5.2vw + 8px, 88px); line-height: 1.03; }
+  .b2b-panel .sg-hero-sub { max-width: 52rem; margin-top: 28px; font-size: clamp(22px, 0.4vw + 17px, 24px); line-height: 1.5; }
+  .b2b-panel .sg-hero-chips { gap: 14px; margin-top: 36px; }
+  .b2b-panel .sg-hero-chips li { padding: 9px 20px; font-size: 18px; line-height: 24px; font-weight: 600; }
+  .b2b-panel .sg-hero-btns { gap: 20px; margin-top: 40px; }
+  .b2b-panel .sg-hero-btn { padding: 18px 36px; border-radius: 10px; font-size: 18px; line-height: 24px; font-weight: 800; }
+  .b2b-panel .sg-hero-btn.is-primario { color: #FF2323; }
+  .b2b-panel .sg-hero-nota { margin-top: 32px; font-size: 18px; font-weight: 500; opacity: 1; }
+
+  /* Frase a mano: Caveat inclinada con trazo bajo «lugar», como la referencia. */
+  .b2b-panel .ag-b2m-mano { font-size: 32px; line-height: 1.05; letter-spacing: 0.02em; transform: rotate(-6deg); }
+  .b2b-panel .ag-b2m-l2 { position: relative; display: inline-block; }
+  .b2b-panel .ag-b2m-trazo { display: block; position: absolute; right: 0; bottom: -8px; width: 64px; height: 12px; }
+}
+/* Contraste: blanco sobre #FF2323 = 3.81:1, solo vale para texto grande (>=24px, o >=18.66px en negrita). Todo texto blanco del rojo queda en 19px/700 o más. */
+@media (min-width: 1024px) {
+  body:has(.b2b-panel .sg-hero) .ag-breadcrumb { font-size: 19px; font-weight: 700; }
+  .b2b-panel .sg-hero-badge, .b2b-panel .sg-hero-eyebrow { font-size: 19px; font-weight: 700; }
+  .b2b-panel .sg-hero-chips li, .b2b-panel .sg-hero-nota { font-size: 19px; font-weight: 700; }
+  .b2b-panel .sg-hero-btn { font-size: 19px; }
+  .b2b-panel .sg-hero-sub { font-size: 24px; }
+}
+/* v2: el rojo brillante solo en la portada; el texto rojo pequeño sobre claro sigue en #CC0000 (5.9:1). La ruta flota dentro de la portada, sin franja. */
+@media (min-width: 1024px) {
+  .b2b-panel .sg-hero { --b2b-rojo: #FF2323; --ag-red: #FF2323; min-height: calc(100svh - var(--ag-header, 48px)); }
+  .b2b-panel .sg-hero-main { padding-top: 88px; }
+}

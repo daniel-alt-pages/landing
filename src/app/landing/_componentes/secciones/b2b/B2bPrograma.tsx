@@ -20,12 +20,12 @@ function esNivel(id: string): id is NivelId {
 function Panel1() {
   return (
     <div id="n1">
-      <h3>Evaluación institucional</h3>
+      <h3>Evaluación institucional con TRI, el tipo de modelo que usa el Icfes</h3>
       <RutaSvg etiqueta="Etapas del Nivel 1" pasos={B2B_N1.etapas.map((paso) => ({ title: paso.title, text: paso.sub }))} />
       <div className="ag-b2b-datos">
-        <DatoB2b valor="0–500" linea="Escala del puntaje global" />
-        <DatoB2b valor="5 áreas" linea="Matemáticas, lectura, ciencias, sociales e inglés" />
-        <DatoB2b valor="1,5 a 2 h" linea="Socialización con directivos" />
+        <DatoB2b cifra="0–500" linea="Escala del puntaje global" />
+        <DatoB2b cifra="5 áreas" linea="Matemáticas, lectura, ciencias, sociales e inglés" />
+        <DatoB2b cifra="1,5 a 2 h" linea="Socialización con directivos" />
       </div>
       <DobleImpacto />
       <Plegable titulo="Propósito del simulacro" cuenta="3 usos">
@@ -44,12 +44,12 @@ function Panel1() {
 function Panel2() {
   return (
     <div id="n2">
-      <h3>Los resultados deciden la formación</h3>
+      <h3>Los resultados en matemáticas, lectura crítica y las demás áreas deciden la formación</h3>
       <RutaSvg etiqueta="Ruta del Nivel 2" pasos={B2B_N2.pasos} />
       <div className="ag-b2b-datos">
-        <DatoB2b valor="20 h" linea="Clases en vivo sobre los errores" />
-        <DatoB2b valor="6 pasos" linea="Del simulacro al informe" />
-        <DatoB2b valor="1 prueba" linea="Verifica si hubo avance" />
+        <DatoB2b cifra="20 h" linea="Clases en vivo sobre los errores" />
+        <DatoB2b cifra="6 pasos" linea="Del simulacro al informe" />
+        <DatoB2b cifra="1 prueba" linea="Verifica si hubo avance" />
       </div>
       <EntregablesN2 />
     </div>
@@ -61,9 +61,9 @@ function Panel3() {
     <div id="n3">
       <h3>Programa institucional integral</h3>
       <div className="ag-b2b-datos">
-        <DatoB2b valor="426 h" linea="Experiencia del estudiante, no solo clase" />
-        <DatoB2b valor="6 cortes" linea="Reuniones con rectoría por calendario" />
-        <DatoB2b valor="4 actores" linea="Estudiante, familia, docente y directivo" />
+        <DatoB2b cifra="426 h" linea="Experiencia del estudiante, no solo clase" />
+        <DatoB2b cifra="6 cortes" linea="Reuniones con rectoría por calendario" />
+        <DatoB2b cifra="4 actores" linea="Estudiante, familia, docente y directivo" />
       </div>
       <EcosistemaArticulado />
       <CapasPilares />
@@ -113,7 +113,7 @@ export function B2bPrograma() {
       tone="grey"
       numero="04"
       pregunta="¿Qué pasa en cada nivel?"
-      titulo="La ruta de cada nivel"
+      titulo="Qué pasa en cada nivel, del simulacro al informe"
       acento="cada nivel"
       bajada="Mide, interviene o sostiene la mejora."
     >

@@ -144,7 +144,7 @@ export const B2B_CALIDAD = {
     'Simulacros aplicados.',
     'Informes entregados a tiempo.',
     'Publicación de resultados.',
-    'Plataforma activa al 99%.',
+    'Plataforma disponible.',
     'Reuniones realizadas.',
     'Atención oportuna de PQRS.',
   ],

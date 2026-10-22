@@ -13,7 +13,7 @@ export function B2bGobierno() {
       tone="white"
       numero="06"
       pregunta="¿Cómo responden?"
-      titulo="Entregables, roles y seguimiento"
+      titulo="Entregables, responsables y seguimiento"
       acento="seguimiento"
       bajada="Lo que se entrega, quién responde y qué se mide."
     >

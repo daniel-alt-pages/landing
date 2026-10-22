@@ -28,7 +28,7 @@
   gap: 8px;
   margin: 0 0 10px;
   color: var(--ag-muted);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 800;
 }
 .ag-b2b-pregunta span,
@@ -38,10 +38,10 @@
   min-height: 24px;
   padding: 0 8px;
   border-radius: 10px;
-  background: var(--ag-black);
-  color: #fff;
+  background: #F7F5F0;
+  color: #2B2B2B;
 }
-.ag-b2b-pregunta.is-on-dark { color: rgba(255, 255, 255, 0.78); }
+.ag-b2b-pregunta.is-on-dark { color: #4A4A4A; }
 .ag-b2b-pregunta.is-on-dark span { background: #fff; color: var(--ag-ink); }
 .ag-b2b-bajada {
   max-width: 38rem;
@@ -59,14 +59,14 @@
   border-radius: 16px;
   background: #fff;
 }
-.ag-tone-black .ag-b2b-dato { background: #161618; border-color: rgba(255, 255, 255, 0.16); color: #fff; }
+.ag-tone-black .ag-b2b-dato { background: #F7F5F0; border-color: #E2DED6; color: #2B2B2B; }
 .ag-b2b-dato strong {
   display: block;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
   letter-spacing: -0.04em;
 }
-.ag-b2b-dato p { margin: 8px 0 0; font-size: 15px; }
+.ag-b2b-dato p { margin: 8px 0 0; font-size: 16px; }
 .ag-b2b-datos {
   display: grid;
   gap: 12px;
@@ -94,12 +94,12 @@
 }
 .ag-b2b-fold summary::-webkit-details-marker { display: none; }
 .ag-b2b-fold summary span { margin-right: auto; }
-.ag-b2b-fold summary em { color: var(--ag-muted); font-style: normal; font-size: 13px; font-weight: 700; }
+.ag-b2b-fold summary em { color: var(--ag-muted); font-style: normal; font-size: 16px; font-weight: 700; }
 .ag-b2b-fold summary svg { transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1); }
 .ag-b2b-fold[open] summary svg { transform: rotate(180deg); }
 .ag-b2b-fold-body { padding: 0 16px 16px; }
-.ag-tone-black .ag-b2b-fold { background: #161618; border-color: rgba(255, 255, 255, 0.16); color: #fff; }
-.ag-tone-black .ag-b2b-fold summary em { color: rgba(255, 255, 255, 0.72); }
+.ag-tone-black .ag-b2b-fold { background: #F7F5F0; border-color: #E2DED6; color: #2B2B2B; }
+.ag-tone-black .ag-b2b-fold summary em { color: #4A4A4A; }
 
 .ag-b2b-tabs {
   display: flex;
@@ -131,9 +131,9 @@
 }
 .ag-tone-black .ag-b2b-tabs button,
 .ag-tone-black .ag-b2b-tabs a {
-  background: #161618;
-  border-color: rgba(255, 255, 255, 0.16);
-  color: #fff;
+  background: #F7F5F0;
+  border-color: #E2DED6;
+  color: #2B2B2B;
 }
 
 .ag-b2b-btn {
@@ -183,7 +183,7 @@
   min-height: 44px;
   padding: 10px 12px;
   color: var(--ag-ink);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
   text-decoration: none;
 }
@@ -245,7 +245,7 @@
 .ag-b2b-punto.is-si { background: var(--ag-red); border-color: var(--ag-red); }
 .ag-b2b-punto.is-parcial { background: #fff; border-color: var(--ag-red); }
 .ag-b2b-punto.is-no { background: transparent; border-color: var(--ag-hairline); }
-.ag-b2b-leyenda { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 13px; font-weight: 700; }
+.ag-b2b-leyenda { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 16px; font-weight: 700; }
 .ag-b2b .ag-table-wrap { max-width: 100%; }
 .ag-b2b thead th.is-ultimo,
 .ag-b2b td.is-ultimo { background: #fff5f5; }

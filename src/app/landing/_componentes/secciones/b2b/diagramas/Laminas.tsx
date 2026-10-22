@@ -1,4 +1,4 @@
-import { B2B_PROBLEMA, B2B_QUIENES, B2B_RESUMEN, B2B_VALOR } from '../../../../_contenido/b2b/modelo';
+import { B2B_PROBLEMA, B2B_QUIENES, B2B_RESUMEN, B2B_PROPUESTA } from '../../../../_contenido/b2b/modelo';
 import { B2B_CALIDAD, B2B_GOBIERNO, B2B_PLATAFORMA, B2B_SIMULACROS } from '../../../../_contenido/b2b/servicio';
 import { AlEntrar } from '../base/AlEntrar';
 
@@ -51,7 +51,7 @@ export function Ficha() {
         <table className="ag-pf-tabla">
           <caption>Identificación</caption>
           <thead><tr><th scope="col">Dato</th><th scope="col">Información</th></tr></thead>
-          <tbody>{B2B_VALOR.ficha.map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody>
+          <tbody>{B2B_PROPUESTA.ficha.map(([k, v]) => <tr key={k}><th scope="row">{k}</th><td>{v}</td></tr>)}</tbody>
         </table>
       </div>
     </AlEntrar>

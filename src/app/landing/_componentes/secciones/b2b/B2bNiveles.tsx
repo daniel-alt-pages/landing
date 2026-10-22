@@ -20,8 +20,8 @@ export function B2bNiveles() {
       tone="white"
       numero="03"
       pregunta="¿Qué puedo contratar?"
-      titulo="Tres profundidades de la misma cadena"
-      acento="misma cadena"
+      titulo="Tres niveles de servicio para su institución"
+      acento="Tres niveles"
       bajada={B2B_CADENA.nota}
     >
       <EscaleraNiveles />

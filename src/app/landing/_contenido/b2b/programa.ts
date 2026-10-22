@@ -52,7 +52,7 @@ export const B2B_N1 = {
     fuente: 'Simulacro institucional tipo Saber 11, con baremos estandarizados.',
     alumno: [
       'Puntaje global estimado en la escala 0 a 500.',
-      'Desglose en 5 áreas: Matemáticas, Lectura, Ciencias, Sociales e Inglés.',
+      'Desglose en 5 áreas: Matemáticas, Lectura crítica, Ciencias, Sociales e Inglés.',
       'Nivel de desempeño y percentil frente a la cohorte institucional.',
       'Matriz de competencias y componentes evaluados.',
       'Auditoría de respuestas correctas e incorrectas, con la competencia de cada una.',
@@ -63,7 +63,7 @@ export const B2B_N1 = {
       'Puntaje global y promedio general de la institución.',
       'Comparativa de grupos: medias y dispersión.',
       'Competencias críticas y vacíos curriculares comunes.',
-      'Preguntas críticas: donde falló más del 60% de los estudiantes.',
+      'Preguntas críticas: las que más estudiantes fallaron.',
       'Listado de estudiantes en riesgo académico.',
       'Benchmark SEAMOSGENIOS frente a otras instituciones.',
       'Benchmark externo con datos públicos históricos del ICFES.',

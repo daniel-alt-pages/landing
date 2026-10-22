@@ -1,0 +1,21 @@
+# robots.txt de https://seamosgenios.org (landing pública).
+# La plataforma vive en https://app.seamosgenios.org, con su propio robots y SIN sitemap de la landing.
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin-panel
+Disallow: /coordinador
+Disallow: /estudiante/
+Disallow: /debug-dashboard
+Disallow: /landing/gracias
+
+User-agent: Bravebot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://seamosgenios.org/sitemap.xml

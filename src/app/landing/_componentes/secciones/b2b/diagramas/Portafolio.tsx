@@ -1,5 +1,5 @@
 import { B2B_N1, B2B_N2, B2B_N3 } from '../../../../_contenido/b2b/programa';
-import { B2B_VALOR } from '../../../../_contenido/b2b/modelo';
+import { B2B_PROPUESTA } from '../../../../_contenido/b2b/modelo';
 import { B2B_CANALES, B2B_ENTREGABLES } from '../../../../_contenido/b2b/servicio';
 import {
   B2B_ACTA_FECHAS,
@@ -35,7 +35,7 @@ export function Capacidades() {
       <h3 className="ag-pf-h">Lo que hacemos por su colegio</h3>
       <p className="ag-pf-lead">Formación, evaluación, tecnología, analítica y acompañamiento para preparar el Saber 11. Trabajamos de forma virtual con su institución: las clases y los encuentros se hacen por Google Meet y los gestiona nuestro equipo.</p>
       <ol className="ag-pf-capacidades">
-        {B2B_VALOR.capacidades.map((item, index) => (
+        {B2B_PROPUESTA.capacidades.map((item, index) => (
           <li key={item.title} style={{ ['--i' as string]: index }}>
             <span className="ag-pf-num" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <strong>{item.title}</strong>
@@ -47,7 +47,7 @@ export function Capacidades() {
       <ul className="ag-pf-checks">
         {DIFERENCIAS.map((item) => <li key={item}>{item}</li>)}
       </ul>
-      <Cta href="#agendar" label="Agendar una reunión" nota="Contacto: seamosgenios@adpmh.com · SEAMOSGENIOS S.A.S." />
+      <Cta href="#solicitar-reunion" label="Agendar reunión de 30 min" nota="Contacto: seamosgenios@adpmh.com · SEAMOSGENIOS S.A.S." />
     </AlEntrar>
   );
 }

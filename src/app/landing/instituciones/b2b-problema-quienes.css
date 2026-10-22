@@ -34,7 +34,7 @@
 .ag-pq-stat p { margin: 0; font-size: 16px; line-height: 1.45; }
 .ag-pq-cifra { color: var(--ag-red); font-weight: 800; font-size: 24px !important; }
 .ag-pq-fuente { margin: 0; text-align: right; font-size: 16px; font-style: italic; font-weight: 700; }
-.ag-pq-ciclo { border: 2px solid #CC0000; border-radius: 8px; padding: 16px; }
+.ag-pq-ciclo { border: 2px solid var(--b2b-rojo, #CC0000); border-radius: 8px; padding: 16px; }
 .ag-pq-ciclo h3 { margin: 0 0 16px; font-size: 16px; font-weight: 800; text-transform: uppercase; }
 .ag-pq-ciclo ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
 .ag-pq-ciclo li + li { border-top: 1px solid #6B6B6B; padding-top: 16px; }
@@ -54,7 +54,7 @@
 .ag-pq-rasgos { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 480px) { .ag-pq-rasgos { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 768px) and (max-width: 1023px) { .ag-pq-rasgos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.ag-pq-rasgos li { border: 2px solid #CC0000; border-radius: 8px; padding: 16px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; hyphens: auto; overflow-wrap: anywhere; }
+.ag-pq-rasgos li { border: 2px solid var(--b2b-rojo, #CC0000); border-radius: 8px; padding: 16px; text-align: left; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; hyphens: auto; overflow-wrap: anywhere; }
 .ag-pq-rasgos svg { color: var(--ag-red); }
 .ag-pq-rasgos strong { font-size: 16px; line-height: 1.25; }
 .ag-pq-rasgos p { margin: 0; font-size: 16px; line-height: 1.4; }

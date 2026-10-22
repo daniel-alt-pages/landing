@@ -13,7 +13,7 @@ export const B2B_NAV = [
 export const B2B_HERO = {
   chip: 'SEAMOSGENIOS S.A.S. · NIT 902080201-8',
   kicker: 'Calendario B-A 2027-1',
-  title: 'Preparación Saber 11 medible, trazable y acompañada.',
+  title: 'Preparación Saber 11 para colegios: medible, trazable y acompañada',
   accent: 'medible, trazable y acompañada',
   lead: 'Para que más estudiantes lleguen a la universidad. Para colegios y consejos directivos.',
   pilares: [
@@ -21,9 +21,6 @@ export const B2B_HERO = {
     { title: 'Escala 0-500' },
     { title: '4 actores' },
   ],
-  panelAlt: 'Ejemplo del panel de rectoría: promedio del grupo y áreas del último simulacro.',
-  panelLabel: 'Vista de rectoría',
-  panelNote: '65 instituciones ya aplicaron al menos un simulacro. El primero no tiene costo.',
 };
 
 export const B2B_RESUMEN = {
@@ -75,7 +72,7 @@ export const B2B_QUIENES = {
   vision: 'Democratizar la educación en Colombia y ser el programa virtual líder en calidad, impacto social y oportunidad para todos.',
 };
 
-export const B2B_VALOR = {
+export const B2B_PROPUESTA = {
   eyebrow: 'Propuesta de valor',
   title: ['La evaluación no termina', 'en un puntaje'] as const,
   lead: 'Empresa colombiana orientada a la preparación Saber 11, evaluación educativa, tecnología y análisis de datos.',
@@ -243,6 +240,6 @@ export const B2B_PORQUE = {
 } as const;
 
 export const B2B_CIERRE = {
-  titulo: '¿Empezamos por un diagnóstico?',
-  linea: 'El primer simulacro no tiene costo.',
+  titulo: '¿Empezamos con un simulacro tipo Saber 11?',
+  linea: 'Cuéntenos de su institución y le proponemos por dónde empezar.',
 } as const;
