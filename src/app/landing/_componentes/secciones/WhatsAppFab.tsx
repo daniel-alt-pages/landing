@@ -10,7 +10,8 @@ export function WhatsAppFab() {
   const pathname = usePathname();
   const ref = useRef<HTMLAnchorElement>(null);
   const [inContact, setInContact] = useState(false);
-  const [blocked, setBlocked] = useState(false);
+  // Empieza oculta: solo aparece tras comprobar que no tapa nada.
+  const [blocked, setBlocked] = useState(true);
 
   useEffect(() => {
     const target = document.getElementById('contacto');
@@ -35,14 +36,18 @@ export function WhatsAppFab() {
       if (!raf) raf = requestAnimationFrame(check);
     };
     schedule();
-    window.addEventListener('scroll', schedule, { passive: true });
+    // Captura: también scroll de carruseles/contenedores internos (no burbujea a window).
+    document.addEventListener('scroll', schedule, { passive: true, capture: true });
     window.addEventListener('resize', schedule);
+    // Contenido que se desplaza por transiciones/animaciones (reveals, acordeones).
+    for (const ev of ['transitionend', 'animationend', 'transitionrun']) document.addEventListener(ev, schedule, true);
     const mo = new MutationObserver(schedule);
     mo.observe(document.body, { childList: true, subtree: true });
     const t = window.setInterval(schedule, 300);
     return () => {
-      window.removeEventListener('scroll', schedule);
+      document.removeEventListener('scroll', schedule, { capture: true });
       window.removeEventListener('resize', schedule);
+      for (const ev of ['transitionend', 'animationend', 'transitionrun']) document.removeEventListener(ev, schedule, true);
       mo.disconnect();
       window.clearInterval(t);
       if (raf) cancelAnimationFrame(raf);
@@ -81,6 +86,28 @@ function fabCollides(fab: HTMLElement): boolean {
   const box = { l: r.left - PAD, t: r.top - PAD, r: r.right + PAD, b: r.bottom + PAD };
   const hit = (a: DOMRect) =>
     a.width > 0 && a.height > 0 && a.right > box.l && a.left < box.r && a.bottom > box.t && a.top < box.b;
+  // Contenido en movimiento continuo (muros de testimonios, marquees): su contenido
+  // pasaría por debajo entre comprobaciones, así que su caja entera cuenta como ocupada.
+  for (const a of document.getAnimations?.() ?? []) {
+    if (a.playState !== 'running' || !isInfinite(a)) continue;
+    const t = (a.effect as KeyframeEffect | null)?.target;
+    if (t && t !== fab && !fab.contains(t) && !t.contains(fab) && hit(t.getBoundingClientRect())) return true;
+  }
+  // elementsFromPoint ignora pointer-events:none (imágenes decorativas, overlays):
+  // se fuerza temporalmente para que también cuenten.
+  const pe = document.createElement('style');
+  pe.textContent = '*{pointer-events:auto!important}';
+  document.head.appendChild(pe);
+  try {
+    return sampleCollides(fab, box, hit);
+  } finally {
+    pe.remove();
+  }
+}
+
+type Box = { l: number; t: number; r: number; b: number };
+
+function sampleCollides(fab: HTMLElement, box: Box, hit: (a: DOMRect) => boolean): boolean {
   const seen = new Set<Element>();
   const N = 5;
   for (let i = 0; i < N; i++) {
@@ -95,6 +122,7 @@ function fabCollides(fab: HTMLElement): boolean {
         // pasaría por debajo entre comprobaciones, así que se trata como ocupado.
         if (el.getAnimations?.().some((a) => a.playState === 'running' && isInfinite(a))) return true;
         if (el.matches(INTERACTIVE) && hit(el.getBoundingClientRect())) return true;
+        if (isGraphic(el, box) && hit(el.getBoundingClientRect())) return true;
         for (const n of Array.from(el.childNodes)) {
           if (n.nodeType !== 3 || !n.textContent?.trim()) continue;
           const range = document.createRange();
@@ -105,6 +133,28 @@ function fabCollides(fab: HTMLElement): boolean {
     }
   }
   return false;
+}
+
+const MEDIA = 'svg,img,picture,canvas,video,iframe,object,embed';
+const CONTAINERS = 'html,body,main,section,article,header,footer,nav,aside,table,thead,tbody,tfoot,tr';
+
+// Contenido gráfico visible: medios (svg/img/…) y marcadores pequeños pintados con
+// fondo, borde, sombra o fondo-imagen (puntos, badges, iconos). Se ignoran contenedores
+// grandes (fondos de sección) para que la burbuja pueda mostrarse sobre ellos.
+function isGraphic(el: Element, box: Box): boolean {
+  if (el.closest('svg') && el.tagName.toLowerCase() !== 'svg') return false;
+  const cs = getComputedStyle(el);
+  if (cs.visibility === 'hidden' || Number(cs.opacity) === 0) return false;
+  const r = el.getBoundingClientRect();
+  if (el.matches(MEDIA)) return true;
+  if (el.matches(CONTAINERS)) return false;
+  const boxArea = (box.r - box.l) * (box.b - box.t);
+  if (r.width * r.height > boxArea * 6 || r.width > window.innerWidth * 0.6) return false;
+  const visibleColor = (c: string) => !!c && c !== 'transparent' && !/rgba\([^)]*,\s*0\)$/.test(c);
+  if (visibleColor(cs.backgroundColor) || cs.backgroundImage !== 'none') return true;
+  if (cs.boxShadow && cs.boxShadow !== 'none') return true;
+  const bw = parseFloat(cs.borderTopWidth) + parseFloat(cs.borderRightWidth) + parseFloat(cs.borderBottomWidth) + parseFloat(cs.borderLeftWidth);
+  return bw > 0 && visibleColor(cs.borderTopColor);
 }
 
 function isInfinite(a: Animation): boolean {
