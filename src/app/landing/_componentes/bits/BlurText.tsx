@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, MotionConfig, type Easing, type MotionStyle, type Transition } from 'motion/react';
+import { motion, MotionConfig, useReducedMotion, type Easing, type MotionStyle, type Transition } from 'motion/react';
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode, type Ref } from 'react';
 
 type Snapshot = Record<string, string | number>;
@@ -257,6 +257,7 @@ const BlurText = ({
   align
 }: BlurTextProps) => {
   const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
   const [phase, setPhase] = useState<Phase>(() => startPhase(trigger));
   const firstPhase = useRef(phase).current;
   const [focusWord, setFocusWord] = useState(-1);
@@ -409,10 +410,11 @@ const BlurText = ({
       <motion.span
         aria-hidden="true"
         key={piece.key}
+        className="ag-bt-piece"
         style={style}
-        initial={firstPhase === 'rest' ? false : fromSnapshot}
-        animate={target}
-        transition={transition}
+        initial={reduceMotion || firstPhase === 'rest' ? false : fromSnapshot}
+        animate={reduceMotion ? restSnapshot : target}
+        transition={reduceMotion ? INSTANT : transition}
       >
         {piece.content}
       </motion.span>

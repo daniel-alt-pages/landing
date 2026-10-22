@@ -35,7 +35,15 @@ export function ResultsGallery() {
           >
             <BrandPhoto alt="" />
             <p className="ag-stat-num ag-accent" style={{ fontSize: 40 }}>
-              <CountUp to={card.global} duration={1.2} />
+              {/* El número final, invisible, reserva el ancho: el conteo no desplaza «/500». */}
+              <span style={{ display: 'inline-grid' }}>
+                <span aria-hidden style={{ gridArea: '1 / 1', visibility: 'hidden' }}>
+                  {card.global}
+                </span>
+                <span style={{ gridArea: '1 / 1', justifySelf: 'start' }}>
+                  <CountUp to={card.global} duration={1.2} />
+                </span>
+              </span>
               <span style={{ fontSize: 18 }}>/500</span>
             </p>
             <h3 className="ag-h3">{card.name}</h3>

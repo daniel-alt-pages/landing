@@ -38,7 +38,7 @@ export function PageIntro({
             </a>
           </p>
         </div>
-        <div className="ag-hero-collage">{visual ?? <BrandPhoto />}</div>
+        <div className="ag-hero-collage">{visual ?? <BrandPhoto priority />}</div>
       </div>
     </section>
   );
