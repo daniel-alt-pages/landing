@@ -12,12 +12,7 @@ import type { CatalogItem } from '../../programas/catalogo/catalogUi';
 
 function payLine(config: TiendaConfig | null) {
   if (!config) return '';
-  const pays = [
-    config.bold !== false ? 'Tarjeta, PSE y Nequi con Bold' : '',
-    config.transfer !== false ? 'Transferencia' : '',
-    config.allowInstallments ? 'Pago en cuotas' : '',
-  ].filter(Boolean);
-  return pays.length ? `Medios de pago: ${pays.join(' · ')}` : '';
+  return 'Solicite su cotización';
 }
 
 /** Vitrina del inicio. Solo muestra productos activos de Comercio. */
@@ -124,12 +119,13 @@ export function ProductRail() {
             </button>
           ) : null}
           <ul className="ag-mk-rail" ref={scroller}>
-            {items.map((item) => (
-              <li key={item.id}>
+            {items.map((item, index) => (
+              <li key={item.id} style={{ ['--i' as string]: Math.min(index, 8) }}>
                 <ProgramCard
                   item={item}
                   inCart={cartIds.includes(item.id)}
                   onAdd={add}
+                  variant="rail"
                   href={`/landing/programas?programa=${encodeURIComponent(item.id)}`}
                 />
               </li>

@@ -13,6 +13,8 @@ type Props = {
   /** En la tienda abre el detalle; fuera de ella, el enlace lleva a la tienda. */
   onOpen?: (id: string) => void;
   href?: string;
+  /** Vitrina del home: sin precios, insignia sobre la imagen. */
+  variant?: 'rail';
 };
 
 function Open({ item, onOpen, href, className, children }: {
@@ -35,7 +37,8 @@ function discount(price: number, compare: number) {
   return Math.round((1 - price / compare) * 100);
 }
 
-export function ProgramCard({ item, inCart, onAdd, onOpen, href }: Props) {
+export function ProgramCard({ item, inCart, onAdd, onOpen, href, variant }: Props) {
+  const rail = variant === 'rail';
   const [broken, setBroken] = useState(false);
   const full = Boolean(item.seatsFull);
   const price = Number(item.priceCop) || 0;
@@ -56,6 +59,7 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href }: Props) {
         mode="hover"
         rimGlint={false}
       >
+        {rail && item.badge ? <span className="ag-mk-flag">{item.badge}</span> : null}
         <Open item={item} onOpen={onOpen} href={href} className="ag-mk-photo">
           {broken ? (
             <span className="ag-mk-photo-label">{kindLabel(item.catalog?.kind)}</span>
@@ -70,14 +74,14 @@ export function ProgramCard({ item, inCart, onAdd, onOpen, href }: Props) {
           <Open item={item} onOpen={onOpen} href={href} className="ag-mk-title-hit">{item.title}</Open>
         </h3>
         <p className="ag-mk-meta">
-          {item.badge ? <span className="ag-mk-badge">{item.badge}</span> : null}
+          {item.badge && !rail ? <span className="ag-mk-badge">{item.badge}</span> : null}
           <span>{seatsLabel(item)}</span>
         </p>
-        <p className="ag-mk-price">
+        {rail ? null : <p className="ag-mk-price">
           <span>{priceLabel(price)}</span>
           {compare > price ? <s className="ag-mk-was">{priceLabel(compare)}</s> : null}
           {off ? <span className="ag-mk-offer">Oferta</span> : null}
-        </p>
+        </p>}
         <div className="ag-mk-actions">
           <Open item={item} onOpen={onOpen} href={href} className="ag-mk-link">Ver programa</Open>
           <button
