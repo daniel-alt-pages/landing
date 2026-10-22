@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Solo rutas que existen hoy en seamosgenios.org (Vercel: / reescribe a /landing; el resto vive en /landing/*). app.seamosgenios.org no va aquí. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://seamosgenios.org/</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://seamosgenios.org/landing/instituciones</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://seamosgenios.org/landing/plataforma</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://seamosgenios.org/landing/programas</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://seamosgenios.org/landing/resultados</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://seamosgenios.org/landing/nosotros</loc><lastmod>2026-10-21</lastmod></url>
+  <url><loc>https://seamosgenios.org/landing/politica-de-datos</loc><lastmod>2026-10-21</lastmod></url>
+</urlset>

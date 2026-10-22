@@ -13,7 +13,7 @@ export const B2B_NAV = [
 export const B2B_HERO = {
   chip: 'SEAMOSGENIOS S.A.S. · NIT 902080201-8',
   kicker: 'Calendario B-A 2027-1',
-  title: 'Preparación Saber 11 medible, trazable y acompañada.',
+  title: 'Preparación Saber 11 para colegios: medible, trazable y acompañada',
   accent: 'medible, trazable y acompañada',
   lead: 'Para que más estudiantes lleguen a la universidad. Para colegios y consejos directivos.',
   pilares: [
@@ -240,6 +240,6 @@ export const B2B_PORQUE = {
 } as const;
 
 export const B2B_CIERRE = {
-  titulo: '¿Empezamos por un diagnóstico?',
+  titulo: '¿Empezamos con un simulacro tipo Saber 11?',
   linea: 'Cuéntenos de su institución y le proponemos por dónde empezar.',
 } as const;

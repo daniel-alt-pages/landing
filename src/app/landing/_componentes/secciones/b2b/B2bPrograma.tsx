@@ -20,7 +20,7 @@ function esNivel(id: string): id is NivelId {
 function Panel1() {
   return (
     <div id="n1">
-      <h3>Evaluación institucional</h3>
+      <h3>Evaluación institucional con TRI, el tipo de modelo que usa el Icfes</h3>
       <RutaSvg etiqueta="Etapas del Nivel 1" pasos={B2B_N1.etapas.map((paso) => ({ title: paso.title, text: paso.sub }))} />
       <div className="ag-b2b-datos">
         <DatoB2b cifra="0–500" linea="Escala del puntaje global" />
@@ -44,7 +44,7 @@ function Panel1() {
 function Panel2() {
   return (
     <div id="n2">
-      <h3>Los resultados deciden la formación</h3>
+      <h3>Los resultados en matemáticas, lectura crítica y las demás áreas deciden la formación</h3>
       <RutaSvg etiqueta="Ruta del Nivel 2" pasos={B2B_N2.pasos} />
       <div className="ag-b2b-datos">
         <DatoB2b cifra="20 h" linea="Clases en vivo sobre los errores" />
@@ -113,7 +113,7 @@ export function B2bPrograma() {
       tone="grey"
       numero="04"
       pregunta="¿Qué pasa en cada nivel?"
-      titulo="La ruta de cada nivel"
+      titulo="Qué pasa en cada nivel, del simulacro al informe"
       acento="cada nivel"
       bajada="Mide, interviene o sostiene la mejora."
     >

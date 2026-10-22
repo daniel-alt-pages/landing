@@ -10,7 +10,7 @@ export function B2bResumen() {
       tone="white"
       numero="01"
       pregunta="¿Cómo funciona?"
-      titulo="Medir, intervenir y volver a medir"
+      titulo="Cómo funcionan los simulacros Saber 11 para colegios"
       acento="volver a medir"
       bajada="Seis pasos que se repiten. El colegio elige hasta dónde llega."
     >

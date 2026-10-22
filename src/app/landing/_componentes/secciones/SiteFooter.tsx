@@ -66,9 +66,9 @@ export function SiteFooter() {
         </div>
         {MENU.map((group) => (
           <div key={group.id}>
-            <h2 className="ag-footer-title">
+            <p className="ag-footer-title">
               <Link href={group.href}>{group.label}</Link>
-            </h2>
+            </p>
             <ul>
               {group.items.map((item) => (
                 <li key={item.href}>
@@ -80,7 +80,7 @@ export function SiteFooter() {
         ))}
       </div>
       <div className="ag-wrap ag-footer-contact">
-        <h2 className="ag-footer-title">Contacto</h2>
+        <p className="ag-footer-title">Contacto</p>
         <ul className="ag-footer-channels">
           {CANALES.map((item) => (
             <li key={item.kicker}>

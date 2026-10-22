@@ -52,7 +52,7 @@ export const B2B_N1 = {
     fuente: 'Simulacro institucional tipo Saber 11, con baremos estandarizados.',
     alumno: [
       'Puntaje global estimado en la escala 0 a 500.',
-      'Desglose en 5 áreas: Matemáticas, Lectura, Ciencias, Sociales e Inglés.',
+      'Desglose en 5 áreas: Matemáticas, Lectura crítica, Ciencias, Sociales e Inglés.',
       'Nivel de desempeño y percentil frente a la cohorte institucional.',
       'Matriz de competencias y componentes evaluados.',
       'Auditoría de respuestas correctas e incorrectas, con la competencia de cada una.',
