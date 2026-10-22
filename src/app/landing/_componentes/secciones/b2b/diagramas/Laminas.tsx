@@ -104,7 +104,7 @@ export function SimulacrosAnalitica() {
 export function Corresponsabilidad() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Gobierno del servicio y corresponsabilidad</h4>
+      <h3 className="ag-pf-h">Gobierno del servicio y corresponsabilidad</h3>
       <p className="ag-pf-lead">{B2B_GOBIERNO.lead}</p>
       <div className="ag-pf-marco">
         <span className="ag-pf-marco-tab">Acuerdo de corresponsabilidad educativa</span>
@@ -127,7 +127,7 @@ export function Corresponsabilidad() {
 export function TiposIndicadores() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Indicadores de seguimiento y calidad</h4>
+      <h3 className="ag-pf-h">Indicadores de seguimiento y calidad</h3>
       <p className="ag-pf-lead">{B2B_CALIDAD.lead}</p>
       <dl className="ag-pf-indicadores">
         {B2B_CALIDAD.tipos.map((t) => <div key={t.title}><dt>{t.title}</dt><dd>{t.text}</dd></div>)}

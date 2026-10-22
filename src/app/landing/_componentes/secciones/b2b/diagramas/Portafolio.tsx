@@ -57,7 +57,7 @@ export function DobleImpacto() {
   const d = B2B_N1.doble;
   return (
     <AlEntrar className="ag-pf ag-pf-doble">
-      <h4 className="ag-pf-h">{d.title}</h4>
+      <h3 className="ag-pf-h">{d.title}</h3>
       <p className="ag-pf-lead">{d.lead}</p>
       <div className="ag-pf-fuente"><strong>Simulacro institucional tipo Saber 11</strong><span>Instrumento unificado con baremos estandarizados</span></div>
       <div className="ag-pf-ramas" aria-hidden="true">
@@ -68,8 +68,8 @@ export function DobleImpacto() {
         <span className="ag-pf-flecha">↓</span>
       </div>
       <div className="ag-pf-salidas">
-        <article><h5>Salida A · Reporte individual del estudiante</h5><ul>{d.alumno.map((x) => <li key={x}>{x}</li>)}</ul></article>
-        <article><h5>Salida B · Tablero e informe institucional</h5><ul>{d.directivo.map((x) => <li key={x}>{x}</li>)}</ul></article>
+        <article><h4>Salida A · Reporte individual del estudiante</h4><ul>{d.alumno.map((x) => <li key={x}>{x}</li>)}</ul></article>
+        <article><h4>Salida B · Tablero e informe institucional</h4><ul>{d.directivo.map((x) => <li key={x}>{x}</li>)}</ul></article>
       </div>
       <div className="ag-pf-barra"><strong>Cierre formal del Nivel 1: socialización institucional de resultados</strong><span>{d.cierre}</span></div>
     </AlEntrar>
@@ -286,7 +286,7 @@ export function Cohorte() {
 export function Adicionales() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Entregables a su medida</h4>
+      <h3 className="ag-pf-h">Entregables a su medida</h3>
       <p className="ag-pf-lead">Además de lo que incluye su nivel, puede sumar estos entregables con cotización aparte.</p>
       <ul className="ag-pf-extras">
         {B2B_ENTREGABLES.extra.map((x) => <li key={x}><span className="ag-pf-badge">Se cotiza aparte</span>{x}</li>)}
@@ -302,17 +302,17 @@ const PQRS = [['Radicar', 'Número de caso'], ['Clasificar', 'Tipo y prioridad']
 export function Comunicaciones() {
   return (
     <AlEntrar className="ag-pf">
-      <h4 className="ag-pf-h">Reglas claras, canales claros</h4>
+      <h3 className="ag-pf-h">Reglas claras, canales claros</h3>
       <p className="ag-pf-lead">Quién hace qué, por dónde se comunica cada cosa y cómo medimos el servicio. {B2B_CANALES.lead}</p>
       <div className="ag-pf-com">
         {B2B_COMUNICACION.map((g) => (
           <article key={g.tipo}>
-            <h5>Comunicación {g.tipo.toLowerCase()}</h5>
+            <h4>Comunicación {g.tipo.toLowerCase()}</h4>
             <ul>{g.canales.map((c) => <li key={c.title}><strong>{c.title}</strong><span>{c.text}</span></li>)}</ul>
           </article>
         ))}
       </div>
-      <h4 className="ag-pf-h">Flujo PQRS</h4>
+      <h3 className="ag-pf-h">Flujo PQRS</h3>
       <FlujoPqrs pasos={PQRS} />
       <Cta href="mailto:seamosgenios@adpmh.com?subject=PQRS" label="Radicar una PQRS" nota="Cada caso queda con número de radicado e historial. Correo: seamosgenios@adpmh.com" />
     </AlEntrar>

@@ -66,6 +66,10 @@
 .alianza-root .ag-skip:focus {
   width: auto;
   height: auto;
+  /* target-size: 44 px de alto al enfocarlo (antes 32×16 efectivos). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   overflow: visible;
   clip: auto;
   position: fixed;
@@ -2556,6 +2560,10 @@
 .ag-footer ul a { color: rgba(255, 255, 255, 0.8); text-decoration: none; }
 .ag-footer ul a:hover { color: #fff; text-decoration: underline; }
 .ag-footer li { color: rgba(255, 255, 255, 0.8); font-size: 13px; line-height: 1.35; overflow-wrap: anywhere; }
+/* target-size (WCAG 2.5.8): cada enlace de columna mide al menos 24 px de alto. El gap de 6 px pasa al
+ * propio enlace (17.5 px de línea + 6.5 px), así que la columna mide prácticamente lo mismo que antes. */
+.ag-footer-grid ul { gap: 0; }
+.ag-footer-grid ul a { display: inline-flex; align-items: center; min-height: 24px; }
 .ag-footer-lead { color: rgba(255, 255, 255, 0.8); margin: 10px 0 14px; font-size: 14px; line-height: 1.4; }
 .ag-footer .ag-btn { min-height: 36px; padding: 8px 16px; font-size: 14px; }
 

@@ -36,7 +36,7 @@ export const MENU: MenuGroup[] = [
       text: 'Calendario B-A 2027-1 para colegios y consejos directivos.',
     },
     items: [
-      { href: '/landing/instituciones#resumen', label: 'Resumen ejecutivo', text: 'De la evaluación puntual al programa continuo.' },
+      { href: '/landing/instituciones#ciclo', label: 'Resumen ejecutivo', text: 'De la evaluación puntual al programa continuo.' },
       { href: '/landing/instituciones#niveles', label: 'Tres niveles', text: 'Medir, intervenir o acompañar la mejora continua.' },
       { href: '/landing/instituciones#programa', label: 'Cómo funciona', text: 'Nivel 1, Nivel 2 y el programa integral.' },
       { href: '/landing/instituciones#plataforma', label: 'Plataforma y datos', text: 'Una vista para cada rol y los entregables.' },

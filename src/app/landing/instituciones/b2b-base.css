@@ -252,12 +252,10 @@
 .ag-b2b thead th.is-ultimo { background: var(--ag-red); color: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
-  .ag-b2b-word,
   .ag-b2b-ring,
   .ag-b2b-peldano,
   .ag-b2b-pulso,
   .ag-b2b-subnav,
   .ag-b2b-fold summary svg { animation: none !important; transition: none !important; }
   .ag-b2b-ring { stroke-dashoffset: 0; }
-  .ag-b2b-word { opacity: 1; transform: none; }
 }
