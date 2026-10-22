@@ -3077,20 +3077,6 @@
   #como-empieza .ag-step-photos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-.ag-hour-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 12px; }
-.ag-hour-list li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; }
-.ag-hour-track {
-  grid-column: 1 / -1;
-  display: block;
-  height: 8px;
-  border-radius: 999px;
-  background: var(--ag-grey-2);
-  overflow: hidden;
-}
-.ag-hour-fill { display: block; height: 100%; border-radius: 999px; background: var(--ag-red); }
-.ag-compare-hours { margin: 8px 0; font-size: 28px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
-.ag-compare-points { margin: 0; padding-left: 18px; }
-
 .ag-acceso {
   display: inline-flex;
   align-items: center;

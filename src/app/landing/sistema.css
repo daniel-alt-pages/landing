@@ -9,7 +9,7 @@
 :where(.alianza-root) :where(.ag-eyebrow) { font-size: var(--sg-text-xs); letter-spacing: .16em; font-weight: 700; }
 :where(.alianza-root) :where(.ag-lead) { font-size: var(--sg-text-lg); line-height: var(--sg-leading-body); }
 :where(.alianza-root) :where(.ag-btn, .ag-btn-ghost, .ag-store-primary, .ag-store-secondary) { border-radius: var(--sg-radius-pill); font-weight: 700; }
-:where(.alianza-root) :where(.ag-card, .ag-mk-card, .ag-fx-card, .ag-compare-card) { border-radius: var(--sg-radius-lg); }
+:where(.alianza-root) :where(.ag-card, .ag-mk-card, .ag-fx-card) { border-radius: var(--sg-radius-lg); }
 :where(.alianza-root) :where(.ag-card) { box-shadow: var(--sg-shadow-1); }
 :where(.alianza-root) :where(.ag-accent, .ag-caveat) { font-family: var(--sg-font-accent); }
 

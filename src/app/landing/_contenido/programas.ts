@@ -192,48 +192,6 @@ export const ACCESO_LABEL: Record<Acceso, string> = {
   pago: 'Pago',
 };
 
-export const COMPARATIVA = [
-  {
-    id: 'intensivo',
-    titulo: 'PreICFES Intensivo',
-    semanas: '16 semanas',
-    enVivo: '426 horas en vivo',
-    enfoque: 'Formación conceptual, práctica progresiva y evaluación.',
-    audiencia: 'Quien empieza con tiempo y necesita la base completa.',
-    puntos: [
-      'Bases teóricas desde cero en cada competencia del Saber 11.',
-      'Simulacros cada 3 o 4 semanas, con retroalimentación.',
-      'Acompañamiento largo para sostener el hábito de estudio.',
-    ],
-    barras: [
-      { label: 'Teóricas', horas: 142 },
-      { label: 'Compilados', horas: 158 },
-      { label: 'Práctica', horas: 126 },
-    ],
-    total: 426,
-    extra: '136 horas asincrónicas: 45 de simulacros, 81 de compilados y 10 de desafíos.',
-  },
-  {
-    id: 'vacacional',
-    titulo: 'PreICFES Vacacional',
-    semanas: '8 semanas',
-    enVivo: '225 horas en vivo',
-    enfoque: 'Práctica intensiva y corrección inmediata.',
-    audiencia: 'Quien ya tiene base, o está en vacaciones, y quiere pulir el puntaje.',
-    puntos: [
-      'Menos cátedra. El ciclo es pregunta, error, explicación y repetición.',
-      'Simulacros y mini pruebas en ventanas cortas.',
-      'Talleres tipo ICFES, compilados y maratones de preguntas.',
-    ],
-    barras: [
-      { label: 'Compilados', horas: 158 },
-      { label: 'Práctica', horas: 67 },
-    ],
-    total: 225,
-    extra: '136 horas asincrónicas: simulacros, compilados y desafíos para seguir fuera de clase.',
-  },
-] as const;
-
 export const CTA_PROGRAMAS = {
   titulo: '¿Dudas sobre los programas?',
   texto: 'Un asesor le ayuda a elegir entre intensivo, vacacional o solo simulacros.',
