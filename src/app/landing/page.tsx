@@ -18,13 +18,13 @@ export default function AlianzaInicio() {
   return (
     <>
       <Hero />
+      <StorefrontBanner />
+      <ProductRail />
       <MapaSitio />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
       <VoicesSection compact tone="grey" />
-      <StorefrontBanner />
-      <ProductRail />
       <FaqSection />
       <FinalCta />
     </>
