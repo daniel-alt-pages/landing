@@ -28,7 +28,6 @@ export function B2bHero() {
           <a className="sg-hero-btn is-primario" href="#solicitar-reunion">Agendar reunión</a>
           <a className="sg-hero-btn is-borde" href={b2bWhatsappUrl()}>Escribir por WhatsApp</a>
         </div>
-        <p className="sg-hero-nota">{B2B_HERO.panelNote}</p>
       </div>
     </section>
   );

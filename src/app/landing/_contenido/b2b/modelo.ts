@@ -21,7 +21,6 @@ export const B2B_HERO = {
     { title: 'Escala 0-500' },
     { title: '4 actores' },
   ],
-  panelNote: '65 instituciones ya aplicaron al menos un simulacro. El primero no tiene costo.',
 };
 
 export const B2B_RESUMEN = {
@@ -242,5 +241,5 @@ export const B2B_PORQUE = {
 
 export const B2B_CIERRE = {
   titulo: '¿Empezamos por un diagnóstico?',
-  linea: 'El primer simulacro no tiene costo.',
+  linea: 'Cuéntenos de su institución y le proponemos por dónde empezar.',
 } as const;

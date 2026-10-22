@@ -63,7 +63,7 @@ export const B2B_N1 = {
       'Puntaje global y promedio general de la institución.',
       'Comparativa de grupos: medias y dispersión.',
       'Competencias críticas y vacíos curriculares comunes.',
-      'Preguntas críticas: donde falló más del 60% de los estudiantes.',
+      'Preguntas críticas: las que más estudiantes fallaron.',
       'Listado de estudiantes en riesgo académico.',
       'Benchmark SEAMOSGENIOS frente a otras instituciones.',
       'Benchmark externo con datos públicos históricos del ICFES.',
