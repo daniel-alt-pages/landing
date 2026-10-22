@@ -160,24 +160,72 @@ export function Reuniones() {
 }
 
 /** p.15: sistema de alertas tempranas. */
+/** Subtítulos cortos (Caveat) de cada alerta, descriptivos del texto existente; sin datos nuevos. */
+const ALERTA_SUB = ['Faltas y pruebas pendientes', 'Bajo desempeño', 'Inactividad en la plataforma', 'Cuenta y registros'];
+/** Escalera de intervención: textos del protocolo y de cierre de alerta (sin la mención a WhatsApp, excluida del B2B). */
+const ESCALERA = [
+  'Notificación automática en la plataforma.',
+  'Contacto directo por tutor.',
+  'Notificación a la familia y a la coordinación.',
+  'Si escala, reunión de coordinación; si se cierra, el estudiante se reactivó.',
+];
+
 export function Alertas() {
   const [normal, ...tipos] = B2B_N3.alertas;
   return (
     <AlEntrar className="ag-pf ag-pf-alertas">
       <h4 className="ag-pf-h">Alertas antes del problema</h4>
       <p className="ag-pf-lead">Detectamos a tiempo al estudiante que se está quedando atrás o a punto de abandonar. La plataforma vigila asistencia, actividad y desempeño; la gravedad de cada alerta define quién se entera.</p>
-      <div className="ag-pf-alert-grid">
-        <div className="ag-pf-normal"><strong>{normal.title}</strong><span>{normal.text}</span></div>
-        <ul className="ag-pf-tipos">{tipos.map((t) => <li key={t.title}><strong>{t.title}</strong><span>{t.text}</span></li>)}</ul>
-        <div className="ag-pf-protocolo">
-          <strong>Protocolo de intervención</strong>
-          <ol>{B2B_N3.protocolo.map((x) => <li key={x}>{x}</li>)}</ol>
-          <div className="ag-pf-salida">
-            {B2B_N3.cierreAlerta.map((c, i) => <p key={c.title} className={i === 0 ? 'is-ok' : 'is-up'}><strong>{c.title}</strong>{c.text}</p>)}
+      <div className="al7">
+        <section className="al7-col al7-col-1" aria-labelledby="al7-h1">
+          <h5 id="al7-h1" className="al7-h">Punto de partida</h5>
+          <div className="al7-card al7-normal"><strong>{normal.title}</strong><span>{normal.text}</span></div>
+        </section>
+        <svg className="al7-con al7-con-1" viewBox="0 0 60 400" preserveAspectRatio="none" aria-hidden="true">
+          {[50, 150, 250, 350].map((y, i) => <path key={y} data-i={i} d={`M0 200H30V${y}H60`} vectorEffect="non-scaling-stroke" />)}
+        </svg>
+        <section className="al7-col al7-col-2" aria-labelledby="al7-h2">
+          <h5 id="al7-h2" className="al7-h">Señales de alerta</h5>
+          <ul className="al7-tipos">
+            {tipos.map((t, i) => (
+              <li key={t.title} className="al7-card al7-tipo">
+                <strong>{t.title}</strong>
+                <em className="al7-mano">{ALERTA_SUB[i]}</em>
+                <span>{t.text}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <svg className="al7-con al7-con-2" viewBox="0 0 60 400" preserveAspectRatio="none" aria-hidden="true">
+          {[50, 150, 250, 350].map((y, i) => <path key={y} data-i={i} d={`M0 ${y}H30V200H60`} vectorEffect="non-scaling-stroke" />)}
+        </svg>
+        <section className="al7-col al7-col-3" aria-labelledby="al7-h3">
+          <h5 id="al7-h3" className="al7-h">Cómo intervenimos</h5>
+          <div className="al7-card al7-protocolo">
+            <strong>Protocolo de intervención</strong>
+            <ol>{B2B_N3.protocolo.map((x) => <li key={x}>{x}</li>)}</ol>
           </div>
-        </div>
+          <svg className="al7-fork" viewBox="0 0 100 32" preserveAspectRatio="none" aria-hidden="true">
+            <path className="is-ok" d="M50 0V12H25V32" vectorEffect="non-scaling-stroke" />
+            <path className="is-up" d="M50 12H75V32" vectorEffect="non-scaling-stroke" />
+          </svg>
+          <div className="al7-salida">
+            {B2B_N3.cierreAlerta.map((c, i) => <p key={c.title} className={`al7-card ${i === 0 ? 'is-ok' : 'is-up'}`}><strong>{c.title}</strong>{c.text}</p>)}
+          </div>
+        </section>
       </div>
       <h5 className="ag-pf-h5">Jerarquía de escalamiento</h5>
+      <ol className="esc7" aria-label="Escalera de intervención">
+        {ESCALERA.map((x, i) => (
+          <li key={x} className="esc7-paso" style={{ ['--n' as string]: i + 1 }}>
+            <span className="esc7-n" aria-hidden="true">{i + 1}</span>
+            <span className="esc7-t">{x}</span>
+            {i < ESCALERA.length - 1 && (
+              <svg className="esc7-fl" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H18M13 7L18 12L13 17" vectorEffect="non-scaling-stroke" /></svg>
+            )}
+          </li>
+        ))}
+      </ol>
       <ol className="ag-pf-cadena">{B2B_ALERTAS_CADENA.map((x) => <li key={x}>{x}</li>)}</ol>
       <p className="ag-pf-lead">No todas las alertas ameritan llegar a las directivas. La severidad determina quién recibe la notificación:</p>
       <ol className="ag-pf-sev">{B2B_N3.severidad.map((x, i) => <li key={x} className={`is-${i + 1}`}>{x}</li>)}</ol>
