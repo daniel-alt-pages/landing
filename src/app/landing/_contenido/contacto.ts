@@ -29,7 +29,7 @@ const LANDING_DEV_PORT = '3010';
 /** App pública. El sitio de la alianza (Vercel) no tiene /login: lo redirige a la landing. */
 const PUBLIC_APP_ORIGIN = 'https://app.seamosgenios.org';
 
-/** Hosts que sirven solo la landing (alianza.seamosgenios.org, previews de Vercel, GitHub Pages). */
+/** Hosts que sirven solo la landing (seamosgenios.org, previews de Vercel, GitHub Pages). */
 function isLandingOnlyHost(hostname: string) {
   const host = hostname.toLowerCase();
   if (host === 'app.seamosgenios.org') return false;
@@ -102,7 +102,7 @@ function configuredProductOrigin() {
  * Login de la app EduGenios (Expo), no del hosting de reportes.
  * El host es el de la página: localhost, 127.0.0.1, la IP de la red o el servidor.
  * Un NEXT_PUBLIC_EDUGENIOS_WEB_ORIGIN de localhost no pisa una visita por IP.
- * En alianza.seamosgenios.org (o un preview de Vercel) va a https://app.seamosgenios.org/login.
+ * En seamosgenios.org (o un preview de Vercel) va a https://app.seamosgenios.org/login.
  * La landing de desarrollo (:3010) abre la app en el mismo host, puerto 8081.
  */
 export function platformLoginUrl(pageHost = '') {

@@ -12,8 +12,9 @@ import './landing.css';
 import './tienda.css';
 import { MotionProvider } from './_componentes/primitivas/MotionProvider';
 
-const SITE = 'https://alianza.seamosgenios.org';
-const ORG_ID = 'https://simulacros-sg.web.app/#organization';
+/** Dominio público de la landing (Vercel reescribe / → /landing; el resto vive en /landing/*). La app es app.seamosgenios.org. */
+const SITE = 'https://seamosgenios.org';
+const ORG_ID = `${SITE}/#organization`;
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Alianza Saber 11 para colegios | SEAMOSGENIOS' },
   description:
     'Simulacros tipo ICFES, panel de coordinación y clases en vivo para mejorar los resultados Saber 11 de su institución. El primer simulacro es gratis.',
-  alternates: { canonical: SITE },
+  alternates: { canonical: './' },
   openGraph: {
     type: 'website',
     locale: 'es_CO',
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     title: 'Alianza Saber 11 para colegios | SEAMOSGENIOS',
     description:
       'Simulacros tipo ICFES, panel de coordinación y clases en vivo para mejorar los resultados Saber 11 de su institución. El primer simulacro es gratis.',
-    url: SITE,
+    url: './',
     images: [{ url: '/landing/og.jpg', width: 1200, height: 630, alt: 'Alianza estratégica educativa SEAMOSGENIOS' }],
   },
   twitter: {
@@ -60,7 +61,7 @@ const structuredData = {
       '@type': 'EducationalOrganization',
       '@id': ORG_ID,
       name: 'SEAMOSGENIOS',
-      url: 'https://seamosgenios.org',
+      url: SITE,
       areaServed: { '@type': 'Country', name: 'Colombia' },
     },
     {
@@ -83,8 +84,7 @@ const structuredData = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'SEAMOSGENIOS', item: 'https://seamosgenios.org' },
-        { '@type': 'ListItem', position: 2, name: 'Alianza', item: SITE },
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE },
       ],
     },
   ],
