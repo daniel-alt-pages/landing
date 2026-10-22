@@ -3,7 +3,7 @@
 @media (min-width: 1024px) {
   /* Alcance (21-oct-2026): Plus Jakarta Sans y #FF2323 solo en la portada; el resto del panel sigue en Montserrat y #CC0000. */
   .b2b-panel .sg-hero {
-    --ag-font: var(--font-jakarta), 'Plus Jakarta Sans', ui-sans-serif, sans-serif;
+    --ag-font: var(--font-alianza), Montserrat, ui-sans-serif, sans-serif;
     font-family: var(--ag-font);
   }
   .b2b-panel .sg-hero h1 { font-family: var(--ag-font); font-weight: 800; letter-spacing: -0.03em; }

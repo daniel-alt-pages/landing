@@ -11,7 +11,7 @@ export function B2bGobierno() {
     <SeccionB2b
       id="servicio"
       tone="white"
-      numero="06"
+      numero="07"
       pregunta="¿Cómo responden?"
       titulo="Entregables, responsables y seguimiento"
       acento="seguimiento"

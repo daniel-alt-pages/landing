@@ -1,6 +1,7 @@
 import { Check, ClipboardCheck, GraduationCap, Network } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { B2B_CADENA, B2B_COMPARATIVO, B2B_NIVELES } from '../../../_contenido/b2b/modelo';
+import { ModalB2b } from './base/ModalB2b';
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
 import { TablaONivel } from './base/TablaONivel';
@@ -18,7 +19,7 @@ export function B2bNiveles() {
     <SeccionB2b
       id="niveles"
       tone="white"
-      numero="03"
+      numero="04"
       pregunta="¿Qué puedo contratar?"
       titulo="Tres niveles de servicio para su institución"
       acento="Tres niveles"
@@ -34,7 +35,6 @@ export function B2bNiveles() {
               <h3>{nivel.label}</h3>
               <p className="ag-b2b-oferta">{nivel.offer}</p>
               <p>{nivel.question}</p>
-              <a className="ag-b2b-btn ag-b2b-btn-bloque" href={nivel.href}>{nivel.cta}</a>
               <p className="ag-b2b-incluye">{nivel.includesLabel}</p>
               <ul>
                 {nivel.includes.slice(0, 4).map((item) => (
@@ -44,6 +44,10 @@ export function B2bNiveles() {
                   </li>
                 ))}
               </ul>
+              <ModalB2b boton={`Ver detalle del ${nivel.label}`} titulo={nivel.name} etiqueta={nivel.label}>
+                <p>{nivel.cover}</p>
+                <ul className="b2m-lista">{nivel.includes.map((x) => <li key={x}>{x}</li>)}</ul>
+              </ModalB2b>
             </article>
           );
         })}

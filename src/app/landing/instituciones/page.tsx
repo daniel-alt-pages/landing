@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
 import { CONTACTO } from '../_contenido/contacto';
 import { B2B_CONTACTO } from '../_contenido/b2b/contacto';
 import { B2bCierre } from '../_componentes/secciones/b2b/B2bCierre';
 import { B2bGobierno } from '../_componentes/secciones/b2b/B2bGobierno';
 import { B2bHero } from '../_componentes/secciones/b2b/B2bHero';
-import { MapaSitio } from '../_componentes/secciones/MapaSitio';
 import { B2bNiveles } from '../_componentes/secciones/b2b/B2bNiveles';
 import { B2bNosotros } from '../_componentes/secciones/b2b/B2bNosotros';
 import { B2bPlataforma } from '../_componentes/secciones/b2b/B2bPlataforma';
-import { B2bPreicfes } from '../_componentes/secciones/b2b/B2bPreicfes';
+import { B2bPasos } from '../_componentes/secciones/b2b/B2bPasos';
+import { B2bArquitectura } from '../_componentes/secciones/b2b/B2bArquitectura';
 import { B2bPrograma } from '../_componentes/secciones/b2b/B2bPrograma';
 import { B2bResumen } from '../_componentes/secciones/b2b/B2bResumen';
 import './b2b-base.css';
@@ -22,9 +21,7 @@ import './b2b-problema-quienes.css';
 import './b2b-mapa.css';
 import './b2b-hero.css';
 import './b2b-desktop.css';
-
-/** Fuente del panel B2B en escritorio (referencia de Daniel, 21-oct-2026). */
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap', variable: '--font-jakarta' });
+import './b2b-rediseno.css';
 
 const DESCRIPCION_SOCIAL = 'Simulacros tipo Saber 11 y clases en vivo para su colegio. Reportes por estudiante y por grupo en la semana siguiente.';
 
@@ -95,17 +92,17 @@ const JSON_LD = {
 
 export default function InstitucionesPage() {
   return (
-    <div className={`b2b-panel ${jakarta.variable}`}>
+    <div className="b2b-panel">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD).replace(/</g, '\\u003c') }} />
       <B2bHero />
-      <MapaSitio variante="b2b" />
       <B2bResumen />
-      <B2bNosotros />
+      <B2bPasos />
+      <B2bArquitectura />
       <B2bNiveles />
       <B2bPrograma />
-      <B2bPreicfes />
       <B2bPlataforma />
       <B2bGobierno />
+      <B2bNosotros />
       <B2bCierre />
     </div>
   );

@@ -7,7 +7,7 @@ import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
 import { RutaSvg } from './diagramas/RutaSvg';
 import { EcosistemaArticulado } from './diagramas/EcosistemaArticulado';
-import { Alertas, CapasPilares, CicloAnual, DobleImpacto, EntregablesN2, Reuniones, SemestralAnual } from './diagramas/Portafolio';
+import { Alertas, CapasPilares, CicloAnual, EntregablesN2, Reuniones, SemestralAnual } from './diagramas/Portafolio';
 
 const NIVELES = ['n1', 'n2', 'n3'] as const;
 type NivelId = (typeof NIVELES)[number];
@@ -27,7 +27,6 @@ function Panel1() {
         <DatoB2b cifra="5 áreas" linea="Matemáticas, lectura, ciencias, sociales e inglés" />
         <DatoB2b cifra="1,5 a 2 h" linea="Socialización con directivos" />
       </div>
-      <DobleImpacto />
       <Plegable titulo="Propósito del simulacro" cuenta="3 usos">
         <ul className="ag-b2b-lista">
           {B2B_N1.propositos.map((item) => <li key={item.title}><strong>{item.title}.</strong> {item.text}</li>)}
@@ -111,7 +110,7 @@ export function B2bPrograma() {
     <SeccionB2b
       id="programa"
       tone="grey"
-      numero="04"
+      numero="05"
       pregunta="¿Qué pasa en cada nivel?"
       titulo="Qué pasa en cada nivel, del simulacro al informe"
       acento="cada nivel"

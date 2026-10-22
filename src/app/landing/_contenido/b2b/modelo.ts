@@ -54,7 +54,6 @@ export const B2B_PROBLEMA = {
     { title: 'Consecuencia', text: 'Resultados bajos y menos oportunidades de ingreso a la universidad.' },
     { title: 'Oportunidad', text: 'Con acompañamiento y herramientas adecuadas, cada estudiante alcanza su máximo potencial.' },
   ],
-  cita: 'No es falta de capacidad, es falta de oportunidades y acompañamiento.',
   compromiso: 'Nuestro compromiso es romper este ciclo y abrirles las puertas a un futuro posible.',
 };
 
@@ -235,7 +234,6 @@ export const B2B_PORQUE = {
   titulo: 'La brecha no es de capacidad',
   acento: 'capacidad',
   bajada: 'Menos estudiantes de zona rural entran a la universidad al salir del colegio.',
-  cita: 'No es falta de capacidad, es falta de oportunidades.',
   cadena: ['Preparación insuficiente', 'Resultados bajos', 'Menos acceso'],
 } as const;
 

@@ -10,7 +10,7 @@ export function B2bPlataforma() {
     <SeccionB2b
       id="plataforma"
       tone="white"
-      numero="05"
+      numero="06"
       pregunta="¿Qué ve mi comunidad?"
       titulo="Plataforma y reportes para directivos, docentes, estudiantes y familias"
       acento="Plataforma y reportes"
