@@ -99,51 +99,15 @@ function configuredProductOrigin() {
 }
 
 /**
- * Login de la app EduGenios (Expo), no del hosting de reportes.
- * El host es el de la página: localhost, 127.0.0.1, la IP de la red o el servidor.
- * Un NEXT_PUBLIC_EDUGENIOS_WEB_ORIGIN de localhost no pisa una visita por IP.
- * En seamosgenios.org (o un preview de Vercel) va a https://app.seamosgenios.org/login.
- * La landing de desarrollo (:3010) abre la app en el mismo host, puerto 8081.
+ * Login de la plataforma (Daniel, 21-oct-2026): siempre https://app.seamosgenios.org/login,
+ * en cualquier host (también en local). La landing pública es seamosgenios.org.
  */
-export function platformLoginUrl(pageHost = '') {
-  const loc = typeof globalThis.window !== 'undefined' ? globalThis.window.location : null;
-  const host = (pageHost || loc?.hostname || '').toLowerCase();
-  if (isLandingOnlyHost(host)) return `${PUBLIC_APP_ORIGIN}/login`;
-
-  const configured = configuredProductOrigin();
-  if (configured) {
-    try {
-      const cfgHost = new URL(configured).hostname.toLowerCase();
-      const sameHost = !host || cfgHost === host;
-      const loopbackPinOnLan = isLoopback(cfgHost) && host && !isLoopback(host);
-      if (sameHost && !loopbackPinOnLan) return `${configured}/login`;
-    } catch {
-      /* origen mal formado: se resuelve con el host de la página */
-    }
-  }
-
-  if (isTunnelHost(host)) {
-    const origin = loc && loc.hostname.toLowerCase() === host ? loc.origin : `https://${host}`;
-    return `${origin.replace(/\/$/, '')}/login`;
-  }
-
-  const onThisPage = !!loc && (!pageHost || pageHost.toLowerCase() === loc.hostname.toLowerCase());
-  if (onThisPage && loc.port === LANDING_DEV_PORT) {
-    return `${loc.protocol}//${loc.hostname}:${APP_DEV_PORT}/login`;
-  }
-  if (onThisPage && loc.port !== LANDING_DEV_PORT) {
-    return `${loc.origin}/login`;
-  }
-
-  if (isLoopback(host) || isPrivateLanHost(host)) {
-    const name = host === '::1' || host === '[::1]' ? 'localhost' : host;
-    return `http://${name}:${APP_DEV_PORT}/login`;
-  }
-  if (host) return `https://${host}/login`;
-  return LOCAL_APP_LOGIN;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function platformLoginUrl(_pageHost = '') {
+  return `${PUBLIC_APP_ORIGIN}/login`;
 }
 
 /** Origen de la app EduGenios (Expo), el mismo criterio que el login. */
 export function platformAppUrl(pageHost = '') {
-  return platformLoginUrl(pageHost).replace(/\/login\/?$/, '') || 'http://localhost:8081';
+  return platformLoginUrl(pageHost).replace(/\/login\/?$/, '');
 }
