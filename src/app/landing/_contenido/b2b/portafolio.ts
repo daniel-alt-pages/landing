@@ -60,11 +60,11 @@ export const B2B_ECOSISTEMA_L13 = {
   acento: 'El ecosistema articulado',
   lead: 'El estudiante en el centro, respaldado permanentemente por directivos, docentes y familia',
   actores: {
-    estudiante: { title: 'ESTUDIANTE (CENTRO)', sub: 'FORMACIÓN + SEGUIMIENTO', text: ['PreICFES + Práctica + Orientación'] },
-    sg: { title: 'SEAMOSGENIOS', sub: 'PLATAFORMA + DATOS + ACOMPAÑAMIENTO', text: ['Orquestador pedagógico y analítico institucional'] },
-    docentes: { title: 'DOCENTES', sub: 'DATOS + HERRAMIENTAS', text: ['Quizizz/Kahoot SG', 'Banco de Preguntas'] },
-    familias: { title: 'FAMILIAS', sub: 'SEGUIMIENTO SENCILLO', text: ['Dashboard privado', '2 Encuentros (3h)'] },
-    directivos: { title: 'DIRECTIVOS & RECTORÍA', sub: 'GESTIÓN + TOMA DE DECISIONES ESTRATÉGICAS', text: ['Panel institucional en vivo + Hasta 15h de comité'] },
+    estudiante: { title: 'ESTUDIANTE (CENTRO)', sub: 'PreICFES, práctica y orientación', text: [] as string[] },
+    sg: { title: 'SEAMOSGENIOS', sub: 'Plataforma, datos y acompañamiento', text: [] as string[] },
+    docentes: { title: 'DOCENTES', sub: 'Datos + Quizizz/Kahoot SG', text: [] as string[] },
+    familias: { title: 'FAMILIAS', sub: 'Dashboard privado + 2 encuentros (3h)', text: [] as string[] },
+    directivos: { title: 'DIRECTIVOS & RECTORÍA', sub: 'Panel en vivo + hasta 15h de comité', text: [] as string[] },
   },
   /** Sentido único, como en la lámina. Rojas: salen de SEAMOSGENIOS. */
   relaciones: [

@@ -37,88 +37,153 @@
 }
 @media (min-width: 1200px) { .sg-roles-grid { grid-template-columns: minmax(0, 1fr) 56px minmax(0, 1.15fr) 56px minmax(0, 1fr); } .sg-roles-card { padding: 20px; } }
 
-/* ---------- B. Ecosistema (lámina 13) ---------- */
-.sg-eco { margin: 40px 0; padding: 24px 16px; background: #fff; border-radius: 8px; border: 1px solid #e6e6e6; }
-.sg-eco-eyebrow { margin: 0; text-align: center; color: var(--r); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; }
-.sg-eco-titulo { margin: 4px auto 8px; text-align: center; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.1; font-weight: 900; text-transform: uppercase; text-wrap: balance; }
-.sg-eco-titulo span { color: var(--r); }
-.sg-eco-lead { margin: 0 auto 24px; max-width: 62ch; text-align: center; }
-.sg-eco-fig { margin: 0; }
-.sg-eco-lienzo { display: grid; gap: 0; grid-template-columns: minmax(0, 1fr); grid-template-areas: 'doc' 'fam' 'est' 'test' 'sg' 'dir'; }
-.sg-eco-svg, .sg-eco-rotulo { display: none; }
-.sg-eco-caja { position: relative; background: #fff; border: 1.5px solid var(--n); border-radius: 8px; padding: 16px 16px 16px 72px; min-height: 96px; }
-.sg-eco-caja.is-docentes { grid-area: doc; margin-bottom: 12px; } .sg-eco-caja.is-familias { grid-area: fam; margin-bottom: 16px; }
-.sg-eco-caja.is-estudiante { grid-area: est; border: 2px solid var(--r); box-shadow: 0 0 0 4px var(--rosa); }
-.sg-eco-caja.is-sg { grid-area: sg; background: var(--rosa); border-color: var(--r); margin-bottom: 16px; }
-.sg-eco-caja.is-directivos { grid-area: dir; }
-.sg-eco-ico { position: absolute; left: 16px; top: 16px; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--r); color: #fff; }
-.sg-eco-caja h5 { margin: 0 0 2px; color: var(--r); font-size: 17px; font-weight: 800; line-height: 1.2; }
-.sg-eco-caja p { margin: 0; font-size: 16px; }
-.sg-eco-caja .sg-eco-sub { font-weight: 700; font-size: 16px; }
-.sg-eco-tramo { display: none; align-items: center; justify-content: center; gap: 8px; padding: 6px 0; color: var(--r); font-weight: 600; }
-.sg-eco-tramo.is-est { grid-area: test; display: flex; }
-.sg-eco-tramo svg { overflow: visible; flex: none; }
-.sg-eco-tramo path { fill: none; stroke: var(--r); stroke-width: 2.5; }
-.sg-eco-tramo path.is-punta { fill: var(--r); stroke: none; }
-.sg-eco-lista { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; }
-.sg-eco-lista li { display: grid; gap: 2px; padding: 12px 16px; border-radius: 8px; border-left: 4px solid var(--n); background: #f6f6f6; }
-.sg-eco-lista li.is-rojo { border-left-color: var(--r); background: var(--rosa); }
-.sg-eco-lista strong { font-size: 16px; }
-.sg-eco-lista li > span { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 16px; }
-.sg-eco-lista svg path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.sg-eco-lista li.is-rojo svg { color: var(--r); }
-
-/* Tableta: cruz compacta con las 4 flechas rojas; las negras en la lista. */
-@media (min-width: 768px) and (max-width: 767.98px) { /* desactivado: ≥768 usa el lienzo con scroll */
-  .sg-eco { padding: 32px; }
-  .sg-eco-lienzo { grid-template-columns: minmax(0, 1fr) 132px minmax(0, 1.1fr) 132px minmax(0, 1fr); grid-template-areas: '. . est . .' '. . test . .' 'doc tdoc sg tfam fam' '. . tdir . .' '. . dir . .'; align-items: stretch; }
-  .sg-eco-caja { padding: 64px 14px 14px; margin: 0 !important; }
-  .sg-eco-caja.is-directivos { grid-column: 2 / 5; }
-  .sg-eco-caja.is-estudiante { grid-column: 2 / 5; }
-  .sg-eco-ico { left: 14px; top: 12px; }
-  .sg-eco-tramo { display: flex; flex-direction: column; text-align: center; font-size: 16px; line-height: 1.2; padding: 6px 4px; overflow-wrap: anywhere; }
-  .sg-eco-tramo.is-doc svg, .sg-eco-tramo.is-fam svg { margin: -12px 0; }
-  .sg-eco-tramo.is-est, .sg-eco-tramo.is-dir { flex-direction: row; }
-  .sg-eco-tramo.is-doc { grid-area: tdoc; } .sg-eco-tramo.is-fam { grid-area: tfam; } .sg-eco-tramo.is-dir { grid-area: tdir; }
-  .sg-eco-tramo.is-doc svg { transform: rotate(-90deg); } .sg-eco-tramo.is-fam svg { transform: rotate(90deg); } .sg-eco-tramo.is-dir svg { transform: rotate(180deg); }
-  .sg-eco-lista { grid-template-columns: 1fr 1fr; }
-}
-
-/* ≥768: lienzo de la lámina con las 8 flechas; bajo 960px de ancho útil se desplaza en horizontal. */
-@media (min-width: 768px) {
-  .sg-eco { padding: 40px; }
-  .sg-eco-lienzo { display: block; position: relative; aspect-ratio: 1000 / 620; width: 100%; min-width: 900px; margin: 0 auto; }
-  .sg-eco-svg { display: block; position: absolute; z-index: 0; pointer-events: none; inset: 0; width: 100%; height: 100%; overflow: visible; }
-  .sg-eco-svg path { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
-  .sg-eco-svg .is-rojo path { stroke: var(--r); } .sg-eco-svg .is-negro path { stroke: var(--n); }
-  .sg-eco-svg .is-rojo .is-punta { fill: var(--r); stroke: none; } .sg-eco-svg .is-negro .is-punta { fill: var(--n); stroke: none; }
-  .sg-eco-rotulo { display: block; z-index: 1; position: absolute; transform: translate(-50%, -50%); max-width: 150px; padding: 2px 8px; background: #fff; font-size: 16px; line-height: 1.25; text-align: center; font-weight: 600; white-space: normal; }
-  .sg-eco-rotulo.is-rojo { color: var(--r); }
-  .sg-eco-caja { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); min-height: 0; margin: 0 !important; padding: 14px 14px 14px 68px; display: flex; flex-direction: column; justify-content: center; }
-  .sg-eco-ico { top: 50%; transform: translateY(-50%); }
-  .sg-eco-tramo { display: none !important; }
-  .sg-eco-lista { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-}
 @media (prefers-reduced-motion: reduce) { .sg-eco [data-trazo], .sg-roles [data-trazo] { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; } .sg-eco [data-punta], .sg-roles [data-punta] { opacity: 1 !important; } }
-
 /* Dibujo de trazos (useTrazos). Estado base = visible (sin JS, reduced-motion). Solo se ocultan
    con .is-trazos-ocultos y se revelan con .is-trazos-on mediante transiciones CSS (las animaciones
    de Motion sobre estilos inline de SVG quedaban congeladas en 0). */
 .is-trazos-ocultos [data-trazo] { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .is-trazos-ocultos [data-punta] { opacity: 0; }
 .is-trazos-ocultos.is-trazos-on [data-trazo] { stroke-dashoffset: 0; transition: stroke-dashoffset .7s cubic-bezier(.77,0,.175,1) calc(var(--i, 0) * 80ms); }
-.is-trazos-ocultos.is-trazos-on [data-punta] { opacity: 1; transition: opacity .25s cubic-bezier(.23,1,.32,1) calc(600ms + var(--i, 0) * 40ms); }
+.is-trazos-ocultos.is-trazos-on [data-punta] { opacity: 1; transition: opacity .25s cubic-bezier(.23,1,.32,1) calc(var(--i, 0) * 15ms); }
 @media (prefers-reduced-motion: reduce) { .is-trazos-ocultos [data-trazo] { stroke-dasharray: none; stroke-dashoffset: 0; } .is-trazos-ocultos [data-punta] { opacity: 1; } }
 
-/* Desborde: contenedor con scroll horizontal accesible; texto fluido (mín. 13px) que corta palabras largas. */
-.sg-eco-scroll { overflow-x: auto; scrollbar-width: thin; scrollbar-color: #9a9a9a #f0f0f0; padding-bottom: 4px; border-radius: 8px; }
+/* ---------- B. Ecosistema (lámina 13) v3 ----------
+   Cajas HTML en CSS grid; conectores (líneas + puntas) en celdas propias de la retícula, así nada escala
+   como imagen ni se superpone. ≥1200: 272/128/320/128/272 · 1024–1199: 220/104/248/104/220 ·
+   768–1023: cruz compacta de 3 filas (bucles exteriores en la lista de 2 columnas) · <768: pila + lista. */
+.sg-eco { --r: #CC0000; --rosa: #FADBDB; --n: #2B2B2B; --b: #6B6B6B; margin: 40px 0; padding: 24px 16px; background: #fff; border-radius: 8px; border: 1px solid #E2DED6; color: var(--n); font-size: 16px; line-height: 1.5; }
+.sg-eco-eyebrow { margin: 0; text-align: center; color: var(--r); font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: .04em; }
+.sg-eco-titulo { margin: 4px auto 8px; text-align: center; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.1; font-weight: 900; text-transform: uppercase; text-wrap: balance; }
+.sg-eco-titulo span { color: var(--r); }
+.sg-eco-lead { margin: 0 auto 24px; max-width: 62ch; text-align: center; }
+.sg-eco-fig { margin: 0; }
+.sg-eco-scroll { overflow-x: auto; scrollbar-color: #595959 #e6e6e6; border-radius: 8px; }
 .sg-eco-scroll:focus-visible { outline: 3px solid var(--r); outline-offset: 2px; }
+.sg-eco-scroll::-webkit-scrollbar { height: 12px; } .sg-eco-scroll::-webkit-scrollbar-track { background: #e6e6e6; } .sg-eco-scroll::-webkit-scrollbar-thumb { background: #595959; border-radius: 6px; }
+
+.sg-eco-lienzo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; grid-template-areas: 'est' 'test' 'sg' 'doc' 'fam' 'dir'; }
+.sg-eco-caja { min-width: 0; min-height: 0; background: #fff; border: 1px solid var(--b); border-radius: 8px; padding: 16px; overflow-wrap: anywhere; }
+.sg-eco-caja.is-estudiante { grid-area: est; } .sg-eco-caja.is-sg { grid-area: sg; background: var(--rosa); border: 2px solid var(--r); }
+.sg-eco-caja.is-docentes { grid-area: doc; } .sg-eco-caja.is-familias { grid-area: fam; } .sg-eco-caja.is-directivos { grid-area: dir; }
+.sg-eco-ico { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--r); color: #fff; margin-bottom: 12px; }
+.sg-eco-caja h5 { margin: 0 0 4px; color: var(--r); font-size: 18px; font-weight: 800; line-height: 1.25; text-transform: uppercase; }
+.sg-eco-caja p { margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; }
+
+/* Conectores */
+.sg-eco-con { position: relative; min-width: 0; display: none; --c: var(--r); color: var(--c); font-size: 16px; line-height: 1.25; font-weight: 600; }
+.sg-eco-con.is-negro { --c: var(--n); }
+.sg-eco-con i { position: absolute; display: block; }
+.sg-eco-con .ln { border: 0 solid var(--c); }
+.sg-eco-con .pt { width: 0; height: 0; border: 6px solid transparent; }
+.sg-eco-con .rt { position: absolute; text-align: center; overflow-wrap: anywhere; }
+/* vertical (hacia arriba / abajo), rótulo de 1 línea con fondo blanco sobre el trazo */
+.sg-eco-con.is-v { min-height: 64px; }
+.sg-eco-con.is-v .ln { left: 50%; margin-left: -1px; border-left-width: 2px; top: 20px; bottom: 0; }
+.sg-eco-con.is-v .pt { left: 50%; margin-left: -6px; top: 8px; border-bottom: 12px solid var(--c); border-top-width: 0; }
+.sg-eco-con.is-v.is-abajo .ln { top: 0; bottom: 20px; }
+.sg-eco-con.is-v.is-abajo .pt { top: auto; bottom: 8px; border-top: 12px solid var(--c); border-bottom-width: 0; }
+.sg-eco-con.is-v .rt { left: 50%; top: 50%; transform: translate(-50%, -40%); background: #fff; padding: 0 8px; white-space: nowrap; }
+.sg-eco-caja.is-sg ~ .sg-eco-con.is-v .rt, .sg-eco-con.is-v .rt { max-width: 100%; }
+.sg-eco-con.is-est { grid-area: test; display: block; }
+/* horizontal (izquierda / derecha), rótulo encima del trazo */
+.sg-eco-con.is-h .ln { top: 50%; margin-top: -1px; border-top-width: 2px; left: 20px; right: 0; }
+.sg-eco-con.is-h .pt { top: 50%; margin-top: -6px; left: 8px; border-right: 12px solid var(--c); border-left-width: 0; }
+.sg-eco-con.is-h.is-der .ln { left: 0; right: 20px; }
+.sg-eco-con.is-h.is-der .pt { left: auto; right: 8px; border-left: 12px solid var(--c); border-right-width: 0; }
+.sg-eco-con.is-h .rt { left: 4px; right: 4px; bottom: calc(50% + 10px); }
+/* bucles exteriores en codo: --g = alto del hueco entre filas */
+.sg-eco-con.is-bucle .ln { left: 50%; right: 20px; }
+.sg-eco-con.is-arriba .ln { top: calc((100% - var(--g)) / 2); bottom: 0; border-left-width: 2px; border-top-width: 2px; }
+.sg-eco-con.is-arriba .pt { right: 8px; top: calc((100% - var(--g)) / 2 - 5px); border-left: 12px solid var(--c); border-right-width: 0; }
+.sg-eco-con.is-arriba .rt { left: 0; right: 0; bottom: calc(100% - (100% - var(--g)) / 2 + 8px); }
+.sg-eco-con.is-abajo-b .ln { top: 20px; height: calc(var(--g) + (100% - var(--g)) / 2 - 20px); right: 0; border-left-width: 2px; border-bottom-width: 2px; }
+.sg-eco-con.is-abajo-b .pt { left: 50%; margin-left: -5px; top: 8px; border-bottom: 12px solid var(--c); border-top-width: 0; }
+.sg-eco-con.is-abajo-b .rt { left: 0; right: 0; top: calc(var(--g) + (100% - var(--g)) / 2 + 10px); }
+.sg-eco-con.is-espejo .ln { left: 20px; right: 50%; border-left-width: 0; border-right-width: 2px; }
+.sg-eco-con.is-espejo.is-arriba .pt { right: auto; left: 8px; border-left: 0 solid transparent; border-right: 12px solid var(--c); }
+.sg-eco-con.is-espejo.is-abajo-b .ln { left: 0; }
+.sg-eco-con.is-espejo.is-abajo-b .pt { left: auto; right: 50%; margin-left: 0; margin-right: -5px; }
+
+/* Lista de las 8 relaciones */
+.sg-eco-lista { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; }
+.sg-eco-lista li { display: grid; gap: 2px; padding: 16px; border-radius: 8px; border: 1px solid var(--b); border-left: 4px solid var(--n); background: #fff; overflow-wrap: anywhere; }
+.sg-eco-lista li.is-rojo { border-color: var(--rosa); border-left-color: var(--r); background: var(--rosa); }
+.sg-eco-lista strong { font-size: 16px; font-weight: 700; }
+.sg-eco-lista li > span { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 16px; }
+.sg-eco-lista svg path { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sg-eco-lista li.is-rojo svg { color: var(--r); }
+
+/* 768–1023: cruz compacta de 3 filas */
 @media (min-width: 768px) {
-  .sg-eco { padding: clamp(20px, 2.5vw, 40px); }
-  .sg-eco-caja { padding: 10px 10px 10px clamp(50px, 4.6vw, 64px); overflow-wrap: anywhere; hyphens: auto; }
-  .sg-eco-ico { left: 10px; width: clamp(34px, 3.2vw, 44px); height: clamp(34px, 3.2vw, 44px); }
-  .sg-eco-ico svg { width: 60%; height: 60%; }
-  .sg-eco-caja h5 { font-size: clamp(14px, 1.3vw, 17px); }
-  .sg-eco-caja p, .sg-eco-caja .sg-eco-sub { font-size: clamp(13px, 1.15vw, 15px); line-height: 1.3; }
-  .sg-eco-rotulo { font-size: clamp(13px, 1.15vw, 15px); max-width: 140px; overflow-wrap: anywhere; }
+  .sg-eco { padding: 32px; }
+  .sg-eco-lienzo { gap: 0; grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr) 24px minmax(0, 1fr); grid-template-rows: auto 64px auto 64px auto;
+    grid-template-areas: 'est est est est est' 'test test test test test' 'doc tdoc sg tfam fam' 'tdir tdir tdir tdir tdir' 'dir dir dir dir dir'; }
+  .sg-eco-caja.is-estudiante, .sg-eco-caja.is-directivos { justify-self: center; width: min(400px, 100%); }
+  .sg-eco-con.is-dir { grid-area: tdir; display: block; } .sg-eco-con.is-doc { grid-area: tdoc; display: block; } .sg-eco-con.is-fam { grid-area: tfam; display: block; }
+  .sg-eco-con.is-h .rt { display: none; }
+  .sg-eco-con.is-h .ln { left: 14px; } .sg-eco-con.is-h .pt { left: 2px; }
+  .sg-eco-con.is-h.is-der .ln { left: 0; right: 14px; } .sg-eco-con.is-h.is-der .pt { left: auto; right: 2px; }
+  .sg-eco-lista { grid-template-columns: 1fr 1fr; gap: 16px; }
 }
+/* ≥1024: cruz completa con los 8 conectores */
+@media (min-width: 1024px) {
+  .sg-eco { padding: 40px 24px; }
+  .sg-eco-lienzo { --g: 96px; grid-template-columns: 220px 104px minmax(0, 1fr) 104px 220px; grid-template-rows: auto 96px auto 96px auto; max-width: 1120px; margin: 0 auto;
+    grid-template-areas: 'ltl est est est ltr' 'ltl test test test ltr' 'doc tdoc sg tfam fam' 'lbl tdir tdir tdir lbr' 'lbl dir dir dir lbr'; }
+  .sg-eco-caja { padding: 24px; }
+  .sg-eco-caja.is-estudiante, .sg-eco-caja.is-directivos { width: auto; justify-self: stretch; }
+  .sg-eco-caja.is-estudiante h5 { white-space: nowrap; }
+  .sg-eco-con.is-h .rt { display: block; }
+  .sg-eco-con.is-h .ln { left: 20px; } .sg-eco-con.is-h .pt { left: 8px; }
+  .sg-eco-con.is-h.is-der .ln { left: 0; right: 20px; } .sg-eco-con.is-h.is-der .pt { left: auto; right: 8px; }
+  .sg-eco-con.is-ltl { grid-area: ltl; display: block; } .sg-eco-con.is-ltr { grid-area: ltr; display: block; }
+  .sg-eco-con.is-lbl { grid-area: lbl; display: block; } .sg-eco-con.is-lbr { grid-area: lbr; display: block; }
+  .sg-eco-lista { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+@media (min-width: 1200px) {
+  .sg-eco { padding: 40px; }
+  .sg-eco-lienzo { grid-template-columns: 272px 128px minmax(0, 1fr) 128px 272px; }
+}
+
+/* Vista ampliada (<768): <dialog> a pantalla completa con la cruz de 1120 px desplazable. */
+.sg-eco-dialog .sg-eco-con.is-dir { grid-area: tdir; display: block; }
+.sg-eco-dialog .sg-eco-con.is-doc { grid-area: tdoc; display: block; }
+.sg-eco-dialog .sg-eco-con.is-fam { grid-area: tfam; display: block; }
+.sg-eco-dialog .sg-eco-con.is-h .rt { display: none; }
+.sg-eco-dialog .sg-eco-con.is-h .ln { left: 14px; }
+.sg-eco-dialog .sg-eco-con.is-h .pt { left: 2px; }
+.sg-eco-dialog .sg-eco-con.is-h.is-der .ln { left: 0; right: 14px; }
+.sg-eco-dialog .sg-eco-con.is-h.is-der .pt { left: auto; right: 2px; }
+.sg-eco-dialog .sg-eco-caja { padding: 24px; }
+.sg-eco-dialog .sg-eco-caja.is-estudiante, .sg-eco-dialog .sg-eco-caja.is-directivos { width: auto; justify-self: stretch; }
+.sg-eco-dialog .sg-eco-caja.is-estudiante h5 { white-space: nowrap; }
+.sg-eco-dialog .sg-eco-con.is-h .rt { display: block; }
+.sg-eco-dialog .sg-eco-con.is-h .ln { left: 20px; }
+.sg-eco-dialog .sg-eco-con.is-h .pt { left: 8px; }
+.sg-eco-dialog .sg-eco-con.is-h.is-der .ln { left: 0; right: 20px; }
+.sg-eco-dialog .sg-eco-con.is-h.is-der .pt { left: auto; right: 8px; }
+.sg-eco-dialog .sg-eco-con.is-ltl { grid-area: ltl; display: block; }
+.sg-eco-dialog .sg-eco-con.is-ltr { grid-area: ltr; display: block; }
+.sg-eco-dialog .sg-eco-con.is-lbl { grid-area: lbl; display: block; }
+.sg-eco-dialog .sg-eco-con.is-lbr { grid-area: lbr; display: block; }
+.sg-eco-dialog .sg-eco-lienzo { grid-template-columns: 272px 128px minmax(0, 1fr) 128px 272px; }
+.sg-eco-ampliar { display: block; width: 100%; min-height: 48px; margin: 16px 0 0; background: #fff; color: var(--r); border: 2px solid var(--r); border-radius: 4px; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+.sg-eco-ampliar:focus-visible, .sg-eco-cerrar:focus-visible { outline: 2px solid var(--r); outline-offset: 2px; }
+@media (min-width: 768px) { .sg-eco-ampliar { display: none; } }
+.sg-eco-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: #fff; color: var(--n); overscroll-behavior: contain; }
+.sg-eco-dialog[open] { display: flex; flex-direction: column; }
+.sg-eco-dialog::backdrop { background: #fff; }
+.sg-eco-dlg-barra { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 56px; padding: 4px 4px 4px 16px; background: #fff; border-bottom: 1px solid #E2DED6; }
+.sg-eco-dlg-barra h2 { margin: 0; font-size: 16px; font-weight: 800; line-height: 1.25; color: var(--n); text-transform: uppercase; }
+.sg-eco-cerrar { flex: none; display: grid; place-items: center; width: 48px; height: 48px; padding: 0; background: #fff; border: 0; border-radius: 4px; color: var(--n); cursor: pointer; }
+.sg-eco-cerrar path { fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; }
+.sg-eco-dlg-pista { margin: 0; padding: 8px 16px; background: var(--rosa); font-size: 16px; }
+.sg-eco-dlg-area { flex: 1; overflow: auto; overscroll-behavior: contain; touch-action: pan-x pan-y pinch-zoom; padding: 24px; }
+.sg-eco-dialog .sg-eco-lienzo.is-cruz { width: 1120px; max-width: none; }
+.sg-eco-dialog .sg-eco-lienzo.is-cruz { grid-template-columns: 272px 128px minmax(0, 1fr) 128px 272px; }
+@media (prefers-reduced-motion: reduce) { .sg-eco-dialog, .sg-eco-dialog * { transition: none !important; animation: none !important; } }
+.sg-eco-dialog .sg-eco-lienzo.is-cruz { --g: 96px; gap: 0; margin: 0; grid-template-rows: auto 96px auto 96px auto;
+  grid-template-areas: 'ltl est est est ltr' 'ltl test test test ltr' 'doc tdoc sg tfam fam' 'lbl tdir tdir tdir lbr' 'lbl dir dir dir lbr'; }
+/* Rótulos laterales: sin cortar palabras; a 1024–1199 bajan a 14px para caber en 104px. */
+.sg-eco-con.is-h .rt { overflow-wrap: normal; }
+@media (min-width: 1024px) and (max-width: 1199.98px) { .sg-eco-con.is-h .rt { font-size: 14px; left: 0; right: 0; } }
