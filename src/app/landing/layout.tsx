@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Montserrat, Nunito } from 'next/font/google';
+import localFont from 'next/font/local';
 import { FAQ } from './_contenido/faq';
 import { RevealObserver } from './_componentes/primitivas/RevealObserver';
 import { ConsentBanner } from './_componentes/secciones/ConsentBanner';
@@ -8,28 +8,30 @@ import { Breadcrumb } from './_componentes/secciones/Breadcrumb';
 import { SiteFooter } from './_componentes/secciones/SiteFooter';
 import { SiteHeader } from './_componentes/secciones/SiteHeader';
 import { WhatsAppFab } from './_componentes/secciones/WhatsAppFab';
+import './tokens.css';
 import './landing-base.css';
 import './landing.css';
 import './tienda.css';
+import './sistema.css';
 import { MotionProvider } from './_componentes/primitivas/MotionProvider';
 
 /** Dominio público de la landing (Vercel reescribe / → /landing; el resto vive en /landing/*). La app es app.seamosgenios.org. */
 const SITE = 'https://seamosgenios.org';
 const ORG_ID = `${SITE}/#organization`;
 
-const montserrat = Montserrat({
-  subsets: ['latin'],
+/** Tipografía única del sitio (tokens.css): Plus Jakarta Sans (variable 200-800) para títulos y texto;
+ * Caveat solo como acento. Mismos subconjuntos locales que ya usaba /instituciones. */
+const jakarta = localFont({
+  src: './instituciones/fuentes/plus-jakarta-sans-var-latin-sub.woff2',
+  weight: '200 800',
+  display: 'swap',
   variable: '--font-alianza',
-  // Fuente variable: sin lista de pesos next/font sirve un solo archivo (100-900) en vez de seis.
-  display: 'swap',
 });
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  variable: '--font-alianza-body',
-  weight: ['400', '600', '700'],
+const caveat = localFont({
+  src: './instituciones/fuentes/caveat-700-latin-sub.woff2',
+  weight: '700',
   display: 'swap',
-  // Solo lo usan bloques puntuales (.qe-*): no compite con el LCP.
+  variable: '--font-caveat',
   preload: false,
 });
 
@@ -105,7 +107,7 @@ const structuredData = {
 
 export default function AlianzaLayout({ children }: { children: ReactNode }) {
   return (
-    <div className={`alianza-root ${montserrat.variable} ${nunito.variable}`} lang="es-CO" data-app-surface="alianza">
+    <div className={`alianza-root ${jakarta.variable} ${caveat.variable}`} lang="es-CO" data-app-surface="alianza">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       {/* Sin JS: framer-motion deja opacity:0 / blur en el HTML del servidor. Se fuerza visible. */}
       <noscript

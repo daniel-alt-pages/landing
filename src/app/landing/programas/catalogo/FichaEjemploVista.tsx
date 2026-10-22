@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { coverForKind, type TiendaConfig } from '../../_lib/tienda';
 import type { FichaPrograma as FichaEjemplo } from '../../_datos/tienda';
 import { AddToCartButton } from '../../_componentes/bits/AddToCartButton';
+import { ResumenModal } from '../../_componentes/bits/ResumenModal';
 import { Avatar } from '../../_componentes/bits/Avatar';
 import { DejaOpinion } from './DejaOpinion';
 import { kindLabel, priceLabel, type CatalogItem } from './catalogUi';
@@ -78,6 +79,10 @@ export function FichaEjemploVista({ item, ficha, config, inCart, onAdd }: Props)
         <section className="ag-fx-card ag-fx-block" aria-labelledby="fx-inc">
           <h2 id="fx-inc">Qué incluye</h2>
           <ul className="ag-fx-list">{ficha.incluye.map((t) => <li key={t}>{t}</li>)}</ul>
+          <ResumenModal titulo={`Resumen de ${item.title}`} puntos={[
+            ...ficha.detalles.map((d) => ({ titulo: d.label, texto: `: ${d.value}` })),
+            { titulo: 'Incluye', texto: `: ${ficha.incluye.join(', ')}.` },
+          ]} />
         </section>
           <section className="ag-fx-card ag-fx-side" aria-labelledby="fx-garantias">
             <h2 id="fx-garantias">Garantías y datos clave <Ejemplo /></h2>

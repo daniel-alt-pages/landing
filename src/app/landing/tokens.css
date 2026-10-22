@@ -1,0 +1,35 @@
+/**
+ * TOKENS DEL SISTEMA DE DISEÑO (v1.0.20). Un solo lugar para tipografía, espacios, radios,
+ * sombras y botones de todo el sitio (inicio, instituciones, tienda y ficha).
+ * Tipografía: Plus Jakarta Sans (--font-alianza) para títulos y texto; Caveat solo como acento.
+ */
+:root, .alianza-root {
+  /* Tipografía */
+  --sg-font: var(--font-alianza), 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --sg-font-accent: var(--font-caveat), 'Caveat', cursive;
+  --sg-text-xs: 12px;
+  --sg-text-sm: 14px;
+  --sg-text-md: 16px;
+  --sg-text-lg: clamp(16px, 0.6vw + 14px, 18px);
+  --sg-h3: clamp(18px, 0.6vw + 16px, 22px);
+  --sg-h2: clamp(1.7rem, 2.4vw + 0.9rem, 3rem);
+  --sg-h1: clamp(2rem, 3vw + 1rem, 3.5rem);
+  --sg-weight-head: 800;
+  --sg-tracking-head: -0.03em;
+  --sg-leading-head: 1.1;
+  --sg-leading-body: 1.6;
+  /* Espacios (escala de 4) */
+  --sg-space-1: 4px; --sg-space-2: 8px; --sg-space-3: 12px; --sg-space-4: 16px;
+  --sg-space-5: 24px; --sg-space-6: 32px; --sg-space-7: 48px; --sg-space-8: 72px; --sg-space-9: 112px;
+  /* Radios */
+  --sg-radius-sm: 12px; --sg-radius-md: 18px; --sg-radius-lg: 26px; --sg-radius-pill: 999px;
+  /* Sombras */
+  --sg-shadow-1: 0 1px 0 rgba(15,23,42,.08), 0 6px 18px rgba(15,23,42,.05);
+  --sg-shadow-2: 0 16px 36px rgba(15,23,42,.12);
+  --sg-shadow-modal: 0 24px 60px rgba(15,23,42,.24);
+  /* Color */
+  --sg-ink: #0f172a; --sg-muted: #334155; --sg-red: #cc0000; --sg-red-bright: #ff2323; --sg-dark: #0a0a0a;
+  --sg-surface: #ffffff; --sg-surface-2: #f4f4f5; --sg-line: rgba(15,23,42,.1);
+  /* Movimiento */
+  --sg-ease: cubic-bezier(0.16, 1, 0.3, 1); --sg-dur-1: 200ms; --sg-dur-2: 320ms;
+}

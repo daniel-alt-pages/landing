@@ -1,0 +1,51 @@
+/**
+ * Capa de unificación (v1.0.20): aplica los tokens a los elementos compartidos con
+ * especificidad baja (:where) para no romper ajustes locales. Va después de landing.css y tienda.css.
+ */
+.alianza-root { font-family: var(--sg-font); }
+:where(.alianza-root) :where(h1, h2, h3, h4, button, input, select, textarea) { font-family: var(--sg-font); }
+:where(.alianza-root) :where(h1, h2) { letter-spacing: var(--sg-tracking-head); line-height: var(--sg-leading-head); }
+:where(.alianza-root) :where(.ag-h2, .ag-b2b-title, .ag-pq-h, .ag-shelf-title, .qe-title, .ag-b2m-titulo) { font-weight: var(--sg-weight-head); }
+:where(.alianza-root) :where(.ag-eyebrow) { font-size: var(--sg-text-xs); letter-spacing: .16em; font-weight: 700; }
+:where(.alianza-root) :where(.ag-lead) { font-size: var(--sg-text-lg); line-height: var(--sg-leading-body); }
+:where(.alianza-root) :where(.ag-btn, .ag-btn-ghost, .ag-store-primary, .ag-store-secondary) { border-radius: var(--sg-radius-pill); font-weight: 700; }
+:where(.alianza-root) :where(.ag-card, .ag-mk-card, .ag-fx-card, .ag-compare-card) { border-radius: var(--sg-radius-lg); }
+:where(.alianza-root) :where(.ag-card) { box-shadow: var(--sg-shadow-1); }
+:where(.alianza-root) :where(.ag-accent, .ag-caveat) { font-family: var(--sg-font-accent); }
+
+/* ===== Cifras clave (solo datos confirmados en el sitio) ===== */
+.sg-cifras { display: grid; gap: var(--sg-space-4); grid-template-columns: 1fr; margin-top: var(--sg-space-6); }
+@media (min-width: 720px) { .sg-cifras { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .sg-cifras { grid-template-columns: repeat(4, 1fr); } }
+.sg-cifra { background: var(--sg-surface); border-radius: var(--sg-radius-lg); box-shadow: var(--sg-shadow-1); padding: var(--sg-space-5); display: grid; gap: var(--sg-space-3); align-content: start; }
+.sg-cifra-num { font-size: clamp(2rem, 2vw + 1.4rem, 2.75rem); font-weight: 800; letter-spacing: -0.03em; color: var(--sg-ink); line-height: 1; margin: 0; }
+.sg-cifra-label { margin: 0; font-size: var(--sg-text-sm); color: var(--sg-muted); line-height: 1.5; }
+.sg-cifra-tag { font-size: var(--sg-text-xs); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sg-red); margin: 0; }
+.sg-dots { display: grid; grid-template-columns: repeat(13, 1fr); gap: 4px; max-width: 220px; }
+.sg-dots span { aspect-ratio: 1; border-radius: 50%; background: var(--sg-ink); opacity: .85; }
+.sg-ring { width: 88px; height: 88px; }
+.sg-ring circle { fill: none; stroke-width: 8; }
+.sg-ring .track { stroke: var(--sg-surface-2); }
+.sg-ring .fill { stroke: var(--sg-red); stroke-linecap: round; }
+.sg-line { position: relative; height: 8px; border-radius: 999px; background: var(--sg-surface-2); overflow: hidden; }
+.sg-line > span { position: absolute; inset: 0; background: var(--sg-ink); border-radius: inherit; transform-origin: left; }
+.sg-steps { display: flex; align-items: center; gap: 6px; font-size: var(--sg-text-xs); color: var(--sg-muted); font-weight: 600; }
+.sg-steps i { flex: 1; height: 2px; background: var(--sg-line); }
+.sg-steps b { color: var(--sg-ink); }
+
+/* ===== Modal de resumen ===== */
+.sg-resumen-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: var(--sg-space-5); min-height: 44px; padding: 8px 18px; border-radius: var(--sg-radius-pill); border: 1px solid rgba(15,23,42,.22); background: var(--sg-surface); color: var(--sg-ink); font: 700 var(--sg-text-sm)/1.2 var(--sg-font); cursor: pointer; }
+.sg-resumen-btn:hover { box-shadow: var(--sg-shadow-1); }
+.sg-modal-back { position: fixed; inset: 0; z-index: 1000; background: rgba(10,10,10,.5); display: grid; place-items: end center; padding: 0; }
+@media (min-width: 720px) { .sg-modal-back { place-items: center; padding: var(--sg-space-5); } }
+.sg-modal { width: 100%; max-width: 640px; max-height: 88vh; overflow: auto; background: var(--sg-surface); border-radius: var(--sg-radius-lg) var(--sg-radius-lg) 0 0; box-shadow: var(--sg-shadow-modal); padding: var(--sg-space-6) var(--sg-space-5); font-family: var(--sg-font); color: var(--sg-ink); }
+@media (min-width: 720px) { .sg-modal { border-radius: var(--sg-radius-lg); padding: var(--sg-space-6); } }
+.sg-modal-head { display: flex; justify-content: space-between; align-items: start; gap: var(--sg-space-4); }
+.sg-modal h2 { margin: 0; font-size: clamp(20px, 1vw + 16px, 26px); font-weight: 800; letter-spacing: -0.02em; }
+.sg-modal-close { width: 44px; height: 44px; flex-shrink: 0; border-radius: 999px; border: 0; background: var(--sg-surface-2); color: var(--sg-ink); cursor: pointer; display: grid; place-items: center; }
+.sg-modal-list { list-style: none; margin: var(--sg-space-5) 0 0; padding: 0; display: grid; gap: var(--sg-space-3); }
+.sg-modal-list li { display: grid; grid-template-columns: 28px 1fr; gap: var(--sg-space-3); padding: var(--sg-space-3) 0; border-top: 1px solid var(--sg-line); font-size: var(--sg-text-sm); line-height: 1.55; color: var(--sg-muted); }
+.sg-modal-list li:first-child { border-top: 0; }
+.sg-modal-list b { display: block; color: var(--sg-ink); font-size: var(--sg-text-md); }
+.sg-modal-n { width: 28px; height: 28px; border-radius: 999px; background: var(--sg-ink); color: #fff; font-size: 12px; font-weight: 800; display: grid; place-items: center; }
+.sg-cifra, .sg-modal { letter-spacing: normal; } .sg-cifra-label { font-weight: 500; letter-spacing: 0; }

@@ -1,6 +1,7 @@
 import { COMPARATIVA, PROGRAMAS } from '../../_contenido/programas';
 import { Pending } from '../primitivas/bits';
 import { Section } from '../primitivas/Section';
+import { ResumenModal } from '../bits/ResumenModal';
 
 export function ProgramCompare() {
   return (
@@ -38,6 +39,10 @@ export function ProgramCompare() {
           </article>
         ))}
       </div>
+      <ResumenModal
+        titulo="Comparación de programas"
+        puntos={COMPARATIVA.map((p) => ({ titulo: `${p.titulo} · ${p.semanas}`, texto: ` ${p.enVivo}. ${p.enfoque}` }))}
+      />
     </Section>
   );
 }

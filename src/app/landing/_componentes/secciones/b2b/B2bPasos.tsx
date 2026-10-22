@@ -3,6 +3,7 @@ import { B2B_SIMULACROS } from '../../../_contenido/b2b/servicio';
 import { Plegable } from './base/Plegable';
 import { SeccionB2b } from './base/SeccionB2b';
 import { InformeAnalizar } from './InformeAnalizar';
+import { ResumenModal } from '../../bits/ResumenModal';
 
 /**
  * Etapas del Nivel 1 (propuesta UIUX.md §1): las 5 etapas siempre abiertas, sin desbloqueo.
@@ -35,6 +36,7 @@ export function B2bPasos() {
           ))}
         </ol>
       </div>
+      <ResumenModal titulo="Etapas del Nivel 1" intro={B2B_N1.flujo} puntos={etapas.map((e) => ({ titulo: e.title, texto: ` ${e.sub}.` }))} />
       <InformeAnalizar />
       <Plegable titulo="Cómo se construye cada simulacro" cuenta="7 aspectos">
         <div className="ag-pf-tabla-wrap" tabIndex={0} role="region" aria-label="Cómo se construye cada simulacro">

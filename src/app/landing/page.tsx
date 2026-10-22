@@ -1,3 +1,4 @@
+import { CifrasClave } from './_componentes/secciones/CifrasClave';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
 import { FinalCta } from './_componentes/secciones/FinalCta';
@@ -21,6 +22,7 @@ export default function AlianzaInicio() {
       <StorefrontBanner />
       <ProductRail />
       <MapaSitio />
+      <CifrasClave />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
