@@ -13,7 +13,7 @@
 }
 
 /* Paso a paso */
-.b2p-prog { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin: 0 0 24px; font-weight: 800; }
+.b2p-prog { margin-top: 20px !important; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin: 0 0 24px; font-weight: 800; }
 .b2p-barra { flex: 1 1 200px; max-width: 360px; height: 6px; border-radius: 3px; background: #F9E0DF; overflow: hidden; }
 .b2p-barra i { display: block; height: 100%; background: #CC0000; transform-origin: left; transition: transform 0.28s var(--b2r-ease-io); }
 .b2p-link { min-height: 44px; padding: 10px 0; border: 0; background: none; color: inherit; font: inherit; font-weight: 700; cursor: pointer;
@@ -23,7 +23,7 @@
   transition: border-color 0.2s, background-color 0.2s; }
 .b2p-paso h3 { margin: 6px 0 2px; font-size: 1.0625rem; font-weight: 800; }
 .b2p-sub { margin: 0 0 8px; color: #545454; font-size: 0.875rem; font-weight: 600; }
-.b2p-paso ul { margin: 0; padding-left: 18px; color: #545454; font-size: 0.9375rem; line-height: 1.5; }
+.b2p-paso ul { margin: 0; padding-left: 18px; list-style: disc; color: #545454; font-size: 0.9375rem; line-height: 1.5; }
 .b2p-n { display: grid; place-items: center; width: 36px; height: 36px; border: 1.5px solid #C2C2C2; border-radius: 50%; color: #545454; font-weight: 900; font-size: 0.875rem; }
 .b2p-paso[data-estado='hecho'] .b2p-n { border-color: #CC0000; background: #CC0000; color: #fff; }
 .b2p-paso[data-estado='activo'] { border-color: #CC0000; background: #F9E0DF; }
