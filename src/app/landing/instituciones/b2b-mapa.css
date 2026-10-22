@@ -1,5 +1,5 @@
-/* «Qué encuentra en el sitio» en el panel B2B. Borde fino sin sombra, un solo acento (#CC0000), escala 8, radio 8. */
-.ag-b2m { --b2m-rojo: #cc0000; --b2m-tinta: #2B2B2B; --b2m-gris: #4a4a4a; --b2m-borde: #E2DED6; --b2m-rosa: #fadbdb; --b2m-ease: cubic-bezier(0.22, 1, 0.36, 1);
+/* «Qué encuentra en el sitio» en el panel B2B. Borde fino sin sombra, un solo acento (var(--b2b-rojo, #CC0000)), escala 8, radio 8. */
+.ag-b2m { --b2m-rojo: var(--b2b-rojo, #CC0000); --b2m-tinta: #2B2B2B; --b2m-gris: #4a4a4a; --b2m-borde: #E2DED6; --b2m-rosa: #fadbdb; --b2m-ease: cubic-bezier(0.22, 1, 0.36, 1);
   background: #fff; color: var(--b2m-tinta); overflow-x: clip; }
 
 /* Cabecera fluida: la nota va a la derecha si cabe; si no, baja centrada. Sin breakpoints. */
@@ -41,7 +41,7 @@
 .ag-b2m-legal-link { margin-top: auto; color: inherit; text-decoration: none; border-radius: 8px; }
 .ag-b2m-legal-link .ag-b2m-ir { margin-top: 0; }
 
-/* Foco: 3px #CC0000 (blanco en tarjeta oscura). */
+/* Foco: 3px var(--b2b-rojo, #CC0000) (blanco en tarjeta oscura). */
 .ag-b2m-card:focus-visible, .ag-b2m-legal-link:focus-visible { outline: 3px solid var(--b2m-rojo); outline-offset: 3px; }
 .ag-b2m-card.is-oscuro:focus-visible, .is-oscuro .ag-b2m-legal-link:focus-visible { outline-color: var(--b2m-rojo); }
 

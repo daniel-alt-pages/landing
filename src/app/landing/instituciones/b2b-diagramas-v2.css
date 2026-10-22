@@ -1,6 +1,6 @@
 /* Diagramas v2: cuatro roles (#cuatro-roles) y ecosistema de la lámina 13 (#ecosistema).
-   Marca: rojo #CC0000, rosado #F9E0DF, negro, fondo blanco, esquinas de 8px. Texto mínimo 16px. */
-.sg-roles, .sg-eco { --r: #CC0000; --rosa: #F9E0DF; --n: #2B2B2B; --g: #5c5c5c; font-size: 16px; line-height: 1.4; color: var(--n); }
+   Marca: rojo var(--b2b-rojo, #CC0000), rosado #F9E0DF, negro, fondo blanco, esquinas de 8px. Texto mínimo 16px. */
+.sg-roles, .sg-eco { --r: var(--b2b-rojo, #CC0000); --rosa: #F9E0DF; --n: #2B2B2B; --g: #5c5c5c; font-size: 16px; line-height: 1.4; color: var(--n); }
 .sg-ico { display: block; width: 24px; height: 24px; }
 
 /* ---------- A. Cuatro roles ---------- */

@@ -30,7 +30,7 @@ export function B2bMapa() {
           <AlEntrar className="ag-b2m-nota">
             <p className={`ag-b2m-mano ${caveat.className}`}>
               <span className="ag-b2m-l1">{B2B_MAPA.nota[0]}</span>
-              <span className="ag-b2m-l2">{B2B_MAPA.nota[1]}</span>
+              <span className="ag-b2m-l2">{B2B_MAPA.nota[1]}<svg className="ag-b2m-trazo" viewBox="0 0 70 12" fill="none" aria-hidden="true" focusable="false"><path d="M4 9 C 25 5, 45 4, 66 2" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /></svg></span>
             </p>
             <svg className="ag-b2m-flecha" viewBox="0 0 70 70" fill="none" aria-hidden="true" focusable="false">
               <path d="M10 14 C 36 12, 50 30, 46 58" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />

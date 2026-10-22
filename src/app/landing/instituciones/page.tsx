@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import { B2bCierre } from '../_componentes/secciones/b2b/B2bCierre';
 import { B2bGobierno } from '../_componentes/secciones/b2b/B2bGobierno';
 import { B2bHero } from '../_componentes/secciones/b2b/B2bHero';
@@ -18,6 +19,10 @@ import './b2b-diagramas-v2.css';
 import './b2b-problema-quienes.css';
 import './b2b-mapa.css';
 import './b2b-hero.css';
+import './b2b-desktop.css';
+
+/** Fuente del panel B2B en escritorio (referencia de Daniel, 21-oct-2026). */
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap', variable: '--font-jakarta' });
 
 export const metadata: Metadata = {
   title: { absolute: 'Modelo de servicios institucionales B2B | SEAMOSGENIOS' },
@@ -26,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function InstitucionesPage() {
   return (
-    <>
+    <div className={`b2b-panel ${jakarta.variable}`}>
       <B2bHero />
       <MapaSitio variante="b2b" />
       <B2bResumen />
@@ -37,6 +42,6 @@ export default function InstitucionesPage() {
       <B2bPlataforma />
       <B2bGobierno />
       <B2bCierre />
-    </>
+    </div>
   );
 }

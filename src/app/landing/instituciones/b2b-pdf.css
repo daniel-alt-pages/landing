@@ -2,7 +2,7 @@
 .ag-b2b:not(.ag-b2b-portada), .ag-b2b-subnav {
   --ag-ink: #0a0a0a;
   --ag-muted: #545454;
-  --ag-red: #cc0000;
+  --ag-red: var(--b2b-rojo, #CC0000);
   --ag-red-tint: #F9E0DF;
   --ag-red-dark: #9B1116;
   --ag-red-line: #C2C2C2;
