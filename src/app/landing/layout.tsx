@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Montserrat } from 'next/font/google';
+import { Montserrat, Nunito } from 'next/font/google';
 import { FAQ } from './_contenido/faq';
 import { RevealObserver } from './_componentes/primitivas/RevealObserver';
 import { ConsentBanner } from './_componentes/secciones/ConsentBanner';
@@ -19,6 +19,13 @@ const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-alianza',
   weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+});
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-alianza-body',
+  weight: ['400', '600', '700'],
   display: 'swap',
 });
 
@@ -85,7 +92,7 @@ const structuredData = {
 
 export default function AlianzaLayout({ children }: { children: ReactNode }) {
   return (
-    <div className={`alianza-root ${montserrat.variable}`} lang="es-CO" data-app-surface="alianza">
+    <div className={`alianza-root ${montserrat.variable} ${nunito.variable}`} lang="es-CO" data-app-surface="alianza">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       {/* Sin JS: framer-motion deja opacity:0 / blur en el HTML del servidor. Se fuerza visible. */}
       <noscript
