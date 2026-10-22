@@ -4144,3 +4144,12 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
   .ag-consent { transition: none; }
   .ag-consent.ag-consent-leaving { transform: none; }
 }
+
+/* v1.0.26 · Acentos (Caveat/itálica) en títulos: cada pieza de BlurText lleva `filter`, que recorta la pintura
+ * a su caja y cortaba el último glifo inclinado («CASC»). Espacio extra a la derecha, compensado con margen negativo:
+ * el texto no se mueve ni cambia el ancho de línea. */
+.ag-accent .ag-bt-piece,
+.ag-accent-line .ag-bt-piece {
+  padding-inline-end: 0.15em;
+  margin-inline-end: -0.15em;
+}
