@@ -141,21 +141,34 @@
   align-items: center;
   justify-content: center;
   min-height: 48px;
-  padding: 10px 18px;
-  border-radius: 12px;
+  padding: 12px 26px;
+  border-radius: 9999px;
   background: var(--ag-red);
   color: #fff;
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
+  box-shadow: 0 4px 14px rgba(204, 0, 0, 0.25);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s, background-color 0.2s;
 }
-.ag-b2b-btn:hover { background: var(--ag-red-hover); }
+.ag-b2b-btn:hover {
+  background: var(--ag-red-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(204, 0, 0, 0.35);
+}
 .ag-b2b-btn-ghost {
   background: #fff;
   color: var(--ag-ink);
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
-.ag-b2b-btn-ghost:hover { background: #f4f4f5; }
+.ag-b2b-btn-ghost:hover {
+  background: #f8f9fa;
+  border-color: rgba(0, 0, 0, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 .ag-b2b-btn-bloque { width: 100%; }
-.ag-b2b-acciones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.ag-b2b-acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; align-items: center; }
 
 .ag-b2b-subnav {
   position: fixed;
