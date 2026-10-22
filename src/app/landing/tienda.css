@@ -708,14 +708,6 @@ ul.ag-facts-body li + li { margin-top: 6px; }
   box-shadow: none;
   font-family: var(--ag-font);
 }
-.ag-store-vacia .ag-store-vacia-kicker {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #5b6472;
-}
 .ag-store-vacia h2 {
   margin: 0;
   font-size: clamp(22px, 4vw, 28px);
