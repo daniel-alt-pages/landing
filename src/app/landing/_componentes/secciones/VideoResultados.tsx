@@ -8,16 +8,18 @@ import { ReelsVisor } from './ReelsVisor';
 /** Orden del visor: Mariana, Ángel David, Sebastián, 3 estrategias. El reel de Gabriel no está en el repo como video. */
 const REELS: VideoItem[] = [...VIDEOS_RESULTADOS, VIDEO_ESTRATEGIAS];
 
-function VideoCard({ item }: { item: VideoItem }) {
+function VideoCard({ item, reels = false }: { item: VideoItem; reels?: boolean }) {
   return (
     <figure className="ag-card ag-video-card">
       <div className="ag-video-frame">
         <video
-          controls
+          controls={!reels}
+          tabIndex={reels ? -1 : undefined}
           playsInline
           preload="none"
           poster={`/landing/videos/${item.id}.jpg`}
           aria-label={item.aria}
+          data-video-id={item.id}
           width={720}
           height={1280}
         >
@@ -25,6 +27,12 @@ function VideoCard({ item }: { item: VideoItem }) {
           {item.captions ? <track kind="captions" srcLang="es" label="Español" src={item.captions} /> : null}
           Su navegador no reproduce video.
         </video>
+        {reels ? (
+          // Botón sobre toda la tarjeta: abre el visor (los controles nativos del <video> absorben el toque en móvil).
+          <button type="button" className="ag-video-open" data-video-id={item.id} aria-label={`Ver a pantalla completa: ${item.aria.replace(/^Video: /, '')}`}>
+            <span className="ag-video-open-icon" aria-hidden="true">▶</span>
+          </button>
+        ) : null}
       </div>
       <figcaption>
         <h3 className="ag-h3">{item.title}</h3>
@@ -57,7 +65,7 @@ export function VideoResultados() {
       <Lead>Escúchelo de nuestros estudiantes.</Lead>
       <ReelsVisor items={REELS}>
         <div className="ag-video-grid">
-          {VIDEOS_RESULTADOS.map((v) => <VideoCard key={v.id} item={v} />)}
+          {VIDEOS_RESULTADOS.map((v) => <VideoCard key={v.id} item={v} reels />)}
         </div>
       </ReelsVisor>
       <div className="ag-ig-block" aria-labelledby="resultados-ig-title">
