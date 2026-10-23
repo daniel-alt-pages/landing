@@ -83,3 +83,6 @@
 .ag-ig-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .ag-ig-cta { margin: var(--sg-space-5) 0 0; }
 @media (max-width: 860px) { .ag-ig-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; } .ag-ig-cta { text-align: center; } }
+/* v1.0.34 · Instagram: favoritos (Calendario A 2025 + reel Calendario B 2026) */
+.ag-ig-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1080px; }
+@media (max-width: 860px) { .ag-ig-grid-3 { grid-template-columns: 1fr; max-width: 360px; } }
