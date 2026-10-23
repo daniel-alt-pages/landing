@@ -17,7 +17,6 @@ export function B2bCierre() {
           </ul>
           <ul className="ag-b2b-cierre-trust" aria-label="Datos de la alianza">
             <li><strong>500/500</strong> en 2025</li>
-            <li><strong>Más de 50</strong> estudiantes sobre 410</li>
             <li><strong>{COLEGIOS.length} instituciones</strong> con al menos un simulacro</li>
           </ul>
           <p className="ag-b2b-nota">
