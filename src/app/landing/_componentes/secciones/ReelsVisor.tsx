@@ -5,6 +5,7 @@ import { flushSync } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { Pause, Play, Volume2, VolumeX, X } from 'lucide-react';
 import type { VideoItem } from '../../_contenido/videos';
+import { ReelsSocialColumn } from './ReelsSocial';
 
 /*
  * Visor a pantalla completa tipo Reels («Resultados en video»).
@@ -244,6 +245,28 @@ export function ReelsVisor({ items, children }: Props) {
     return () => window.removeEventListener('popstate', onPop);
   }, [close]);
 
+  // Enlace profundo #video=slug (al cargar y en hashchange): ir a la sección y abrir ahí (cuenta como apertura por toque).
+  useEffect(() => {
+    const fromHash = () => {
+      const m = /^#video=([a-z0-9-]+)$/.exec(window.location.hash);
+      if (!m || openRef.current) return;
+      const idx = items.findIndex((it) => slugOf(it) === m[1]);
+      if (idx < 0) return;
+      const host = wrapRef.current;
+      if (host) {
+        const html = document.documentElement;
+        const pb = html.style.scrollBehavior;
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo(0, Math.max(0, host.getBoundingClientRect().top + window.scrollY - headerOffset()));
+        html.style.scrollBehavior = pb;
+      }
+      prepareOpen(idx, false, 'replace');
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+    return () => window.removeEventListener('hashchange', fromHash);
+  }, [items, prepareOpen]);
+
   const onActive = useCallback((i: number) => {
     lastActiveRef.current = i;
     try { history.replaceState(history.state, '', `#video=${slugOf(items[i])}`); } catch { /* sin historial */ }
@@ -430,6 +453,8 @@ function ReelsOverlay({ items, startIndex, gestureStart, poolRefs, reduce, onAct
 
   const onKeyDown = (e: KeyboardEvent) => {
     const k = e.key;
+    // El panel de comentarios maneja su propio teclado (Esc, Tab).
+    if (e.defaultPrevented || (e.target as HTMLElement | null)?.closest?.('.ag-reels-sheet')) return;
     if (k === 'Escape') { e.preventDefault(); onClose('esc'); return; }
     if (k === 'ArrowDown' || k === 'PageDown' || k === 'j' || k === 'J') { e.preventDefault(); step(1); return; }
     if (k === 'ArrowUp' || k === 'PageUp' || k === 'k' || k === 'K') { e.preventDefault(); step(-1); return; }
@@ -530,6 +555,7 @@ function ReelsOverlay({ items, startIndex, gestureStart, poolRefs, reduce, onAct
           </button>
         </div>
       </div>
+      <ReelsSocialColumn key={slugOf(items[active])} slug={slugOf(items[active])} title={items[active]?.title ?? ''} onSheet={() => undefined} />
       <div className="ag-reels-live" role="status" aria-live="assertive">
         <AnimatePresence>
           {blocked ? (
