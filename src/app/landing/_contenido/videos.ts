@@ -8,8 +8,8 @@ export type VideoItem = { id: string; title: string; caption: string; aria: stri
 
 export const VIDEOS_RESULTADOS: VideoItem[] = [
   { id: 'v3', slug: 'mariana', badge: 'Caso de éxito', captions: '', title: 'Mariana · 500/500', caption: 'Puntaje perfecto en el ICFES.', aria: 'Video: Mariana cuenta cómo obtuvo 500 de 500 en el ICFES' },
-  { id: 'v5', slug: 'angel-david', captions: '', title: 'Ángel David · 475/500', caption: 'Universidad de los Andes, con beca.', aria: 'Video: Ángel David, 475 de 500, becado en la Universidad de los Andes' },
-  { id: 'v4', slug: 'sebastian', captions: '', title: 'Sebastián · 433/500', caption: 'Universidad ICESI, con beca.', aria: 'Video: Sebastián, 433 de 500, becado en la Universidad ICESI' },
+  { id: 'v5', slug: 'angel-david', captions: '', title: 'Ángel David · 475/500', caption: 'Matemáticas en la Universidad de los Andes.', aria: 'Video: Ángel David, 475 de 500, Matemáticas en la Universidad de los Andes' },
+  { id: 'v4', slug: 'sebastian', captions: '', title: 'Sebastián · 433/500', caption: 'Ingeniería Industrial.', aria: 'Video: Sebastián, 433 de 500, Ingeniería Industrial' },
 ];
 
 export const VIDEO_ESTRATEGIAS: VideoItem = {
