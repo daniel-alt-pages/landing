@@ -18,10 +18,11 @@ export function ResultsGallery({
   titulo,
   lead,
   estilo,
-}: { id?: string; excluirFotos?: string[]; carrusel?: boolean; superacion?: boolean; titulo?: readonly Linea[]; lead?: string; estilo?: 'alianzas' } = {}) {
+  titleAs = 'h2',
+}: { titleAs?: 'h1' | 'h2'; id?: string; excluirFotos?: string[]; carrusel?: boolean; superacion?: boolean; titulo?: readonly Linea[]; lead?: string; estilo?: 'alianzas' } = {}) {
   return (
     <Section id={id} tone="grey" label={`${id}-title`} className={estilo === 'alianzas' ? 'ag-alianzas-sec ag-superacion-alianzas' : ''}>
-      <DisplayTitle id={`${id}-title`} lines={titulo ?? [{ text: 'Puntajes que' }, { text: 'cambian trayectorias', accent: true }]} />
+      <DisplayTitle as={titleAs} id={`${id}-title`} lines={titulo ?? [{ text: 'Puntajes que' }, { text: 'cambian trayectorias', accent: true }]} />
       <Lead>{lead ?? 'Tres álbumes con los puntajes reales de nuestros estudiantes y quienes subieron más de 100 puntos con nuestro acompañamiento.'}</Lead>
       {carrusel ? <AlbumesCarousel excluirFotos={excluirFotos} /> : null}
       {superacion ? <div className={`ag-grid-4${estilo === 'alianzas' ? ' ag-alianzas-sec-body' : ''}`} style={{ marginTop: 16 }}>
