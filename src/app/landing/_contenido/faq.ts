@@ -34,23 +34,23 @@ export const FAQ: FaqItem[] = [
   {
     question: '¿Funciona en zonas rurales con poca conectividad?',
     answer:
-      'Sí, el modelo está pensado para eso: las clases quedan grabadas y el material se puede descargar. En la reunión revisamos su caso para proponer lo que su institución sí puede sostener.',
+      'Sí, nuestro modelo contempla estos escenarios: las clases quedan grabadas, el material es descargable en PDF y la plataforma es ligera. En nuestra reunión analizamos el contexto de su colegio para definir la modalidad que mejor se adapte a su infraestructura tecnológica.',
     confirmar: 'El equipo debe decir qué sí se puede hacer con poca conectividad.',
   },
   {
     question: '¿Cuántas preguntas tiene cada simulacro?',
     answer:
-      '254 preguntas en las cinco áreas del ICFES: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés. El mismo formato del examen real.',
+      'Consta de 254 preguntas distribuidas en las cinco áreas oficiales: Lectura Crítica, Matemáticas, Sociales y Ciudadanas, Ciencias Naturales e Inglés, conservando la misma estructura y proporción del examen Saber 11 real.',
   },
   {
     question: '¿Cómo se calcula el puntaje?',
     answer:
-      'Con el modelo TRI que usa el ICFES. Es una aproximación rigurosa al puntaje real, no el resultado del examen de Estado que publica el ICFES.',
+      'Utilizamos un modelo matemático basado en la Teoría de Respuesta al Ítem (TRI), bajo la misma lógica psicométrica del examen oficial. Esto nos permite entregar una estimación estadística rigurosa y muy cercana a lo que será el puntaje real.',
   },
   {
     question: '¿Cuándo llegan los resultados?',
     answer:
-      'En la semana siguiente al simulacro cada estudiante tiene su dashboard con puntaje global, desglose por área, ranking y plan de estudio.',
+      'En la semana siguiente a la aplicación del simulacro. Tanto la rectoría como cada estudiante reciben acceso simultáneo a su panel con el puntaje global, desglose por competencia, ubicación por puesto (ranking) y plan de estudio sugerido.',
   },
   {
     question: '¿Qué ve el rector o el coordinador?',
