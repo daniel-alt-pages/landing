@@ -1,7 +1,9 @@
 import { VideoResultados } from './_componentes/secciones/VideoResultados';
-import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
+// Oculto por decisión de Daniel 2026-10-23: import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
-import { ResultadosB2026, TOP_B2026 } from './_componentes/secciones/ResultadosB2026';
+// Oculto por decisión de Daniel 2026-10-23: import { ResultadosB2026 } from './_componentes/secciones/ResultadosB2026';
+// Oculto 2026-10-23: import { AlbumesCarousel } from './_componentes/secciones/AlbumesCarousel';
+// Oculto 2026-10-23: import { Section } from './_componentes/primitivas/Section';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
 import { FinalCta } from './_componentes/secciones/FinalCta';
@@ -27,10 +29,17 @@ export default function AlianzaInicio() {
       <StorefrontBanner />
       <ProductRail />
       <MapaSitio />
-      <CifrasClave excluirFotos={TOP_B2026.map((f) => f.src)} />
-      <VoicesSection compact tone="grey" />
-      <ResultadosB2026 />
-      <ResultsGallery id="superacion" carrusel={false} />
+      {/* #cifras + #voces forman un solo bloque gris (espaciado en landing/sistema.css: .ag-bloque-datos) */}
+      <div className="ag-bloque-datos">
+        <CifrasClave />
+        <VoicesSection compact tone="grey" />
+      </div>
+      {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando (y sus imports) */}
+      {/* <Section id="puntajes" tone="grey"><AlbumesCarousel /></Section> */}
+      {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando */}
+      {/* <ResultadosB2026 /> */}
+      {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando */}
+      {/* <ResultsGallery id="superacion" carrusel={false} /> */}
       <VideoResultados />
       <AlianzasSection />
       <PrimerPaso />

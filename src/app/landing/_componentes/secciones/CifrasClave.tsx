@@ -5,7 +5,6 @@ import { Section } from '../primitivas/Section';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Marquee } from '../primitivas/Marquee';
 import { COLEGIOS } from '../../_contenido/colegios';
-import { AlbumesCarousel } from './AlbumesCarousel';
 
 /**
  * Cifras clave (número + texto, sin gráficos) y cinta de escudos reales (COLEGIOS). SOLO datos confirmados que ya publica el sitio:
@@ -24,8 +23,7 @@ const CIFRAS = [
   { tag: 'Reunión', num: '30', label: 'minutos de reunión para ver la plataforma en vivo.' },
 ];
 
-/** `excluirFotos`: fotos que ya muestra la cinta B 2026 en la misma página (sin repetir en el slider). */
-export function CifrasClave({ excluirFotos }: { excluirFotos?: string[] } = {}) {
+export function CifrasClave() {
   const reduce = useReducedMotion();
   // Siempre se pasan whileInView/viewport: el HTML estático sale con opacity 0 (initial) y, si con
   // movimiento reducido no hubiera animación, las cifras quedaban invisibles. Con reduce: sin desplazamiento y duración 0.
@@ -56,9 +54,6 @@ export function CifrasClave({ excluirFotos }: { excluirFotos?: string[] } = {}) 
             </figure>
           ))}
         </Marquee>
-      </div>
-      <div id="puntajes">
-        <AlbumesCarousel excluirFotos={excluirFotos} />
       </div>
     </Section>
   );

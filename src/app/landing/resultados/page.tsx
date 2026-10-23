@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PAGINAS } from '../_contenido/paginas';
 import { FinalCta } from '../_componentes/secciones/FinalCta';
 import { PageIntro } from '../_componentes/secciones/PageIntro';
+import { ResultadosB2026 } from '../_componentes/secciones/ResultadosB2026';
 import { ResultsGallery } from '../_componentes/secciones/ResultsGallery';
 import { TrustedSchools } from '../_componentes/secciones/TrustedSchools';
 import { VideoResultados } from '../_componentes/secciones/VideoResultados';
@@ -16,6 +17,7 @@ export default function ResultadosPage() {
   return (
     <>
       <PageIntro eyebrow={PAGINAS.resultados.eyebrow} title={PAGINAS.resultados.title} lead={PAGINAS.resultados.lead} />
+      <ResultadosB2026 />
       <ResultsGallery />
       <VideoResultados />
       <VoicesSection tone="white" />
