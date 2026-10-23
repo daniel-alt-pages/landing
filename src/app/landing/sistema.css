@@ -193,3 +193,11 @@
 .ag-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #CC0000; flex: none; }
 .ag-badge-dark { color: #fff; background: rgba(0,0,0,.85); }
 .ag-reels-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+
+/* v1.0.36 · bloque «Datos para decidir» + slider 2026A como una sola superficie (solo envoltorio; .ag-voice* sin cambios) */
+.ag-bloque-datos > #cifras { padding-bottom: 48px; margin-bottom: 0; border-bottom: 0; }
+@media (max-width: 640px) { .ag-bloque-datos > #cifras { padding-bottom: 32px; } }
+.ag-bloque-datos > #voces { padding-top: 0; margin-top: 0; border-top: 0; }
+/* v1.0.36 · home sin #voces: #cifras solo en el bloque recupera su espaciado inferior normal. */
+.ag-bloque-datos > #cifras:only-child { padding-bottom: 88px; }
+@media (max-width: 640px) { .ag-bloque-datos > #cifras:only-child { padding-bottom: 64px; } }

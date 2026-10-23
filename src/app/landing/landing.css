@@ -4176,3 +4176,10 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
 
 /* v1.0.36 · sin «Agendar reunión» del footer en páginas que ya tienen el formulario */
 body:has(.ag-close, .ag-b2b-cierre) .ag-footer-agendar { display: none; }
+
+/* v1.0.36 · /landing/resultados: Superación con el tratamiento de AlianzasSection (solo con estilo="alianzas"). */
+.ag-superacion-alianzas.ag-section { padding: 88px 0; background: var(--ag-white); }
+.ag-superacion-alianzas .ag-alianzas-sec-body { margin-top: 24px; }
+.ag-superacion-alianzas .ag-card { border-radius: 20px; background: var(--ag-grey-1); border: 0; box-shadow: none; }
+.ag-superacion-alianzas .ag-card p { font-size: 16px; }
+@media (min-width: 1100px) { .ag-superacion-alianzas.ag-section { padding: 128px 0 88px; } }

@@ -11,12 +11,14 @@ export const TOP_B2026 = ALBUMES.filter((a) => a.id.startsWith('b2026'))
   .sort((x, y) => puntaje(y.alt) - puntaje(x.alt))
   .slice(0, 6);
 
-export function ResultadosB2026() {
+type Linea = { text: string; accent?: boolean };
+/** `titulo`/`lead`: textos opcionales por página (p. ej. /landing/resultados); sin ellos, los de siempre. */
+export function ResultadosB2026({ titulo, lead }: { titulo?: readonly Linea[]; lead?: string } = {}) {
   return (
     <Section id="resultados-b2026" tone="grey" label="b2026-title">
       <div className="sg-b2026" aria-labelledby="b2026-title">
-        <DisplayTitle id="b2026-title" lines={[{ text: 'Resultados' }, { text: 'Calendario B 2026', accent: true }]} />
-        <p className="sg-b2026-lead">{INSTAGRAM_RESULTADOS_INTRO}</p>
+        <DisplayTitle id="b2026-title" lines={titulo ?? [{ text: 'Resultados' }, { text: 'Calendario B 2026', accent: true }]} />
+        <p className="sg-b2026-lead">{lead ?? INSTAGRAM_RESULTADOS_INTRO}</p>
         <ul className="sg-b2026-cards">
           {TOP_B2026.map((f) => (
             <li key={f.src} className="sg-b2026-card">
