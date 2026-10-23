@@ -61,24 +61,24 @@ export const CAPAS = {
 
 export const DESAFIOS = {
   eyebrow: 'Desafíos',
-  title: ['Práctica diaria que', 'engancha como un juego'],
+  title: ['Práctica diaria que', 'crea hábito de estudio'],
   lead: 'Entre un simulacro y otro, sus estudiantes no se desconectan. Desafíos los lleva por niveles cortos, al estilo de las mejores apps de aprendizaje, con el rigor del banco de preguntas ICFES.',
   items: [
     {
       title: 'Niveles de 10 preguntas',
-      text: 'Lecciones cortas por área y competencia. Cada nivel tiene una meta clara y un resultado inmediato.',
+      text: 'Sesiones ágiles por área y competencia. Cada nivel tiene una meta clara y entrega resultados al instante.',
     },
     {
-      title: 'Rúbrica en cada cierre',
-      text: 'Al terminar, el estudiante sabe qué competencia domina y cuál necesita repetir, con su historial acumulado.',
+      title: 'Diagnóstico en cada cierre',
+      text: 'Al terminar, el estudiante identifica qué competencia domina y cuál debe reforzar, junto con su historial acumulado.',
     },
     {
       title: 'Experiencia, rachas y cofres',
-      text: 'Cada actividad suma experiencia. Al subir de nivel se abre un cofre con recompensas que mantienen la constancia.',
+      text: 'Cada actividad suma puntos de experiencia. Al subir de nivel y mantener su racha diaria, el estudiante desbloquea recompensas que mantienen alta su constancia.',
     },
     {
       title: 'Revisión pregunta por pregunta',
-      text: 'Cualquier nivel superado se puede volver a ver con la respuesta elegida, para aprender del error.',
+      text: 'Cualquier nivel superado se puede consultar nuevamente con su respectiva retroalimentación y explicación paso a paso.',
     },
   ],
   nota: 'Desafíos complementa el simulacro. El puntaje global de 0 a 500 siempre sale del simulacro completo.',
