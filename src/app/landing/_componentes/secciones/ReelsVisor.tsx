@@ -14,8 +14,9 @@ import { ReelsSocialColumn } from './ReelsSocial';
  * - Tocar una tarjeta abre SIEMPRE el visor en ese video, con play() síncrono dentro del gesto (requisito de iOS/Android).
  * - Nunca se cierra solo: al terminar un video pasa al siguiente; en el último queda en pausa al final (sin bucle).
  * - Navegación: flechas, J (siguiente) / K (anterior), rueda y swipe; un paso por gesto con bloqueo de ~600ms.
- *   Más allá del último cierra y la página sigue hacia abajo; antes del primero cierra y la página queda arriba.
- * - X, Esc y Atrás del navegador cierran y dejan la página en la tarjeta del video activo, con foco.
+ *   Más allá del último o antes del primero cierra y la página queda en la tarjeta (como X).
+ * - X, Esc, Atrás y los bordes cierran y dejan la página en la tarjeta del video activo (o la de apertura), con foco.
+ *   Mientras está abierto history.scrollRestoration = 'manual'; la ubicación se repite tras el popstate en rAF.
  * - Historial: al abrir pushState(#video=slug); al cambiar de video replaceState; al cerrar con X/Esc/borde, history.back().
  * - Rendimiento: un pool de 3 <video> (anterior/actual/siguiente) que se reasignan cambiando src.
  * - Sonido: se intenta con sonido; si el navegador lo bloquea, silenciado + aviso. La preferencia se guarda en localStorage.
@@ -45,6 +46,14 @@ function saveSoundPref(on: boolean) {
 
 export function slugOf(item: VideoItem) {
   return item.slug || item.id;
+}
+
+/** Alto del header fijo/sticky (aunque en este instante no esté pegado arriba). */
+function headerHeight() {
+  const h = document.querySelector('header');
+  if (!h) return 0;
+  const pos = getComputedStyle(h).position;
+  return pos === 'fixed' || pos === 'sticky' ? h.getBoundingClientRect().height : 0;
 }
 
 function headerOffset() {
@@ -91,6 +100,8 @@ export function ReelsVisor({ items, children }: Props) {
   const pushedRef = useRef(false);
   const ignorePopRef = useRef(false);
   const pendingPlaceRef = useRef(0);
+  const openIndexRef = useRef(0);
+  const prevRestorationRef = useRef<ScrollRestoration | null>(null);
 
   useEffect(() => {
     const opts = { capture: true, passive: true } as const;
@@ -107,6 +118,10 @@ export function ReelsVisor({ items, children }: Props) {
     armedRef.current = false;
     openRef.current = true;
     lastActiveRef.current = index;
+    openIndexRef.current = index;
+    if (prevRestorationRef.current === null) {
+      try { prevRestorationRef.current = history.scrollRestoration; history.scrollRestoration = 'manual'; } catch { /* sin historial */ }
+    }
     const hash = `#video=${slugOf(items[index])}`;
     try {
       if (historyMode === 'push') { history.pushState({ reels: true }, '', hash); pushedRef.current = true; }
@@ -148,39 +163,50 @@ export function ReelsVisor({ items, children }: Props) {
     };
   }, [items.length, reduce, prepareOpen]);
 
-  /** Después de restaurar el body: ubicar la página según la vía de cierre. */
-  const placeAfterClose = (reason: CloseReason) => {
+  /**
+   * Después de restaurar el body: dejar la página SIEMPRE en la tarjeta del video activo
+   * (o la de apertura, o la última si el activo no tiene tarjeta). Vale para X, Esc, Atrás y los bordes.
+   * Salto instantáneo calculado a mano: sin scrollIntoView (lo desvía scroll-padding) ni scroll suave.
+   */
+  const placeAfterClose = () => {
     const host = wrapRef.current;
     if (!host) return;
-    // Salto instantáneo: un scroll suave aquí lo cancelan la restauración del body y el history.back().
-    const jump = (top: number) => {
+    const byId = (id?: string) => (id ? host.querySelector<HTMLElement>(`button[data-video-id="${id}"]`) : null);
+    const all = host.querySelectorAll<HTMLElement>('button[data-video-id]');
+    const btn = byId(items[lastActiveRef.current]?.id) ?? byId(items[openIndexRef.current]?.id) ?? all[all.length - 1] ?? null;
+    if (!btn) return;
+    const card = (btn.closest('.ag-video-card') as HTMLElement | null) ?? btn;
+    const r = card.getBoundingClientRect();
+    const top = headerHeight();
+    const room = window.innerHeight - top;
+    const visibleOk = r.top >= top && r.bottom <= window.innerHeight;
+    if (!visibleOk) {
+      // Centrada si cabe; si es más alta que el viewport, alineada bajo el header.
+      const offset = r.height <= room ? top + (room - r.height) / 2 : top + 8;
       const html = document.documentElement;
       const pb = html.style.scrollBehavior;
       html.style.scrollBehavior = 'auto';
-      window.scrollTo(0, Math.max(0, top));
+      window.scrollTo({ top: Math.max(0, r.top + window.scrollY - offset), behavior: 'instant' as ScrollBehavior });
       html.style.scrollBehavior = pb;
-    };
-    if (reason === 'edge-bottom') {
-      const section = host.closest('section');
-      const target = (section?.nextElementSibling as HTMLElement | null) ?? section;
-      if (target) jump(target.getBoundingClientRect().top + window.scrollY - headerOffset());
-      return;
     }
-    if (reason === 'edge-top') {
-      const top = host.getBoundingClientRect().top + window.scrollY;
-      jump(top - window.innerHeight - 1);
-      return;
-    }
-    const id = items[lastActiveRef.current]?.id;
-    const card = id ? host.querySelector<HTMLElement>(`button[data-video-id="${id}"]`) : null;
-    const target = card ?? host.querySelector<HTMLElement>('button[data-video-id]');
-    if (!target) return;
-    const r = target.getBoundingClientRect();
-    if (r.top < headerOffset() || r.bottom > window.innerHeight) target.scrollIntoView({ block: 'center', behavior: 'auto' });
-    target.focus({ preventScroll: true });
+    btn.focus({ preventScroll: true });
   };
   const placeRef = useRef(placeAfterClose);
   useEffect(() => { placeRef.current = placeAfterClose; });
+
+  /** Ubicación final + devolver scrollRestoration (tras el popstate, cuando ya no puede pisarse). */
+  const settle = () => {
+    placeRef.current();
+    requestAnimationFrame(() => {
+      placeRef.current();
+      if (prevRestorationRef.current !== null && !openRef.current) {
+        try { history.scrollRestoration = prevRestorationRef.current; } catch { /* sin historial */ }
+        prevRestorationRef.current = null;
+      }
+    });
+  };
+  const settleRef = useRef(settle);
+  useEffect(() => { settleRef.current = settle; });
 
   // Bloqueo del scroll del body; al cerrar SIEMPRE se restaura (cualquier vía).
   useEffect(() => {
@@ -188,8 +214,6 @@ export function ReelsVisor({ items, children }: Props) {
     const y = scrollYRef.current;
     const body = document.body;
     const prev = { position: body.style.position, top: body.style.top, width: body.style.width, overflow: body.style.overflow };
-    const prevRestoration = history.scrollRestoration;
-    history.scrollRestoration = 'manual';
     body.style.position = 'fixed';
     body.style.top = `-${y}px`;
     body.style.width = '100%';
@@ -201,10 +225,10 @@ export function ReelsVisor({ items, children }: Props) {
       html.style.scrollBehavior = 'auto';
       window.scrollTo(0, y);
       html.style.scrollBehavior = prevBehavior;
-      // Si hay un history.back() en curso, la ubicación final se hace tras el popstate (evita que el navegador la pise).
-      if (!ignorePopRef.current) placeRef.current(closeReasonRef.current);
-      else pendingPlaceRef.current = window.setTimeout(() => { pendingPlaceRef.current = 0; ignorePopRef.current = false; placeRef.current(closeReasonRef.current); }, 500);
-      window.setTimeout(() => { history.scrollRestoration = prevRestoration; }, 400);
+      placeRef.current();
+      // Si hay un history.back() en curso, se vuelve a ubicar tras el popstate (respaldo por si no llega).
+      if (ignorePopRef.current) pendingPlaceRef.current = window.setTimeout(() => { pendingPlaceRef.current = 0; ignorePopRef.current = false; settleRef.current(); }, 600);
+      else settleRef.current();
     };
   }, [open]);
 
@@ -233,13 +257,12 @@ export function ReelsVisor({ items, children }: Props) {
         if (pendingPlaceRef.current) {
           window.clearTimeout(pendingPlaceRef.current);
           pendingPlaceRef.current = 0;
-          // El navegador restaura el scroll de la entrada tras el popstate: ubicar después.
-          const reason = closeReasonRef.current;
-          window.setTimeout(() => requestAnimationFrame(() => placeRef.current(reason)), 30);
+          // El navegador puede restaurar el scroll de la entrada tras el popstate: ubicar en el siguiente frame.
+          requestAnimationFrame(() => settleRef.current());
         }
         return;
       }
-      if (openRef.current) { pushedRef.current = false; close('back'); }
+      if (openRef.current) { pushedRef.current = false; close('back'); requestAnimationFrame(() => settleRef.current()); }
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
