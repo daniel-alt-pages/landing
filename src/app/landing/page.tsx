@@ -1,6 +1,7 @@
 import { VideoResultados } from './_componentes/secciones/VideoResultados';
 import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
+import { ResultadosB2026 } from './_componentes/secciones/ResultadosB2026';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
 import { FinalCta } from './_componentes/secciones/FinalCta';
@@ -25,12 +26,13 @@ export default function AlianzaInicio() {
       <ProductRail />
       <MapaSitio />
       <CifrasClave />
+      <VoicesSection compact tone="grey" />
+      <ResultadosB2026 />
       <ResultsGallery id="puntajes" />
       <VideoResultados />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
-      <VoicesSection compact tone="grey" />
       <FaqSection />
       <FinalCta eyebrow="Después de resolver sus dudas" lead="Las preguntas que sigan abiertas las revisamos con usted en una reunión de 30 minutos, o puede empezar por un simulacro gratuito para su institución." />
     </>
