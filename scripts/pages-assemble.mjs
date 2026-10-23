@@ -38,5 +38,7 @@ const conBarra = (dir) => {
   }
 };
 conBarra(dest);
+// src/app/robots.ts y sitemap.ts sirven a simulacros-sg.web.app; en Pages mandan los de public/ (github.io/landing).
+for (const f of ['robots.txt', 'sitemap.xml']) fs.copyFileSync(path.join(root, 'public', f), path.join(dest, f));
 fs.writeFileSync(path.join(dest, '.nojekyll'), '');
 console.log('[pages] Artefacto listo en out-pages/');

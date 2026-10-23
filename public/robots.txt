@@ -1,4 +1,4 @@
-# robots.txt de https://seamosgenios.org (landing pública).
+# robots.txt de https://daniel-alt-pages.github.io/landing/ (landing pública).
 # La plataforma vive en https://app.seamosgenios.org, con su propio robots y SIN sitemap de la landing.
 User-agent: *
 Allow: /
@@ -18,4 +18,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://seamosgenios.org/sitemap.xml
+Sitemap: https://daniel-alt-pages.github.io/landing/sitemap.xml

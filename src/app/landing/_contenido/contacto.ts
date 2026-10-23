@@ -10,7 +10,7 @@ export const CONTACTO = {
   leadsUrl: process.env.NEXT_PUBLIC_ALIANZA_LEADS_URL ?? '',
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID ?? '',
   metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '',
-  web: 'https://seamosgenios.org',
+  web: 'https://daniel-alt-pages.github.io/landing/',
   redes: {
     instagram: 'https://www.instagram.com/seamosgenios/',
     instagramHandle: '@seamosgenios',
