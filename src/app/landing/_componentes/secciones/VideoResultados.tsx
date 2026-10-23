@@ -9,7 +9,6 @@ function VideoCard({ item }: { item: VideoItem }) {
       <div className="ag-video-frame">
         <video
           controls
-          muted
           playsInline
           preload="none"
           poster={`/landing/videos/${item.id}.jpg`}
