@@ -45,7 +45,7 @@ export const FAQ: FaqItem[] = [
   {
     question: '¿Cómo se calcula el puntaje?',
     answer:
-      'Utilizamos un modelo matemático basado en la Teoría de Respuesta al Ítem (TRI), bajo la misma lógica psicométrica del examen oficial. Esto nos permite entregar una estimación estadística rigurosa y muy cercana a lo que será el puntaje real.',
+      'Utilizamos un modelo matemático basado en la Teoría de Respuesta al Ítem (TRI), bajo la misma lógica psicométrica del examen oficial. Esto nos permite entregar una estimación estadística rigurosa y muy cercana a lo que será el puntaje real. No es el resultado oficial que publica el ICFES.',
   },
   {
     question: '¿Cuándo llegan los resultados?',

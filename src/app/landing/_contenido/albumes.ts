@@ -53,7 +53,7 @@ export const ALBUMES: Album[] = [
       f('a2025-2-08', 'Sharlene Tapia 427/500'),
       f('a2025-2-09', 'Luis de Brigard 425/500'),
       f('a2025-2-10', 'Sara Palacio 424/500'),
-      f('a2025-2-11', 'Mathías González 412/500'),
+      f('a2025-2-11', 'Mathías Gonzáles 412/500'),
       f('a2025-2-12', 'Abimael Figueroa 404/500'),
       f('a2025-2-13', 'Andrés Pérez 383/500'),
     ],
