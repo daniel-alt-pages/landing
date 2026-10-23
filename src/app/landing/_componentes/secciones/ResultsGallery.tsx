@@ -10,7 +10,7 @@ export function ResultsGallery() {
   return (
     <Section id="resultados" tone="grey" label="resultados-title">
       <DisplayTitle id="resultados-title" lines={[{ text: 'Puntajes que' }, { text: 'cambian trayectorias', accent: true }]} />
-      <Lead>Un puntaje perfecto, cuatro resultados de élite y estudiantes que subieron más de 100 puntos con nuestro acompañamiento.</Lead>
+      <Lead>Cuatro álbumes con los puntajes reales de nuestros estudiantes y quienes subieron más de 100 puntos con nuestro acompañamiento.</Lead>
       <AlbumesCarousel />
       <div className="ag-grid-4" style={{ marginTop: 16 }}>
         {RESULTADOS_SUPERACION.map((card) => (
