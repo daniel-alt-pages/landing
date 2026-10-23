@@ -14,43 +14,43 @@ export const FAQ: FaqItem[] = [
     confirmar: 'El equipo comercial debe escribir el rango de precio que sí se puede publicar.',
   },
   {
-    question: '¿El primer simulacro es realmente gratis?',
+    question: '¿El primer simulacro es realmente gratuito?',
     answer:
-      'Sí. El primer simulacro para su institución no tiene costo ni lo obliga a contratar. Sus estudiantes reciben su análisis y su equipo directivo, el panel de coordinación.',
+      'Sí. El primer simulacro es 100 % de cortesía y no genera ningún compromiso de contratación. Cada estudiante recibe su diagnóstico individual y al equipo directivo se le habilita el acceso completo al panel de coordinación.',
   },
   {
     question: '¿Cuánto dura el programa?',
     answer:
-      'En el Calendario B, el Intensivo son 16 semanas y unas 426 horas en vivo. El Vacacional son 8 semanas y unas 225 horas en vivo. Si su institución arma una alianza a la medida, el cronograma se ajusta en la reunión. El detalle semana a semana está en Programas.',
+      'Contamos con modalidades adaptadas a ambos calendarios (A y B): nuestro programa Intensivo consta de 16 semanas (426 horas de formación) y el Vacacional de 8 semanas (225 horas). Si su institución requiere un plan personalizado, ajustamos el cronograma en la reunión. Puede consultar el desglose semana a semana en la sección Programas.',
     confirmar:
       'Confirmar que 16 semanas y 426 horas, y 8 semanas y 225 horas, son las cifras publicables del Calendario B 2027-1. Aún no hay fechas de día, solo semanas.',
   },
   {
     question: '¿Qué necesitan los estudiantes para conectarse?',
     answer:
-      'Un celular o un computador con internet. El simulacro se presenta en la plataforma. El material llega en PDF y también dentro de la plataforma, con pizarra para socializar las preguntas.',
+      'Únicamente un celular, tablet o computador con conexión a internet. Los simulacros se presentan directamente en la plataforma, donde los estudiantes también cuentan con material descargable en PDF y pizarra interactiva para la socialización de cada pregunta.',
     confirmar: 'Confirmar requisitos mínimos de equipo y de conectividad.',
   },
   {
     question: '¿Funciona en zonas rurales con poca conectividad?',
     answer:
-      'Sí, el modelo está pensado para eso: las clases quedan grabadas y el material se puede descargar. En la reunión revisamos su caso para proponer lo que su institución sí puede sostener.',
+      'Sí, nuestro modelo contempla estos escenarios: las clases quedan grabadas, el material es descargable en PDF y la plataforma es ligera. En nuestra reunión analizamos el contexto de su colegio para definir la modalidad que mejor se adapte a su infraestructura tecnológica.',
     confirmar: 'El equipo debe decir qué sí se puede hacer con poca conectividad.',
   },
   {
     question: '¿Cuántas preguntas tiene cada simulacro?',
     answer:
-      '254 preguntas en las cinco áreas del ICFES: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés. El mismo formato del examen real.',
+      'Consta de 254 preguntas distribuidas en las cinco áreas oficiales: Lectura Crítica, Matemáticas, Sociales y Ciudadanas, Ciencias Naturales e Inglés, conservando la misma estructura y proporción del examen Saber 11 real.',
   },
   {
     question: '¿Cómo se calcula el puntaje?',
     answer:
-      'Con el modelo TRI que usa el ICFES. Es una aproximación rigurosa al puntaje real, no el resultado del examen de Estado que publica el ICFES.',
+      'Utilizamos un modelo matemático basado en la Teoría de Respuesta al Ítem (TRI), bajo la misma lógica psicométrica del examen oficial. Esto nos permite entregar una estimación estadística rigurosa y muy cercana a lo que será el puntaje real.',
   },
   {
     question: '¿Cuándo llegan los resultados?',
     answer:
-      'En la semana siguiente al simulacro cada estudiante tiene su dashboard con puntaje global, desglose por área, ranking y plan de estudio.',
+      'En la semana siguiente a la aplicación del simulacro. Tanto la rectoría como cada estudiante reciben acceso simultáneo a su panel con el puntaje global, desglose por competencia, ubicación por puesto (ranking) y plan de estudio sugerido.',
   },
   {
     question: '¿Qué ve el rector o el coordinador?',
@@ -89,9 +89,18 @@ export const FAQ_FAMILIAS: FaqItem[] = [
     question: '¿Sirve si tengo poca conectividad?',
     answer: 'Las clases quedan grabadas y el material se puede descargar. Si tiene dudas sobre su caso, escríbanos por WhatsApp.',
   },
-  deFaq('¿Cuántas preguntas tiene cada simulacro?'),
-  deFaq('¿Cómo se calcula el puntaje?'),
-  deFaq('¿Cuándo llegan los resultados?'),
+  {
+    question: '¿Cuántas preguntas tiene cada simulacro?',
+    answer: '254 preguntas en las cinco áreas del ICFES: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés. El mismo formato del examen real.',
+  },
+  {
+    question: '¿Cómo se calcula el puntaje?',
+    answer: 'Con el modelo TRI que usa el ICFES. Es una aproximación rigurosa al puntaje real, no el resultado del examen de Estado que publica el ICFES.',
+  },
+  {
+    question: '¿Cuándo llegan los resultados?',
+    answer: 'En la semana siguiente al simulacro cada estudiante tiene su dashboard con puntaje global, desglose por área, ranking y plan de estudio.',
+  },
   deFaq('¿Qué es Desafíos?'),
   {
     question: '¿Cómo protegen mis datos?',

@@ -27,13 +27,13 @@ export const PAGINAS = {
 } as const;
 
 export const CIERRE = {
-  title: ['Su institución puede', 'ser el próximo caso'],
-  lead: '30 minutos para ver la plataforma con sus datos en mente, o el simulacro gratis para probarlo con los grados 9, 10 y 11. Le respondemos en un día hábil.',
+  title: ['Su institución puede ser', 'el próximo caso de éxito'],
+  lead: 'Agende una sesión de 30 minutos adaptada a la realidad de su colegio, o solicite un simulacro gratuito para evaluar a los grados 9.°, 10.° y 11.°. Le respondemos en menos de un día hábil.',
   cards: [
     {
       id: 'reunion',
       title: 'Reunión de 30 minutos',
-      text: 'Vea la plataforma en vivo: el panel de rectoría y el de cada estudiante. Resolvemos dudas de calendario, de los grados 9, 10 y 11, y del primer simulacro. Sin costo y sin compromiso.',
+      text: 'Conozca la plataforma en vivo: tanto el panel directivo para rectoría como el entorno de cada estudiante. Resolvemos sus dudas sobre el cronograma, la articulación con los grados 9.°, 10.° y 11.°, y la aplicación del simulacro inicial. Sin costo ni compromiso.',
       cta: 'Agendar reunión de 30 min',
       mascot: '/landing/mascotas/ingles.webp',
       mascotAlt: 'Mascota de SEAMOSGENIOS frente a un computador, lista para mostrar la plataforma',
@@ -41,7 +41,7 @@ export const CIERRE = {
     {
       id: 'simulacro',
       title: 'Simulacro gratis',
-      text: 'Un simulacro con el formato del Saber 11 para los grados 9, 10 y 11. En la semana siguiente cada estudiante tiene su análisis y su rectoría, el panel de coordinación. No obliga a contratar.',
+      text: 'Una prueba diagnóstica con estructura tipo ICFES para los grados 9.°, 10.° y 11.°. A la semana siguiente, cada estudiante recibe su informe individual y la rectoría accede al panel general de resultados por competencia. Totalmente libre de compromisos.',
       cta: 'Solicitarlo',
       mascot: '/landing/mascotas/lectura-critica.webp',
       mascotAlt: 'Mascota de SEAMOSGENIOS con libros, lista para el simulacro',
