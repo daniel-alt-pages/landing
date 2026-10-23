@@ -105,12 +105,12 @@
    Contraste AA sobre cualquier fotograma (peor caso: píxel blanco detrás):
    botones de icono #fff sobre rgba(0,0,0,.72) → fondo efectivo ≤ L 0.28 → 3.2:1 (≥3:1);
    textos #fff sobre rgba(0,0,0,.85) → L ≤ 0.15 → 5.25:1 (≥4.5:1). */
-.ag-reels { position: fixed; inset: 0; z-index: 2147483000; background: #000; color: #fff; }
+.ag-reels { position: fixed; inset: 0; height: 100vh; height: 100svh; height: 100dvh; z-index: 2147483000; background: #000; color: #fff; }
 .ag-reels-scroller { position: absolute; inset: 0; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; touch-action: none; }
 .ag-reels-scroller::-webkit-scrollbar { display: none; }
 .ag-reels-slide { position: relative; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: flex; align-items: center; justify-content: center; }
-.ag-reels-poster { height: 100%; width: 100%; max-width: calc(100dvh * 9 / 16); object-fit: contain; }
-.ag-reels-video { position: absolute; left: 0; right: 0; margin-inline: auto; height: 100%; width: 100%; max-width: calc(100dvh * 9 / 16); object-fit: contain; background: transparent; }
+.ag-reels-poster { display: block; height: 100%; width: 100%; max-width: 100%; max-width: min(100%, calc(100svh * 9 / 16)); max-width: min(100%, calc(100dvh * 9 / 16)); object-fit: contain; }
+.ag-reels-video { position: absolute; left: 0; right: 0; margin-inline: auto; height: 100%; width: 100%; max-width: 100%; max-width: min(100%, calc(100svh * 9 / 16)); max-width: min(100%, calc(100dvh * 9 / 16)); object-fit: contain; background: transparent; }
 .ag-reels-caption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 56px 20px 28px; background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.85) 45%); text-align: center; pointer-events: none; }
 .ag-reels-title { margin: 0; font-size: 20px; font-weight: 700; }
 .ag-reels-text { margin: 4px 0 0; font-size: 16px; }
