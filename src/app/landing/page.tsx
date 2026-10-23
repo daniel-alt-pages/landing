@@ -25,10 +25,10 @@ export default function AlianzaInicio() {
       <StorefrontBanner />
       <ProductRail />
       <MapaSitio />
-      <CifrasClave />
+      <CifrasClave excluirFotos={TOP_B2026.map((f) => f.src)} />
       <VoicesSection compact tone="grey" />
       <ResultadosB2026 />
-      <ResultsGallery id="puntajes" excluirFotos={TOP_B2026.map((f) => f.src)} />
+      <ResultsGallery id="superacion" carrusel={false} />
       <VideoResultados />
       <AlianzasSection />
       <PrimerPaso />
