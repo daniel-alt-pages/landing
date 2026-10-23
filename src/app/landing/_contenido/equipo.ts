@@ -61,7 +61,7 @@ export const EQUIPO: TeamMember[] = [
     name: 'Luis David Gutiérrez',
     role: 'Matemáticas',
     years: '+2 años',
-    bio: 'Estudiante de Ingeniería de Sistemas y Computación en la Universidad de los Andes, con un puntaje de 477.',
+    bio: 'Estudiante de Medicina en la Universidad Nacional, con un puntaje de 477.',
     featured: true,
     confirmar: `${IMAGEN} Verificar que la bio de la página 9 del PDF corresponde a esta persona.`,
   },
@@ -70,7 +70,7 @@ export const EQUIPO: TeamMember[] = [
     name: 'Diego Alejandro Urbano',
     role: 'Jefe de área y tutor',
     years: '+2 años',
-    bio: 'Puntaje de 414 en su primera presentación, con 100/100 en matemáticas. Estudiante de Medicina de la Universidad Nacional.',
+    bio: 'Puntaje de 414 en su primera presentación, con 100/100 en matemáticas. Estudiante de Ingeniería de Sistemas en la Universidad de los Andes.',
     confirmar: `${IMAGEN} Verificar bio contra la página 9 del PDF.`,
   },
   {
@@ -94,7 +94,7 @@ export const EQUIPO: TeamMember[] = [
     name: 'Alexandra Nikol Huerfano',
     role: 'Lectura crítica',
     years: '+4 años',
-    bio: 'Estudiante de Medicina en la UIS y artista plástica. 449 puntos en el ICFES.',
+    bio: 'Estudiante de Medicina en la UIS. 428 puntos, con 100/100 en Lectura crítica, Matemáticas e Inglés.',
     confirmar: `${IMAGEN} Verificar bio contra la página 9 del PDF.`,
   },
   {
@@ -102,7 +102,7 @@ export const EQUIPO: TeamMember[] = [
     name: 'Sofía Cristina Suárez',
     role: 'Lectura crítica',
     years: '+3 años',
-    bio: 'Estudiante de Medicina en la UIS. 428 puntos, con 100/100 en Lectura crítica, Matemáticas e Inglés.',
+    bio: 'Estudiante de Medicina en la UIS y artista plástica. 449 puntos en el ICFES.',
     confirmar: `${IMAGEN} Verificar bio contra la página 9 del PDF.`,
   },
   {
