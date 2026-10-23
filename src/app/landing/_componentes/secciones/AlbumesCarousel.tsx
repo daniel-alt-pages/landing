@@ -120,7 +120,7 @@ export function AlbumesCarousel() {
                 const visible = k >= pos && k < pos + (ancho ? 3 : 2);
                 const pts = puntaje(f.alt);
                 return (
-                  <li key={f.src} className="ag-alb-card" role="group" aria-roledescription="tarjeta" aria-label={nombre(f.alt)} aria-hidden={visible ? undefined : true}>
+                  <li key={f.src} className="ag-alb-card" role="group" aria-roledescription="tarjeta" aria-label={`${k + 1} de ${total}`} aria-hidden={visible ? undefined : true}>
                     <img src={f.src} alt={f.alt} width={1080} height={1350} draggable={false} loading={k < 3 ? undefined : 'lazy'} decoding="async" />
                     <div className="ag-alb-card-txt" aria-hidden="true">
                       <p className="ag-alb-nombre">{nombre(f.alt)}</p>
