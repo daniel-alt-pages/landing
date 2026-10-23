@@ -9,6 +9,30 @@ export function PhoneRow() {
   const scroller = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const last = PANTALLAS.length - 1;
+  const [hold, setHold] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [reset, setReset] = useState(0);
+  const indexRef = useRef(0);
+  indexRef.current = index;
+
+  // v1.0.27: avance automático cada 5 s en bucle. Se pausa con hover/foco y con la pestaña oculta;
+  // no avanza con prefers-reduced-motion ni cuando las tres pantallas ya caben a la vez.
+  useEffect(() => {
+    const onVis = () => setHidden(document.hidden);
+    onVis();
+    document.addEventListener('visibilitychange', onVis);
+    return () => document.removeEventListener('visibilitychange', onVis);
+  }, []);
+
+  useEffect(() => {
+    if (hold || hidden) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    const node = scroller.current;
+    if (!node || node.scrollWidth - node.clientWidth < 8) return undefined;
+    const t = window.setTimeout(() => go(indexRef.current >= last ? 0 : indexRef.current + 1), 5000);
+    return () => window.clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, hold, hidden, reset, last]);
 
   useEffect(() => {
     const node = scroller.current;
@@ -37,6 +61,11 @@ export function PhoneRow() {
     };
   }, []);
 
+  function nav(next: number) {
+    setReset((n) => n + 1);
+    go(next);
+  }
+
   function go(next: number) {
     const node = scroller.current;
     const card = node?.querySelectorAll<HTMLElement>('.ag-phone-card')[next];
@@ -46,9 +75,15 @@ export function PhoneRow() {
   }
 
   return (
-    <div className="ag-phone-carousel">
+    <div
+      className="ag-phone-carousel"
+      onPointerEnter={(e) => { if (e.pointerType === 'mouse') setHold(true); }}
+      onPointerLeave={(e) => { if (e.pointerType === 'mouse') setHold(false); }}
+      onFocus={() => setHold(true)}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHold(false); }}
+    >
       <div className="ag-phone-stage">
-        <button type="button" className="ag-phone-nav is-prev" aria-label="Pantalla anterior" disabled={index === 0} onClick={() => go(index - 1)}>
+        <button type="button" className="ag-phone-nav is-prev" aria-label="Pantalla anterior" disabled={index === 0} onClick={() => nav(index - 1)}>
           <ChevronLeft size={20} aria-hidden />
         </button>
         <div className="ag-phone-row ag-phone-row-3" ref={scroller}>
@@ -60,7 +95,7 @@ export function PhoneRow() {
             </article>
           ))}
         </div>
-        <button type="button" className="ag-phone-nav is-next" aria-label="Pantalla siguiente" disabled={index === last} onClick={() => go(index + 1)}>
+        <button type="button" className="ag-phone-nav is-next" aria-label="Pantalla siguiente" disabled={index === last} onClick={() => nav(index + 1)}>
           <ChevronRight size={20} aria-hidden />
         </button>
       </div>
@@ -71,7 +106,7 @@ export function PhoneRow() {
             type="button"
             aria-label={pantalla.titulo}
             aria-current={i === index ? 'true' : undefined}
-            onClick={() => go(i)}
+            onClick={() => nav(i)}
           />
         ))}
       </div>
