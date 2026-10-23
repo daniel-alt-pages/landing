@@ -284,4 +284,4 @@ export const VOCES = [
   },
 ] as const;
 
-export const VOCES_LEAD = 'Ellos ya vieron el Saber 11. El puntaje está a la vista, y el mensaje lo escribió quien se preparó para ese día.';
+export const VOCES_LEAD = 'Ellos ya presentaron el Saber 11. Sus puntajes están a la vista y estas son las palabras de quienes se prepararon con nosotros para alcanzar su meta.';
