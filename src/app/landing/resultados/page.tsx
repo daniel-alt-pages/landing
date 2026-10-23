@@ -4,6 +4,7 @@ import { FinalCta } from '../_componentes/secciones/FinalCta';
 import { PageIntro } from '../_componentes/secciones/PageIntro';
 import { ResultsGallery } from '../_componentes/secciones/ResultsGallery';
 import { TrustedSchools } from '../_componentes/secciones/TrustedSchools';
+import { VideoResultados } from '../_componentes/secciones/VideoResultados';
 import { VoicesSection } from '../_componentes/secciones/VoicesSection';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function ResultadosPage() {
     <>
       <PageIntro eyebrow={PAGINAS.resultados.eyebrow} title={PAGINAS.resultados.title} lead={PAGINAS.resultados.lead} />
       <ResultsGallery />
+      <VideoResultados />
       <VoicesSection tone="white" />
       <TrustedSchools tone="paper" />
       <FinalCta />

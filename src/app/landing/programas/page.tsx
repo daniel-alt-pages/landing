@@ -6,6 +6,7 @@ import { CTA_PROGRAMAS } from '../_contenido/programas';
 import { CtaStrip } from '../_componentes/secciones/CtaStrip';
 import { FaqSection } from '../_componentes/secciones/FaqSection';
 import { CierreFamilias } from '../_componentes/secciones/CierreFamilias';
+import { VideoEstrategias } from '../_componentes/secciones/VideoResultados';
 import { CatalogoClient } from './catalogo/CatalogoClient';
 import { buildWaUrl, WA_TEXT } from '../_lib/whatsapp';
 
@@ -34,6 +35,7 @@ export default function ProgramasPage() {
         <CatalogoClient />
       </Suspense>
       <CtaStrip title={CTA_PROGRAMAS.titulo} text={CTA_PROGRAMAS.texto} cta={CTA_PROGRAMAS.cta} href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.estudiantes)} />
+      <VideoEstrategias />
       <FaqSection
         items={FAQ_FAMILIAS}
         lead="Lo que más preguntan estudiantes y familias antes de elegir. Si la suya no está, escríbanos."
