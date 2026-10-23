@@ -35,6 +35,7 @@ function VideoCard({ item, reels = false }: { item: VideoItem; reels?: boolean }
         ) : null}
       </div>
       <figcaption>
+        {item.badge ? <span className="ag-badge">{item.badge}</span> : null}
         <h3 className="ag-h3">{item.title}</h3>
         <p>{item.caption}</p>
       </figcaption>

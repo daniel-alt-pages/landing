@@ -510,6 +510,7 @@ function ReelsOverlay({ items, startIndex, gestureStart, poolRefs, reduce, onAct
               animate={i === active ? { opacity: 1, y: 0 } : { opacity: 0, y: reduce ? 0 : 12 }}
               transition={t}
             >
+              {item.badge ? <span className="ag-badge ag-badge-dark">{item.badge}</span> : null}
               <p className="ag-reels-title">{item.title}</p>
               <p className="ag-reels-text">{item.caption}</p>
             </motion.div>
