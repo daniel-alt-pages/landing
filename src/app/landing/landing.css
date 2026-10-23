@@ -3046,8 +3046,8 @@
   margin-top: 0;
   align-items: stretch;
 }
-#como-empieza .ag-step-photos > li.ag-card { height: 100%; padding-bottom: 16px; }
-#como-empieza .ag-step-photo { aspect-ratio: 3 / 2; }
+#como-empieza .ag-step-photos > li.ag-card { height: 100%; padding-bottom: 16px; border-radius: 12px; overflow: hidden; }
+#como-empieza .ag-step-photo { aspect-ratio: 3 / 2; border-radius: 12px; overflow: hidden; }
 #como-empieza .ag-step-copy {
   display: flex;
   flex: 1;
