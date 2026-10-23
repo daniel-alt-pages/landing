@@ -543,7 +543,6 @@ function ReelsOverlay({ items, startIndex, gestureStart, poolRefs, reduce, onAct
         })}
       </div>
       <div className="ag-reels-bar">
-        <span className="ag-reels-count" aria-live="polite">Video {active + 1} de {items.length}</span>
         <div className="ag-reels-actions">
           <button type="button" className="ag-reels-btn" onClick={togglePlay} aria-label={paused ? 'Reproducir el video' : 'Pausar el video'}>
             {paused ? <Play aria-hidden size={24} /> : <Pause aria-hidden size={24} />}
