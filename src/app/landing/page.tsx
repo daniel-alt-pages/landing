@@ -1,3 +1,4 @@
+import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
@@ -23,6 +24,7 @@ export default function AlianzaInicio() {
       <ProductRail />
       <MapaSitio />
       <CifrasClave />
+      <ResultsGallery />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
