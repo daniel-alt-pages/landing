@@ -28,7 +28,7 @@ export const ALBUMES: Album[] = [
       f('b2026-2-17', 'Thomas Muñoz Florez 476/500'),
       f('b2026-2-18', 'Luna Alejandra Cárdenas 479/500'),
       f('b2026-2-19', 'Samara Caro Ortega 470/500'),
-      f('b2026-2-20', 'María José Cortes Chaliyal 409/500'),
+      f('b2026-2-20', 'María José Cortes Chalitas 409/500'),
       f('b2026-2-21', 'Laura Gómez Suárez 473/500'),
       f('b2026-2-22', 'Juan Diego Zambrano 445/500'),
     ],
