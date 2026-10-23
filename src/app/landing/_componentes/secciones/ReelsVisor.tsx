@@ -37,7 +37,9 @@ export function ReelsVisor({ items, children }: Props) {
     };
   }, []);
 
-  const doOpen = useCallback(() => {
+  const [startIndex, setStartIndex] = useState(0);
+  const doOpen = useCallback((index = 0) => {
+    setStartIndex(index);
     scrollYRef.current = window.scrollY;
     returnFocusRef.current = document.activeElement as HTMLElement | null;
     finishedRef.current = false;
@@ -49,18 +51,20 @@ export function ReelsVisor({ items, children }: Props) {
   useEffect(() => {
     const el = wrapRef.current;
     if (!el || items.length === 0) return;
+    // Con prefers-reduced-motion no se abre solo: solo al tocar una tarjeta de video.
+    if (reduce) return;
     let seen = false;
     try { seen = sessionStorage.getItem(SESSION_KEY) === '1'; } catch { /* sin almacenamiento */ }
     if (seen) return;
     const io = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         io.disconnect();
-        doOpen();
+        doOpen(0);
       }
     }, { threshold: 0.35 });
     io.observe(el);
     return () => io.disconnect();
-  }, [items.length, doOpen]);
+  }, [items.length, doOpen, reduce]);
 
   // Bloqueo del scroll del body manteniendo la posición exacta.
   useEffect(() => {
@@ -99,34 +103,50 @@ export function ReelsVisor({ items, children }: Props) {
     const next = section?.nextElementSibling as HTMLElement | null;
     if (next) {
       next.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      if (!next.hasAttribute('tabindex')) next.setAttribute('tabindex', '-1');
-      next.focus({ preventScroll: true });
+      const heading = next.querySelector<HTMLElement>('h1, h2, h3') ?? next;
+      if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
+      heading.classList.add('ag-reels-focus-target');
+      heading.focus({ preventScroll: true });
     }
   }, [reduce]);
 
+  /** Con reduced-motion, tocar una tarjeta abre el visor en ese video (muted). */
+  const onCardClick = (e: React.MouseEvent) => {
+    if (!reduce || open) return;
+    const video = (e.target as HTMLElement).closest('.ag-video-card')?.querySelector('video');
+    if (!video) return;
+    const src = video.querySelector('source')?.getAttribute('src') ?? '';
+    const idx = items.findIndex((it) => src.endsWith(`/${it.id}.mp4`));
+    if (idx < 0) return;
+    e.preventDefault();
+    video.pause();
+    doOpen(idx);
+  };
+
   return (
-    <div ref={wrapRef} className="ag-reels-host">
+    <div ref={wrapRef} className="ag-reels-host" onClickCapture={onCardClick}>
       {children}
       <AnimatePresence onExitComplete={onExitComplete}>
         {open ? (
-          <ReelsOverlay key="reels" items={items} reduce={!!reduce} exitUp={exitUp} onClose={close} onFinish={finish} />
+          <ReelsOverlay key="reels" items={items} startIndex={startIndex} reduce={!!reduce} exitUp={exitUp} onClose={close} onFinish={finish} />
         ) : null}
       </AnimatePresence>
     </div>
   );
 }
 
-type OverlayProps = { items: VideoItem[]; reduce: boolean; exitUp: boolean; onClose: () => void; onFinish: () => void };
+type OverlayProps = { items: VideoItem[]; startIndex: number; reduce: boolean; exitUp: boolean; onClose: () => void; onFinish: () => void };
 
-function ReelsOverlay({ items, reduce, exitUp, onClose, onFinish }: OverlayProps) {
+function ReelsOverlay({ items, startIndex, reduce, exitUp, onClose, onFinish }: OverlayProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-  const [active, setActive] = useState(0);
-  const [muted, setMuted] = useState(false);
+  const [active, setActive] = useState(startIndex);
+  // Con reduced-motion arranca en silencio hasta que el usuario active el sonido.
+  const [muted, setMuted] = useState(reduce);
   const [blocked, setBlocked] = useState(false);
-  const mutedRef = useRef(false);
+  const mutedRef = useRef(reduce);
   useEffect(() => { mutedRef.current = muted; }, [muted]);
 
   const goTo = useCallback((i: number) => {
@@ -169,7 +189,11 @@ function ReelsOverlay({ items, reduce, exitUp, onClose, onFinish }: OverlayProps
     return () => io.disconnect();
   }, []);
 
-  useEffect(() => { closeBtnRef.current?.focus({ preventScroll: true }); }, []);
+  useEffect(() => {
+    const sc = scrollerRef.current;
+    if (sc && startIndex > 0) sc.scrollTo({ top: startIndex * sc.clientHeight, behavior: 'auto' });
+    closeBtnRef.current?.focus({ preventScroll: true });
+  }, [startIndex]);
 
   const unlockSound = useCallback(() => {
     if (!blocked) return;
@@ -246,6 +270,7 @@ function ReelsOverlay({ items, reduce, exitUp, onClose, onFinish }: OverlayProps
               onEnded={() => onEnded(i)}
             >
               <source src={`/landing/videos/${item.id}.mp4`} type="video/mp4" />
+              {item.captions ? <track kind="captions" srcLang="es" label="Español" src={item.captions} default /> : null}
             </video>
             <div className="ag-reels-caption">
               <p className="ag-reels-title">{item.title}</p>

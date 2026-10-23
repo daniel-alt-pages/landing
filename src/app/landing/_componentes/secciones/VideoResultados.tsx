@@ -22,6 +22,7 @@ function VideoCard({ item }: { item: VideoItem }) {
           height={1280}
         >
           <source src={`/landing/videos/${item.id}.mp4`} type="video/mp4" />
+          {item.captions ? <track kind="captions" srcLang="es" label="Español" src={item.captions} /> : null}
           Su navegador no reproduce video.
         </video>
       </div>
