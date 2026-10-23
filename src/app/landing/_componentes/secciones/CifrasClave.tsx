@@ -2,9 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import { Section } from '../primitivas/Section';
-import { ResumenModal } from '../bits/ResumenModal';
 import { Marquee } from '../primitivas/Marquee';
-import { MarqueePause } from '../primitivas/MarqueePause';
 import { COLEGIOS } from '../../_contenido/colegios';
 
 /**
@@ -28,7 +26,6 @@ export function CifrasClave() {
     : { initial: { opacity: 0, y: 12 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' }, transition: { duration: 0.4, delay: i * 0.05, ease: EASE } });
   return (
     <Section id="cifras" tone="grey" label="cifras-title">
-      <p className="ag-eyebrow">La alianza en cifras</p>
       <h2 id="cifras-title" className="ag-h2">Datos claros para decidir</h2>
       <div className="sg-cifras">
         {CIFRAS.map((c, i) => (
@@ -49,16 +46,6 @@ export function CifrasClave() {
           ))}
         </Marquee>
       </div>
-      <MarqueePause target="sg-cifras-cinta" label="los escudos de las instituciones" />
-      <ResumenModal
-        titulo="La alianza en cuatro datos"
-        puntos={[
-          { titulo: '65 instituciones', texto: ' ya aplicaron al menos un simulacro con SeamosGenios.' },
-          { titulo: 'Primer simulacro gratis', texto: ' sin costo y sin obligación de contratar.' },
-          { titulo: 'Respuesta en 1 día hábil', texto: ' un asesor le escribe para coordinar.' },
-          { titulo: 'Reunión de 30 minutos', texto: ' le mostramos la plataforma en vivo.' },
-        ]}
-      />
     </Section>
   );
 }
