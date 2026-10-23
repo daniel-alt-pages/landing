@@ -34,7 +34,7 @@ export default function ProgramasPage() {
       >
         <CatalogoClient />
       </Suspense>
-      <CtaStrip title={CTA_PROGRAMAS.titulo} text={CTA_PROGRAMAS.texto} cta={CTA_PROGRAMAS.cta} href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.estudiantes)} />
+      <CtaStrip title={CTA_PROGRAMAS.titulo} text={CTA_PROGRAMAS.texto} cta={CTA_PROGRAMAS.cta} href={buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes)} />
       <VideoEstrategias />
       <FaqSection
         items={FAQ_FAMILIAS}

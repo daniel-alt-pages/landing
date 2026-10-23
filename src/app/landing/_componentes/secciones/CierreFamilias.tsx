@@ -14,7 +14,7 @@ export function CierreFamilias() {
       </header>
       <p className="ag-faq-cta">
         <a className="ag-btn" href="/landing/programas">Ver los programas</a>{' '}
-        <a className="ag-btn" href={buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.estudiantes)}>Escribir por WhatsApp</a>
+        <a className="ag-btn" href={buildWaUrl(CONTACTO.whatsappEstudiantes, WA_TEXT.estudiantes)}>Escribir por WhatsApp</a>
       </p>
       <p style={{ textAlign: 'center' }}>¿Escribe por un colegio? <a href="/landing/instituciones#agendar">Vea el portafolio para instituciones</a>.</p>
     </Section>
