@@ -37,10 +37,23 @@ const FUNDADOR_MARCAS = [
 const PERFILES = ['Daniel de la Cruz', 'Ángel David Pacheco'] as const;
 const COFUNDADORES = ['daniel', 'angel'];
 
+const ANGEL_INSIGNIAS = ['Beca Fundación Mazda', 'Matemáticas · Uniandes', '308 → 475 ICFES'] as const;
+
+/** Fuente: https://sites.google.com/view/msmaths/inicio (texto del propio Ángel, solo corrección ortográfica). */
+const ANGEL_HISTORIA = {
+  titulo: 'Entre ideas, café y futuros posibles',
+  parrafos: [
+    'Desde años atrás se dio cuenta de que le gustaba aprender algo nuevo, sin importar el tema, lo complejo o lo extraño. Desde entonces ve a diario contenidos audiovisuales que le dejen alguna enseñanza extra.',
+    'En su último grupo de estudio estudiaban más de 10 horas diarias: aprendió mucho de ellos y ellos de él.',
+    'Con más de 3 años de experiencia encontró el amor por dar clases, y eso lo impulsó a seguir con sus estudios para el ICFES hasta sacar 475. Hoy sigue dando clases con el mismo amor con el que empezó todo.',
+  ],
+  cita: '«La sensación de plenitud que me generaba terminar una clase y que alguien me agradeciera fue un motor que me impulsó a seguir».',
+} as const;
+
 const ANGEL_ENLACES = [
-  { label: 'Anuncio Beca Fundación Mazda – Uniandes', url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
-  { label: 'Ingeniería Uniandes en LinkedIn', url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
-  { label: 'Sitio personal MATHS', url: 'https://sites.google.com/view/msmaths/inicio' },
+  { label: 'Anuncio Beca Fundación Mazda – Uniandes', source: 'Universidad de los Andes', url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
+  { label: 'Ingeniería Uniandes en LinkedIn', source: 'LinkedIn', url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
+  { label: 'Sitio personal MATHS', source: 'Google Sites', url: 'https://sites.google.com/view/msmaths/inicio' },
 ] as const;
 
 export function FounderSection() {
@@ -142,37 +155,55 @@ export function FounderSection() {
       </div>
       </>
       ) : angel ? (
+      <>
       <div className="ag-founder">
         <article className="ag-founder-card">
           <div className="ag-founder-side">
             <figure className="ag-founder-figure">
-              <PixelCard noFocus colors="#1a1a1a,#3a1014,#CC0000" gap={8} speed={36}>
-                <img className="ag-pixel-shot" src={`/landing/equipo/${angel.id}.svg`} alt={angel.name} />
-              </PixelCard>
+              <div className="ag-cofounder-initials" role="img" aria-label={`Iniciales de ${angel.name}`}>
+                <span aria-hidden>ÁP</span>
+              </div>
               <figcaption>
                 <strong>{angel.name}</strong>
-                <span>{angel.role}</span>
+                <span>{angel.role} · {angel.years}</span>
               </figcaption>
             </figure>
-          </div>
-          <div className="ag-founder-copy">
-            <h2>{angel.name}</h2>
-            <p className="ag-person-role">
-              {angel.role} · {angel.years}
-            </p>
-            <p>{angel.bio}</p>
-            <ul className="ag-cofounders-links">
-              {ANGEL_ENLACES.map((link) => (
-                <li key={link.url}>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    {link.label}
-                  </a>
-                </li>
+            <ul className="ag-founder-marks ag-cofounder-badges" aria-label="Reconocimientos">
+              {ANGEL_INSIGNIAS.map((badge) => (
+                <li key={badge}>{badge}</li>
               ))}
             </ul>
           </div>
+          <div className="ag-founder-copy">
+            <h2>{ANGEL_HISTORIA.titulo}</h2>
+            <p>{angel.bio}</p>
+            {ANGEL_HISTORIA.parrafos.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
+            <blockquote className="ag-founder-quote">{ANGEL_HISTORIA.cita}</blockquote>
+          </div>
         </article>
+        <p className="ag-founder-source">
+          Relato tomado y adaptado de{' '}
+          <a href="https://sites.google.com/view/msmaths/inicio" target="_blank" rel="noopener noreferrer">
+            MATHS, sitio personal de Ángel David Pacheco
+          </a>
+        </p>
       </div>
+      <div className="ag-press ag-cofounder-links">
+        <p className="ag-eyebrow">Enlaces</p>
+        <ul>
+          {ANGEL_ENLACES.map((link) => (
+            <li key={link.url}>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <strong>{link.label}</strong>
+                <span>{link.source}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      </>
       ) : null}
       </div>
     </Section>

@@ -4202,6 +4202,12 @@ body:has(.ag-close, .ag-b2b-cierre) .ag-footer-agendar { display: none; }
 .ag-cofounders-arrow:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 2px; }
 .ag-cofounders-count { margin: 0; min-width: 56px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
 .ag-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ag-cofounder-initials { position: absolute; inset: 0; display: grid; place-items: center; padding-bottom: 64px; background: var(--ag-charcoal); }
+.ag-cofounder-initials span { display: grid; place-items: center; width: 132px; height: 132px; border-radius: 12px; background: var(--ag-red); color: #fff; font-size: 56px; font-weight: 800; letter-spacing: 0.02em; line-height: 1; }
+.ag-cofounder-badges { list-style: none; }
+.ag-cofounder-badges li { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border-radius: 12px; background: var(--ag-paper); border: 1px solid rgba(0,0,0,.12); color: var(--ag-charcoal); font-size: 13px; font-weight: 700; }
+@media (max-width: 640px) { .ag-cofounder-initials span { width: 104px; height: 104px; font-size: 44px; } }
 .ag-cofounders-links { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
 .ag-cofounders-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ag-red); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; border-radius: 12px; }
 .ag-cofounders-links a:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 2px; }
+.ag-press.ag-cofounder-links a { display: grid; grid-template-columns: 1fr; align-content: center; gap: 4px; min-height: 44px; }
