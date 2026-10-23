@@ -138,7 +138,7 @@ export function LeadForm() {
       <p id={`${formId}-live`} aria-live="polite" className="ag-form-alert">
         {status === 'error' ? 'No pudimos registrar su solicitud en este momento. Puede enviarla por WhatsApp y le responderemos por ese medio.' : ''}
       </p>
-      <fieldset className="ag-field ag-segment">
+      <fieldset className="ag-field ag-radio-cards" role="radiogroup" aria-label="¿Qué desea solicitar?">
         <legend>¿Qué desea solicitar?</legend>
         {(['reunion', 'simulacro'] as const).map((option) => (
           <label key={option} data-checked={interes === option}>
@@ -149,7 +149,11 @@ export function LeadForm() {
               checked={interes === option}
               onChange={() => setManual({ value: option, hash })}
             />
-            {option === 'reunion' ? 'Reunión de 30 min' : 'Simulacro gratis'}
+            <span className="ag-radio-dot" aria-hidden />
+            <span className="ag-radio-text">
+              <strong>{option === 'reunion' ? 'Reunión de 30 min' : 'Simulacro gratis'}</strong>
+              <span>{option === 'reunion' ? 'Conozca la plataforma en vivo. Sin costo ni compromiso.' : 'Una prueba diagnóstica con estructura tipo ICFES para los grados 9.°, 10.° y 11.°.'}</span>
+            </span>
           </label>
         ))}
       </fieldset>
