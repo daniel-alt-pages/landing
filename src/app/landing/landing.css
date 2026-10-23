@@ -4183,3 +4183,6 @@ body:has(.ag-close, .ag-b2b-cierre) .ag-footer-agendar { display: none; }
 .ag-superacion-alianzas .ag-card { border-radius: 20px; background: var(--ag-grey-1); border: 0; box-shadow: none; }
 .ag-superacion-alianzas .ag-card p { font-size: 16px; }
 @media (min-width: 1100px) { .ag-superacion-alianzas.ag-section { padding: 128px 0 88px; } }
+
+/* FinalCta con una sola tarjeta (p. ej. /resultados): sin columna vacía en el rango de 2 columnas. */
+.ag-close-cards.ag-close-cards--single { grid-template-columns: 1fr; }

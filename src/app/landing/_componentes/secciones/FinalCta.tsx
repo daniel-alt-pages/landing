@@ -7,7 +7,11 @@ import { Lead } from '../primitivas/Lead';
 import { Section } from '../primitivas/Section';
 import { LeadForm } from './LeadForm';
 
-export function FinalCta({ eyebrow, lead = CIERRE.lead }: { eyebrow?: string; lead?: string } = {}) {
+type TarjetaCierre = (typeof CIERRE.cards)[number]['id'];
+
+/** `tarjetas`: qué tarjetas de CIERRE mostrar (por defecto todas). */
+export function FinalCta({ eyebrow, lead = CIERRE.lead, tarjetas }: { eyebrow?: string; lead?: string; tarjetas?: readonly TarjetaCierre[] } = {}) {
+  const cards = tarjetas ? CIERRE.cards.filter((c) => tarjetas.includes(c.id)) : CIERRE.cards;
   return (
     <Section id="contacto" tone="white" label="contacto-title">
       <span id="solicitar-reunion" className="ag-anchor" aria-hidden />
@@ -19,8 +23,8 @@ export function FinalCta({ eyebrow, lead = CIERRE.lead }: { eyebrow?: string; le
       </header>
       <div className="ag-close">
         <div className="ag-close-col">
-        <div className="ag-close-cards">
-          {CIERRE.cards.map((card) => {
+        <div className={cards.length === 1 ? 'ag-close-cards ag-close-cards--single' : 'ag-close-cards'}>
+          {cards.map((card) => {
             const href = buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.cta_final);
             return (
               <article key={card.id} className="ag-close-card">
