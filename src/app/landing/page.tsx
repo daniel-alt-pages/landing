@@ -28,7 +28,7 @@ export default function AlianzaInicio() {
       <ScreenGallery />
       <VoicesSection compact tone="grey" />
       <FaqSection />
-      <FinalCta />
+      <FinalCta eyebrow="Después de resolver sus dudas" lead="Las preguntas que sigan abiertas las revisamos con usted en una reunión de 30 minutos, o puede empezar por un simulacro gratuito para su institución." />
     </>
   );
 }

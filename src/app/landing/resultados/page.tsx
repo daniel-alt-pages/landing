@@ -20,7 +20,7 @@ export default function ResultadosPage() {
       <VideoResultados />
       <VoicesSection tone="white" />
       <TrustedSchools tone="paper" />
-      <FinalCta />
+      <FinalCta eyebrow="Sume a su institución" lead="Como los colegios que acaba de ver, su institución puede empezar con un simulacro gratuito y recibir el panel de resultados por competencia." />
     </>
   );
 }

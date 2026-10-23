@@ -17,7 +17,7 @@ export default function NosotrosPage() {
       <AboutSection />
       <FounderSection />
       <TeamSection />
-      <FinalCta />
+      <FinalCta eyebrow="Conozca al equipo en acción" lead="Conozca cómo trabaja nuestro equipo en una reunión de 30 minutos o con un simulacro gratuito." />
     </>
   );
 }

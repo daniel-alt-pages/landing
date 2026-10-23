@@ -6,14 +6,15 @@ import { Lead } from '../primitivas/Lead';
 import { Section } from '../primitivas/Section';
 import { LeadForm } from './LeadForm';
 
-export function FinalCta() {
+export function FinalCta({ eyebrow, lead = CIERRE.lead }: { eyebrow?: string; lead?: string } = {}) {
   return (
     <Section id="contacto" tone="white" label="contacto-title">
       <span id="solicitar-reunion" className="ag-anchor" aria-hidden />
       <span id="solicitar-simulacro" className="ag-anchor" aria-hidden />
       <header className="ag-section-head">
+        {eyebrow ? <p className="ag-eyebrow">{eyebrow}</p> : null}
         <DisplayTitle id="contacto-title" lines={[{ text: CIERRE.title[0] }, { text: CIERRE.title[1], accent: true }]} />
-        <Lead>{CIERRE.lead}</Lead>
+        <Lead>{lead}</Lead>
       </header>
       <div className="ag-close">
         <div className="ag-close-col">
