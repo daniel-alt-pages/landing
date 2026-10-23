@@ -51,8 +51,8 @@ const ANGEL_HISTORIA = {
 } as const;
 
 const ANGEL_ENLACES = [
-  { label: 'Anuncio Beca Fundación Mazda – Uniandes', source: 'Universidad de los Andes', logos: ['/landing/logos/uniandes.png', '/landing/logos/mazda.svg'], url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
-  { label: 'Ingeniería Uniandes en LinkedIn', source: 'LinkedIn', logos: ['/landing/logos/linkedin.png'], url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
+  { label: 'Anuncio Beca Fundación Mazda – Uniandes', source: 'Universidad de los Andes', logos: ['/landing/logos/uniandes.svg', '/landing/logos/mazda.svg'], url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
+  { label: 'Ingeniería Uniandes en LinkedIn', source: 'LinkedIn', logos: ['/landing/logos/linkedin.svg'], url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
   { label: 'Sitio personal MATHS', source: 'Google Sites', logos: ['/landing/logos/google-sites.png'], url: 'https://sites.google.com/view/msmaths/inicio' },
 ] as const;
 
@@ -202,7 +202,7 @@ export function FounderSection() {
               <a href={link.url} target="_blank" rel="noopener noreferrer">
                 <span className="ag-press-mark ag-cofounder-logos">
                   {link.logos.map((logo) => (
-                    <img key={logo} src={logo} alt="" />
+                    <img key={logo} src={logo} alt="" height={40} {...(/(uniandes|linkedin)\.svg$/.test(logo) ? { width: 40 } : {})} />
                   ))}
                 </span>
                 <strong>{link.label}</strong>
