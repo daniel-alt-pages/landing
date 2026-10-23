@@ -6,7 +6,7 @@ import { INSTAGRAM_RESULTADOS_INTRO } from '../../_contenido/videos';
 /** Cinta "Resultados Calendario B 2026" (antes dentro de CifrasClave); en /landing va tras los mensajes 2026A. */
 const puntaje = (alt: string) => Number(/(\d{3})\/500/.exec(alt)?.[1] ?? 0);
 /** Los 6 puntajes más altos del álbum Calendario B 2026 (albumes.ts). */
-const TOP_B2026 = ALBUMES.filter((a) => a.id.startsWith('b2026'))
+export const TOP_B2026 = ALBUMES.filter((a) => a.id.startsWith('b2026'))
   .flatMap((a) => a.fotos)
   .sort((x, y) => puntaje(y.alt) - puntaje(x.alt))
   .slice(0, 6);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { ALBUMES } from '../../_contenido/albumes';
 
 function useMedia(q: string) {
@@ -20,7 +20,12 @@ const nombre = (alt: string) => alt.split(/,| \d/)[0].replace(/^Tarjeta de /, ''
 const puntaje = (alt: string) => /(\d{3})\/500/.exec(alt)?.[1] ?? null;
 
 /** Álbumes de puntajes: pestañas por álbum, pista de tarjetas y barra de progreso (sin contador numérico). */
-export function AlbumesCarousel() {
+export function AlbumesCarousel({ excluirFotos }: { excluirFotos?: string[] } = {}) {
+  const clave = excluirFotos?.join('|') ?? '';
+  const albumes = useMemo(() => {
+    const fuera = new Set(clave ? clave.split('|') : []);
+    return ALBUMES.map((al) => ({ ...al, fotos: al.fotos.filter((f) => !fuera.has(f.src)) })).filter((al) => al.fotos.length > 0);
+  }, [clave]);
   const [a, setA] = useState(0);
   const [i, setI] = useState(0);
   const [dir, setDir] = useState<1 | -1>(1);
@@ -30,8 +35,8 @@ export function AlbumesCarousel() {
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const drag = useRef<{ x: number; id: number } | null>(null);
   const moved = useRef(false);
-  const n = ALBUMES.length;
-  const album = ALBUMES[a];
+  const n = albumes.length;
+  const album = albumes[a];
   const total = album.fotos.length;
   const maxI = Math.max(0, total - (ancho ? 2 : 1));
   const pos = Math.min(i, maxI);
@@ -42,7 +47,7 @@ export function AlbumesCarousel() {
     if (v === a) return;
     setDir(k > a ? 1 : -1);
     setA(v);
-    setI(alFinal ? Math.max(0, ALBUMES[v].fotos.length - (ancho ? 2 : 1)) : 0);
+    setI(alFinal ? Math.max(0, albumes[v].fotos.length - (ancho ? 2 : 1)) : 0);
   };
   /** Avanza tarjeta a tarjeta; al llegar al borde pasa al álbum vecino. */
   const paso = (d: 1 | -1) => {
@@ -81,7 +86,7 @@ export function AlbumesCarousel() {
   return (
     <div className="ag-alb" role="region" aria-roledescription="carrusel" aria-label="Álbumes de puntajes">
       <div className="ag-alb-tabs" role="tablist" aria-label="Elegir álbum" onKeyDown={onTabKey}>
-        {ALBUMES.map((al, k) => (
+        {albumes.map((al, k) => (
           <button
             key={al.id}
             ref={(el) => { tabs.current[k] = el; }}

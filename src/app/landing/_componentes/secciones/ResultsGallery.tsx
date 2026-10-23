@@ -6,12 +6,13 @@ import { Lead } from '../primitivas/Lead';
 import { Section } from '../primitivas/Section';
 import { AlbumesCarousel } from './AlbumesCarousel';
 
-export function ResultsGallery({ id = 'resultados' }: { id?: string } = {}) {
+/** `excluirFotos`: src de fotos que ya muestra otra sección de la misma página (p. ej. la cinta B 2026 en /landing). */
+export function ResultsGallery({ id = 'resultados', excluirFotos }: { id?: string; excluirFotos?: string[] } = {}) {
   return (
     <Section id={id} tone="grey" label={`${id}-title`}>
       <DisplayTitle id={`${id}-title`} lines={[{ text: 'Puntajes que' }, { text: 'cambian trayectorias', accent: true }]} />
       <Lead>Tres álbumes con los puntajes reales de nuestros estudiantes y quienes subieron más de 100 puntos con nuestro acompañamiento.</Lead>
-      <AlbumesCarousel />
+      <AlbumesCarousel excluirFotos={excluirFotos} />
       <div className="ag-grid-4" style={{ marginTop: 16 }}>
         {RESULTADOS_SUPERACION.map((card) => (
           <article key={card.id} className="ag-card">
