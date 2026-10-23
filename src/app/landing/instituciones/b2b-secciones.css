@@ -262,3 +262,14 @@
   outline: 3px solid #fff;
   outline-offset: 3px;
 }
+/* v1.0.36 · cierre en 2 columnas */
+.ag-b2b-cierre-grid { display: grid; gap: 24px; min-width: 0; }
+.ag-b2b-cierre-copy { min-width: 0; }
+.ag-b2b-cierre-lista { margin: 16px 0 0; padding-left: 1.2em; color: #fff; font-size: 18px; display: grid; gap: 8px; }
+.ag-b2b-cierre-trust { list-style: none; margin: 20px 0 0; padding: 16px 0 0; border-top: 1px solid rgb(255 255 255 / .4); display: grid; gap: 8px; color: #fff; font-size: 16px; }
+.ag-b2b-cierre .ag-b2b-nota a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; }
+.ag-b2b-cierre .ag-b2b-cierre-grid .ag-b2b-form-card { margin-top: 0; max-width: none; }
+@media (min-width: 1024px) {
+  .ag-b2b-cierre-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); column-gap: 48px; align-items: start; }
+  .ag-b2b-cierre-copy { position: sticky; top: 96px; }
+}
