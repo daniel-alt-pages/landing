@@ -4173,3 +4173,6 @@ html:has(.ag-consent) .ag-footer-legal { padding-bottom: max(32vh, 260px); }
   padding-inline-end: 0.15em;
   margin-inline-end: -0.15em;
 }
+
+/* v1.0.36 · sin «Agendar reunión» del footer en páginas que ya tienen el formulario */
+body:has(.ag-close, .ag-b2b-cierre) .ag-footer-agendar { display: none; }

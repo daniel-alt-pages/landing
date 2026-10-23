@@ -1,6 +1,5 @@
 import { CONTACTO } from '../../_contenido/contacto';
 import { CIERRE } from '../../_contenido/paginas';
-import { contactoHref } from '../../_lib/links';
 import { buildWaUrl, WA_TEXT } from '../../_lib/whatsapp';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Lead } from '../primitivas/Lead';
@@ -20,16 +19,17 @@ export function FinalCta() {
         <div className="ag-close-col">
         <div className="ag-close-cards">
           {CIERRE.cards.map((card) => {
-            const href =
-              card.id === 'whatsapp' ? buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.cta_final) : contactoHref(card.id === 'simulacro' ? 'simulacro' : 'reunion');
+            const href = buildWaUrl(CONTACTO.whatsappB2B, WA_TEXT.cta_final);
             return (
               <article key={card.id} className="ag-close-card">
                 <img src={card.mascot} alt={card.mascotAlt} width={512} height={512} loading="lazy" decoding="async" />
                 <h3 className="ag-h3">{card.title}</h3>
                 <p>{card.text}</p>
-                <a className="ag-btn" href={href}>
-                  {card.cta}
-                </a>
+                {card.id === 'whatsapp' ? (
+                  <a className="ag-btn" href={href}>
+                    {card.cta}
+                  </a>
+                ) : null}
               </article>
             );
           })}

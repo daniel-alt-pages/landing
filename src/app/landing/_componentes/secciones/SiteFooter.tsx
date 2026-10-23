@@ -60,7 +60,7 @@ export function SiteFooter() {
         <div>
           <Image src="/landing/brand/logo-sg-blanco.svg" alt="SEAMOSGENIOS" width={140} height={40} style={{ height: 40, width: 'auto' }} />
           <p className="ag-footer-lead">{FOOTER.frase}</p>
-          <Link className="ag-btn" href="/landing#solicitar-reunion">
+          <Link className="ag-btn ag-footer-agendar" href="/landing#solicitar-reunion">
             Agendar reunión
           </Link>
         </div>
