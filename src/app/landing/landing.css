@@ -2920,10 +2920,10 @@
   .ag-spotlight:hover { transform: none; }
 }
 
-/* Muro de voces <1024 con movimiento reducido: el alto fijo de .is-compact ganaba al
-   height:auto de arriba y, con overflow visible, las .ag-voice-float se salían del muro
-   y quedaban encima de #como-empieza. Aquí el muro crece con sus tarjetas (sin solape). */
-@media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
+/* Muro de voces con movimiento reducido (todos los anchos): el alto fijo de .is-compact
+   ganaba al height:auto de arriba y, con overflow visible, las .ag-voice-float se salían
+   del muro y quedaban encima de #como-empieza. Aquí el muro crece con sus tarjetas (sin solape). */
+@media (prefers-reduced-motion: reduce) {
   .ag-voice-wall.is-compact { height: auto; }
 }
 
