@@ -1,3 +1,4 @@
+import { VideoResultados } from './_componentes/secciones/VideoResultados';
 import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
@@ -25,7 +26,7 @@ export default function AlianzaInicio() {
       <MapaSitio />
       <CifrasClave />
       <ResultsGallery id="puntajes" />
-      {/* v1.0.37: aquí va «Resultados en video» (Reels), después de #puntajes. */}
+      <VideoResultados />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
