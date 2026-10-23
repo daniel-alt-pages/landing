@@ -14,7 +14,7 @@ export const FAQ: FaqItem[] = [
     confirmar: 'El equipo comercial debe escribir el rango de precio que sí se puede publicar.',
   },
   {
-    question: '¿El primer simulacro es realmente gratis?',
+    question: '¿El primer simulacro es realmente gratuito?',
     answer:
       'Sí. El primer simulacro es 100 % de cortesía y no genera ningún compromiso de contratación. Cada estudiante recibe su diagnóstico individual y al equipo directivo se le habilita el acceso completo al panel de coordinación.',
   },
