@@ -86,3 +86,17 @@
 /* v1.0.34 · Instagram: favoritos (Calendario A 2025 + reel Calendario B 2026) */
 .ag-ig-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1080px; }
 @media (max-width: 860px) { .ag-ig-grid-3 { grid-template-columns: 1fr; max-width: 360px; } }
+
+/* Álbumes de puntajes (/resultados) */
+.ag-alb { margin-top: 24px; max-width: 560px; margin-inline: auto; overflow: hidden; }
+.ag-alb-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.ag-alb-title { display: grid; gap: 4px; text-align: center; margin: 0; min-width: 0; }
+.ag-alb-btn { flex: none; min-width: 44px; min-height: 44px; border: 0; border-radius: var(--sg-radius-pill); background: var(--ag-red); color: #fff; font-size: 24px; line-height: 1; cursor: pointer; }
+.ag-alb-btn:focus-visible, .ag-alb-link:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 3px; }
+.ag-alb-viewport { overflow: hidden; border-radius: var(--sg-radius-lg); }
+.ag-alb-track { display: flex; transition: transform .4s ease; }
+.ag-alb-slide { flex: 0 0 100%; min-width: 0; }
+.ag-alb-link { display: block; border-radius: var(--sg-radius-lg); }
+.ag-alb-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--sg-radius-lg); }
+.ag-alb-fotos-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 12px; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .ag-alb-track { transition: none; } }
