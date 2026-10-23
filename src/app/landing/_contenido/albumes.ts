@@ -1,6 +1,6 @@
 /** Álbumes de puntajes de /resultados. URLs reales de las publicaciones en videos.ts (INSTAGRAM_POSTS y INSTAGRAM_FAVORITOS, v1.0.34). */
 export type AlbumFoto = { src: string; alt: string };
-export type Album = { id: string; titulo: string; url: string; fotos: AlbumFoto[] };
+export type Album = { id: string; titulo: string; url: string; fotos: AlbumFoto[]; enlaces?: { texto: string; url: string }[] };
 
 const f = (src: string, alt: string): AlbumFoto => ({ src: `/landing/albumes/${src}.webp`, alt });
 
@@ -37,6 +37,10 @@ export const ALBUMES: Album[] = [
     id: 'a2025',
     titulo: 'Álbum Calendario A 2025',
     url: 'https://www.instagram.com/p/DP6oEOagIMx/',
+    enlaces: [
+      { texto: 'Ver Parte 1 en Instagram', url: 'https://www.instagram.com/p/DP6oEOagIMx/' },
+      { texto: 'Ver Parte 2 en Instagram', url: 'https://www.instagram.com/p/DP7D4yRiZZJ/' },
+    ],
     fotos: [
       f('a2025-1-01', 'Nicole Meneses 500/500'),
       f('a2025-2-02', 'Thomas López 480/500'),

@@ -93,7 +93,7 @@
 .ag-alb-tab { min-height: 48px; padding: 10px 22px; border: 2px solid var(--sg-red-bright); border-radius: var(--sg-radius-pill); background: #fff; color: var(--sg-ink); font: inherit; font-size: 16px; font-weight: 700; white-space: nowrap; cursor: pointer; transition: background-color .2s ease, color .2s ease, transform .16s var(--alb-e); }
 .ag-alb-tab:hover { background: #fff1f1; }
 .ag-alb-tab:active, .ag-alb-btn:active { transform: scale(.96); }
-.ag-alb-tab[aria-selected="true"] { background: var(--sg-red-bright); color: #fff; }
+.ag-alb-tab[aria-selected="true"], .ag-alb-tab[aria-selected="true"]:hover { background: var(--sg-red); border-color: var(--sg-red); color: #fff; }
 .ag-alb-panel { min-width: 0; border-radius: var(--sg-radius-md); }
 .ag-alb-anim { min-width: 0; animation: ag-alb-in-next .3s var(--alb-e) both; }
 .ag-alb-anim.is-prev { animation-name: ag-alb-in-prev; }
@@ -112,8 +112,10 @@
 .ag-alb-bot { display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-top: 24px; }
 .ag-alb-bar { flex: 1; height: 4px; border-radius: 2px; background: #e5e7eb; overflow: hidden; }
 .ag-alb-bar i { display: block; height: 100%; background: var(--sg-red-bright); transform-origin: left center; transition: transform .2s var(--alb-e); }
-.ag-alb-btn { flex: none; width: 52px; height: 52px; border: 0; border-radius: var(--sg-radius-pill); background: var(--sg-red-bright); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .16s var(--alb-e); }
-.ag-alb-ig { display: inline-flex; align-items: center; gap: 6px; min-height: 52px; margin-top: 24px; padding: 0 26px; border-radius: var(--sg-radius-pill); background: var(--sg-ink); color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
+.ag-alb-btn { flex: none; width: 52px; height: 52px; border: 0; border-radius: var(--sg-radius-pill); background: var(--sg-red); color: #fff; font-size: 28px; line-height: 1; cursor: pointer; transition: transform .16s var(--alb-e); }
+.ag-alb-btn:hover { background: #a30000; }
+.ag-alb-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; min-width: 0; }
+.ag-alb-ig { display: inline-flex; align-items: center; gap: 6px; min-height: 52px; max-width: 100%; padding: 0 26px; border-radius: var(--sg-radius-pill); background: var(--sg-ink); color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; }
 .ag-ig-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ag-alb-tab:focus-visible, .ag-alb-btn:focus-visible, .ag-alb-panel:focus-visible, .ag-alb-ig:focus-visible { outline: 3px solid var(--sg-ink); outline-offset: 3px; }
 @media (max-width: 700px) {

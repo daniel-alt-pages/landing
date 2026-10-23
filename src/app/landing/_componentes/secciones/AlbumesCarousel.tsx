@@ -137,9 +137,13 @@ export function AlbumesCarousel() {
           <button type="button" className="ag-alb-btn" aria-label="Anterior" onClick={() => paso(-1)}>‹</button>
           <button type="button" className="ag-alb-btn" aria-label="Siguiente" onClick={() => paso(1)}>›</button>
         </div>
-        <a className="ag-alb-ig" href={album.url} target="_blank" rel="noopener noreferrer">
-          Ver álbum en Instagram <span aria-hidden="true">↗</span><span className="ag-ig-sr"> (se abre en una pestaña nueva)</span>
-        </a>
+        <div className="ag-alb-links">
+          {(album.enlaces ?? [{ texto: 'Ver álbum en Instagram', url: album.url }]).map((l) => (
+            <a key={l.url} className="ag-alb-ig" href={l.url} target="_blank" rel="noopener noreferrer">
+              {l.texto} <span aria-hidden="true">↗</span><span className="ag-ig-sr"> (se abre en una pestaña nueva)</span>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
