@@ -4193,3 +4193,15 @@ body:has(.ag-close, .ag-b2b-cierre) .ag-footer-agendar { display: none; }
 
 /* FinalCta con una sola tarjeta (p. ej. /resultados): sin columna vacía en el rango de 2 columnas. */
 .ag-close-cards.ag-close-cards--single { grid-template-columns: 1fr; }
+/* Cofundadores: un solo contenedor con flechas */
+.ag-cofounders { outline: none; border-radius: 12px; }
+.ag-cofounders:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 4px; }
+.ag-cofounders-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 16px; }
+.ag-cofounders-arrow { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; min-height: 48px; border-radius: 12px; border: 1px solid rgba(0,0,0,.18); background: #fff; color: var(--ag-charcoal); cursor: pointer; }
+.ag-cofounders-arrow:hover { border-color: var(--ag-red); color: var(--ag-red); }
+.ag-cofounders-arrow:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 2px; }
+.ag-cofounders-count { margin: 0; min-width: 56px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ag-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ag-cofounders-links { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.ag-cofounders-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ag-red); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; border-radius: 12px; }
+.ag-cofounders-links a:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 2px; }

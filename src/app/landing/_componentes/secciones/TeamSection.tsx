@@ -34,6 +34,15 @@ const FUNDADOR_MARCAS = [
   { src: '/landing/fundador/together-for-tomorrow.svg', alt: 'Together for Tomorrow, Enabling People' },
 ] as const;
 
+const PERFILES = ['Daniel de la Cruz', 'Ángel David Pacheco'] as const;
+const COFUNDADORES = ['daniel', 'angel'];
+
+const ANGEL_ENLACES = [
+  { label: 'Anuncio Beca Fundación Mazda – Uniandes', url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
+  { label: 'Ingeniería Uniandes en LinkedIn', url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
+  { label: 'Sitio personal MATHS', url: 'https://sites.google.com/view/msmaths/inicio' },
+] as const;
+
 export function FounderSection() {
   const prensa = MEDIA_MENTIONS.filter((item) => PRENSA.includes(item.name));
   const [shot, setShot] = useState(0);
@@ -49,8 +58,38 @@ export function FounderSection() {
     }, reduce ? 0 : 280);
   }
 
+  const [perfil, setPerfil] = useState(0);
+  const cambiar = (delta: number) => setPerfil((current) => (current + delta + PERFILES.length) % PERFILES.length);
+  const teclas = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); cambiar(-1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); cambiar(1); }
+  };
+  const angel = EQUIPO.find((person) => person.id === 'angel');
+
   return (
     <Section id="fundador" tone="paper" label="fundador-title">
+      <div
+        className="ag-cofounders"
+        role="group"
+        aria-roledescription="carrusel"
+        aria-label="Cofundadores"
+        tabIndex={0}
+        onKeyDown={teclas}
+      >
+      <div className="ag-cofounders-nav">
+        <button type="button" className="ag-cofounders-arrow" aria-label="Perfil anterior" onClick={() => cambiar(-1)}>
+          <ChevronLeft size={22} strokeWidth={2.25} aria-hidden />
+        </button>
+        <p className="ag-cofounders-count" aria-live="polite" aria-atomic="true">
+          <span aria-hidden>{perfil + 1} / {PERFILES.length}</span>
+          <span className="ag-sr-only">Perfil {perfil + 1} de {PERFILES.length}: {PERFILES[perfil]}</span>
+        </p>
+        <button type="button" className="ag-cofounders-arrow" aria-label="Perfil siguiente" onClick={() => cambiar(1)}>
+          <ChevronRight size={22} strokeWidth={2.25} aria-hidden />
+        </button>
+      </div>
+      {perfil === 0 ? (
+      <>
       <div className="ag-founder">
         <article className="ag-founder-card">
           <div className="ag-founder-side">
@@ -100,6 +139,41 @@ export function FounderSection() {
             </li>
           ))}
         </ul>
+      </div>
+      </>
+      ) : angel ? (
+      <div className="ag-founder">
+        <article className="ag-founder-card">
+          <div className="ag-founder-side">
+            <figure className="ag-founder-figure">
+              <PixelCard noFocus colors="#1a1a1a,#3a1014,#CC0000" gap={8} speed={36}>
+                <img className="ag-pixel-shot" src={`/landing/equipo/${angel.id}.svg`} alt={angel.name} />
+              </PixelCard>
+              <figcaption>
+                <strong>{angel.name}</strong>
+                <span>{angel.role}</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div className="ag-founder-copy">
+            <h2>{angel.name}</h2>
+            <p className="ag-person-role">
+              {angel.role} · {angel.years}
+            </p>
+            <p>{angel.bio}</p>
+            <ul className="ag-cofounders-links">
+              {ANGEL_ENLACES.map((link) => (
+                <li key={link.url}>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      </div>
+      ) : null}
       </div>
     </Section>
   );
@@ -212,7 +286,7 @@ export function TeamSection() {
 
   const grupos = AREAS.filter((item) => item.id !== 'todos').map((item) => ({
     ...item,
-    people: EQUIPO.filter((person) => {
+    people: EQUIPO.filter((person) => !COFUNDADORES.includes(person.id)).filter((person) => {
       const areas = AREAS_DE[person.id] ?? [];
       return area === 'todos' ? areas[0] === item.id : area === item.id && areas.includes(item.id);
     }),
