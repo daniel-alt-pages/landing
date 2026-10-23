@@ -127,3 +127,16 @@
 .ag-alb-thumb img { width: 64px; height: 80px; object-fit: cover; border-radius: 8px; }
 .ag-alb-thumb[aria-current="true"] { border-color: var(--ag-red); }
 @media (prefers-reduced-motion: reduce) { .ag-alb-dot span { transition: none; } }
+
+/* v1.0.36 · /landing #cifras: resultados Calendario B 2026 */
+.sg-b2026 { margin-top: 72px; padding-top: 56px; border-top: 1px solid var(--ag-hairline, rgba(15, 23, 42, .12)); text-align: center; min-width: 0; }
+.sg-b2026-lead { margin: 8px auto 24px; max-width: 640px; font-size: 18px; }
+.sg-b2026-cards { list-style: none; margin: 0; padding: 0 0 8px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+.sg-b2026-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+.sg-b2026-cta { margin-top: 24px; }
+.sg-b2026-cta .ag-btn { min-height: 48px; font-size: 16px; }
+@media (max-width: 1023px) {
+  .sg-b2026-cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; max-width: 100%; }
+  .sg-b2026-card { flex: 0 0 62%; scroll-snap-align: center; }
+}
+@media (min-width: 640px) and (max-width: 1023px) { .sg-b2026-card { flex-basis: 30%; } }

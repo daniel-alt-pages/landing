@@ -5,6 +5,8 @@ import { Section } from '../primitivas/Section';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Marquee } from '../primitivas/Marquee';
 import { COLEGIOS } from '../../_contenido/colegios';
+import { ALBUMES } from '../../_contenido/albumes';
+import { INSTAGRAM_RESULTADOS_INTRO } from '../../_contenido/videos';
 
 /**
  * Cifras clave (número + texto, sin gráficos) y cinta de escudos reales (COLEGIOS). SOLO datos confirmados que ya publica el sitio:
@@ -19,6 +21,13 @@ const CIFRAS = [
   { tag: 'Respuesta', num: '1 día hábil', label: 'Un asesor le escribe en el próximo día hábil.' },
   { tag: 'Reunión', num: '30', label: 'minutos de reunión para ver la plataforma en vivo.' },
 ];
+
+const puntaje = (alt: string) => Number(/(\d{3})\/500/.exec(alt)?.[1] ?? 0);
+/** Los 6 puntajes más altos del álbum Calendario B 2026 (albumes.ts). */
+const TOP_B2026 = ALBUMES.filter((a) => a.id.startsWith('b2026'))
+  .flatMap((a) => a.fotos)
+  .sort((x, y) => puntaje(y.alt) - puntaje(x.alt))
+  .slice(0, 6);
 
 export function CifrasClave() {
   const reduce = useReducedMotion();
@@ -46,6 +55,20 @@ export function CifrasClave() {
             </figure>
           ))}
         </Marquee>
+      </div>
+      <div className="sg-b2026" aria-labelledby="b2026-title">
+        <DisplayTitle id="b2026-title" lines={[{ text: 'Resultados' }, { text: 'Calendario B 2026', accent: true }]} />
+        <p className="sg-b2026-lead">{INSTAGRAM_RESULTADOS_INTRO}</p>
+        <ul className="sg-b2026-cards">
+          {TOP_B2026.map((f) => (
+            <li key={f.src} className="sg-b2026-card">
+              <img src={f.src} alt={f.alt} width={1080} height={1350} loading="lazy" decoding="async" />
+            </li>
+          ))}
+        </ul>
+        <p className="sg-b2026-cta">
+          <a className="ag-btn" href="/landing/resultados#resultados">Ver los álbumes completos</a>
+        </p>
       </div>
     </Section>
   );
