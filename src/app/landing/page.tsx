@@ -25,6 +25,7 @@ export default function AlianzaInicio() {
       <MapaSitio />
       <CifrasClave />
       <ResultsGallery id="puntajes" />
+      {/* v1.0.37: aquí va «Resultados en video» (Reels), después de #puntajes. */}
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
