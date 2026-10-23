@@ -1,4 +1,7 @@
+import { VideoResultados } from './_componentes/secciones/VideoResultados';
+import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
+import { ResultadosB2026, TOP_B2026 } from './_componentes/secciones/ResultadosB2026';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
 import { FinalCta } from './_componentes/secciones/FinalCta';
@@ -24,13 +27,16 @@ export default function AlianzaInicio() {
       <StorefrontBanner />
       <ProductRail />
       <MapaSitio />
-      <CifrasClave />
+      <CifrasClave excluirFotos={TOP_B2026.map((f) => f.src)} />
+      <VoicesSection compact tone="grey" />
+      <ResultadosB2026 />
+      <ResultsGallery id="superacion" carrusel={false} />
+      <VideoResultados />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />
-      <VoicesSection compact tone="grey" />
       <FaqSection />
-      <FinalCta />
+      <FinalCta eyebrow="Después de resolver sus dudas" lead="Las preguntas que sigan abiertas las revisamos con usted en una reunión de 30 minutos, o puede empezar por un simulacro gratuito para su institución." />
     </>
   );
 }

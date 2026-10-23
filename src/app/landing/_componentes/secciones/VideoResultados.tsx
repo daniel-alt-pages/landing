@@ -1,5 +1,4 @@
-import { INSTAGRAM_FAVORITOS, INSTAGRAM_POSTS, INSTAGRAM_RESULTADOS_INTRO, VIDEO_ESTRATEGIAS, VIDEOS_RESULTADOS, type InstagramPost, type VideoItem } from '../../_contenido/videos';
-import { CONTACTO } from '../../_contenido/contacto';
+import { VIDEO_ESTRATEGIAS, VIDEOS_RESULTADOS, type VideoItem } from '../../_contenido/videos';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Lead } from '../primitivas/Lead';
 import { Section } from '../primitivas/Section';
@@ -43,21 +42,6 @@ function VideoCard({ item, reels = false }: { item: VideoItem; reels?: boolean }
   );
 }
 
-function InstagramCard({ post }: { post: InstagramPost }) {
-  return (
-    <figure className="ag-card ag-ig-card">
-      <a className="ag-ig-link" href={post.url} target="_blank" rel="noopener">
-        <img className="ag-ig-img" src={`/landing/instagram/${post.code}.webp`} alt={post.alt} width={800} height={post.code.startsWith('DY') && !post.reel ? 1001 : 1000} loading="lazy" decoding="async" />
-      </a>
-      <figcaption>
-        <h3 className="ag-h3">{post.title}</h3>
-        <p>{post.caption}</p>
-        <a className="ag-ig-more" href={post.url} target="_blank" rel="noopener">{post.reel ? 'Ver el reel en Instagram' : 'Ver la publicación en Instagram'}<span className="ag-ig-sr"> (se abre en una pestaña nueva)</span></a>
-      </figcaption>
-    </figure>
-  );
-}
-
 /** Bloque «Resultados en video» (/resultados). */
 export function VideoResultados() {
   return (
@@ -69,23 +53,6 @@ export function VideoResultados() {
           {VIDEOS_RESULTADOS.map((v) => <VideoCard key={v.id} item={v} reels />)}
         </div>
       </ReelsVisor>
-      <div className="ag-ig-block" aria-labelledby="resultados-ig-title">
-        <h3 id="resultados-ig-title" className="ag-h3 ag-ig-heading">Álbum de puntajes Calendario B 2026</h3>
-        <p className="ag-ig-intro">{INSTAGRAM_RESULTADOS_INTRO} Sus nombres y sus palabras, publicados en nuestro Instagram.</p>
-        <div className="ag-ig-grid">
-          {INSTAGRAM_POSTS.map((p) => <InstagramCard key={p.code} post={p} />)}
-        </div>
-      </div>
-      <div className="ag-ig-block ag-ig-favoritos" aria-labelledby="resultados-ig-fav-title">
-        <h3 id="resultados-ig-fav-title" className="ag-h3 ag-ig-heading">Favoritos de nuestro Instagram</h3>
-        <p className="ag-ig-intro">Puntajes reales del Calendario A 2025 y el mejor estudiante del Calendario B 2026. Usted puede ser el próximo.</p>
-        <div className="ag-ig-grid ag-ig-grid-3">
-          {INSTAGRAM_FAVORITOS.map((p) => <InstagramCard key={p.code} post={p} />)}
-        </div>
-        <p className="ag-ig-cta">
-          <a className="ag-btn" href={CONTACTO.redes.instagram} target="_blank" rel="noopener">Ver más resultados en Instagram</a>
-        </p>
-      </div>
     </Section>
   );
 }

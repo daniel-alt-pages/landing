@@ -7,7 +7,7 @@ import { Section } from '../primitivas/Section';
 export function FaqSection({
   items = FAQ,
   lead = 'Las respuestas que más piden rectores y coordinadores antes de dar el primer paso. Si la suya no está, escríbanos.',
-  cta = { href: '#solicitar-reunion', label: 'Agendar reunión de 30 min' },
+  cta,
 }: { items?: FaqItem[]; lead?: string; cta?: { href: string; label: string } } = {}) {
   return (
     <Section id="faq" tone="white" label="faq-title">
@@ -17,11 +17,13 @@ export function FaqSection({
       </header>
       <div className="ag-faq">
         <Accordion items={items} />
-        <p className="ag-faq-cta">
-          <a className="ag-btn" href={cta.href}>
-            {cta.label}
-          </a>
-        </p>
+        {cta ? (
+          <p className="ag-faq-cta">
+            <a className="ag-btn" href={cta.href}>
+              {cta.label}
+            </a>
+          </p>
+        ) : null}
       </div>
     </Section>
   );

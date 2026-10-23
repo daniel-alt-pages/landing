@@ -19,7 +19,7 @@ export default function PlataformaPage() {
       <LayersSection />
       <ChallengesSection />
       <DomainRouteSection />
-      <FinalCta />
+      <FinalCta eyebrow="Del diagnóstico a la ruta" lead="Todo empieza con un simulacro: la plataforma convierte cada respuesta de sus estudiantes en un reporte por competencia. Véala en vivo en 30 minutos." />
     </>
   );
 }

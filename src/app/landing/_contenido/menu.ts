@@ -5,12 +5,15 @@ export type MenuGroup = {
   label: string;
   href: string;
   feature: { eyebrow: string; title: string; text: string };
+  /** Encabezado del panel de enlaces del mega menú. */
+  linksLabel: string;
   items: MenuItem[];
 };
 
 export const MENU: MenuGroup[] = [
   {
     id: 'plataforma',
+    linksLabel: 'Plataforma por dentro',
     label: 'Plataforma',
     href: '/landing/plataforma',
     feature: {
@@ -28,6 +31,7 @@ export const MENU: MenuGroup[] = [
   },
   {
     id: 'instituciones',
+    linksLabel: 'Modelo para colegios',
     label: 'Instituciones',
     href: '/landing/instituciones',
     feature: {
@@ -44,6 +48,7 @@ export const MENU: MenuGroup[] = [
   },
   {
     id: 'programas',
+    linksLabel: 'Programas y simulacros',
     label: 'Programas',
     href: '/landing/programas',
     feature: {
@@ -58,6 +63,7 @@ export const MENU: MenuGroup[] = [
   },
   {
     id: 'resultados',
+    linksLabel: 'Evidencia de resultados',
     label: 'Resultados',
     href: '/landing/resultados',
     feature: {
@@ -73,6 +79,7 @@ export const MENU: MenuGroup[] = [
   },
   {
     id: 'nosotros',
+    linksLabel: 'Conozca al equipo',
     label: 'Nosotros',
     href: '/landing/nosotros',
     feature: {
@@ -87,6 +94,9 @@ export const MENU: MenuGroup[] = [
     ],
   },
 ];
+
+/** Encabezado del panel lateral del mega menú. */
+export const RECURSOS_LABEL = 'Dudas y contacto';
 
 export const RECURSOS: MenuItem[] = [
   { href: '/landing#faq', label: 'Preguntas frecuentes', text: '' },

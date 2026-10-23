@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight, LogIn, Menu, X } from 'lucide-react';
 import { CONTACTO, platformAppUrl, platformLoginUrl, tiendaLandingUrl } from '../../_contenido/contacto';
-import { MENU, RECURSOS } from '../../_contenido/menu';
+import { MENU, RECURSOS, RECURSOS_LABEL } from '../../_contenido/menu';
 import { track } from '../../_lib/analytics';
 import { CART_OPEN_EVENT, readCart, subscribeCart, type CartItem } from '../../_lib/carrito';
 import { pricesFromStore } from '../../_lib/tienda';
@@ -323,7 +323,7 @@ export function SiteHeader() {
               )}
             </div>
             <div className="ag-mega-links">
-              <p className="ag-mega-label">Explore</p>
+              <p className="ag-mega-label">{group.linksLabel}</p>
               <ul>
                 {group.items.map((item) => (
                   <li key={item.href}>
@@ -336,7 +336,7 @@ export function SiteHeader() {
               </ul>
             </div>
             <aside className="ag-mega-aside">
-              <p className="ag-mega-label">Recursos</p>
+              <p className="ag-mega-label">{RECURSOS_LABEL}</p>
               <ul>
                 {RECURSOS.map((item) => (
                   <li key={item.href}>

@@ -1,97 +1,152 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { ALBUMES, type Album } from '../../_contenido/albumes';
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { ALBUMES } from '../../_contenido/albumes';
 
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false);
+function useMedia(q: string) {
+  const [m, setM] = useState(false);
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReduced(mq.matches);
+    const mq = window.matchMedia(q);
+    const update = () => setM(mq.matches);
     update();
     mq.addEventListener('change', update);
     return () => mq.removeEventListener('change', update);
-  }, []);
-  return reduced;
+  }, [q]);
+  return m;
 }
 
-function AlbumFotos({ album, activo, reduced }: { album: Album; activo: boolean; reduced: boolean }) {
-  const [foto, setFoto] = useState(0);
-  const [pausa, setPausa] = useState(false);
-  const total = album.fotos.length;
-  useEffect(() => {
-    if (!activo || reduced || pausa || total < 2) return;
-    const t = window.setInterval(() => setFoto((i) => (i + 1) % total), 1500);
-    return () => window.clearInterval(t);
-  }, [activo, reduced, pausa, total]);
-  const actual = album.fotos[foto];
-  return (
-    <div
-      className="ag-alb-fotos"
-      onMouseEnter={() => setPausa(true)}
-      onMouseLeave={() => setPausa(false)}
-      onFocus={() => setPausa(true)}
-      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setPausa(false); }}
-    >
-      <a
-        className="ag-alb-link"
-        href={album.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Ver ${album.titulo} en Instagram (se abre en una pestaña nueva). Foto actual: ${actual.alt}`}
-        tabIndex={activo ? 0 : -1}
-      >
-        <img className="ag-alb-img" src={actual.src} alt={actual.alt} width={1080} height={1350} loading="lazy" decoding="async" />
-      </a>
-      {total > 1 ? (
-        <div className="ag-alb-fotos-nav">
-          <button type="button" className="ag-alb-btn" tabIndex={activo ? 0 : -1} aria-label="Foto anterior" onClick={() => setFoto((i) => (i - 1 + total) % total)}>‹</button>
-          <span aria-live={reduced || pausa ? 'polite' : 'off'}>{foto + 1} / {total}</span>
-          <button type="button" className="ag-alb-btn" tabIndex={activo ? 0 : -1} aria-label="Foto siguiente" onClick={() => setFoto((i) => (i + 1) % total)}>›</button>
-        </div>
-      ) : null}
-    </div>
-  );
-}
+const corto = (titulo: string) => titulo.replace(/^Álbum /, '');
+const nombre = (alt: string) => alt.split(/,| \d/)[0].replace(/^Tarjeta de /, '');
+const puntaje = (alt: string) => /(\d{3})\/500/.exec(alt)?.[1] ?? null;
 
-export function AlbumesCarousel() {
+/** Álbumes de puntajes: pestañas por álbum, pista de tarjetas y barra de progreso (sin contador numérico). */
+export function AlbumesCarousel({ excluirFotos }: { excluirFotos?: string[] } = {}) {
+  const clave = excluirFotos?.join('|') ?? '';
+  const albumes = useMemo(() => {
+    const fuera = new Set(clave ? clave.split('|') : []);
+    return ALBUMES.map((al) => ({ ...al, fotos: al.fotos.filter((f) => !fuera.has(f.src)) })).filter((al) => al.fotos.length > 0);
+  }, [clave]);
+  const [a, setA] = useState(0);
   const [i, setI] = useState(0);
-  const reduced = useReducedMotion();
-  const startX = useRef<number | null>(null);
-  const n = ALBUMES.length;
-  const go = (d: number) => setI((v) => (v + d + n) % n);
+  const [dir, setDir] = useState<1 | -1>(1);
+  const reduced = useMedia('(prefers-reduced-motion: reduce)');
+  const ancho = useMedia('(min-width: 701px)');
+  const uid = useId().replace(/:/g, '');
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const drag = useRef<{ x: number; id: number } | null>(null);
+  const moved = useRef(false);
+  const n = albumes.length;
+  const album = albumes[a];
+  const total = album.fotos.length;
+  const maxI = Math.max(0, total - (ancho ? 2 : 1));
+  const pos = Math.min(i, maxI);
+
+  const irAlbum = (k: number, foco = false, alFinal = false) => {
+    const v = (k + n) % n;
+    if (foco) tabs.current[v]?.focus();
+    if (v === a) return;
+    setDir(k > a ? 1 : -1);
+    setA(v);
+    setI(alFinal ? Math.max(0, albumes[v].fotos.length - (ancho ? 2 : 1)) : 0);
+  };
+  /** Avanza tarjeta a tarjeta; al llegar al borde pasa al álbum vecino. */
+  const paso = (d: 1 | -1) => {
+    if (d > 0) { if (pos < maxI) setI(pos + 1); else { setDir(1); irAlbum(a + 1); } }
+    else if (pos > 0) setI(pos - 1);
+    else { setDir(-1); irAlbum(a - 1, false, true); }
+  };
+
+  useEffect(() => {
+    const tab = tabs.current[a];
+    const row = tab?.parentElement;
+    if (tab && row && row.scrollWidth > row.clientWidth) row.scrollTo({ left: tab.offsetLeft - row.clientWidth / 2 + tab.clientWidth / 2, behavior: reduced ? 'auto' : 'smooth' });
+  }, [a, reduced]);
+
+  const onTabKey = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); irAlbum(a + 1, true); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); irAlbum(a - 1, true); }
+    else if (e.key === 'Home') { e.preventDefault(); irAlbum(0, true); }
+    else if (e.key === 'End') { e.preventDefault(); irAlbum(n - 1, true); }
+  };
+  const onPanelKey = (e: KeyboardEvent) => {
+    if (e.target !== e.currentTarget) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); irAlbum(a + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); irAlbum(a - 1); }
+  };
+  const down = (e: PointerEvent) => { drag.current = { x: e.clientX, id: e.pointerId }; moved.current = false; };
+  const move = (e: PointerEvent) => { if (drag.current && Math.abs(e.clientX - drag.current.x) > 8) moved.current = true; };
+  const up = (e: PointerEvent) => {
+    if (!drag.current) return;
+    const dx = e.clientX - drag.current.x;
+    drag.current = null;
+    if (Math.abs(dx) > 40) paso(dx < 0 ? 1 : -1);
+  };
+
+  const progreso = maxI === 0 ? 1 : (pos + 1) / (maxI + 1);
   return (
-    <div
-      className="ag-alb"
-      role="region"
-      aria-roledescription="carrusel"
-      aria-label="Álbumes de puntajes"
-      onKeyDown={(e) => {
-        if (e.key === 'ArrowLeft') go(-1);
-        if (e.key === 'ArrowRight') go(1);
-      }}
-      onTouchStart={(e) => { startX.current = e.touches[0].clientX; }}
-      onTouchEnd={(e) => {
-        if (startX.current === null) return;
-        const dx = e.changedTouches[0].clientX - startX.current;
-        if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
-        startX.current = null;
-      }}
-    >
-      <div className="ag-alb-head">
-        <button type="button" className="ag-alb-btn" aria-label="Álbum anterior" onClick={() => go(-1)}>‹</button>
-        <p className="ag-alb-title" aria-live="polite">
-          <span className="ag-eyebrow">{i + 1} / {n}</span>
-          <strong className="ag-h3">{ALBUMES[i].titulo}</strong>
-        </p>
-        <button type="button" className="ag-alb-btn" aria-label="Álbum siguiente" onClick={() => go(1)}>›</button>
+    <div className="ag-alb" role="region" aria-roledescription="carrusel" aria-label="Álbumes de puntajes">
+      <div className="ag-alb-tabs" role="tablist" aria-label="Elegir álbum" onKeyDown={onTabKey}>
+        {albumes.map((al, k) => (
+          <button
+            key={al.id}
+            ref={(el) => { tabs.current[k] = el; }}
+            type="button"
+            role="tab"
+            id={`${uid}-alb-tab-${al.id}`}
+            aria-selected={k === a}
+            aria-controls={`${uid}-alb-panel`}
+            tabIndex={k === a ? 0 : -1}
+            className="ag-alb-tab"
+            onClick={() => irAlbum(k)}
+          >
+            {corto(al.titulo)}
+          </button>
+        ))}
       </div>
-      <div className="ag-alb-viewport">
-        <div className="ag-alb-track" style={{ transform: `translateX(-${i * 100}%)` }}>
-          {ALBUMES.map((album, k) => (
-            <div key={album.id} className="ag-alb-slide" role="group" aria-roledescription="álbum" aria-label={`${k + 1} de ${n}: ${album.titulo}`} aria-hidden={k !== i}>
-              <AlbumFotos album={album} activo={k === i} reduced={reduced} />
-            </div>
+      <div
+        id={`${uid}-alb-panel`}
+        role="tabpanel"
+        aria-labelledby={`${uid}-alb-tab-${album.id}`}
+        tabIndex={0}
+        onKeyDown={onPanelKey}
+        className="ag-alb-panel"
+      >
+        <div key={album.id} className={`ag-alb-anim ${dir > 0 ? 'is-next' : 'is-prev'}`}>
+          <div
+            className="ag-alb-vp"
+            onPointerDown={down}
+            onPointerMove={move}
+            onPointerUp={up}
+            onPointerCancel={() => { drag.current = null; }}
+            onClickCapture={(e) => { if (moved.current) { e.preventDefault(); e.stopPropagation(); moved.current = false; } }}
+          >
+            <ul className="ag-alb-track" style={{ ['--i' as string]: pos }}>
+              {album.fotos.map((f, k) => {
+                const visible = k >= pos && k < pos + (ancho ? 3 : 2);
+                const pts = puntaje(f.alt);
+                return (
+                  <li key={f.src} className="ag-alb-card" role="group" aria-roledescription="tarjeta" aria-label={`${k + 1} de ${total}`} aria-hidden={visible ? undefined : true}>
+                    <img src={f.src} alt={f.alt} width={1080} height={1350} draggable={false} loading={k < 3 ? undefined : 'lazy'} decoding="async" />
+                    <div className="ag-alb-card-txt" aria-hidden="true">
+                      <p className="ag-alb-nombre">{nombre(f.alt)}</p>
+                      {pts ? <p className="ag-alb-pts">{pts}<small>/500</small></p> : null}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+        <div className="ag-alb-bot">
+          <div className="ag-alb-bar" aria-hidden="true"><i style={{ transform: `scaleX(${progreso})` }} /></div>
+          <button type="button" className="ag-alb-btn" aria-label="Anterior" onClick={() => paso(-1)}>‹</button>
+          <button type="button" className="ag-alb-btn" aria-label="Siguiente" onClick={() => paso(1)}>›</button>
+        </div>
+        <div className="ag-alb-links">
+          {(album.enlaces ?? [{ texto: 'Ver álbum en Instagram', url: album.url }]).map((l) => (
+            <a key={l.url} className="ag-alb-ig" href={l.url} target="_blank" rel="noopener noreferrer">
+              {l.texto} <span aria-hidden="true">↗</span><span className="ag-ig-sr"> (se abre en una pestaña nueva)</span>
+            </a>
           ))}
         </div>
       </div>
