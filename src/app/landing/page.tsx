@@ -31,7 +31,7 @@ export default function AlianzaInicio() {
       <MapaSitio />
       {/* #cifras + #voces forman un solo bloque gris (espaciado en landing/sistema.css: .ag-bloque-datos) */}
       <div className="ag-bloque-datos">
-        <CifrasClave />
+        <CifrasClave muroVoces />
         {/* VoicesSection oculto en la home por decisión de Daniel 2026-10-23: <VoicesSection compact tone="grey" /> */}
       </div>
       {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando (y sus imports) */}

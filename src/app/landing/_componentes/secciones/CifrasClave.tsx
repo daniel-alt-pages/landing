@@ -5,7 +5,8 @@ import { Section } from '../primitivas/Section';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Marquee } from '../primitivas/Marquee';
 import { COLEGIOS } from '../../_contenido/colegios';
-import { AlbumesCarousel } from './AlbumesCarousel';
+import { VOCES } from '../../_contenido/voces';
+import { VoiceWall } from './VoiceWall';
 
 /**
  * Cifras clave (número + texto, sin gráficos) y cinta de escudos reales (COLEGIOS). SOLO datos confirmados que ya publica el sitio:
@@ -24,7 +25,8 @@ const CIFRAS = [
   { tag: 'Reunión', num: '30', label: 'minutos de reunión para ver la plataforma en vivo.' },
 ];
 
-export function CifrasClave() {
+/** `muroVoces`: solo la home lo activa; muestra el muro 2026A (sin título ni Lead) bajo la cinta de escudos. */
+export function CifrasClave({ muroVoces = false }: { muroVoces?: boolean }) {
   const reduce = useReducedMotion();
   // Siempre se pasan whileInView/viewport: el HTML estático sale con opacity 0 (initial) y, si con
   // movimiento reducido no hubiera animación, las cifras quedaban invisibles. Con reduce: sin desplazamiento y duración 0.
@@ -56,9 +58,7 @@ export function CifrasClave() {
           ))}
         </Marquee>
       </div>
-      <div id="puntajes">
-        <AlbumesCarousel />
-      </div>
+      {muroVoces ? <VoiceWall items={VOCES.filter((item) => item.text)} compact /> : null}
     </Section>
   );
 }
