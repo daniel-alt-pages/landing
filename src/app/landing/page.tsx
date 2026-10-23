@@ -9,6 +9,7 @@ import { ProductRail } from './_componentes/secciones/ProductRail';
 import { ScreenGallery } from './_componentes/secciones/ScreenGallery';
 import { StorefrontBanner } from './_componentes/secciones/StorefrontBanner';
 import { VoicesSection } from './_componentes/secciones/VoicesSection';
+import { ReelsEnlaceInicio } from './_componentes/secciones/ReelsEnlaceInicio';
 
 /**
  * Orden (propuesta rediseno-home): qué es y alcance → mapa del sitio → alianzas en curso → cómo empezar →
@@ -18,6 +19,7 @@ import { VoicesSection } from './_componentes/secciones/VoicesSection';
 export default function AlianzaInicio() {
   return (
     <>
+      <ReelsEnlaceInicio />
       <Hero />
       <StorefrontBanner />
       <ProductRail />
