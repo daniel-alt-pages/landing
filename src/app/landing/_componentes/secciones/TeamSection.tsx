@@ -51,9 +51,9 @@ const ANGEL_HISTORIA = {
 } as const;
 
 const ANGEL_ENLACES = [
-  { label: 'Anuncio Beca Fundación Mazda – Uniandes', source: 'Universidad de los Andes', url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
-  { label: 'Ingeniería Uniandes en LinkedIn', source: 'LinkedIn', url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
-  { label: 'Sitio personal MATHS', source: 'Google Sites', url: 'https://sites.google.com/view/msmaths/inicio' },
+  { label: 'Anuncio Beca Fundación Mazda – Uniandes', source: 'Universidad de los Andes', logos: ['/landing/logos/uniandes.png', '/landing/logos/mazda.svg'], url: 'https://ingenieria.uniandes.edu.co/es/Beneficiarios-Beca-Fundacion-Mazda' },
+  { label: 'Ingeniería Uniandes en LinkedIn', source: 'LinkedIn', logos: ['/landing/logos/linkedin.png'], url: 'https://es.linkedin.com/posts/ingenieria-uniandes_beca-fundaci%C3%B3n-mazda-activity-7402463950535151616-5Uci' },
+  { label: 'Sitio personal MATHS', source: 'Google Sites', logos: ['/landing/logos/google-sites.png'], url: 'https://sites.google.com/view/msmaths/inicio' },
 ] as const;
 
 export function FounderSection() {
@@ -133,6 +133,7 @@ export function FounderSection() {
         <p className="ag-founder-source">
           Tomado y adaptado de{' '}
           <a href="https://csr.samsung.com/en/story/inspiring-journeys/breaking-barriers-with-tech" target="_blank" rel="noreferrer">
+            <img className="ag-source-logo" src="/landing/prensa/samsung.svg" alt="" />
             Samsung Newsroom, «Breaking barriers with tech»
           </a>
         </p>
@@ -170,7 +171,10 @@ export function FounderSection() {
             </figure>
             <ul className="ag-founder-marks ag-cofounder-badges" aria-label="Reconocimientos">
               {ANGEL_INSIGNIAS.map((badge) => (
-                <li key={badge}>{badge}</li>
+                <li key={badge}>
+                  {badge === 'Beca Fundación Mazda' ? <img src="/landing/logos/mazda.svg" alt="" /> : null}
+                  {badge}
+                </li>
               ))}
             </ul>
           </div>
@@ -196,6 +200,11 @@ export function FounderSection() {
           {ANGEL_ENLACES.map((link) => (
             <li key={link.url}>
               <a href={link.url} target="_blank" rel="noopener noreferrer">
+                <span className="ag-press-mark ag-cofounder-logos">
+                  {link.logos.map((logo) => (
+                    <img key={logo} src={logo} alt="" />
+                  ))}
+                </span>
                 <strong>{link.label}</strong>
                 <span>{link.source}</span>
               </a>
