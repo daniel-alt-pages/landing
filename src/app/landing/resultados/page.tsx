@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { PAGINAS } from '../_contenido/paginas';
 import { FinalCta } from '../_componentes/secciones/FinalCta';
 import { PageIntro } from '../_componentes/secciones/PageIntro';
-import { ResultadosB2026 } from '../_componentes/secciones/ResultadosB2026';
+import { ResultadosB2026, TOP_B2026 } from '../_componentes/secciones/ResultadosB2026';
 import { ResultsGallery } from '../_componentes/secciones/ResultsGallery';
 import { TrustedSchools } from '../_componentes/secciones/TrustedSchools';
 import { VideoResultados } from '../_componentes/secciones/VideoResultados';
@@ -27,6 +27,7 @@ export default function ResultadosPage() {
         lead="Los puntajes más altos de nuestros estudiantes del Calendario B, con su nombre y su ciudad."
       />
       <ResultsGallery
+        excluirFotos={TOP_B2026.map((f) => f.src)}
         superacion={false}
         titulo={[{ text: 'Los álbumes' }, { text: 'completos', accent: true }]}
         lead="Recorra, tarjeta por tarjeta, los puntajes reales de nuestros estudiantes."
