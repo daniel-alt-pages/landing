@@ -1,7 +1,5 @@
 import { VideoResultados } from './_componentes/secciones/VideoResultados';
-import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
-import { ResultadosB2026 } from './_componentes/secciones/ResultadosB2026';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
 import { FaqSection } from './_componentes/secciones/FaqSection';
 import { FinalCta } from './_componentes/secciones/FinalCta';
@@ -27,8 +25,6 @@ export default function AlianzaInicio() {
       <MapaSitio />
       <CifrasClave />
       <VoicesSection compact tone="grey" />
-      <ResultadosB2026 />
-      <ResultsGallery id="puntajes" />
       <VideoResultados />
       <AlianzasSection />
       <PrimerPaso />
