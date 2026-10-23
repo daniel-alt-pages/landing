@@ -16,19 +16,19 @@ export const FAQ: FaqItem[] = [
   {
     question: '¿El primer simulacro es realmente gratis?',
     answer:
-      'Sí. El primer simulacro para su institución no tiene costo ni lo obliga a contratar. Sus estudiantes reciben su análisis y su equipo directivo, el panel de coordinación.',
+      'Sí. El primer simulacro es 100 % de cortesía y no genera ningún compromiso de contratación. Cada estudiante recibe su diagnóstico individual y al equipo directivo se le habilita el acceso completo al panel de coordinación.',
   },
   {
     question: '¿Cuánto dura el programa?',
     answer:
-      'En el Calendario B, el Intensivo son 16 semanas y unas 426 horas en vivo. El Vacacional son 8 semanas y unas 225 horas en vivo. Si su institución arma una alianza a la medida, el cronograma se ajusta en la reunión. El detalle semana a semana está en Programas.',
+      'Contamos con modalidades adaptadas a ambos calendarios (A y B): nuestro programa Intensivo consta de 16 semanas (426 horas de formación) y el Vacacional de 8 semanas (225 horas). Si su institución requiere un plan personalizado, ajustamos el cronograma en la reunión. Puede consultar el desglose semana a semana en la sección Programas.',
     confirmar:
       'Confirmar que 16 semanas y 426 horas, y 8 semanas y 225 horas, son las cifras publicables del Calendario B 2027-1. Aún no hay fechas de día, solo semanas.',
   },
   {
     question: '¿Qué necesitan los estudiantes para conectarse?',
     answer:
-      'Un celular o un computador con internet. El simulacro se presenta en la plataforma. El material llega en PDF y también dentro de la plataforma, con pizarra para socializar las preguntas.',
+      'Únicamente un celular, tablet o computador con conexión a internet. Los simulacros se presentan directamente en la plataforma, donde los estudiantes también cuentan con material descargable en PDF y pizarra interactiva para la socialización de cada pregunta.',
     confirmar: 'Confirmar requisitos mínimos de equipo y de conectividad.',
   },
   {
