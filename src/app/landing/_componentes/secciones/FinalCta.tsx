@@ -17,6 +17,7 @@ export function FinalCta() {
         <Lead>{CIERRE.lead}</Lead>
       </header>
       <div className="ag-close">
+        <div className="ag-close-col">
         <div className="ag-close-cards">
           {CIERRE.cards.map((card) => {
             const href =
@@ -32,6 +33,13 @@ export function FinalCta() {
               </article>
             );
           })}
+        </div>
+        <ul className="ag-close-trust" aria-label="Datos de la alianza">
+          <li><strong>500/500</strong> en 2025</li>
+          <li><strong>Más de 50</strong> estudiantes sobre 410</li>
+          <li><strong>65 instituciones</strong> con al menos un simulacro</li>
+          <li>Respuesta en <strong>menos de un día hábil</strong></li>
+        </ul>
         </div>
         <LeadForm />
       </div>
