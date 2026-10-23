@@ -68,3 +68,18 @@
   .ag-video-solo .ag-video-card { max-width: 360px; margin-inline: auto; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) { .ag-video-card { transition: none; } }
+/* v1.0.32 · Instagram: álbum de puntajes Calendario B 2026 (tarjetas estáticas) */
+.ag-ig-block { margin-top: var(--sg-space-7); text-align: center; }
+.ag-ig-heading { margin: 0; }
+.ag-ig-intro { margin: var(--sg-space-2) auto 0; max-width: 60ch; }
+.ag-ig-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sg-space-5); margin: var(--sg-space-5) auto 0; max-width: 760px; text-align: left; }
+.ag-ig-card { margin: 0; padding: var(--sg-space-3); border-radius: var(--sg-radius-md); box-shadow: var(--sg-shadow-1); background: #fff; display: flex; flex-direction: column; gap: var(--sg-space-3); }
+.ag-ig-card figcaption { padding: 0 var(--sg-space-2) var(--sg-space-2); }
+.ag-ig-card figcaption p { margin: 4px 0 var(--sg-space-2); font-size: var(--sg-text-sm); }
+.ag-ig-link { display: block; border-radius: var(--sg-radius-sm); overflow: hidden; }
+.ag-ig-link:focus-visible, .ag-ig-more:focus-visible { outline: 3px solid #FF2323; outline-offset: 3px; }
+.ag-ig-img { display: block; width: 100%; height: auto; aspect-ratio: 800 / 1001; }
+.ag-ig-more { font-size: var(--sg-text-sm); font-weight: 700; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.ag-ig-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.ag-ig-cta { margin: var(--sg-space-5) 0 0; }
+@media (max-width: 860px) { .ag-ig-grid { grid-template-columns: 1fr; max-width: 360px; margin-inline: auto; } .ag-ig-cta { text-align: center; } }
