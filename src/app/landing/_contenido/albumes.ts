@@ -34,16 +34,11 @@ export const ALBUMES: Album[] = [
     ],
   },
   {
-    id: 'a2025-1',
-    titulo: 'Álbum Calendario A 2025 · Parte 1',
+    id: 'a2025',
+    titulo: 'Álbum Calendario A 2025',
     url: 'https://www.instagram.com/p/DP6oEOagIMx/',
-    fotos: [f('a2025-1-01', 'Nicole Meneses 500/500')],
-  },
-  {
-    id: 'a2025-2',
-    titulo: 'Álbum Calendario A 2025 · Parte 2',
-    url: 'https://www.instagram.com/p/DP7D4yRiZZJ/',
     fotos: [
+      f('a2025-1-01', 'Nicole Meneses 500/500'),
       f('a2025-2-02', 'Thomas López 480/500'),
       f('a2025-2-03', 'Jholger Enríquez 476/500'),
       f('a2025-2-04', 'Mario Urueta 457/500'),
