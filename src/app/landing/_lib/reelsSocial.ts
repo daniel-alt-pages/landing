@@ -13,6 +13,13 @@
  * Para conectar el backend: implementar `ReelsSocialAdapter` y pasarlo con `setReelsSocialAdapter(...)`
  * antes de montar la página (p. ej. en un módulo cliente de arranque). Mientras tanto se usa `noopReelsSocial`.
  */
+/**
+ * Interruptor de «me gusta» y comentarios (botones y panel). En false solo se muestra «Compartir».
+ * Para BACKEND: cuando exista Firebase, implementar el adaptador, registrarlo con setReelsSocialAdapter(...)
+ * y cambiar este valor a true. Con el adaptador no-op la UI igual oculta los números.
+ */
+export const REELS_SOCIAL_ENABLED = false;
+
 export type ReelsComment = { id: string; name: string; text: string; createdAt: number };
 
 export type ReelsSocialAdapter = {

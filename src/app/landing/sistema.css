@@ -43,7 +43,7 @@
 .sg-marquee-crests .ag-marquee-track { animation-duration: 320s; } /* v1.0.27: 2x más lenta (antes 160s); solo inicio */
 .sg-crest { position: relative; overflow: hidden; display: flex; align-items: center; gap: 10px; flex: 0 0 auto; margin: 0; padding: 8px 14px 8px 8px; background: var(--sg-surface); border: 1px solid var(--sg-line); border-radius: 999px; }
 .sg-crest img { width: 48px; height: 48px; object-fit: contain; flex: 0 0 auto; }
-.sg-crest figcaption { font-size: var(--sg-text-xs); font-weight: 600; color: var(--sg-ink); white-space: nowrap; text-transform: none; letter-spacing: normal; }
+.sg-crest figcaption { font-size: var(--sg-text-xs); font-weight: 600; color: var(--sg-ink); white-space: nowrap; }
 @media (min-width: 720px) { .sg-crest img { width: 64px; height: 64px; } .sg-crest figcaption { font-size: var(--sg-text-sm); } }
 
 /* v1.0.27: brillo sutil que cruza cada escudo; apagado con reduced-motion. */
@@ -149,3 +149,4 @@
 .ag-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; line-height: 1.2; font-weight: 600; color: #111; background: #fff; border: 1.5px solid #CC0000; border-radius: 999px; padding: 4px 12px; margin-bottom: 8px; max-width: 100%; white-space: nowrap; text-transform: none; letter-spacing: normal; }
 .ag-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #CC0000; flex: none; }
 .ag-badge-dark { color: #fff; background: rgba(0,0,0,.85); }
+.ag-reels-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }

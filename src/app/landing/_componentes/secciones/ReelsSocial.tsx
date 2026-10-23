@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import { Heart, MessageCircle, Share2, X } from 'lucide-react';
 import {
   COMMENT_LIMITS,
+  REELS_SOCIAL_ENABLED,
   getReelsSocialAdapter,
   isNoopAdapter,
   validateComment,
@@ -27,6 +28,7 @@ export function ReelsSocialColumn({ slug, title, onSheet }: { slug: string; titl
   const commentBtn = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
+    if (!REELS_SOCIAL_ENABLED) return;
     let alive = true;
     adapter.getCounts(slug).then(
       (c) => { if (!alive) return; setCounts(c); setLiked(!!c?.likedByMe); },
@@ -74,6 +76,7 @@ export function ReelsSocialColumn({ slug, title, onSheet }: { slug: string; titl
   return (
     <>
       <div className="ag-reels-social">
+        {REELS_SOCIAL_ENABLED ? (<>
         <button type="button" className="ag-reels-btn ag-reels-social-btn" onClick={like} aria-pressed={liked} aria-label={liked ? 'Quitar su me gusta de este video' : 'Darle me gusta a este video'}>
           <Heart aria-hidden size={26} fill={liked ? 'currentColor' : 'none'} />
           {counts ? <span className="ag-reels-social-n">{counts.likes}</span> : null}
@@ -82,12 +85,13 @@ export function ReelsSocialColumn({ slug, title, onSheet }: { slug: string; titl
           <MessageCircle aria-hidden size={26} />
           {counts ? <span className="ag-reels-social-n">{counts.comments}</span> : null}
         </button>
+        </>) : null}
         <button type="button" className="ag-reels-btn ag-reels-social-btn" onClick={share} aria-label="Compartir el enlace de este video">
           <Share2 aria-hidden size={26} />
         </button>
       </div>
       <div className="ag-reels-toast" role="status" aria-live="polite">{notice ? <span>{notice}</span> : null}</div>
-      {sheet ? <CommentsSheet slug={slug} onClose={() => openSheet(false)} /> : null}
+      {REELS_SOCIAL_ENABLED && sheet ? <CommentsSheet slug={slug} onClose={() => openSheet(false)} /> : null}
     </>
   );
 }

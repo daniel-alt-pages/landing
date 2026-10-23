@@ -555,6 +555,8 @@ function ReelsOverlay({ items, startIndex, gestureStart, poolRefs, reduce, onAct
           </button>
         </div>
       </div>
+      {/* Anuncio al cambiar de video: solo el título, sin posición. */}
+      <p className="ag-reels-sr" aria-live="polite">{items[active]?.title}</p>
       <ReelsSocialColumn key={slugOf(items[active])} slug={slugOf(items[active])} title={items[active]?.title ?? ''} onSheet={() => undefined} />
       <div className="ag-reels-live" role="status" aria-live="assertive">
         <AnimatePresence>
