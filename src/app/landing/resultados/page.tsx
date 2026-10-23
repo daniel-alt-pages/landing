@@ -14,13 +14,8 @@ export const metadata: Metadata = {
 export default function ResultadosPage() {
   return (
     <>
-      <ResultsGallery id="superacion" carrusel={false} estilo="alianzas" />
-      <ResultsGallery
-        excluirFotos={TOP_B2026.map((f) => f.src)}
-        superacion={false}
-        titulo={[{ text: 'Los álbumes' }, { text: 'completos', accent: true }]}
-        lead="Recorra, tarjeta por tarjeta, los puntajes reales de nuestros estudiantes."
-      />
+      {/* Un solo bloque: superación + carrusel de álbumes completos (id #resultados, destino del menú). */}
+      <ResultsGallery id="resultados" titleAs="h1" estilo="alianzas" excluirFotos={TOP_B2026.map((f) => f.src)} />
       <VideoResultados />
       <VoicesSection tone="white" />
       <TrustedSchools tone="paper" />
