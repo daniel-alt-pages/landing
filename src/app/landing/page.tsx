@@ -24,7 +24,7 @@ export default function AlianzaInicio() {
       <ProductRail />
       <MapaSitio />
       <CifrasClave />
-      <ResultsGallery />
+      <ResultsGallery id="puntajes" />
       <AlianzasSection />
       <PrimerPaso />
       <ScreenGallery />

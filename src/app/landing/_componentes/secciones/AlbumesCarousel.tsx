@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
+import { useEffect, useId, useRef, useState, type KeyboardEvent, type PointerEvent } from 'react';
 import { ALBUMES } from '../../_contenido/albumes';
 
 function useReducedMotion() {
@@ -23,6 +23,7 @@ export function AlbumesCarousel() {
   const [p, setP] = useState(0);
   const [pausa, setPausa] = useState(false);
   const reduced = useReducedMotion();
+  const uid = useId().replace(/:/g, '');
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const thumbs = useRef<HTMLDivElement | null>(null);
   const drag = useRef<{ x: number; id: number } | null>(null);
@@ -94,9 +95,9 @@ export function AlbumesCarousel() {
             ref={(el) => { tabs.current[k] = el; }}
             type="button"
             role="tab"
-            id={`alb-tab-${al.id}`}
+            id={`${uid}-alb-tab-${al.id}`}
             aria-selected={k === a}
-            aria-controls="alb-panel"
+            aria-controls={`${uid}-alb-panel`}
             tabIndex={k === a ? 0 : -1}
             className="ag-alb-tab"
             onClick={() => irAlbum(k)}
@@ -106,7 +107,7 @@ export function AlbumesCarousel() {
         ))}
       </div>
       </div>
-      <div id="alb-panel" role="tabpanel" aria-labelledby={`alb-tab-${album.id}`} className="ag-alb-panel">
+      <div id={`${uid}-alb-panel`} role="tabpanel" aria-labelledby={`${uid}-alb-tab-${album.id}`} className="ag-alb-panel">
         <div className="ag-alb-media">
         <div
           className="ag-alb-stage"
