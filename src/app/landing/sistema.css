@@ -40,7 +40,7 @@
 
 /* Cinta de escudos reales bajo las cifras (v1.0.25). Pausa en hover/foco y sin movimiento con reduced-motion: ver .ag-marquee en landing.css. */
 .sg-cifras-colegios { margin-top: var(--sg-space-5); }
-.sg-marquee-crests .ag-marquee-track { animation-duration: 160s; }
+.sg-marquee-crests .ag-marquee-track { animation-duration: 288s; } /* v1.0.27: 1.8x más lenta (antes 160s); solo inicio */
 .sg-crest { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; margin: 0; padding: 8px 14px 8px 8px; background: var(--sg-surface); border: 1px solid var(--sg-line); border-radius: 999px; }
 .sg-crest img { width: 40px; height: 40px; object-fit: contain; flex: 0 0 auto; }
 .sg-crest figcaption { font-size: var(--sg-text-xs); font-weight: 600; color: var(--sg-ink); white-space: nowrap; }
