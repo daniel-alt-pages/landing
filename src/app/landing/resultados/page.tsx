@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { FinalCta } from '../_componentes/secciones/FinalCta';
-import { TOP_B2026 } from '../_componentes/secciones/ResultadosB2026';
 import { ResultsGallery } from '../_componentes/secciones/ResultsGallery';
 import { TrustedSchools } from '../_componentes/secciones/TrustedSchools';
 import { VideoResultados } from '../_componentes/secciones/VideoResultados';
@@ -15,7 +14,7 @@ export default function ResultadosPage() {
   return (
     <>
       {/* Un solo bloque: superación + carrusel de álbumes completos (id #resultados, destino del menú). */}
-      <ResultsGallery id="resultados" titleAs="h1" estilo="alianzas" excluirFotos={TOP_B2026.map((f) => f.src)} />
+      <ResultsGallery id="resultados" titleAs="h1" estilo="alianzas" />
       <VideoResultados />
       <VoicesSection tone="white" />
       <TrustedSchools tone="paper" />
