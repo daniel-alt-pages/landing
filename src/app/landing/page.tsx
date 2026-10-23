@@ -1,7 +1,6 @@
 import { VideoResultados } from './_componentes/secciones/VideoResultados';
 // Oculto por decisión de Daniel 2026-10-23: import { ResultsGallery } from './_componentes/secciones/ResultsGallery';
 import { CifrasClave } from './_componentes/secciones/CifrasClave';
-// Oculto por decisión de Daniel 2026-10-23: import { ResultadosB2026 } from './_componentes/secciones/ResultadosB2026';
 // Oculto 2026-10-23: import { AlbumesCarousel } from './_componentes/secciones/AlbumesCarousel';
 // Oculto 2026-10-23: import { Section } from './_componentes/primitivas/Section';
 import { AlianzasSection } from './_componentes/secciones/AlianzasSection';
@@ -36,8 +35,6 @@ export default function AlianzaInicio() {
       </div>
       {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando (y sus imports) */}
       {/* <Section id="puntajes" tone="grey"><AlbumesCarousel /></Section> */}
-      {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando */}
-      {/* <ResultadosB2026 /> */}
       {/* Oculto por decisión de Daniel 2026-10-23; restaurar descomentando */}
       {/* <ResultsGallery id="superacion" carrusel={false} /> */}
       <AlianzasSection />
