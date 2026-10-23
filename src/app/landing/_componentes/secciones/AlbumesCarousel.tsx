@@ -71,6 +71,8 @@ export function AlbumesCarousel() {
   };
 
   const actual = album.fotos[p];
+  const puntajes = album.fotos.map((f) => Number(/(\d{3})\/500/.exec(f.alt)?.[1] ?? 0)).filter(Boolean);
+  const maximo = puntajes.length ? Math.max(...puntajes) : 0;
   return (
     <div
       className="ag-alb"
@@ -82,6 +84,9 @@ export function AlbumesCarousel() {
       onFocus={() => setPausa(true)}
       onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setPausa(false); }}
     >
+      <div className="ag-alb-head">
+      <h3 className="ag-h3 ag-alb-titulo">{album.titulo}</h3>
+      <p className="ag-alb-resumen">{total} {total === 1 ? 'estudiante' : 'estudiantes'}{maximo ? ` · puntaje más alto ${maximo}/500` : ''}</p>
       <div className="ag-alb-tabs" role="tablist" aria-label="Elegir álbum" onKeyDown={onTabKey}>
         {ALBUMES.map((al, k) => (
           <button
@@ -100,7 +105,9 @@ export function AlbumesCarousel() {
           </button>
         ))}
       </div>
+      </div>
       <div id="alb-panel" role="tabpanel" aria-labelledby={`alb-tab-${album.id}`} className="ag-alb-panel">
+        <div className="ag-alb-media">
         <div
           className="ag-alb-stage"
           tabIndex={0}
@@ -141,6 +148,7 @@ export function AlbumesCarousel() {
             ))}
           </div>
         ) : null}
+        </div>
         {total > 1 ? (
           <div className="ag-alb-thumbs" ref={thumbs} aria-label="Ir a un estudiante">
             {album.fotos.map((f, k) => (
@@ -151,6 +159,9 @@ export function AlbumesCarousel() {
             ))}
           </div>
         ) : null}
+        <a className="ag-alb-ig" href={album.url} target="_blank" rel="noopener noreferrer">
+          Ver en Instagram<span className="ag-ig-sr"> (se abre en una pestaña nueva)</span>
+        </a>
       </div>
     </div>
   );

@@ -89,6 +89,22 @@
 
 /* Álbumes de puntajes (/resultados) */
 .ag-alb { margin-top: 24px; max-width: 560px; margin-inline: auto; min-width: 0; }
+.ag-alb-head { text-align: center; }
+.ag-alb-titulo { margin: 0 0 4px; }
+.ag-alb-resumen { margin: 0 0 12px; font-size: 16px; color: var(--ag-muted); }
+.ag-alb-panel { display: grid; min-width: 0; }
+.ag-alb-media, .ag-alb-thumbs { min-width: 0; }
+.ag-alb-ig { justify-self: center; display: inline-flex; align-items: center; min-height: 44px; font-size: 16px; font-weight: 700; color: var(--ag-red); text-decoration: underline; text-underline-offset: 3px; }
+.ag-ig-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 1024px) {
+  .ag-alb { max-width: 1120px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 48px; align-items: start; }
+  .ag-alb-head { grid-column: 2; grid-row: 1; text-align: left; }
+  .ag-alb-head .ag-alb-tabs { justify-content: flex-start; }
+  .ag-alb-panel { display: contents; }
+  .ag-alb-media { grid-column: 1; grid-row: 1 / span 3; }
+  .ag-alb-thumbs { grid-column: 2; grid-row: 2; flex-wrap: wrap; overflow: visible; align-content: start; }
+  .ag-alb-ig { grid-column: 2; grid-row: 3; justify-self: start; }
+}
 .ag-alb-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 16px; }
 .ag-alb-tab { min-height: 44px; padding: 8px 16px; border: 2px solid var(--ag-red); border-radius: var(--sg-radius-pill); background: #fff; color: var(--ag-red); font-size: 16px; font-weight: 700; cursor: pointer; }
 .ag-alb-tab[aria-selected="true"] { background: var(--ag-red); color: #fff; }
