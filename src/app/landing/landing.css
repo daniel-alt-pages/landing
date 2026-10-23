@@ -1160,7 +1160,7 @@
 .ag-hero-logos { margin: 0; }
 .ag-hero-logos .ag-marquee-track {
   gap: 0;
-  animation-duration: 110s;
+  animation-duration: 165s; /* v1.0.27: 1.5x (antes 110s) */
 }
 .ag-hero-logos .ag-marquee-set {
   align-items: center;
@@ -1762,7 +1762,7 @@
   display: flex;
   gap: 12px;
   width: max-content;
-  animation: ag-marquee 200s linear infinite;
+  animation: ag-marquee 300s linear infinite; /* v1.0.27: 1.5x (antes 200s) */
 }
 
 .ag-marquee-set {
@@ -1772,7 +1772,7 @@
 }
 
 .ag-marquee-schools .ag-marquee-track {
-  animation-duration: 280s;
+  animation-duration: 420s; /* v1.0.27: 1.5x (antes 280s), cintas de /resultados */
 }
 
 .ag-marquee[data-dir='right'] .ag-marquee-track { animation-direction: reverse; }
