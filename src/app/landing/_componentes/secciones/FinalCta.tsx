@@ -1,3 +1,4 @@
+import { COLEGIOS } from '../../_contenido/colegios';
 import { CONTACTO } from '../../_contenido/contacto';
 import { CIERRE } from '../../_contenido/paginas';
 import { buildWaUrl, WA_TEXT } from '../../_lib/whatsapp';
@@ -38,7 +39,7 @@ export function FinalCta({ eyebrow, lead = CIERRE.lead }: { eyebrow?: string; le
         <ul className="ag-close-trust" aria-label="Datos de la alianza">
           <li><strong>500/500</strong> en 2025</li>
           <li><strong>Más de 50</strong> estudiantes sobre 410</li>
-          <li><strong>65 instituciones</strong> con al menos un simulacro</li>
+          <li><strong>{COLEGIOS.length} instituciones</strong> con al menos un simulacro</li>
           <li>Respuesta en <strong>menos de un día hábil</strong></li>
         </ul>
         </div>
