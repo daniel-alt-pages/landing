@@ -3,6 +3,10 @@ import { CONTACTO } from '../../_contenido/contacto';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Lead } from '../primitivas/Lead';
 import { Section } from '../primitivas/Section';
+import { ReelsVisor } from './ReelsVisor';
+
+/** Orden del visor: Mariana, Ángel David, Sebastián, 3 estrategias. El reel de Gabriel no está en el repo como video. */
+const REELS: VideoItem[] = [...VIDEOS_RESULTADOS, VIDEO_ESTRATEGIAS];
 
 function VideoCard({ item }: { item: VideoItem }) {
   return (
@@ -18,6 +22,7 @@ function VideoCard({ item }: { item: VideoItem }) {
           height={1280}
         >
           <source src={`/landing/videos/${item.id}.mp4`} type="video/mp4" />
+          {item.captions ? <track kind="captions" srcLang="es" label="Español" src={item.captions} /> : null}
           Su navegador no reproduce video.
         </video>
       </div>
@@ -50,9 +55,11 @@ export function VideoResultados() {
     <Section id="resultados-video" tone="white" label="resultados-video-title">
       <DisplayTitle id="resultados-video-title" lines={[{ text: 'Resultados' }, { text: 'en video', accent: true }]} />
       <Lead>Escúchelo de nuestros estudiantes.</Lead>
-      <div className="ag-video-grid">
-        {VIDEOS_RESULTADOS.map((v) => <VideoCard key={v.id} item={v} />)}
-      </div>
+      <ReelsVisor items={REELS}>
+        <div className="ag-video-grid">
+          {VIDEOS_RESULTADOS.map((v) => <VideoCard key={v.id} item={v} />)}
+        </div>
+      </ReelsVisor>
       <div className="ag-ig-block" aria-labelledby="resultados-ig-title">
         <h3 id="resultados-ig-title" className="ag-h3 ag-ig-heading">Álbum de puntajes Calendario B 2026</h3>
         <p className="ag-ig-intro">{INSTAGRAM_RESULTADOS_INTRO} Sus nombres y sus palabras, publicados en nuestro Instagram.</p>

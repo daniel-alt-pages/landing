@@ -100,3 +100,22 @@
 .ag-alb-img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--sg-radius-lg); }
 .ag-alb-fotos-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 12px; font-weight: 700; }
 @media (prefers-reduced-motion: reduce) { .ag-alb-track { transition: none; } }
+
+/* Visor de videos tipo Reels (Resultados en video) */
+.ag-reels { position: fixed; inset: 0; z-index: 2147483000; background: #000; color: #fff; }
+.ag-reels-scroller { position: absolute; inset: 0; overflow-y: auto; scroll-snap-type: y mandatory; overscroll-behavior: contain; scrollbar-width: none; }
+.ag-reels-scroller::-webkit-scrollbar { display: none; }
+.ag-reels-slide { position: relative; height: 100%; scroll-snap-align: start; scroll-snap-stop: always; display: flex; align-items: center; justify-content: center; }
+.ag-reels-video { height: 100%; width: 100%; max-width: calc(100dvh * 9 / 16); object-fit: contain; background: #000; }
+.ag-reels-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 48px 20px 28px; background: linear-gradient(transparent, rgba(0,0,0,.75)); text-align: center; pointer-events: none; }
+.ag-reels-title { margin: 0; font-size: 20px; font-weight: 700; }
+.ag-reels-text { margin: 4px 0 0; font-size: 16px; }
+.ag-reels-bar { position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; padding: 16px; gap: 12px; }
+.ag-reels-count { font-size: 16px; background: rgba(0,0,0,.5); padding: 6px 12px; border-radius: 999px; }
+.ag-reels-actions { display: flex; gap: 12px; }
+.ag-reels-btn { width: 48px; height: 48px; border-radius: 999px; border: 0; background: rgba(0,0,0,.55); color: #fff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.ag-reels-btn:focus-visible, .ag-reels-unmute:focus-visible { outline: 3px solid #CC0000; outline-offset: 2px; }
+.ag-reels-live { position: absolute; left: 0; right: 0; top: 50%; display: flex; justify-content: center; pointer-events: none; }
+.ag-reels-unmute { pointer-events: auto; display: inline-flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 700; padding: 16px 24px; border-radius: 999px; border: 2px solid #CC0000; background: rgba(0,0,0,.78); color: #fff; cursor: pointer; }
+.ag-reels-focus-target:focus { outline: none; }
+.ag-reels-focus-target:focus-visible { outline: 2px solid #CC0000; outline-offset: 4px; }
