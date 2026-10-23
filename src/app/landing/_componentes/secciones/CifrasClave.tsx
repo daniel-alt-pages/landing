@@ -31,9 +31,14 @@ const TOP_B2026 = ALBUMES.filter((a) => a.id.startsWith('b2026'))
 
 export function CifrasClave() {
   const reduce = useReducedMotion();
-  const reveal = (i: number) => (reduce
-    ? {}
-    : { initial: { opacity: 0, y: 12 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' }, transition: { duration: 0.4, delay: i * 0.05, ease: EASE } });
+  // Siempre se pasan whileInView/viewport: el HTML estático sale con opacity 0 (initial) y, si con
+  // movimiento reducido no hubiera animación, las cifras quedaban invisibles. Con reduce: sin desplazamiento y duración 0.
+  const reveal = (i: number) => ({
+    initial: { opacity: 0, y: reduce ? 0 : 12 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-60px' },
+    transition: reduce ? { duration: 0 } : { duration: 0.4, delay: i * 0.05, ease: EASE },
+  });
   return (
     <Section id="cifras" tone="grey" label="cifras-title">
       <DisplayTitle id="cifras-title" lines={[{ text: 'Datos claros' }, { text: 'para decidir', accent: true }]} />
