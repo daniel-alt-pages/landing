@@ -16,9 +16,21 @@ export const metadata: Metadata = {
 export default function ResultadosPage() {
   return (
     <>
-      <PageIntro eyebrow={PAGINAS.resultados.eyebrow} title={PAGINAS.resultados.title} lead={PAGINAS.resultados.lead} />
-      <ResultadosB2026 />
-      <ResultsGallery />
+      <PageIntro
+        eyebrow={PAGINAS.resultados.eyebrow}
+        title={['Resultados que', 'su colegio puede mostrar']}
+        lead="Puntajes reales, mejoras con nuestro acompañamiento y mensajes de estudiantes de todo el país: evidencia para decidir con su consejo directivo."
+      />
+      <ResultsGallery id="superacion" carrusel={false} estilo="alianzas" />
+      <ResultadosB2026
+        titulo={[{ text: 'Estudiantes de todo el país' }, { text: 'en lo más alto', accent: true }]}
+        lead="Los puntajes más altos de nuestros estudiantes del Calendario B, con su nombre y su ciudad."
+      />
+      <ResultsGallery
+        superacion={false}
+        titulo={[{ text: 'Los álbumes' }, { text: 'completos', accent: true }]}
+        lead="Recorra, tarjeta por tarjeta, los puntajes reales de nuestros estudiantes."
+      />
       <VideoResultados />
       <VoicesSection tone="white" />
       <TrustedSchools tone="paper" />
