@@ -4210,10 +4210,8 @@ body:has(.ag-close, .ag-b2b-cierre) .ag-footer-agendar { display: none; }
 .ag-cofounders-links { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
 .ag-cofounders-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ag-red); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; border-radius: 12px; }
 .ag-cofounders-links a:focus-visible { outline: 3px solid var(--ag-red); outline-offset: 2px; }
-.ag-press.ag-cofounder-links a { display: grid; grid-template-columns: 1fr; align-content: center; gap: 4px; min-height: 44px; }
 .ag-cofounder-logos { display: inline-flex; gap: 8px; align-items: center; }
-.ag-cofounder-logos img { height: 22px; width: auto; }
 .ag-cofounder-badges li { gap: 6px; }
-.ag-cofounder-badges li img { height: 20px; width: auto; }
-.ag-source-logo { display: inline-block; height: 14px; width: auto; margin-right: 6px; padding: 3px 6px; border-radius: 6px; background: #fff; vertical-align: middle; box-sizing: content-box; }
-.ag-press-mark.ag-cofounder-logos { min-height: 28px; }
+.ag-cofounder-badges li img { display: block; height: 40px; width: auto; object-fit: contain; border-radius: 10px; }
+.ag-source-logo { display: inline-block; height: 40px; width: auto; max-width: 100%; margin-right: 8px; padding: 4px 10px; border-radius: 10px; background: #fff; object-fit: contain; vertical-align: middle; box-sizing: content-box; }
+@media (max-width: 767px) { .ag-source-logo { height: 28px; padding: 3px 8px; } .ag-cofounder-badges li img { height: 28px; } }
