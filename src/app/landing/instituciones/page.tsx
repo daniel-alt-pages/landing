@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   },
 };
 
-const SITE = 'https://seamosgenios.org';
+const SITE = 'https://daniel-alt-pages.github.io';
 const URL_PANEL = `${SITE}/landing/instituciones`;
 /** JSON-LD del panel (plantillas de seo-b2b/schema). Contacto solo con datos de b2b/contacto.ts; sin LinkedIn (no existe en el repo). */
 const JSON_LD = {
@@ -78,26 +78,26 @@ const JSON_LD = {
   '@graph': [
     {
       '@type': ['Organization', 'EducationalOrganization'],
-      '@id': `${SITE}/#organization`,
+      '@id': `${SITE}/landing/#organization`,
       name: 'SEAMOSGENIOS',
       legalName: 'SEAMOSGENIOS S.A.S.',
       taxID: '902080201-8',
       alternateName: ['Seamos Genios', 'SeamosGenios'],
-      url: `${SITE}/`,
-      logo: `${SITE}/brand/sg-services-logo.svg`,
+      url: `${SITE}/landing/`,
+      logo: `${SITE}/landing/brand/sg-services-logo.svg`,
       description: 'Empresa colombiana que ofrece a colegios simulacros tipo Saber 11 calificados con Teoría de Respuesta al Ítem, paneles de coordinación y formación virtual.',
       areaServed: { '@type': 'Country', name: 'Colombia' },
       knowsAbout: ['Prueba Saber 11', 'Simulacros tipo Saber 11', 'Teoría de Respuesta al Ítem', 'Lectura crítica', 'Matemáticas'],
       contactPoint: { '@type': 'ContactPoint', contactType: 'sales', telephone: B2B_CONTACTO.telefonoVisible.replace(/\s/g, ''), email: B2B_CONTACTO.email, areaServed: 'CO', availableLanguage: 'es' },
       sameAs: [CONTACTO.redes.instagram, CONTACTO.redes.tiktok, CONTACTO.redes.facebook],
     },
-    { '@type': 'WebSite', '@id': `${SITE}/#website`, url: `${SITE}/`, name: 'SEAMOSGENIOS', inLanguage: 'es-CO', publisher: { '@id': `${SITE}/#organization` } },
+    { '@type': 'WebSite', '@id': `${SITE}/landing/#website`, url: `${SITE}/landing/`, name: 'SEAMOSGENIOS', inLanguage: 'es-CO', publisher: { '@id': `${SITE}/landing/#organization` } },
     {
       '@type': 'Service',
       '@id': `${URL_PANEL}#service`,
       name: 'Simulacros Saber 11 y acompañamiento para colegios',
       serviceType: 'Preparación para la prueba Saber 11 para instituciones educativas',
-      provider: { '@id': `${SITE}/#organization` },
+      provider: { '@id': `${SITE}/landing/#organization` },
       areaServed: { '@type': 'Country', name: 'Colombia' },
       audience: { '@type': 'EducationalAudience', educationalRole: 'administrator' },
       availableChannel: { '@type': 'ServiceChannel', serviceUrl: URL_PANEL },
@@ -107,7 +107,7 @@ const JSON_LD = {
       '@type': 'BreadcrumbList',
       '@id': `${URL_PANEL}#breadcrumb`,
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/landing/` },
         { '@type': 'ListItem', position: 2, name: 'Portafolio B2B', item: URL_PANEL },
       ],
     },

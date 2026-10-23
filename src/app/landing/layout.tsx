@@ -16,8 +16,9 @@ import './sistema.css';
 import { MotionProvider } from './_componentes/primitivas/MotionProvider';
 
 /** Dominio público de la landing (Vercel reescribe / → /landing; el resto vive en /landing/*). La app es app.seamosgenios.org. */
-const SITE = 'https://seamosgenios.org';
-const ORG_ID = `${SITE}/#organization`;
+const SITE = 'https://daniel-alt-pages.github.io';
+const HOME = `${SITE}/landing/`;
+const ORG_ID = `${SITE}/landing/#organization`;
 
 /** Tipografía única del sitio (tokens.css): Plus Jakarta Sans (variable 200-800) para títulos y texto;
  * Caveat solo como acento. Mismos subconjuntos locales que ya usaba /instituciones. */
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
   title: { absolute: 'Alianza Saber 11 para colegios | SEAMOSGENIOS' },
   description:
     'Simulacros tipo ICFES, panel de coordinación y clases en vivo para mejorar los resultados Saber 11 de su institución. El primer simulacro es gratis.',
-  alternates: { canonical: './' },
+  alternates: { canonical: HOME },
   openGraph: {
     type: 'website',
     locale: 'es_CO',
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     title: 'Alianza Saber 11 para colegios | SEAMOSGENIOS',
     description:
       'Simulacros tipo ICFES, panel de coordinación y clases en vivo para mejorar los resultados Saber 11 de su institución. El primer simulacro es gratis.',
-    url: './',
+    url: HOME,
     images: [{ url: '/landing/og.jpg', width: 1200, height: 630, alt: 'Alianza estratégica educativa SEAMOSGENIOS' }],
   },
   twitter: {
@@ -76,12 +77,12 @@ const structuredData = {
       '@type': 'EducationalOrganization',
       '@id': ORG_ID,
       name: 'SEAMOSGENIOS',
-      url: SITE,
+      url: HOME,
       areaServed: { '@type': 'Country', name: 'Colombia' },
     },
     {
       '@type': 'Service',
-      '@id': `${SITE}/#alianza`,
+      '@id': `${SITE}/landing/#alianza`,
       name: 'Alianza Saber 11 para instituciones',
       serviceType: 'Preparación Saber 11 para colegios',
       provider: { '@id': ORG_ID },
@@ -99,7 +100,7 @@ const structuredData = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Inicio', item: SITE },
+        { '@type': 'ListItem', position: 1, name: 'Inicio', item: HOME },
       ],
     },
   ],
