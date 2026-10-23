@@ -5,6 +5,7 @@ import { Section } from '../primitivas/Section';
 import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Marquee } from '../primitivas/Marquee';
 import { COLEGIOS } from '../../_contenido/colegios';
+import { AlbumesCarousel } from './AlbumesCarousel';
 
 /**
  * Cifras clave (número + texto, sin gráficos) y cinta de escudos reales (COLEGIOS). SOLO datos confirmados que ya publica el sitio:
@@ -54,6 +55,9 @@ export function CifrasClave() {
             </figure>
           ))}
         </Marquee>
+      </div>
+      <div id="puntajes">
+        <AlbumesCarousel />
       </div>
     </Section>
   );
