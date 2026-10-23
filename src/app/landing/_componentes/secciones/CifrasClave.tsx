@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import { Section } from '../primitivas/Section';
+import { DisplayTitle } from '../primitivas/DisplayTitle';
 import { Marquee } from '../primitivas/Marquee';
 import { COLEGIOS } from '../../_contenido/colegios';
 
@@ -26,7 +27,7 @@ export function CifrasClave() {
     : { initial: { opacity: 0, y: 12 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: '-60px' }, transition: { duration: 0.4, delay: i * 0.05, ease: EASE } });
   return (
     <Section id="cifras" tone="grey" label="cifras-title">
-      <h2 id="cifras-title" className="ag-h2">Datos claros para decidir</h2>
+      <DisplayTitle id="cifras-title" lines={[{ text: 'Datos claros' }, { text: 'para decidir', accent: true }]} />
       <div className="sg-cifras">
         {CIFRAS.map((c, i) => (
           <motion.article key={c.tag} className="sg-cifra" {...reveal(i)}>
